@@ -15,7 +15,6 @@ clusterSvcNets:
 
 additionalApiServerCertSans: &sans
   - "192.168.0.60"
-  - "homelab-cluster.hole"
   - "127.0.0.1"
 additionalMachineCertSans: *sans
 
