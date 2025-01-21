@@ -41,6 +41,7 @@ metadata:
   name: nginx-ingress
   labels:
     name: nginx-ingress
+  namespace: testing
 spec:
   className: internal
   rules:
