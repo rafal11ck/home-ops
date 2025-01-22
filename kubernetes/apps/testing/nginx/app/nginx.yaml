@@ -45,7 +45,7 @@ metadata:
 spec:
   className: internal
   rules:
-    - host: "web.${INTERNAL_DOMAIN}"
+    - host: "web.${SECRET_DOMAIN}"
       http:
         paths:
           - path: /
