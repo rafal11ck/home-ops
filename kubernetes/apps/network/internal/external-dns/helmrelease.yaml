@@ -68,10 +68,10 @@ spec:
       - --ignore-ingress-tls-spec
       - --crd-source-apiversion=externaldns.k8s.io/v1alpha1
       - --crd-source-kind=DNSEndpoint
-      - --events
+      - --cloudflare-proxied
       - --ingress-class=internal
     policy: sync
-    sources: ["ingress", "service"]
+    sources: ["ingress", "service", "crd"]
     registry: noop
     podAnnotations:
       secret.reloader.stakater.com/reload: *secret
