@@ -66,9 +66,12 @@ spec:
           timeoutSeconds: 5
     extraArgs:
       - --ignore-ingress-tls-spec
+      - --crd-source-apiversion=externaldns.k8s.io/v1alpha1
+      - --crd-source-kind=DNSEndpoint
+      - --events
+      - --ingress-class=internal
     policy: sync
     sources: ["ingress", "service"]
     registry: noop
-    # domainFilters: ["${SECRET_DOMAIN}"]
     podAnnotations:
       secret.reloader.stakater.com/reload: *secret
