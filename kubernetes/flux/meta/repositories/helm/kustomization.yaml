@@ -16,3 +16,4 @@ resources:
   - ./stakater.yaml
   - ./openebs.yaml
   - ./podinfo.yaml
+  - ./nextcloud.yaml
