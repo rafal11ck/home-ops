@@ -73,6 +73,9 @@ spec:
             'default_phone_region' => 'PL',
           );
       host: *hostname
+      existingSecret:
+        enabled: true
+        secretName: nextcloud-secret
     cronjob:
       enabled: true
     nginx:
@@ -80,15 +83,3 @@ spec:
       config:
         headers:
           "Strict-Transport-Security": "max-age=15768000; includeSubDomains;"
-    lifecycle:
-      postStartCommand:
-        - su
-        - -s
-        - /bin/sh
-        - www-data
-        - -c
-        - >-
-          { cd /var/www/html;
-          ./occ maintenance:repair --include-expensive;
-          ./occ db:add-missing-indices;} 2>&1 > /var/log/startHook.txt;
-          /bin/true;
