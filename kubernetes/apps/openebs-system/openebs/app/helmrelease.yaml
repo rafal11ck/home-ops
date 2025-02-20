@@ -30,12 +30,11 @@ spec:
           enabled: false
       replicated:
         mayastor:
-          enabled: false
+          enabled: true
           csi:
             node:
               initContainers:
                 enabled: false
-
     localpv-provisioner:
       localpv:
         image:
@@ -46,5 +45,15 @@ spec:
       hostpathClass:
         enabled: true
         name: openebs-hostpath
-        isDefaultClass: false
+        isDefaultClass: true
         basePath: /var/openebs/local
+    mayastor:
+      csi:
+        node:
+          initContainers:
+            enabled: true
+      etcd:
+        replicaCount: &repCount 1
+      nats:
+        cluster:
+          replicas: *repCount

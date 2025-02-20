@@ -9,6 +9,6 @@ machine:
         type: bind
         source: /var/openebs/local
         options:
-          - bind
+          - rbind
           - rshared
           - rw
