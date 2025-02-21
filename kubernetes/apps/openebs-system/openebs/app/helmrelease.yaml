@@ -30,7 +30,7 @@ spec:
           enabled: false
       replicated:
         mayastor:
-          enabled: true
+          enabled: false
           csi:
             node:
               initContainers:
@@ -57,5 +57,3 @@ spec:
       nats:
         cluster:
           replicas: *repCount
-      loki-stack:
-        enabled: false
