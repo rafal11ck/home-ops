@@ -57,3 +57,5 @@ spec:
       nats:
         cluster:
           replicas: *repCount
+      loki-stack:
+        enabled: false
