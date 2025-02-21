@@ -3,8 +3,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: cilium
+  name: podinfo
   namespace: flux-system
 spec:
-  interval: 15m
-  url: https://helm.cilium.io
+  interval: 12h
+  url: https://stefanprodan.github.io/podinfo
