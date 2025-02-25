@@ -92,7 +92,7 @@ spec:
       type: postgresql
       existingSecret:
         enabled: true
-        secretname: nextcloud-database-app
+        secretName: nextcloud-database-app
         usernameKey: user
         passwordKey: password
         hostKey: host
