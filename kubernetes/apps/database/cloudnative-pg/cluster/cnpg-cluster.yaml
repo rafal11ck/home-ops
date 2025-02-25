@@ -4,7 +4,7 @@ kind: Cluster
 metadata:
   name: &name cnpg-cluster
 spec:
-  description: "nextcloud database"
+  description: "cnpg cluster"
   instances: 1
   primaryUpdateStrategy: unsupervised
   # TODO find out if renovate wokrs on this
