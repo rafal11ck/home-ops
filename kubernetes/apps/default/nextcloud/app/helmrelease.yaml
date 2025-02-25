@@ -78,6 +78,14 @@ spec:
       existingSecret:
         enabled: true
         secretName: nextcloud-secret
+    internalDatabase:
+      enabled: false
+    externalDatabase:
+      enabled: true
+      type: postgresql
+      existingSecret:
+        enabled: true
+        
     cronjob:
       enabled: true
     nginx:
