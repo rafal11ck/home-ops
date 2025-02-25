@@ -18,14 +18,14 @@ spec:
     namespace: flux-system
   targetNamespace: *namespace
   timeout: 5m
-  wait: false
+  dependsOn:
+    - name: nextcloud-db
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app cloudnative-pg-cluster
-  namespace: &namespace database
+  name: &app nextcloud-db
 spec:
   commonMetadata:
     labels:
@@ -38,10 +38,11 @@ spec:
     name: flux-system
     namespace: flux-system
   dependsOn:
+    # depends on CNPG operator
     - name: cloudnative-pg
+      namespace: database
   postBuild:
     substitute:
       # renovate: datasource=docker depName=ghcr.io/cloudnative-pg/postgresql
       POSTGRESQL_VERSION: 17.4-bookworm
   path: ./kubernetes/apps/default/nextcloud/database
-  wait: true
