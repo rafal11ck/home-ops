@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/postgresql.cnpg.io/cluster_v1.json
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: &name cnpg-cluster
+spec:
+  description: "cnpg cluster"
+  instances: 1
+  primaryUpdateStrategy: unsupervised
+  # TODO find out if renovate wokrs on this
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.4-1
+  # Require 1Gi of space
+  storage:
+    size: 5Gi
+  superuserSecret:
+    name: cnpg-cluster-secret
+  monitoring:
+    # TODO: enable when observability stack is in place
+    enablePodMonitor: false
