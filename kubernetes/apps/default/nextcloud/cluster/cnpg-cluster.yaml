@@ -2,9 +2,9 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: &name cnpg-cluster
+  name: &name nextcloud-database
 spec:
-  description: "cnpg cluster"
+  description: "nextcloud-database"
   instances: 1
   primaryUpdateStrategy: unsupervised
   # TODO find out if renovate wokrs on this
