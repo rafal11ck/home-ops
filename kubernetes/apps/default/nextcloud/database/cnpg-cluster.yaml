@@ -15,3 +15,6 @@ spec:
   monitoring:
     # TODO: enable when observability stack is in place
     enablePodMonitor: false
+  bootstrap:
+    initdb:
+      database: nextcloud

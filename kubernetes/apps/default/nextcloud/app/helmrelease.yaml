@@ -85,3 +85,21 @@ spec:
       config:
         headers:
           "Strict-Transport-Security": "max-age=15768000; includeSubDomains;"
+    internalDatabase:
+      enabled: false
+    externalDatabase:
+      enabled: true
+      type: postgresql
+      existingSecret:
+        enabled: true
+        secretname: nextcloud-database-app
+        usernameKey: user
+        passwordKey: password
+        hostKey: host
+        databaseKey: dbname
+    persistence:
+      enabled: true
+      size: 5Gi
+      nextcloudData:
+        enabled: true
+        size: 5Gi
