@@ -16,7 +16,7 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./kubernetes/apps/cnpg-system/cloudnative-pg/app
+  path: ./kubernetes/apps/databases/cloudnative-pg/app
   wait: true
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json
@@ -42,5 +42,5 @@ spec:
     substitute:
       # renovate: datasource=docker depName=ghcr.io/cloudnative-pg/postgresql
       POSTGRESQL_VERSION: 17.4-bookworm
-  path: ./kubernetes/apps/cnpg-system/cloudnative-pg/cluster
+  path: ./kubernetes/apps/databases/cloudnative-pg/cluster
   wait: true
