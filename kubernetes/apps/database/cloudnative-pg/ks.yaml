@@ -3,8 +3,8 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app cloudnative-pg
-  namespace: &namespace databases
+  name: &app cloudnative-pg-operator
+  namespace: &namespace database
 spec:
   commonMetadata:
     labels:
@@ -16,7 +16,7 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./kubernetes/apps/databases/cloudnative-pg/app
+  path: ./kubernetes/apps/database/cloudnative-pg-operator
   wait: true
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json
@@ -24,7 +24,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: &app cloudnative-pg-cluster
-  namespace: &namespace databases
+  namespace: &namespace database
 spec:
   commonMetadata:
     labels:
@@ -42,5 +42,5 @@ spec:
     substitute:
       # renovate: datasource=docker depName=ghcr.io/cloudnative-pg/postgresql
       POSTGRESQL_VERSION: 17.4-bookworm
-  path: ./kubernetes/apps/databases/cloudnative-pg/cluster
+  path: ./kubernetes/apps/database/cloudnative-pg/cluster
   wait: true
