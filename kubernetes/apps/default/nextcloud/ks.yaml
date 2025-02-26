@@ -42,8 +42,4 @@ spec:
     # depends on CNPG operator
     - name: cloudnative-pg
       namespace: database
-  postBuild:
-    substitute:
-      # renovate: datasource=docker depName=ghcr.io/cloudnative-pg/postgresql
-      POSTGRESQL_VERSION: !!str 16.6
   path: ./kubernetes/apps/default/nextcloud/database
