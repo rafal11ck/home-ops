@@ -45,5 +45,5 @@ spec:
   postBuild:
     substitute:
       # renovate: datasource=docker depName=ghcr.io/cloudnative-pg/postgresql
-      POSTGRESQL_VERSION: 16.8-1
+      POSTGRESQL_VERSION: 16.6-33
   path: ./kubernetes/apps/default/nextcloud/database
