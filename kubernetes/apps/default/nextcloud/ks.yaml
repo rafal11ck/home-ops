@@ -44,6 +44,6 @@ spec:
       namespace: database
   postBuild:
     substitute:
-      # renovate: datasource=docker depName=ghcr.io/cloudnative-pg/postgresql version=<17.0.0
+      # renovate: datasource=docker depName=ghcr.io/cloudnative-pg/postgresql
       POSTGRESQL_VERSION: 16.8-1
   path: ./kubernetes/apps/default/nextcloud/database
