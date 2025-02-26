@@ -121,7 +121,7 @@
     },
     {
       matchDatasources: ["docker"],
-      matchPackageNames: ["ghcr.io/cloudnative-pg/postgresql"],
+      matchPackageNames: ["/ghcr.io\\/cloudnative-pg\\/postgresql/"],
       separateMajorMinor: true,
     },
   ],
