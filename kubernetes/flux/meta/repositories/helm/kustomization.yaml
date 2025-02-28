@@ -18,3 +18,4 @@ resources:
   - ./openebs.yaml
   - ./podinfo.yaml
   - ./nextcloud.yaml
+  - ./dragonfly-operator.yaml
