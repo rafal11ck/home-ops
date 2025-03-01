@@ -1,0 +1,31 @@
+---
+# yaml-language-server: $schema=https://kube-schemas.pages.dev/dragonflydb.io/dragonfly_v1alpha1.json
+apiVersion: dragonflydb.io/v1alpha1
+kind: Dragonfly
+metadata:
+  name: dragonfly
+spec:
+  # renovate: datasource=docker depName=ghcr.io/dragonflydb/dragonfly
+  image: ghcr.io/dragonflydb/dragonfly:v1.27.0
+  replicas: 1
+  env:
+    - name: MAX_MEMORY
+      valueFrom:
+        resourceFieldRef:
+          resource: limits.memory
+          divisor: 1Mi
+  args:
+    - --maxmemory=$(MAX_MEMORY)Mi
+    - --proactor_threads=2
+    - --cluster_mode=emulated
+    - --dbfilename=dragonflySnapshot
+  resources:
+    limits:
+      memory: 512Mi
+  snapshot:
+    persistentVolumeClaimSpec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 2Gi

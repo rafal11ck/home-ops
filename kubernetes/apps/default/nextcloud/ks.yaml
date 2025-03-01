@@ -43,3 +43,26 @@ spec:
     - name: cloudnative-pg
       namespace: database
   path: ./kubernetes/apps/default/nextcloud/database
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  namespace: &namespace default
+  name: &app nextcloud-memcache
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  targetNamespace: *namespace
+  interval: 30m
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  dependsOn:
+    # depends on CNPG operator
+    - name: dragonfly-operator
+      namespace: dragonfly-operator-system
+  path: ./kubernetes/apps/default/nextcloud/memcache
