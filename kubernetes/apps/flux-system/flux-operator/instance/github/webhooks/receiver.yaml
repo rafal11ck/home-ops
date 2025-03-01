@@ -20,3 +20,5 @@ spec:
       kind: Kustomization
       name: flux-system
       namespace: flux-system
+    - kind: HelmRepository
+      name: "*"
