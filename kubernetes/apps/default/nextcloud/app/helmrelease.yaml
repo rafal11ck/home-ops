@@ -82,6 +82,19 @@ spec:
           value: nextcloud-memcache.default.svc.cluster.local
         - name: REDIS_HOST_PORT
           value: "6379"
+          # When secret changes config.php is not updated, when db secret updates config.php keeps old one
+          # SEE https://help.nextcloud.com/t/solved-nextcloud-configuration-with-environment-variables/14327/11
+        - name: NC_dbpassword
+          valueFrom:
+            secretKeyRef:
+              name: nextcloud-database-app
+              key: password
+        - name: NC_dbhost
+          valueFrom:
+            secretKeyRef:
+              name: nextcloud-database-app
+              key: dbhost
+
       existingSecret:
         enabled: true
         secretName: nextcloud-secret
