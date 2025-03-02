@@ -3,7 +3,7 @@
 apiVersion: dragonflydb.io/v1alpha1
 kind: Dragonfly
 metadata:
-  name: dragonfly
+  name: nextcloud-memcache
 spec:
   # renovate: datasource=docker depName=ghcr.io/dragonflydb/dragonfly
   image: ghcr.io/dragonflydb/dragonfly:v1.27.1
@@ -24,6 +24,7 @@ spec:
       memory: 512Mi
   snapshot:
     persistentVolumeClaimSpec:
+      # storageClassName: hostpath
       accessModes:
         - ReadWriteOnce
       resources:
