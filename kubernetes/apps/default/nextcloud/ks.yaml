@@ -20,6 +20,7 @@ spec:
   timeout: 5m
   dependsOn:
     - name: nextcloud-db
+    - name: nextcloud-memcache
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -39,7 +40,6 @@ spec:
     name: flux-system
     namespace: flux-system
   dependsOn:
-    # depends on CNPG operator
     - name: cloudnative-pg
       namespace: database
   path: ./kubernetes/apps/default/nextcloud/database
@@ -62,7 +62,6 @@ spec:
     name: flux-system
     namespace: flux-system
   dependsOn:
-    # depends on CNPG operator
     - name: dragonfly-operator
       namespace: dragonfly-operator-system
   path: ./kubernetes/apps/default/nextcloud/memcache

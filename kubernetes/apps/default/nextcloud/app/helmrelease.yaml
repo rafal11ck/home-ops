@@ -77,6 +77,11 @@ spec:
             'default_phone_region' => 'PL',
           );
       host: *hostname
+      extraEnv:
+        - name: REDIS_HOST
+          value: nextcloud-memcache.default.svc.cluster.local
+        - name: REDIS_HOST_PORT
+          value: "6379"
       existingSecret:
         enabled: true
         secretName: nextcloud-secret
