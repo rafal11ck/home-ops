@@ -22,6 +22,8 @@ spec:
     remediation:
       retries: 3
   values:
+    podAnnotations:
+      reloader.stakater.com/auto: "true"
     image:
       flavor: fpm-alpine
       # renovate: datasource=docker depName=registry.hub.docker.com/library/nextcloud
@@ -74,6 +76,7 @@ spec:
       s3.config.php: false # S3 Object Storage as primary storage - I don't use this
       smtp.config.php: false # SMTP default configuration via environment variables
       swift.config.php: false # Swift Object Storage as primary storage - I don't use this
+      upgrade-disable-web.config.php: true
     nextcloud:
       configs:
         local.config.php: |-
@@ -83,6 +86,8 @@ spec:
               0 => '127.0.0.1',
               1 => '10.0.0.0/8',
             ),
+            'overwriteprotocol' => 'https',
+            'overwrite.cli.url' => 'https://cloud2.${SECRET_DOMAIN}',
             'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
             'maintenance_window_start' => 1,
             'default_phone_region' => 'PL',
@@ -101,9 +106,6 @@ spec:
       enabled: true
     nginx:
       enabled: true
-      config:
-        headers:
-          "Strict-Transport-Security": "max-age=15768000; includeSubDomains;"
     internalDatabase:
       enabled: false
     externalDatabase:
