@@ -63,6 +63,17 @@ spec:
           }
       path: /
       pathType: Prefix
+    defaultConfigs:
+      .htaccess: true # To protect /var/www/html/config
+      apache-pretty-urls.config.php: false # Apache configuration for rewrite urls
+      apcu.config.php: false # Define APCu as local cache
+      #apps.config.php: true # Apps directory configs
+      autoconfig.php: false # Used for auto configure database - False cus CNPG Postgre is used instead. Configured in the chart.
+      redis.config.php: false # Redis default configuration - False cus DragonflyDB(Redis) is used instead. Configured in the chart.
+      reverse-proxy.config.php: true # Reverse proxy default configuration
+      s3.config.php: false # S3 Object Storage as primary storage - I don't use this
+      smtp.config.php: false # SMTP default configuration via environment variables
+      swift.config.php: false # Swift Object Storage as primary storage - I don't use this
     nextcloud:
       configs:
         local.config.php: |-
@@ -82,18 +93,6 @@ spec:
           value: nextcloud-memcache.default.svc.cluster.local
         - name: REDIS_HOST_PORT
           value: "6379"
-          # When secret changes config.php is not updated, when db secret updates config.php keeps old one
-          # SEE https://help.nextcloud.com/t/solved-nextcloud-configuration-with-environment-variables/14327/11
-        - name: NC_dbpassword
-          valueFrom:
-            secretKeyRef:
-              name: nextcloud-database-app
-              key: password
-        - name: NC_dbhost
-          valueFrom:
-            secretKeyRef:
-              name: nextcloud-database-app
-              key: dbhost
 
       existingSecret:
         enabled: true
