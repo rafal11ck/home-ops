@@ -30,10 +30,9 @@ spec:
       tag: 31.0.0-fpm-alpine
     ingress:
       enabled: true
-      className: external
+      className: internal
       annotations:
         external-dns.alpha.kubernetes.io/hostname: &hostname "cloud3.${SECRET_DOMAIN}"
-        external-dns.alpha.kubernetes.io/target: "${SECRET_PUBLIC_IP}"
         external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
         nginx.ingress.kubernetes.io/proxy-body-size: 4G
         nginx.ingress.kubernetes.io/enable-cors: "true"
