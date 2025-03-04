@@ -87,7 +87,7 @@ spec:
             ),
             'overwriteprotocol' => 'https',
             'overwrite.cli.url' => 'https://cloud3.${SECRET_DOMAIN}',
-            'overwritehost' => 'cloud3.${SECRET_DOMAIN}',
+            'overwritehost' => 'cloud3.${SECRET_DOMAIN}:443',
             'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
             'maintenance_window_start' => 1,
             'default_phone_region' => 'PL',
