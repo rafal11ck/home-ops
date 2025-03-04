@@ -19,3 +19,4 @@ resources:
   - ./podinfo.yaml
   - ./nextcloud.yaml
   - ./dragonfly-operator.yaml
+  - ./prometheus-community.yaml
