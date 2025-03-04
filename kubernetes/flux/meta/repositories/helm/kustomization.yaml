@@ -5,18 +5,18 @@ kind: Kustomization
 resources:
   - ./bjw-s.yaml
   - ./cilium.yaml
-  - ./controlplaneio.yaml
   - ./cloudnative-pg.yaml
+  - ./controlplaneio.yaml
   - ./coredns.yaml
+  - ./dragonfly-operator.yaml
   - ./external-dns.yaml
   - ./ingress-nginx.yaml
   - ./jetstack.yaml
   - ./k8s-gateway.yaml
   - ./metrics-server.yaml
-  - ./spegel.yaml
-  - ./stakater.yaml
+  - ./nextcloud.yaml
   - ./openebs.yaml
   - ./podinfo.yaml
-  - ./nextcloud.yaml
-  - ./dragonfly-operator.yaml
   - ./prometheus-community.yaml
+  - ./spegel.yaml
+  - ./stakater.yaml
