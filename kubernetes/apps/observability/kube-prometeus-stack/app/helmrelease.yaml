@@ -1,0 +1,73 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.ok8.sh/helm.toolkit.fluxcd.io/helmrelease_v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+spec:
+  interval: 30m
+  timeout: 15m
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: 69.7.2
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  values:
+    crds:
+      enabled: true
+    upgradeJob:
+      enabled: true
+      forceConflicts: true
+    cleanPrometheusOperatorObjectNames: true
+    alertmanager:
+      ingress:
+        enabled: true
+        ingressClassName: internal
+        hosts: ["alertmanager.${SECRET_DOMAIN}"]
+        pathType: Prefix
+      alertmanagerSpec:
+        alertmanagerConfiguration:
+          name: alertmanager
+          global:
+            resolveTimeout: 5m
+        externalUrl: "https://alertmanager.${SECRET_DOMAIN}"
+        storage:
+          volumeClaimTemplate:
+            storageClassName: openebs-hostpath
+            resources:
+              requests:
+                storage: 1Gi
+    kubeApiServer:
+      serviceMonitor:
+        selector:
+          k8s-app: kube-apiserver
+    kubeScheduler:
+      serviceMonitor:
+        selector:
+          k8s-app: kube-scheduler
+    kubeControllerManager: &kubeControllerManager
+      service:
+        selector:
+          k8s-app: kube-controller-manager
+    kubeEtcd:
+      <<: *kubeControllerManager # etcd runs on control plane nodes
+    kubeProxy:
+      enabled: false
+    prometheus:
+      ingress:
+        enabled: true
+        ingressClassName: internal
+        hosts: ["prometheus.${SECRET_DOMAIN}"]
+        pathType: Prefix
+      prometheusSpec:
