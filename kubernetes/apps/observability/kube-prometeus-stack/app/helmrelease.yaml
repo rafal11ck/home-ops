@@ -113,8 +113,7 @@ spec:
       prometheus:
         monitor:
           enabeld: true
-          relabelings:
-            <<: *podNameRelabel
+          relabelings: *podNameRelabel
     grafana:
       enabled: false
       forceDeployDashboards: true
