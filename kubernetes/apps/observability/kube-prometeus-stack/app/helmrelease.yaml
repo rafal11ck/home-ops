@@ -67,8 +67,11 @@ spec:
     prometheus:
       ingress:
         enabled: true
+        annotations:
+          external-dns.alpha.kubernetes.io/hostname: "prometheus.${SECRET_DOMAIN}"
         ingressClassName: internal
-        hosts: ["prometheus.${SECRET_DOMAIN}"]
+        hosts:
+          - "prometheus.${SECRET_DOMAIN}"
         pathType: Prefix
       prometheusSpec:
         # diable some stuffs that are marked for removal upstream
