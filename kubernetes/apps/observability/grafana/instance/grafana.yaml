@@ -20,10 +20,24 @@ spec:
                 - name: GF_SECURITY_ADMIN_USER
                   valueFrom:
                     secretKeyRef:
-                      key: grafana-instance-secret
-                      name: admin_user
+                      key: admin-user
+                      name: grafana-instance-secret
                 - name: GF_SECURITY_ADMIN_PASSWORD
                   valueFrom:
                     secretKeyRef:
-                      key: grafana-instance-secret
-                      name: admin_password
+                      key: admin-password
+                      name: grafana-instance-secret
+  ingress:
+    spec:
+      ingressClassName: internal
+      rules:
+        - host: grafana.${SECRET_DOMAIN}
+          http:
+            paths:
+              - backend:
+                  service:
+                    name: grafana-service
+                    port:
+                      number: 3000
+                path: /
+                pathType: Prefix
