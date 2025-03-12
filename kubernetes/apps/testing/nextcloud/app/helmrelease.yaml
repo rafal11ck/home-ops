@@ -106,6 +106,9 @@ spec:
       enabled: true
     nginx:
       enabled: true
+      config:
+        custom: |-
+          fastcgi_param front_controller_active false;
     internalDatabase:
       enabled: false
     externalDatabase:
