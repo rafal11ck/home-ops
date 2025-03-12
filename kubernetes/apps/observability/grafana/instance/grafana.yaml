@@ -28,8 +28,12 @@ spec:
                       key: admin-password
                       name: grafana-instance-secret
   ingress:
+    metadata:
+      annotations:
+        external-dns.alpha.kubernetes.io/target: "grafana.${SECRET_DOMAIN}"
     spec:
       ingressClassName: internal
+
       rules:
         - host: grafana.${SECRET_DOMAIN}
           http:
