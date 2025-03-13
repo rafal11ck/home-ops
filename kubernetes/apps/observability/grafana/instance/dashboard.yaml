@@ -26,3 +26,16 @@ spec:
   datasources:
     - datasourceName: "DS_PROMETHEUS"
       inputName: "prometheus"
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: external-dns
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  # renovate: depName="External-dns"
+  grafanaCom:
+    id: 15038
+    revision: 3
