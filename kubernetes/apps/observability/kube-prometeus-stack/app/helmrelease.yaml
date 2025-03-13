@@ -37,17 +37,14 @@ spec:
         hosts: ["alertmanager.${SECRET_DOMAIN}"]
         pathType: Prefix
       alertmanagerSpec:
-        alertmanagerConfiguration:
-          name: alertmanager
-          global:
-            resolveTimeout: 5m
         externalUrl: "https://alertmanager.${SECRET_DOMAIN}"
         storage:
           volumeClaimTemplate:
-            storageClassName: openebs-hostpath
-            resources:
-              requests:
-                storage: 1Gi
+            spec:
+              storageClassName: openebs-hostpath
+              resources:
+                requests:
+                  storage: 1Gi
     kubeApiServer:
       serviceMonitor:
         selector:
@@ -91,11 +88,11 @@ spec:
             memory: 2000Mi
         storageSpec:
           volumeClaimTemplate:
-          spec:
-            storageClassName: openebs-hostpath
-            resources:
-              requests:
-                storage: 50Gi
+            spec:
+              storageClassName: openebs-hostpath
+              resources:
+                requests:
+                  storage: 50Gi
     prometheus-node-exporter:
       fullnameOverride: node-exporter
       prometheus:
