@@ -39,3 +39,107 @@ spec:
   grafanaCom:
     id: 15038
     revision: 3
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: kubernetes-api-server
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  grafanaCom:
+    # renovate: depName="Kubernetes / System / API Server"
+    id: 15761
+    revision: 19
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: kubernetes-coredns
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  grafanaCom:
+    # renovate: depName="Kubernetes / System / CoreDNS"
+    id: 15762
+    revision: 20
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: kubernetes-global
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  grafanaCom:
+    # renovate: depName="Kubernetes / Views / Global"
+    id: 15757
+    revision: 43
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: kubernetes-namespaces
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  grafanaCom:
+    # renovate: depName="Kubernetes / Views / Namespaces"
+    id: 15757
+    revision: 43
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: kubernetes-nodes
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  grafanaCom:
+    # renovate: depName="Kubernetes / Views / Nodes"
+    id: 15759
+    revision: 35
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: kubernetes-pods
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  grafanaCom:
+    # renovate: depName="Kubernetes / Views / Pods"
+    id: 15760
+    revision: 36
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: kubernetes-volumes
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  grafanaCom:
+    # renovate: depName="K8s / Storage / Volumes / Cluster"
+    id: 11454
+    revision: 14
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: node-exporter-full
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  grafanaCom:
+    # renovate: depName="Node Exporter Full"
+    id: 1860
+    revision: 37
