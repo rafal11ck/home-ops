@@ -6,3 +6,4 @@ resources:
   - ./grafana.yaml
   - ./secret.sops.yaml
   - ./datasource.yaml
+  - ./dashboard.yaml

@@ -1,0 +1,13 @@
+# 11001
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: cert-manager
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  # renovate: depName="Cert-manager-Kubernetes"
+  grafanaCom:
+    id: 20842
+    revision: 3
