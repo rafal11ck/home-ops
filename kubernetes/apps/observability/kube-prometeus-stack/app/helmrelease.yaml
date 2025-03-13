@@ -32,6 +32,8 @@ spec:
     cleanPrometheusOperatorObjectNames: true
     alertmanager:
       ingress:
+        annotations:
+          external-dns.alpha.kubernetes.io/hostname: "alertmanager.${SECRET_DOMAIN}"
         enabled: true
         ingressClassName: internal
         hosts: ["alertmanager.${SECRET_DOMAIN}"]
