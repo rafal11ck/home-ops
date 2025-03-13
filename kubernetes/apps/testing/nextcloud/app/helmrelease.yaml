@@ -26,7 +26,7 @@ spec:
       reloader.stakater.com/auto: "true"
     image:
       flavor: fpm-alpine
-      # renovate: datasource=docker depName=registry.hub.docker.com/library/nextcloud
+      # renovate: datasource=docker depName=docker.io/library/nextcloud
       tag: 31.0.0-fpm-alpine
     ingress:
       enabled: true
