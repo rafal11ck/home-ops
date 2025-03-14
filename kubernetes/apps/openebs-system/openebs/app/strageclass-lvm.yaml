@@ -5,4 +5,6 @@ metadata:
 parameters:
   storage: "lvm"
   volgroup: "data"
+  shared: "yes"
+
 provisioner: local.csi.openebs.io
