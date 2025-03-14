@@ -7,7 +7,12 @@
     ":dependencyDashboard",
     ":disableRateLimiting",
     ":semanticCommits",
+    "github>rafal11ck/home-ops//.renovate/autoMerge.json5",
+    "github>rafal11ck/home-ops//.renovate/customManagers.json5",
     "github>rafal11ck/home-ops//.renovate/grafanaDashboards.json5",
+    "github>rafal11ck/home-ops//.renovate/labels.json5",
+    "github>rafal11ck/home-ops//.renovate/packageRules.json5",
+    "github>rafal11ck/home-ops//.renovate/semanticCommits.json5",
   ],
   dependencyDashboard: true,
   dependencyDashboardTitle: "Renovate Dashboard 🤖",
@@ -34,120 +39,9 @@
   },
   packageRules: [
     {
-      description: ["Auto-merge GitHub Actions for minor and patch"],
-      matchManagers: ["github-actions"],
-      automerge: true,
-      automergeType: "branch",
-      ignoreTests: true,
-      matchUpdateTypes: ["minor", "patch"],
-    },
-    {
-      description: ["Flux Operator Group"],
-      groupName: "Flux Operator",
-      matchDatasources: ["docker"],
-      group: {
-        commitMessageTopic: "{{{groupName}}} group",
-      },
-      matchPackageNames: ["/flux-operator/", "/flux-instance/"],
-    },
-    {
-      matchUpdateTypes: ["major"],
-      semanticCommitType: "feat",
-      commitMessagePrefix: "{{semanticCommitType}}({{semanticCommitScope}})!:",
-      commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )",
-    },
-    {
-      matchUpdateTypes: ["minor"],
-      semanticCommitType: "feat",
-      commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )",
-    },
-    {
-      matchUpdateTypes: ["patch"],
-      semanticCommitType: "fix",
-      commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )",
-    },
-    {
-      matchUpdateTypes: ["digest"],
-      semanticCommitType: "chore",
-      commitMessageExtra: "( {{currentDigestShort}} → {{newDigestShort}} )",
-    },
-    {
-      matchDatasources: ["docker"],
-      semanticCommitScope: "container",
-      commitMessageTopic: "image {{depName}}",
-    },
-    {
-      matchDatasources: ["helm"],
-      semanticCommitScope: "helm",
-      commitMessageTopic: "chart {{depName}}",
-    },
-    {
-      matchManagers: ["github-actions"],
-      semanticCommitType: "ci",
-      semanticCommitScope: "github-action",
-      commitMessageTopic: "action {{depName}}",
-    },
-    {
-      matchDatasources: ["github-releases"],
-      semanticCommitScope: "github-release",
-      commitMessageTopic: "release {{depName}}",
-    },
-    {
-      matchUpdateTypes: ["major"],
-      labels: ["type/major"],
-    },
-    {
-      matchUpdateTypes: ["minor"],
-      labels: ["type/minor"],
-    },
-    {
-      matchUpdateTypes: ["patch"],
-      labels: ["type/patch"],
-    },
-    {
-      matchDatasources: ["docker"],
-      addLabels: ["renovate/container"],
-    },
-    {
-      matchDatasources: ["helm"],
-      addLabels: ["renovate/helm"],
-    },
-    {
-      matchManagers: ["github-actions"],
-      addLabels: ["renovate/github-action"],
-    },
-    {
-      matchDatasources: ["github-releases"],
-      addLabels: ["renovate/github-release"],
-    },
-    {
       matchDatasources: ["docker"],
       matchPackageNames: ["/ghcr.io\\/cloudnative-pg\\/postgresql/"],
       separateMajorMinor: true,
-    },
-  ],
-  customManagers: [
-    {
-      customType: "regex",
-      description: ["Process annotated dependencies"],
-      fileMatch: [
-        "(^|/).+\\.env$",
-        "(^|/).+\\.sh$",
-        "(^|/).+\\.ya?ml(?:\\.j2)?$",
-      ],
-      matchStrings: [
-        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( repository=(?<registryUrl>\\S+))?\\n.+(:\\s|=)(&\\S+\\s)?(?<currentValue>\\S+)",
-        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n.+/(?<currentValue>(v|\\d)[^/]+)",
-      ],
-      datasourceTemplate: "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
-    },
-    {
-      customType: "regex",
-      description: ["Process CloudnativePG Postgresql version"],
-      fileMatch: ["(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$"],
-      matchStrings: ["imageName: (?<depName>\\S+):(?<currentValue>.*\\-.*)"],
-      datasourceTemplate: "docker",
-      versioningTemplate: "redhat",
     },
   ],
 }
