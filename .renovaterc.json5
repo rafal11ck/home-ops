@@ -7,7 +7,7 @@
     ":dependencyDashboard",
     ":disableRateLimiting",
     ":semanticCommits",
-    "github>rafal11ck>hope-ops//.renovate/grafanaDashboards.json5",
+    "github>rafal11ck/home-ops//.renovate/grafanaDashboards.json5",
   ],
   dependencyDashboard: true,
   dependencyDashboardTitle: "Renovate Dashboard 🤖",
