@@ -25,7 +25,7 @@ spec:
     engines:
       local:
         lvm:
-          enabled: false
+          enabled: true
         zfs:
           enabled: false
       replicated:
