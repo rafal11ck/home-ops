@@ -8,7 +8,7 @@ spec:
   instances: 1
   primaryUpdateStrategy: unsupervised
   # TODO find out if renovate wokrs on this
-  imageName: ghcr.io/cloudnative-pg/postgresql:16.8-3
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.8-5
   # Require 1Gi of space
   storage:
     size: 5Gi
