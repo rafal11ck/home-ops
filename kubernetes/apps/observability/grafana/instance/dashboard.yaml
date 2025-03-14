@@ -6,8 +6,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  # renovate: depName="Cert-manager-Kubernetes"
   grafanaCom:
+    # renovate: depName="Cert-manager-Kubernetes"
     id: 20842
     revision: 3
 ---
@@ -19,8 +19,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  # renovate: depName="Cloudflare Tunnels (cloudflared)"
   grafanaCom:
+    # renovate: depName="Cloudflare Tunnels (cloudflared)"
     id: 17457
     revision: 6
   datasources:
@@ -35,8 +35,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  # renovate: depName="External-dns"
   grafanaCom:
+    # renovate: depName="External-dns"
     id: 15038
     revision: 3
 ---
