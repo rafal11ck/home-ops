@@ -27,7 +27,7 @@ spec:
     image:
       flavor: fpm-alpine
       # renovate: datasource=docker depName=nextcloud
-      tag: 30.0.7-fpm-alpine
+      tag: 31.0.1-fpm-alpine
     ingress:
       enabled: true
       className: external
