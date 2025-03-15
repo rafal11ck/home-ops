@@ -79,6 +79,8 @@ spec:
         serviceMonitorSelectorNilUsesHelmValues: false
         enableAdminAPI: true
         walCompression: true
+        # select everything
+        ruleSelector: {}
         enableFeatures:
           - --enable-feature=memory-snapshot-on-shutdown
         retention: 14d
