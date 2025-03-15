@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: openebs-monitoring
-      version: 0.4.12
+      version: 0.4.13
       sourceRef:
         kind: HelmRepository
         name: openebs-monitoring
