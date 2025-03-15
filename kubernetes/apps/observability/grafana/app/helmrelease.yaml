@@ -16,6 +16,7 @@ spec:
   interval: 30m
   timeout: 20m
   values:
+    # FIXME see if it's usefull at all, if not drop dashboard and servicemonitor, remove dashboard from dasboards.yaml too
     dashboard:
       enabled: true
     serviceMonitor:
