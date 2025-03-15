@@ -4,17 +4,15 @@ kind: Cluster
 metadata:
   name: &name nextcloud-database
 spec:
-  description: "nextcloud database"
+  description: 'nextcloud database'
   instances: 1
   primaryUpdateStrategy: unsupervised
-  # TODO find out if renovate wokrs on this
   imageName: ghcr.io/cloudnative-pg/postgresql:16.8-5
-  # Require 1Gi of space
   storage:
     size: 5Gi
+    storageClass: openebs-lvmpv
   monitoring:
-    # TODO: enable when observability stack is in place
-    enablePodMonitor: false
+    enablePodMonitor: true
   bootstrap:
     initdb:
       database: nextcloud

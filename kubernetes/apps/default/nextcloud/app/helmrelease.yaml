@@ -119,11 +119,14 @@ spec:
         hostKey: host
         databaseKey: dbname
     persistence:
+      storageClass: openebs-lvmpv
       enabled: true
       size: 5Gi
       nextcloudData:
+        storageClass: openebs-lvmpv
         enabled: true
         size: 5Gi
+
     livenessProbe:
       initialDelaySeconds: 120
       periodSeconds: 30

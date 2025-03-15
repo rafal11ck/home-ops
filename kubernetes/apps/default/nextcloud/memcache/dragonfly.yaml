@@ -24,7 +24,7 @@ spec:
       memory: 512Mi
   snapshot:
     persistentVolumeClaimSpec:
-      # storageClassName: hostpath
+      storageClassName: openebs-lvmpv
       accessModes:
         - ReadWriteOnce
       resources:
