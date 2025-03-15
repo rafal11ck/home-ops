@@ -43,13 +43,13 @@ spec:
     alertmanager:
       ingress:
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: "alertmanager.${SECRET_DOMAIN}"
+          external-dns.alpha.kubernetes.io/hostname: 'alertmanager.${SECRET_DOMAIN}'
         enabled: true
         ingressClassName: internal
-        hosts: ["alertmanager.${SECRET_DOMAIN}"]
+        hosts: ['alertmanager.${SECRET_DOMAIN}']
         pathType: Prefix
       alertmanagerSpec:
-        externalUrl: "https://alertmanager.${SECRET_DOMAIN}"
+        externalUrl: 'https://alertmanager.${SECRET_DOMAIN}'
         storage:
           volumeClaimTemplate:
             spec:
@@ -65,10 +65,10 @@ spec:
       ingress:
         enabled: true
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: "prometheus.${SECRET_DOMAIN}"
+          external-dns.alpha.kubernetes.io/hostname: 'prometheus.${SECRET_DOMAIN}'
         ingressClassName: internal
         hosts:
-          - "prometheus.${SECRET_DOMAIN}"
+          - 'prometheus.${SECRET_DOMAIN}'
         pathType: Prefix
       prometheusSpec:
         # diable some stuffs that are marked for removal upstream
@@ -82,7 +82,7 @@ spec:
         enableFeatures:
           - --enable-feature=memory-snapshot-on-shutdown
         retention: 14d
-        retentionSize: "50GB"
+        retentionSize: '50GB'
         resources:
           limits:
             memory: 2000Mi
@@ -102,7 +102,7 @@ spec:
             - action: replace
               regex: (.*)
               replacement: $1
-              sourceLabels: ["__meta_kubernetes_pod_node_name"]
+              sourceLabels: ['__meta_kubernetes_pod_node_name']
               targetLabel: kubernetes_node
     kube-state-metrics:
       fullnameOverride: kube-state-metrics
