@@ -8,7 +8,7 @@ spec:
       dashboards: grafana
   configMapRef:
     name: grafana-grafana-operator-dashboard # created by grafana instance
-    key: data
+    key: 'grafana-operator.json'
     optional: false
 ---
 apiVersion: grafana.integreatly.org/v1beta1
