@@ -15,3 +15,6 @@ spec:
       version: v5.17.0
   interval: 30m
   timeout: 20m
+  values:
+    dashboard:
+      enabled: true
