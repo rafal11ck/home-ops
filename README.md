@@ -27,5 +27,5 @@ task talos:apply-node IP=? MODE=?
 
 ## 🤝 Thanks
 
-- [Cluster template](https://github.com/onedr0p/cluster-template/).
+- [Cluster template](https://github.com/onedr0p/cluster-template/)
 - [Home Operations](https://discord.gg/home-operations) Discord server.
