@@ -20,6 +20,9 @@ spec:
       org_role: Viewer
     news:
       news_feed_enabled: 'false'
+    metrics:
+      enabled: 'true'
+      disable_total_stats: 'false'
   deployment:
     # Inject dashboards from cofnigmaps https://grafana.github.io/grafana-operator/docs/examples/configmaps_sidecar/readme/
     spec:
