@@ -23,4 +23,6 @@ spec:
       retries: 3
   values:
     grafanaDashboard:
-      enabled: false
+      enabled: true
+    serviceMonitor:
+      enable: true
