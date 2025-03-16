@@ -1,17 +1,3 @@
-# FIXME see if it's usefull at all, if not drop it and disable it's metrics in grafana herlmrelease
-apiVersion: grafana.integreatly.org/v1beta1
-kind: GrafanaDashboard
-metadata:
-  name: grafana-operator-dashboard
-spec:
-  instanceSelector:
-    matchLabels:
-      dashboards: grafana
-  configMapRef:
-    name: grafana-grafana-operator-dashboard # created by grafana instance
-    key: 'grafana-operator.json'
-    optional: false
----
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
 metadata:
