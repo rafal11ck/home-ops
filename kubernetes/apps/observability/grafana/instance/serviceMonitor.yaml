@@ -9,6 +9,6 @@ spec:
     matchLabels:
       app: grafana-service
   endpoints:
-    - port: metrics
+    - port: grafana
       path: /metrics
       scheme: http
