@@ -58,7 +58,9 @@ spec:
                 requests:
                   storage: 1Gi
     kubeEtcd:
-      component: kube-apiserver # etcd runs on control plane nodes
+      service:
+        selector:
+          component: kube-apiserver # etcd runs on control plane nodes
     kubeProxy:
       enabled: false
     prometheus:
