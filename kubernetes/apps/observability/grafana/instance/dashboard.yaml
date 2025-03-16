@@ -156,3 +156,16 @@ spec:
     # renovate: depName="Prometheus"
     id: 19105
     revision: 7
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: cloud-native-pg
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  grafanaCom:
+    # renovate: depName="CloudNativePG"
+    id: 20417
+    revision: 3
