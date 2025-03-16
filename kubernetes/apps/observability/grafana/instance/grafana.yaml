@@ -21,9 +21,17 @@ spec:
     news:
       news_feed_enabled: 'false'
   deployment:
+    # Inject dashboards from cofnigmaps https://grafana.github.io/grafana-operator/docs/examples/configmaps_sidecar/readme/
     spec:
       template:
         spec:
+          # The volumes for dashboards and provisioning config
+          volumes:
+            - name: dashboards
+              emptyDir: {}
+            - name: provisioning-config
+              configMap:
+                name: provisioning-config
           containers:
             - name: grafana
               env:
@@ -37,6 +45,30 @@ spec:
                     secretKeyRef:
                       key: admin-password
                       name: grafana-instance-secret
+              volumeMounts:
+                - mountPath: /etc/grafana/provisioning/dashboards
+                  name: provisioning-config
+                - mountPath: /var/lib/grafana/dashboards
+                  name: dashboards
+            # This container watches the namespace for configmaps with the `dashboards` label
+            # and creates files for all their keys under `FOLDER`
+            - image: 'ghcr.io/kiwigrid/k8s-sidecar:1.24.5'
+              name: k8s-sidecar
+              env:
+                - name: LABEL
+                  value: 'grafana_dashboard'
+                - name: LABEL_VALUE
+                  value: '1'
+                - name: FOLDER
+                  value: /var/lib/grafana/dashboards
+                - name: NAMESPACE
+                  value: ALL
+                - name: RESOURCE
+                  value: configmap
+              volumeMounts:
+                - mountPath: /var/lib/grafana/dashboards
+                  name: dashboards
+
   ingress:
     metadata:
       annotations:
@@ -54,3 +86,49 @@ spec:
                       number: 3000
                 path: /
                 pathType: Prefix
+---
+# Provisioning config
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: provisioning-config
+  namespace: observability
+data:
+  provisioning.yaml: |-
+    apiVersion: 1
+    providers:
+      - name: 'configmap-dashboard-provider'
+        orgId: 1
+        folder: ''
+        folderUid: ''
+        type: file
+        disableDeletion: false
+        updateIntervalSeconds: 10
+        allowUiUpdates: false
+        options:
+          path: /var/lib/grafana/dashboards
+          foldersFromFilesStructure: true
+---
+# bind the new permissions to the grafana-sa
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: sidecar-rolebinding
+roleRef:
+  kind: ClusterRole
+  name: sidecar-role
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+  - kind: ServiceAccount
+    name: grafana-sa
+    namespace: observability
+---
+# need to extend the permissions of the Grafana serviceaccount to watch for configmaps
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: sidecar-role
+rules:
+  - apiGroups: ['']
+    resources: ['configmaps']
+    verbs: ['get', 'watch', 'list']
