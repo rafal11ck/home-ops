@@ -18,7 +18,10 @@ spec:
     kube-prometheus-stack:
       install: false
     node-problem-detector:
-      install: true
+      install: false
+    metrics:
+      serviceMonitor:
+        enabled: false
     openebsMonitoringAddon:
       lvmLocalPV:
         enabled: true
@@ -31,4 +34,6 @@ spec:
       zfsLocalPV:
         enabled: false
       dashboards:
+        enabled: false
+      npd:
         enabled: false
