@@ -19,3 +19,15 @@ spec:
       name: '*'
     - kind: HelmRelease
       name: '*'
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: flux-operator
+spec:
+  providerRef:
+    name: discord
+  eventSeverity: info
+  eventSources:
+    - kind: FluxInstance
+      name: '*'
