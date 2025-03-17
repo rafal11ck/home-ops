@@ -17,7 +17,6 @@ resources:
   - ./metrics-server.yaml
   - ./nextcloud.yaml
   - ./openebs.yaml
-  - ./openebs-monitoring.yaml
   - ./podinfo.yaml
   - ./spegel.yaml
   - ./stakater.yaml
