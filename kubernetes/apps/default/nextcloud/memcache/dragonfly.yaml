@@ -30,3 +30,18 @@ spec:
       resources:
         requests:
           storage: 2Gi
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: nextcloud-memcache
+  labels:
+    app: nextcloud-memcache
+spec:
+  selector:
+    matchLabels:
+      app: nextcloud-memcache
+  podTargetLabels:
+    - app
+  podMetricsEndpoints:
+    - port: admin
