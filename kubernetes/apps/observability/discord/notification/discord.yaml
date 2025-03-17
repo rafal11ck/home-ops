@@ -14,6 +14,7 @@ metadata:
 spec:
   providerRef:
     name: discord
+  eventSeverity: error
   eventSources:
     - kind: Kustomization
       name: '*'
@@ -27,7 +28,7 @@ metadata:
 spec:
   providerRef:
     name: discord
-  eventSeverity: info
+  eventSeverity: error
   eventSources:
     - kind: FluxInstance
       name: '*'
