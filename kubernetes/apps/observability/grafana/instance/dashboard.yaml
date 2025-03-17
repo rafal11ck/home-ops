@@ -180,4 +180,4 @@ spec:
       dashboards: grafana
   url:
     # renovate: datasource=github-releases depName=dragonflydb/dragonfly-operator
-    https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/refs/tags/v1.1.9/monitoring/grafana-dashboard.json
+    https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/refs/tags/v1.1.10/monitoring/grafana-dashboard.json
