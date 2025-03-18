@@ -190,6 +190,7 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url:
-    # renovate: datasource=github-releases depName=kubernetes/ingress-nginx
-    https://raw.githubusercontent.com/kubernetes/ingress-nginx/refs/tags/ingress-nginx-3.15.1/deploy/grafana/dashboards/nginx.json
+  grafanaCom:
+    # renovate: depName="Kubernetes Nginx Ingress Prometheus NextGen"
+    id: 14314
+    revision: 2
