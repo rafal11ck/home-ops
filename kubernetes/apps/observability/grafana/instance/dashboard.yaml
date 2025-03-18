@@ -181,16 +181,3 @@ spec:
   url:
     # renovate: datasource=github-releases depName=dragonflydb/dragonfly-operator
     https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/refs/tags/v1.1.10/monitoring/grafana-dashboard.json
----
-apiVersion: grafana.integreatly.org/v1beta1
-kind: GrafanaDashboard
-metadata:
-  name: ingress-nginx
-spec:
-  instanceSelector:
-    matchLabels:
-      dashboards: grafana
-  grafanaCom:
-    # renovate: depName="Kubernetes Nginx Ingress Prometheus NextGen"
-    id: 14314
-    revision: 2
