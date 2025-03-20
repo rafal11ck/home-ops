@@ -25,16 +25,12 @@ spec:
     engines:
       local:
         lvm:
-          enabled: true
+          enabled: false
         zfs:
           enabled: false
       replicated:
         mayastor:
           enabled: false
-          csi:
-            node:
-              initContainers:
-                enabled: false
     localpv-provisioner:
       localpv:
         image:
@@ -47,13 +43,3 @@ spec:
         name: openebs-hostpath
         isDefaultClass: true
         basePath: /var/openebs/local
-    mayastor:
-      csi:
-        node:
-          initContainers:
-            enabled: true
-      etcd:
-        replicaCount: &repCount 1
-      nats:
-        cluster:
-          replicas: *repCount

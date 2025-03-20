@@ -53,7 +53,7 @@ spec:
         storage:
           volumeClaimTemplate:
             spec:
-              storageClassName: openebs-hostpath
+              storageClassName: openebs-hostpath 
               resources:
                 requests:
                   storage: 1Gi

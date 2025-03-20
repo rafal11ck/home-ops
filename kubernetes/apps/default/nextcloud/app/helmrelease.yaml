@@ -119,11 +119,11 @@ spec:
         hostKey: host
         databaseKey: dbname
     persistence:
-      storageClass: openebs-lvmpv
+      # storageClass: openebs-lvmpv #FIXME set storageClass
       enabled: true
       size: 5Gi
       nextcloudData:
-        storageClass: openebs-lvmpv
+        # storageClass: openebs-lvmpv #FIXME set storageClass
         enabled: true
         size: 5Gi
 

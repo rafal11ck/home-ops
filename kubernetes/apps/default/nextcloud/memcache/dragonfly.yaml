@@ -24,7 +24,7 @@ spec:
       memory: 512Mi
   snapshot:
     persistentVolumeClaimSpec:
-      storageClassName: openebs-lvmpv
+      # storageClassName: openebs-lvmpv #FIXME set storageClass
       accessModes:
         - ReadWriteOnce
       resources:
