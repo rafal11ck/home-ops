@@ -70,7 +70,7 @@ spec:
           external-dns.alpha.kubernetes.io/hostname: rook.${SECRET_DOMAIN}
         host:
           name: rook.${SECRET_DOMAIN}
-          path: '/dev/disk/by-id/ata-SSDPR-CX400-256_GU3052990'
+          path: '/'
         ingressClassName: internal
     priorityClassNames:
       mon: system-node-critical
