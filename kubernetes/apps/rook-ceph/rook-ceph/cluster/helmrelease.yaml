@@ -8,7 +8,7 @@ spec:
   interval: 30m
   chart:
     spec:
-      chart: rook-ceph
+      chart: rook-ceph-cluster
       version: v1.16.5
       sourceRef:
         kind: HelmRepository
@@ -27,7 +27,7 @@ spec:
       createPrometheusRules: true
     cephClusterSpec:
       mon:
-        count: 2 # TODO make it 3 after migrating all nodes
+        count: 1 # TODO make it 3 after migrating all nodes
         allowMultiplePerNode: true # TODO set false after scaling to more nodes
       mgr:
         count: 1 # TODO make it 2 after scaling
@@ -76,3 +76,22 @@ spec:
       mon: system-node-critical
       osd: system-node-critical
       mgr: system-cluster-critical
+    cephFileSystems:
+      - name: &fsname ceph-filesystem
+        spec:
+          metadataPool:
+            failureDomain: host
+            replicated:
+              size: 1 # TODO change after scaling
+          dataPools:
+            - name: replicated
+              failureDomain: host
+              replicated:
+                size: 1 # TODO change after scaling
+          metadataServer:
+            activeCount: 1 # TODO change after scaling
+            activeStandby: false
+        storageClass:
+          name: *fsname
+    toolbox:
+      enabled: true
