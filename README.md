@@ -5,13 +5,13 @@
 ## Key compnenets
 
 - [talos](https://www.talos.dev/)
-- [fluxcd](https://fluxcd.io/) 
+- [fluxcd](https://fluxcd.io/)
 - [ingress-nginx](https://github.com/kubernetes/ingress-nginx)
 - [external-dns](https://github.com/kubernetes-sigs/external-dns)
 - [cert-manager](https://cert-manager.io/)
 - [grafana](https://grafana.com/)
 - [prometheus](https://prometheus.io/)
-- [openebs](https://openebs.io/)
+- ~~[openebs](https://openebs.io/)~~ to be replaced with [rook](https://rook.io/)
 - [cilium](https://cilium.io/)
 - [reloader](https://github.com/stakater/Reloader)
 - [spegel](https://spegel.dev/)
