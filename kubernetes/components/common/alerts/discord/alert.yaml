@@ -6,7 +6,6 @@ metadata:
 spec:
   providerRef:
     name: discord
-    namespace: observability
   eventSeverity: error
   eventSources:
     - kind: Kustomization

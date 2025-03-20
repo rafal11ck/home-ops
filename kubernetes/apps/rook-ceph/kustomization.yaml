@@ -6,4 +6,4 @@ namespace: rook-ceph
 components:
   - ../../components/common
 resources:
-  - ./operator/ks.yaml
+  - ./rook-ceph/ks.yaml
