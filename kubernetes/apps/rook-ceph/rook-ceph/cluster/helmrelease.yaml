@@ -38,10 +38,7 @@ spec:
         prometheusEndpoint:
       storage:
         useAllNodes: false
-        nodes:
-          - name: talos-main
-            devices:
-              - name: '/dev/disk/by-id/ata-SSDPR-CX400-256_GU3052990'
+
         osdsPerDevice: 1
       crashCollector:
         disabled: false
