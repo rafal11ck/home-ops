@@ -43,11 +43,15 @@ spec:
           - name: talos-01
             useAllDevices: false
             devices:
-              - name: '/dev/disk/by-id/ata-SSDPR-CX400-256_GU3052990'
+              - name: '/dev/sda'
           - name: talos-02
             useAllDevices: false
             devices:
-              - name: '/dev/disk/by-id/nvme-KINGSTON_SKC3000S1024G_50026B768631A1C3'
+              - name: '/dev/nvme0n1'
+          - name: talos-03
+            useAllDevices: false
+            devices:
+              - name: '/dev/sda'
       crashCollector:
         disabled: false
         daysToRetain: 14
