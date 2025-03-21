@@ -30,7 +30,7 @@ spec:
         count: 3
         allowMultiplePerNode: true # TODO set false after scaling to more nodes
       mgr:
-        count: 1 # TODO make it 2 after scaling
+        count: 2
       dashboard:
         enabled: true
         urlPrefix: /
@@ -38,8 +38,16 @@ spec:
         prometheusEndpoint:
       storage:
         useAllNodes: false
-
         osdsPerDevice: 1
+        nodes:
+          - name: talos-01
+            useAllDevices: false
+            devices:
+              - name: '/dev/disk/by-id/ata-SSDPR-CX400-256_GU3052990'
+          - name: talos-02
+            useAllDevices: false
+            devices:
+              - name: '/dev/disk/by-id/nvme-KINGSTON_SKC3000S1024G_50026B768631A1C3'
       crashCollector:
         disabled: false
         daysToRetain: 14
