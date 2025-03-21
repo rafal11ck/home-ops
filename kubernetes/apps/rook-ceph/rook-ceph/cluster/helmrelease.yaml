@@ -6,6 +6,7 @@ metadata:
   name: rook-ceph-cluster
 spec:
   interval: 30m
+  timeout: 25m
   chart:
     spec:
       chart: rook-ceph-cluster
@@ -19,39 +20,37 @@ spec:
       retries: 3
   upgrade:
     cleanupOnFail: false
-    remediation:
-      retries: 3
   values:
     monitoring:
       enabled: true
       createPrometheusRules: true
     cephClusterSpec:
       mon:
-        count: 1
-        allowMultiplePerNode: true # TODO set false after scaling to more nodes
+        count: 3
+        allowMultiplePerNode: false
       mgr:
-        count: 1
+        count: 2
       dashboard:
         enabled: true
         urlPrefix: /
         ssl: false
-        prometheusEndpoint:
+        prometheusEndpoint: http://prometheus-operated.observability.svc.cluster.local:9090
       storage:
-        useAllNodes: false
+        useAllNodes: true
         osdsPerDevice: 1
-        nodes:
-          - name: talos-01
-            useAllDevices: false
-            devices:
-              - name: '/dev/sda'
-          - name: talos-02
-            useAllDevices: false
-            devices:
-              - name: '/dev/nvme0n1'
-          - name: talos-03
-            useAllDevices: false
-            devices:
-              - name: '/dev/sda'
+        # nodes:
+        #   - name: talos-01
+        #     useAllDevices: false
+        #     devices:
+        #       - name: '/dev/sda'
+        #   - name: talos-02
+        #     useAllDevices: false
+        #     devices:
+        #       - name: '/dev/nvme0n1'
+        #   - name: talos-03
+        #     useAllDevices: false
+        #     devices:
+        #       - name: '/dev/sda'
       crashCollector:
         disabled: false
         daysToRetain: 14
@@ -85,22 +84,5 @@ spec:
       mon: system-node-critical
       osd: system-node-critical
       mgr: system-cluster-critical
-    cephFileSystems:
-      - name: &fsname ceph-filesystem
-        spec:
-          metadataPool:
-            failureDomain: host
-            replicated:
-              size: 1 # TODO change after scaling
-          dataPools:
-            - name: replicated
-              failureDomain: host
-              replicated:
-                size: 1 # TODO change after scaling
-          metadataServer:
-            activeCount: 1 # TODO change after scaling
-            activeStandby: false
-        storageClass:
-          name: *fsname
     toolbox:
       enabled: true
