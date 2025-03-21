@@ -8,4 +8,4 @@ components:
 resources:
   - ./echo-server/ks.yaml
   - ./podinfo/ks.yaml
-  - ./nextcloud/ks.yaml
+  # - ./nextcloud/ks.yaml
