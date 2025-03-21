@@ -47,7 +47,7 @@ nodes:
     machineSpec:
       secureboot: false
     talosImageURL: factory.talos.dev/installer/76a2de645c973a8619aad40d543a005c02c7ce78ea107667b4e2556f3fcf2189
-    controlPlane: false # TODO change to true after migrating to 3 nodes
+    controlPlane: true
     networkInterfaces:
       - deviceSelector:
           hardwareAddr: '6c:2b:59:f9:df:57'
@@ -58,6 +58,27 @@ nodes:
           - network: '0.0.0.0/0'
             gateway: '192.168.0.1'
         mtu: 1500
+        vip:
+          ip: '192.168.0.60'
+  - hostname: 'talos-03'
+    ipAddress: '192.168.0.57'
+    installDisk: '/dev/nvme0n'
+    machineSpec:
+      secureboot: false
+    talosImageURL: factory.talos.dev/installer/76a2de645c973a8619aad40d543a005c02c7ce78ea107667b4e2556f3fcf2189
+    controlPlane: true
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: 'fc:3f:db:8e:3f:de'
+        dhcp: false
+        addresses:
+          - '192.168.0.57/24'
+        routes:
+          - network: '0.0.0.0/0'
+            gateway: '192.168.0.1'
+        mtu: 1500
+        vip:
+          ip: '192.168.0.60'
 
   # - hostname: 'talos-03' # TODO migrate 3rd node
   #   ipAddress: '192.168.0.57'
