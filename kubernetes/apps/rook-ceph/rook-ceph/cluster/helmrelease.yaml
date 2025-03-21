@@ -18,7 +18,7 @@ spec:
     remediation:
       retries: 3
   upgrade:
-    cleanupOnFail: true
+    cleanupOnFail: false
     remediation:
       retries: 3
   values:
@@ -27,10 +27,10 @@ spec:
       createPrometheusRules: true
     cephClusterSpec:
       mon:
-        count: 2
+        count: 1
         allowMultiplePerNode: true # TODO set false after scaling to more nodes
       mgr:
-        count: 2
+        count: 1
       dashboard:
         enabled: true
         urlPrefix: /
