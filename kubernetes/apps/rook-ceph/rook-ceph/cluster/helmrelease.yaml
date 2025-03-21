@@ -6,7 +6,6 @@ metadata:
   name: rook-ceph-cluster
 spec:
   interval: 30m
-  timeout: 25m
   chart:
     spec:
       chart: rook-ceph-cluster
@@ -20,6 +19,8 @@ spec:
       retries: 3
   upgrade:
     cleanupOnFail: false
+    remediation:
+      retries: 3
   values:
     monitoring:
       enabled: true
@@ -27,7 +28,6 @@ spec:
     cephClusterSpec:
       mon:
         count: 3
-        allowMultiplePerNode: false
       mgr:
         count: 2
       dashboard:
@@ -36,21 +36,21 @@ spec:
         ssl: false
         prometheusEndpoint: http://prometheus-operated.observability.svc.cluster.local:9090
       storage:
-        useAllNodes: true
+        useAllNodes: false
         osdsPerDevice: 1
-        # nodes:
-        #   - name: talos-01
-        #     useAllDevices: false
-        #     devices:
-        #       - name: '/dev/sda'
-        #   - name: talos-02
-        #     useAllDevices: false
-        #     devices:
-        #       - name: '/dev/nvme0n1'
-        #   - name: talos-03
-        #     useAllDevices: false
-        #     devices:
-        #       - name: '/dev/sda'
+        nodes:
+          - name: talos-01
+            useAllDevices: false
+            devices:
+              - name: '/dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S5SVNF0R337122F'
+          - name: talos-02
+            useAllDevices: false
+            devices:
+              - name: '/dev/disk/by-id/nvme-KINGSTON_SKC3000S1024G_50026B768631A1C3'
+          - name: talos-03
+            useAllDevices: false
+            devices:
+              - name: '/dev/disk/by-id/ata-SSDPR-CX400-512-G2_G32058003'
       crashCollector:
         disabled: false
         daysToRetain: 14
@@ -86,3 +86,64 @@ spec:
       mgr: system-cluster-critical
     toolbox:
       enabled: true
+    cephBlockPools:
+      - name: ceph-blockpool
+        storageClass:
+          isDefault: false
+          name: ceph-block
+        spec:
+          failureDomain: host
+          replicated:
+            size: 3
+    cephBlockPoolsVolumeSnapshotClass:
+      enabled: true
+      name: csi-ceph-blockpool
+      isDefault: false
+      deletionPolicy: Delete
+    cephFilesystems:
+      - name: ceph-filesystem
+        spec:
+          metadataPool:
+            failureDomain: host
+            replicated:
+              size: 3
+          dataPools:
+            - name: replicated
+              failureDomain: host
+              replicated:
+                size: 3
+          preserveFilesystemOnDelete: true
+          metadataServer:
+            activeCount: 1
+            activeStandby: true
+        storageClass:
+          enabled: true
+          isDefault: false
+          name: ceph-filesystem
+          reclaimPolicy: Delete
+          allowVolumeExpansion: true
+    cephObjectStores:
+      - name: ceph-objectstore
+        spec:
+          metadataPool:
+            failureDomain: host
+            replicated:
+              size: 3
+          dataPool:
+            failureDomain: host
+            erasureCoded:
+              dataChunks: 2
+              codingChunks: 1
+          preservePoolsOnDelete: true
+          gateway:
+            hostNetwork: false
+            port: 80
+            instances: 1
+            priorityClassName: system-cluster-critical
+          healthCheck:
+            bucket:
+              interval: 60s
+        storageClass:
+          enabled: true
+          name: ceph-bucket
+          reclaimPolicy: Delete
