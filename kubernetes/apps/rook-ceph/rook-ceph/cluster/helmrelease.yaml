@@ -192,9 +192,9 @@ spec:
             resources:
               limits:
                 memory: 2Gi
-                cpu: 35m
               requests:
                 memory: 256Mi
+                cpu: 35m
           healthCheck:
             bucket:
               interval: 60s
