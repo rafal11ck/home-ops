@@ -30,6 +30,9 @@ spec:
         count: 3
       mgr:
         count: 2
+        modules:
+          - name: rook
+            enabled: true
       dashboard:
         enabled: true
         urlPrefix: /
