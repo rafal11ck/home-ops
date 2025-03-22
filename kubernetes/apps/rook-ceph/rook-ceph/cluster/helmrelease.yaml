@@ -92,7 +92,7 @@ spec:
         crashcollector:
           requests:
             cpu: 15m
-            memory: 64Mi
+            memory: 60Mi
         prepareosd:
           limits:
             cpu: 1000m
@@ -113,7 +113,7 @@ spec:
             memory: 1Gi
           requests:
             cpu: 100m
-            memory: 100Mi
+            memory: 50Mi
     ingress:
       dashboard:
         annotations:
@@ -158,6 +158,13 @@ spec:
           metadataServer:
             activeCount: 1
             activeStandby: true
+            resources:
+              requests:
+                memory: 1Gi
+                cpu: 35m
+              limits:
+                memory: 2Gi
+                cpu: 100m
         storageClass:
           enabled: true
           isDefault: false
@@ -182,6 +189,12 @@ spec:
             port: 80
             instances: 1
             priorityClassName: system-cluster-critical
+            resources:
+              limits:
+                memory: 2Gi
+                cpu: 35m
+              requests:
+                memory: 256Mi
           healthCheck:
             bucket:
               interval: 60s
