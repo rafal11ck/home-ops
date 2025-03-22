@@ -60,18 +60,35 @@ spec:
         osd:
           limits:
             memory: 4Gi
+            cpu: 500m
           requests:
+            cpu: 100m
             memory: 2Gi
         mon:
           limits:
             memory: 1Gi
           requests:
+            cpu: 50m
             memory: 512Mi
         mgr:
           limits:
             memory: 2Gi
           requests:
+            cpu: 50m
             memory: 512Mi
+        mgr-sidecar:
+          requests:
+            cpu: 10m
+            memory: 128Mi
+          limits:
+            memory: 256Mi
+        crashcollector:
+          requests:
+            cpu: 15m
+            memory: 64Mi
+        perpareosd:
+          requests:
+            cpu: 50m
     ingress:
       dashboard:
         annotations:
