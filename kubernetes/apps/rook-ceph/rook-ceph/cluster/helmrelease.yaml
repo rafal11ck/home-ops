@@ -165,12 +165,12 @@ spec:
               limits:
                 memory: 2Gi
                 cpu: 100m
-        storageClass:
-          enabled: true
-          isDefault: false
-          name: ceph-filesystem
-          reclaimPolicy: Delete
-          allowVolumeExpansion: true
+          storageClass:
+            enabled: true
+            isDefault: false
+            name: ceph-filesystem
+            reclaimPolicy: Delete
+            allowVolumeExpansion: true
     cephObjectStores:
       - name: ceph-objectstore
         spec:
