@@ -33,6 +33,8 @@ spec:
         modules:
           - name: rook
             enabled: true
+          - name: pg_autoscaler
+            enabled: true
       dashboard:
         enabled: true
         urlPrefix: /
