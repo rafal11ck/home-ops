@@ -27,3 +27,9 @@ spec:
     csi:
       enableLiveness: true
       cephFSKernelMountOptions: ms_mode=prefer-crc
+    resources:
+      requests:
+        memory: 128Mi
+        cpu: 10m
+      limits:
+        memory: 256Mi
