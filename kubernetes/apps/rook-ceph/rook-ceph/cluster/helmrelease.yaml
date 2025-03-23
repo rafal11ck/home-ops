@@ -160,7 +160,7 @@ spec:
             activeStandby: true
             resources:
               requests:
-                memory: '1Gi'
+                memory: '256Mi'
                 cpu: '125m'
               limits:
                 memory: '2Gi'
