@@ -5,12 +5,12 @@ metadata:
   name: &name nextcloud-database
 spec:
   description: 'nextcloud database'
-  instances: 1
+  instances: 1 # replicated at storage level
   primaryUpdateStrategy: unsupervised
   imageName: ghcr.io/cloudnative-pg/postgresql:16.8-6
   storage:
     size: 5Gi
-    # storageClass: openebs-lvmpv #FIXME set storageClass
+    storageClass: ceph-block
   monitoring:
     enablePodMonitor: true
   bootstrap:

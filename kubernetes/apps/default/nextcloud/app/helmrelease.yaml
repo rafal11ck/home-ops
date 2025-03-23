@@ -119,11 +119,11 @@ spec:
         hostKey: host
         databaseKey: dbname
     persistence:
-      # storageClass: openebs-lvmpv #FIXME set storageClass
+      storageClass: ceph-block
       enabled: true
       size: 5Gi
       nextcloudData:
-        # storageClass: openebs-lvmpv #FIXME set storageClass
+        storageClass: ceph-block
         enabled: true
         size: 5Gi
 
