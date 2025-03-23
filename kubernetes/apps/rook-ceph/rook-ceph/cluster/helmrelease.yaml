@@ -142,7 +142,7 @@ spec:
       name: csi-ceph-blockpool
       isDefault: false
       deletionPolicy: Delete
-    cephFilesystems:
+    cephFileSystems:
       - name: ceph-filesystem
         spec:
           metadataPool:
@@ -150,27 +150,39 @@ spec:
             replicated:
               size: 3
           dataPools:
-            - name: replicated
-              failureDomain: host
+            - failureDomain: host
               replicated:
                 size: 3
-          preserveFilesystemOnDelete: true
+              name: &ceph-filesystem-datapoolname data0
           metadataServer:
             activeCount: 1
             activeStandby: true
             resources:
-              requests:
-                memory: '256Mi'
-                cpu: '125m'
               limits:
                 memory: '2Gi'
-                cpu: '1000m'
+              requests:
+                cpu: '25m'
+                memory: '256Mi'
+            priorityClassName: system-cluster-critical
         storageClass:
           enabled: true
           isDefault: false
           name: ceph-filesystem
+          pool: *ceph-filesystem-datapoolname
           reclaimPolicy: Delete
           allowVolumeExpansion: true
+          volumeBindingMode: 'Immediate'
+          # annotations: {}
+          # labels: {}
+          # mountOptions: []
+          parameters:
+            csi.storage.k8s.io/provisioner-secret-name: rook-csi-cephfs-provisioner
+            csi.storage.k8s.io/provisioner-secret-namespace: 'rook-ceph'
+            csi.storage.k8s.io/controller-expand-secret-name: rook-csi-cephfs-provisioner
+            csi.storage.k8s.io/controller-expand-secret-namespace: 'rook-ceph'
+            csi.storage.k8s.io/node-stage-secret-name: rook-csi-cephfs-node
+            csi.storage.k8s.io/node-stage-secret-namespace: 'rook-ceph'
+            csi.storage.k8s.io/fstype: ext4
     cephObjectStores:
       - name: ceph-objectstore
         spec:
