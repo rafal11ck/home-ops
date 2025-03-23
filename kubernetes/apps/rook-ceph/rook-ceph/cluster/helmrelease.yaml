@@ -56,6 +56,7 @@ spec:
             useAllDevices: false
             devices:
               - name: '/dev/disk/by-id/ata-SSDPR-CX400-512-G2_G32058003'
+              - name: '/dev/disk/by-id/usb-SSDPR-PX_500-01T-80-G_DD56419885CF8-0:0'
       crashCollector:
         disabled: false
         daysToRetain: 14
