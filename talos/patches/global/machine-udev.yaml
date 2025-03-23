@@ -1,0 +1,8 @@
+machine:
+  udev:
+    rules:
+      # Allow ceph to recognize usb devices as scsi via udev custom rules
+      # https://github.com/rook/rook/issues/14699#issuecomment-2495636548
+      - ACTION=="add", ENV{ID_TYPE}=="disk", ENV{ID_BUS}=="usb", ENV{ID_BUS}="scsi"
+      - ACTION=="change", ENV{ID_TYPE}=="disk", ENV{ID_BUS}=="usb", ENV{ID_BUS}="scsi"
+      - ACTION=="online", ENV{ID_TYPE}=="disk", ENV{ID_BUS}=="usb", ENV{ID_BUS}="scsi"
