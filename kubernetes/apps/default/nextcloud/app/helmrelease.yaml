@@ -32,7 +32,7 @@ spec:
       enabled: true
       className: external
       annotations:
-        external-dns.alpha.kubernetes.io/hostname: &hostname 'cloud2.${SECRET_DOMAIN}'
+        external-dns.alpha.kubernetes.io/hostname: &hostname 'cloud.${SECRET_DOMAIN}'
         external-dns.alpha.kubernetes.io/target: '${SECRET_PUBLIC_IP}'
         external-dns.alpha.kubernetes.io/cloudflare-proxied: 'false'
         nginx.ingress.kubernetes.io/proxy-body-size: 4G
@@ -87,7 +87,7 @@ spec:
               1 => '10.0.0.0/8',
             ),
             'overwriteprotocol' => 'https',
-            'overwrite.cli.url' => 'https://cloud2.${SECRET_DOMAIN}',
+            'overwrite.cli.url' => 'https://cloud.${SECRET_DOMAIN}',
             'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
             'maintenance_window_start' => 1,
             'default_phone_region' => 'PL',
