@@ -64,11 +64,11 @@ spec:
       resources:
         osd:
           limits:
-            memory: 1600Mi
+            memory: 2Gi
             cpu: 500m
           requests:
             cpu: 100m
-            memory: 800Mi
+            memory: 500Mi
         mon:
           limits:
             memory: 1Gi
@@ -78,7 +78,7 @@ spec:
             memory: 320Mi
         mgr:
           limits:
-            cpu: 300m
+            cpu: 500m
             memory: 1500Mi
           requests:
             cpu: 50m
@@ -102,7 +102,7 @@ spec:
             memory: 200Mi
         logcollector:
           limits:
-            cpu: 50m
+            cpu: 75m
             memory: 32Mi
           requests:
             cpu: 5m
