@@ -29,8 +29,8 @@ spec:
     controller:
       service:
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: "external.${SECRET_DOMAIN}"
-          lbipam.cilium.io/ips: "192.168.0.243"
+          external-dns.alpha.kubernetes.io/hostname: 'external.${SECRET_DOMAIN}'
+          lbipam.cilium.io/ips: '192.168.0.243'
         externalTrafficPolicy: Cluster
       ingressClassResource:
         name: external
@@ -41,22 +41,22 @@ spec:
           matchExpressions:
             - key: ingress-class
               operator: In
-              values: ["external"]
+              values: ['external']
       config:
         allow-snippet-annotations: true
         annotations-risk-level: Critical
         client-body-buffer-size: 100M
         client-body-timeout: 120
         client-header-timeout: 120
-        enable-brotli: "true"
-        enable-ocsp: "true"
-        enable-real-ip: "true"
-        force-ssl-redirect: "true"
+        enable-brotli: 'true'
+        enable-ocsp: 'true'
+        enable-real-ip: 'true'
+        force-ssl-redirect: 'true'
         hide-headers: Server,X-Powered-By
-        hsts-max-age: "15552000"
+        hsts-max-age: '15552000'
         keep-alive-requests: 10000
         keep-alive: 120
-        log-format-escape-json: "true"
+        log-format-escape-json: 'true'
         log-format-upstream: >
           {"time": "$time_iso8601", "remote_addr": "$proxy_protocol_addr",
           "x_forwarded_for": "$proxy_add_x_forwarded_for", "request_id": "$req_id",
@@ -68,7 +68,7 @@ spec:
         proxy-body-size: 0
         proxy-buffer-size: 16k
         ssl-protocols: TLSv1.3 TLSv1.2
-        use-forwarded-headers: "true"
+        use-forwarded-headers: 'true'
       metrics:
         enabled: true
         serviceMonitor:
@@ -76,7 +76,7 @@ spec:
           namespaceSelector:
             any: true
       extraArgs:
-        default-ssl-certificate: "cert-manager/${SECRET_DOMAIN/./-}-production-tls"
+        default-ssl-certificate: 'cert-manager/${SECRET_DOMAIN/./-}-production-tls'
       resources:
         requests:
           cpu: 100m
