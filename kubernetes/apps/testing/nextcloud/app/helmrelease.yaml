@@ -35,6 +35,11 @@ spec:
       enabled: true
       className: external
       annotations:
+        external-dns.alpha.kubernetes.io/hostname: &hostname 'cloud2.${SECRET_DOMAIN}'
+        external-dns.alpha.kubernetes.io/target: '${SECRET_PUBLIC_IP}'
+        external-dns.alpha.kubernetes.io/cloudflare-proxied: 'false'
+        nginx.ingress.kubernetes.io/enable-cors: 'true'
+        nginx.ingress.kubernetes.io/cors-allow-headers: 'X-Forwarded-For'
         nginx.ingress.kubernetes.io/proxy-body-size: 4G
         kubernetes.io/tls-acme: 'true'
         cert-manager.io/cluster-issuer: letsencrypt-prod
@@ -118,10 +123,10 @@ spec:
         apcu.config.php: false
         # Apps directory configs
         apps.config.php: true
-        # Used for auto configure database
-        autoconfig.php: true
-        # Redis default configuration
-        redis.config.php: true
+        # Used for auto configure database - False cus CNPG Postgre is used instead. Configured in the chart.
+        autoconfig.php: false
+        # Redis default configuration - False cus DragonflyDB(Redis) is used instead. Configured in the chart.
+        redis.config.php: false
         # Reverse proxy default configuration
         reverse-proxy.config.php: true
         # S3 Object Storage as primary storage
