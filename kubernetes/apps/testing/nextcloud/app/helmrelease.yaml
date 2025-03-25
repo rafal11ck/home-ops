@@ -22,7 +22,7 @@ spec:
     remediation:
       retries: 3
   values:
-    podAnnotations:
+    deploymentAnnotations:
       reloader.stakater.com/auto: 'true'
 
     image:
