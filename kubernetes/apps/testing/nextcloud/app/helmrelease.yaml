@@ -126,7 +126,7 @@ spec:
         # Used for auto configure database - False cus CNPG Postgre is used instead. Configured in the chart.
         autoconfig.php: false
         # Redis default configuration - False cus DragonflyDB(Redis) is used instead. Configured in the chart.
-        redis.config.php: false
+        redis.config.php: true
         # Reverse proxy default configuration
         reverse-proxy.config.php: true
         # S3 Object Storage as primary storage
@@ -143,11 +143,15 @@ spec:
           value: nextcloud-memcache.testing.svc.cluster.local
         - name: REDIS_HOST_PORT
           value: '6379'
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: nextcloud-database-app
+              key: password
 
     internalDatabase:
       enabled: false
 
-    # TODO finih
     externalDatabase:
       enabled: true
       type: postgresql
@@ -177,19 +181,6 @@ spec:
         storageClass: 'ceph-block'
         accessMode: ReadWriteOnce
         size: 5Gi
-
-    resources:
-      {}
-      # We usually recommend not to specify default resources and to leave this as a conscious
-      # choice for the user. This also increases chances charts run on environments with little
-      # resources, such as Minikube. If you do want to specify resources, uncomment the following
-      # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-      # limits:
-      #  cpu: 100m
-      #  memory: 128Mi
-      # requests:
-      #  cpu: 100m
-      #  memory: 128Mi
 
     livenessProbe:
       enabled: true
