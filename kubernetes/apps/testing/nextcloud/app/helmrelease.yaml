@@ -98,15 +98,19 @@ spec:
         enabled: false
 
       configs:
-        local.config.php: |-
+        proxy.config.php: |-
           <?php
           $CONFIG = array (
             'trusted_proxies' => array(
               0 => '127.0.0.1',
               1 => '10.0.0.0/8',
             ),
+          );
+        settings: |-
+          <?php
+          $CONFIG = array (
             'maintenance_window_start' => 1,
-            'default_phone_region' => 'PL',
+            default_phone_region' => 'PL',
           );
 
       ## PHP Configuration files
@@ -121,7 +125,7 @@ spec:
         # To protect /var/www/html/config
         .htaccess: true
         # Apache configuration for rewrite urls
-        apache-pretty-urls.config.php: true
+        apache-pretty-urls.config.php: false
         # Define APCu as local cache
         apcu.config.php: false
         # Apps directory configs
