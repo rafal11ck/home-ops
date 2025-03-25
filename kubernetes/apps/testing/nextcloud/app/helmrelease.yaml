@@ -1,0 +1,201 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nextcloud
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: nextcloud
+      version: 6.6.9
+      sourceRef:
+        kind: HelmRepository
+        name: nextcloud
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    podAnnotations:
+      reloader.stakater.com/auto: 'true'
+
+    # Number of replicas to be deployed
+    replicaCount: 1
+
+    ## Allowing use of ingress controllers
+    ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
+    ##
+    ingress:
+      enabled: true
+      className: internal
+      annotations:
+        nginx.ingress.kubernetes.io/proxy-body-size: 4G
+        kubernetes.io/tls-acme: 'true'
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        # Keep this in sync with the README.md:
+        nginx.ingress.kubernetes.io/server-snippet: |-
+          server_tokens off;
+          proxy_hide_header X-Powered-By;
+          rewrite ^/.well-known/webfinger /index.php/.well-known/webfinger last;
+          rewrite ^/.well-known/nodeinfo /index.php/.well-known/nodeinfo last;
+          rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
+          rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json;
+          location = /.well-known/carddav {
+            return 301 $scheme://$host/remote.php/dav;
+          }
+          location = /.well-known/caldav {
+            return 301 $scheme://$host/remote.php/dav;
+          }
+          location = /robots.txt {
+            allow all;
+            log_not_found off;
+            access_log off;
+          }
+          location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)/ {
+            deny all;
+          }
+          location ~ ^/(?:autotest|occ|issue|indie|db_|console) {
+            deny all;
+          }
+      path: /
+      pathType: Prefix
+
+    phpClientHttpsFix:
+      enabled: true
+      protocol: https
+
+    nextcloud:
+      host: 'cloud2.${SECRET_DOMAIN}'
+
+      username: admin
+      password: changeme
+      ## Use an existing secret
+      existingSecret:
+        enabled: true
+        secretName: nextcloud-secret
+        usernameKey: nextcloud-username
+        passwordKey: nextcloud-password
+      update: 0
+      # If web server is not binding default port, you can define it
+      trustedDomains:
+        - cloud2.${SECRET_DOMAIN}
+      ## SMTP configuration
+      mail:
+        enabled: false
+
+      configs:
+        local.config.php: |-
+          <?php
+          $CONFIG = array (
+            'trusted_proxies' => array(
+              0 => '127.0.0.1',
+              1 => '10.0.0.0/8',
+            ),
+            'maintenance_window_start' => 1,
+            'default_phone_region' => 'PL',
+          );
+
+      ## PHP Configuration files
+      # Will be injected in /usr/local/etc/php/conf.d for apache image and in /usr/local/etc/php-fpm.d when nginx.enabled: true
+      # phpConfigs: {}
+
+      ## Default config files that utilize environment variables:
+      # see: https://github.com/nextcloud/docker/tree/master#auto-configuration-via-environment-variables
+      # IMPORTANT: Will be used only if you put extra configs, otherwise default will come from nextcloud itself
+      # Default confgurations can be found here: https://github.com/nextcloud/docker/tree/master/.config
+      defaultConfigs:
+        # To protect /var/www/html/config
+        .htaccess: true
+        # Apache configuration for rewrite urls
+        apache-pretty-urls.config.php: true
+        # Define APCu as local cache
+        apcu.config.php: false
+        # Apps directory configs
+        apps.config.php: true
+        # Used for auto configure database
+        autoconfig.php: true
+        # Redis default configuration
+        redis.config.php: true
+        # Reverse proxy default configuration
+        reverse-proxy.config.php: true
+        # S3 Object Storage as primary storage
+        s3.config.php: false
+        # SMTP default configuration via environment variables
+        smtp.config.php: false
+        # Swift Object Storage as primary storage
+        swift.config.php: false
+        # disables the web based updater as the default nextcloud docker image does not support it
+        upgrade-disable-web.config.php: true
+
+      extraEnv:
+        - name: REDIS_HOST
+          value: nextcloud-memcache.testing.svc.cluster.local
+        - name: REDIS_HOST_PORT
+          value: '6379'
+
+    internalDatabase:
+      enabled: false
+
+    # TODO finih
+    externalDatabase:
+      enabled: true
+      type: postgresql
+      existingSecret:
+        enabled: true
+        secretName: nextcloud-database-app
+        usernameKey: user
+        passwordKey: password
+        hostKey: host
+        databaseKey: dbname
+
+    cronjob:
+      enabled: true
+      # The command the cronjob container executes.
+      command:
+        - /cron.sh
+
+    persistence:
+      # Nextcloud Data (/var/www/html)
+      enabled: true
+      storageClass: 'ceph-block'
+      accessMode: ReadWriteOnce
+      size: 5Gi
+      nextcloudData:
+        enabled: true
+        annotations: {}
+        storageClass: 'ceph-block'
+        accessMode: ReadWriteOnce
+        size: 5Gi
+
+    resources:
+      {}
+      # We usually recommend not to specify default resources and to leave this as a conscious
+      # choice for the user. This also increases chances charts run on environments with little
+      # resources, such as Minikube. If you do want to specify resources, uncomment the following
+      # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+      # limits:
+      #  cpu: 100m
+      #  memory: 128Mi
+      # requests:
+      #  cpu: 100m
+      #  memory: 128Mi
+
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 10
+      periodSeconds: 30
+    readinessProbe:
+      enabled: true
+      initialDelaySeconds: 10
+      periodSeconds: 30
+    startupProbe:
+      enabled: false
+      initialDelaySeconds: 30
+      periodSeconds: 30
+      failureThreshold: 60
