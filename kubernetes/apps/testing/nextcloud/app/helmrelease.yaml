@@ -106,11 +106,11 @@ spec:
               1 => '10.0.0.0/8',
             ),
           );
-        settings: |-
+        settings.config.php: |-
           <?php
           $CONFIG = array (
             'maintenance_window_start' => 1,
-            default_phone_region' => 'PL',
+            'default_phone_region' => 'PL',
           );
 
       ## PHP Configuration files
@@ -184,7 +184,6 @@ spec:
       size: 5Gi
       nextcloudData:
         enabled: true
-        annotations: {}
         storageClass: 'ceph-block'
         accessMode: ReadWriteOnce
         size: 5Gi
