@@ -76,12 +76,12 @@ spec:
               2 => '10.96.0.0/16',
             ),
             'overwriteprotocol' => 'https',
+            'overwritehost' => 'https://cloud2.${SECRET_DOMAIN}',
             'overwrite.cli.url' => 'https://cloud2.${SECRET_DOMAIN}',
             'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
             'maintenance_window_start' => 1,
             'default_phone_region' => 'PL',
           );
-
       host: *hostname
       extraEnv:
         - name: REDIS_HOST
@@ -96,6 +96,12 @@ spec:
       enabled: true
     nginx:
       enabled: true
+      config:
+        custom: |-
+          server {
+              fastcgi_param front_controller_active false;
+          }
+
     internalDatabase:
       enabled: false
     externalDatabase:
