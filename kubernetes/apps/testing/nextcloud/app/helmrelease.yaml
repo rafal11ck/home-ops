@@ -88,6 +88,8 @@ spec:
           value: nextcloud-memcache.default.svc.cluster.local
         - name: REDIS_HOST_PORT
           value: '6379'
+      defaultConfigs:
+        apps.config.php: false
 
       existingSecret:
         enabled: true
