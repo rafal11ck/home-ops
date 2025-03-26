@@ -24,16 +24,10 @@ spec:
   values:
     deploymentAnnotations:
       reloader.stakater.com/auto: 'true'
-
     image:
       flavor: fpm-alpine
-
-    # Number of replicas to be deployed
-    replicaCount: 1
-
-    ## Allowing use of ingress controllers
-    ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
-    ##
+      # renovate: datasource=docker depName=nextcloud
+      tag: 30.0.8-fpm-alpine
     ingress:
       enabled: true
       className: external
@@ -41,13 +35,10 @@ spec:
         external-dns.alpha.kubernetes.io/hostname: &hostname 'cloud2.${SECRET_DOMAIN}'
         external-dns.alpha.kubernetes.io/target: '${SECRET_PUBLIC_IP}'
         external-dns.alpha.kubernetes.io/cloudflare-proxied: 'false'
-        nginx.ingress.kubernetes.io/proxy-buffering: 'off'
-        nginx.ingress.kubernetes.io/proxy-request-buffering: 'off'
-        nginx.ingress.kubernetes.io/affinity: cookie
-        nginx.ingress.kubernetes.io/enable-cors: 'true'
-        nginx.ingress.kubernetes.io/cors-allow-methods: 'GET, HEAD, POST, OPTIONS, PUT, PATCH, DELETE, PROPFIND, MKCOL, REPORT'
-        nginx.ingress.kubernetes.io/cors-allow-headers: 'DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,X-Forwarded-For'
         nginx.ingress.kubernetes.io/proxy-body-size: 4G
+        # CORS breaks webdav https://github.com/nextcloud/helm/issues/410#issuecomment-1654965117
+        nginx.ingress.kubernetes.io/enable-cors: 'false'
+        # Keep this in sync with the README.md:
         nginx.ingress.kubernetes.io/server-snippet: |-
           server_tokens off;
           proxy_hide_header X-Powered-By;
@@ -74,44 +65,9 @@ spec:
           }
       path: /
       pathType: Prefix
-
-    phpClientHttpsFix:
-      enabled: true
-      protocol: https
-
     nextcloud:
-      host: 'cloud2.${SECRET_DOMAIN}'
-
-      username: admin
-      password: changeme
-      ## Use an existing secret
-      existingSecret:
-        enabled: true
-        secretName: nextcloud-secret
-        usernameKey: nextcloud-username
-        passwordKey: nextcloud-password
-      update: 0
-      # If web server is not binding default port, you can define it
-      trustedDomains:
-        - cloud2.${SECRET_DOMAIN}
-      ## SMTP configuration
-      mail:
-        enabled: false
-
       configs:
-        ingress.config.php: |-
-          <?php
-          $CONFIG = array (
-            'overwrite.cli.url' => 'https://cloud2.${SECRET_DOMAIN}',
-            'overwriteprotocol' => 'https',
-          );
-        misc.config.php: |-
-          <?php
-          $CONFIG = array (
-            'maintenance_window_start' => 1,
-            'default_phone_region' => 'PL',
-          );
-        proxy.config.php: |-
+        local.config.php: |-
           <?php
           $CONFIG = array (
             'trusted_proxies' => array(
@@ -119,43 +75,29 @@ spec:
               1 => '10.69.0.0/16',
               2 => '10.96.0.0/16',
             ),
-            'trusted_domains' => array(
-              0 => '127.0.0.1',
-              1 => 'cloud2.${SECRET_DOMAIN}',
-            ),
+            'overwriteprotocol' => 'https',
+            'overwrite.cli.url' => 'https://cloud2.${SECRET_DOMAIN}',
             'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
+            'maintenance_window_start' => 1,
+            'default_phone_region' => 'PL',
           );
-        redis.config.php: |-
-          <?php
-            $CONFIG = array (
-              'memcache.distributed' => '\OC\Memcache\Redis',
-              'memcache.locking' => '\OC\Memcache\Redis',
-              'redis' => array(
-                'host' => getenv('REDIS_HOST'),
-                'port' => getenv('REDIS_HOST_PORT') ?: 6379,
-              )
-            );
 
-      ## PHP Configuration files
-      # Will be injected in /usr/local/etc/php/conf.d for apache image and in /usr/local/etc/php-fpm.d when nginx.enabled: true
-      # phpConfigs: {}
-
+      host: *hostname
       extraEnv:
         - name: REDIS_HOST
-          value: nextcloud-memcache.testing.svc.cluster.local
+          value: nextcloud-memcache.default.svc.cluster.local
         - name: REDIS_HOST_PORT
           value: '6379'
-        - name: REDIS_PASSWORD
-          value: ''
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: nextcloud-database-app
-              key: password
 
+      existingSecret:
+        enabled: true
+        secretName: nextcloud-secret
+    cronjob:
+      enabled: true
+    nginx:
+      enabled: true
     internalDatabase:
       enabled: false
-
     externalDatabase:
       enabled: true
       type: postgresql
@@ -166,39 +108,34 @@ spec:
         passwordKey: password
         hostKey: host
         databaseKey: dbname
-
-    cronjob:
-      enabled: true
-
     persistence:
-      # Nextcloud Data (/var/www/html)
+      storageClass: ceph-block
       enabled: true
-      storageClass: 'ceph-block'
-      accessMode: ReadWriteOnce
       size: 5Gi
       nextcloudData:
+        storageClass: ceph-block
         enabled: true
-        storageClass: 'ceph-block'
-        accessMode: ReadWriteOnce
         size: 5Gi
 
-    nginx:
-      enabled: true
-      config:
-        default: true
-
     livenessProbe:
-      enabled: true
-      initialDelaySeconds: 10
       periodSeconds: 30
     readinessProbe:
-      enabled: true
-      initialDelaySeconds: 10
       periodSeconds: 30
     startupProbe:
       enabled: true
-      initialDelaySeconds: 30
-      periodSeconds: 20
-      timeoutSeconds: 5
+      initialDelaySeconds: 5
       failureThreshold: 30
-      successThreshold: 1
+      timeoutSeconds: 5
+    lifecycle:
+      postStartCommand:
+        - su
+        - www-data
+        - -s
+        - /bin/sh
+        - -c
+        - cd
+        - >-
+          cd /var/www/html;
+          ./occ maintenance:repair --include-expensive;
+          ./occ db:add-missing-indices;
+          /bin/true
