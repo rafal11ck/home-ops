@@ -118,14 +118,14 @@ spec:
         size: 5Gi
 
     livenessProbe:
-      initialDelaySeconds: 120
       periodSeconds: 30
     readinessProbe:
-      initialDelaySeconds: 120
       periodSeconds: 30
     startupProbe:
       enabled: true
-      initialDelaySeconds: 120
+      initialDelaySeconds: 5
+      failureThreshold: 30
+      timeoutSeconds: 5
     lifecycle:
       postStartCommand:
         - su
@@ -133,4 +133,9 @@ spec:
         - -s
         - /bin/sh
         - -c
-        - 'cd /var/www/html; ./occ maintenance:repair --include-expensive; ./occ db:add-missing-indices; /bin/true'
+        - cd
+        - >-
+          cd /var/www/html;
+          ./occ maintenance:repair --include-expensive;
+          ./occ db:add-missing-indices;
+          /bin/true
