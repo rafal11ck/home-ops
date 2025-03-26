@@ -210,6 +210,8 @@ spec:
 
     nginx:
       enabled: true
+      config:
+        default: true
 
     livenessProbe:
       enabled: true
