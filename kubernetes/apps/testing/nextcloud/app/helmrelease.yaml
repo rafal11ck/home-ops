@@ -100,6 +100,9 @@ spec:
         custom: |-
           server {
               fastcgi_param front_controller_active false;
+              location ~ ^/apps/files {
+                rewrite ^/(?!index) /index.php$request_uri;
+              }
           }
 
     internalDatabase:
