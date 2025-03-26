@@ -139,7 +139,6 @@ spec:
         - -s
         - /bin/sh
         - -c
-        - cd
         - >-
           cd /var/www/html;
           ./occ maintenance:repair --include-expensive;
