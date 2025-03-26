@@ -36,8 +36,8 @@ spec:
         external-dns.alpha.kubernetes.io/target: '${SECRET_PUBLIC_IP}'
         external-dns.alpha.kubernetes.io/cloudflare-proxied: 'false'
         nginx.ingress.kubernetes.io/proxy-body-size: 4G
-        nginx.ingress.kubernetes.io/enable-cors: 'true'
-        nginx.ingress.kubernetes.io/cors-allow-headers: 'X-Forwarded-For'
+        # CORS breaks webdav https://github.com/nextcloud/helm/issues/410#issuecomment-1654965117
+        nginx.ingress.kubernetes.io/enable-cors: 'false'
         # Keep this in sync with the README.md:
         nginx.ingress.kubernetes.io/server-snippet: |-
           server_tokens off;
@@ -65,18 +65,6 @@ spec:
           }
       path: /
       pathType: Prefix
-    defaultConfigs:
-      .htaccess: true # To protect /var/www/html/config
-      apache-pretty-urls.config.php: false # Apache configuration for rewrite urls
-      apcu.config.php: false # Define APCu as local cache
-      #apps.config.php: true # Apps directory configs
-      autoconfig.php: false # Used for auto configure database - False cus CNPG Postgre is used instead. Configured in the chart.
-      redis.config.php: false # Redis default configuration - False cus DragonflyDB(Redis) is used instead. Configured in the chart.
-      reverse-proxy.config.php: true # Reverse proxy default configuration
-      s3.config.php: false # S3 Object Storage as primary storage - I don't use this
-      smtp.config.php: false # SMTP default configuration via environment variables
-      swift.config.php: false # Swift Object Storage as primary storage - I don't use this
-      upgrade-disable-web.config.php: true
     nextcloud:
       configs:
         local.config.php: |-
@@ -84,7 +72,8 @@ spec:
           $CONFIG = array (
             'trusted_proxies' => array(
               0 => '127.0.0.1',
-              1 => '10.0.0.0/8',
+              1 => '10.69.0.0/16',
+              2 => '10.96.0.0/16',
             ),
             'overwriteprotocol' => 'https',
             'overwrite.cli.url' => 'https://cloud.${SECRET_DOMAIN}',
@@ -92,6 +81,7 @@ spec:
             'maintenance_window_start' => 1,
             'default_phone_region' => 'PL',
           );
+
       host: *hostname
       extraEnv:
         - name: REDIS_HOST
@@ -143,4 +133,4 @@ spec:
         - -s
         - /bin/sh
         - -c
-        - 'cd /var/www/html; php occ maintenance:repair --include-expensive; php occ db:add-missing-indices; /bin/true'
+        - 'cd /var/www/html; ./occ maintenance:repair --include-expensive; ./occ db:add-missing-indices; /bin/true'

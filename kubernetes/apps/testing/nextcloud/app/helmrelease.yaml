@@ -140,34 +140,6 @@ spec:
       # Will be injected in /usr/local/etc/php/conf.d for apache image and in /usr/local/etc/php-fpm.d when nginx.enabled: true
       # phpConfigs: {}
 
-      ## Default config files that utilize environment variables:
-      # see: https://github.com/nextcloud/docker/tree/master#auto-configuration-via-environment-variables
-      # IMPORTANT: Will be used only if you put extra configs, otherwise default will come from nextcloud itself
-      # Default confgurations can be found here: https://github.com/nextcloud/docker/tree/master/.config
-      defaultConfigs:
-        # To protect /var/www/html/config
-        .htaccess: true
-        # Apache configuration for rewrite urls
-        apache-pretty-urls.config.php: false
-        # Define APCu as local cache
-        apcu.config.php: true
-        # Apps directory configs
-        apps.config.php: true
-        # Used for auto configure database - False cus CNPG Postgre is used instead. Configured in the chart.
-        autoconfig.php: false
-        # Redis default configuration - False cus DragonflyDB(Redis) is used instead. Configured in the chart.
-        redis.config.php: false
-        # Reverse proxy default configuration
-        reverse-proxy.config.php: true
-        # S3 Object Storage as primary storage
-        s3.config.php: false
-        # SMTP default configuration via environment variables
-        smtp.config.php: false
-        # Swift Object Storage as primary storage
-        swift.config.php: false
-        # disables the web based updater as the default nextcloud docker image does not support it
-        upgrade-disable-web.config.php: true
-
       extraEnv:
         - name: REDIS_HOST
           value: nextcloud-memcache.testing.svc.cluster.local
