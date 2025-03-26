@@ -146,7 +146,7 @@ spec:
         # Apache configuration for rewrite urls
         apache-pretty-urls.config.php: false
         # Define APCu as local cache
-        apcu.config.php: false
+        apcu.config.php: true
         # Apps directory configs
         apps.config.php: true
         # Used for auto configure database - False cus CNPG Postgre is used instead. Configured in the chart.
