@@ -76,7 +76,7 @@ spec:
               2 => '10.96.0.0/16',
             ),
             'overwriteprotocol' => 'https',
-            'overwritehost' => 'https://cloud2.${SECRET_DOMAIN}',
+            'overwritehost' => 'cloud2.${SECRET_DOMAIN}',
             'overwrite.cli.url' => 'https://cloud2.${SECRET_DOMAIN}',
             'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
             'maintenance_window_start' => 1,
