@@ -122,7 +122,8 @@ spec:
         storageClass: ceph-block
         enabled: true
         size: 5Gi
-
+    phpClientHttpsFix:
+      enabled: true
     livenessProbe:
       periodSeconds: 30
     readinessProbe:
