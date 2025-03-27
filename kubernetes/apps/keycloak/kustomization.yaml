@@ -6,4 +6,3 @@ namespace: keycloak
 resources:
   - ./keycloak-operator/ks.yaml
   - ./keycloak-operator-crds/ks.yaml
-  - ./keycloak-instance/ks.yaml
