@@ -1,0 +1,29 @@
+apiVersion: k8s.keycloak.org/v2alpha1
+kind: Keycloak
+metadata:
+  name: keycloak
+spec:
+  instances: 1
+  db:
+    vendor: postgres
+    host: postgres-db
+    usernameSecret:
+      name: keycloak-database-app
+      key: username
+    passwordSecret:
+      name: keycloak-database-app
+      key: password
+  http:
+    tlsSecret: 'cert-manager/${SECRET_DOMAIN/./-}-production-tls'
+  hostname:
+    hostname: auth.${SECRET_DOMAIN}
+  proxy:
+    headers: xforwarded
+  resources:
+    requests:
+      cpu: 10m
+  ingress:
+    # TODO https://www.keycloak.org/operator/basic-deployment#_hostname
+    className: internal
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: 'auth.${SECRET_DOMAIN}'

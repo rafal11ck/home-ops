@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/postgresql.cnpg.io/cluster_v1.json
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: &name keycloak-database
+spec:
+  description: 'keycloak database'
+  instances: 1 # replicated at storage level
+  primaryUpdateStrategy: unsupervised
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.4-7
+  storage:
+    size: 5Gi
+    storageClass: ceph-block
+  monitoring:
+    enablePodMonitor: true
+  bootstrap:
+    initdb:
+      database: keycloak
