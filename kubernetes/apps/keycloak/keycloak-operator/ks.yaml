@@ -21,7 +21,7 @@ metadata:
   name: keycloak-operator
 spec:
   interval: 30m
-  targetNamespace: keycloak-operator
+  targetNamespace: keycloak
   sourceRef:
     kind: GitRepository
     name: keycloack-k8s-resources
