@@ -1,0 +1,31 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: keycloack-k8s-resources
+spec:
+  interval: 1h0m0s
+  ref:
+    # renovate: datasource=github-releases depName=keycloak/keycloak-k8s-resources
+    tag: 26.1.3
+  url: https://github.com/keycloak/keycloak-k8s-resources.git
+  ignore: >-
+    # include operator deployment
+    !./kubernetes/kubernetes.yml
+    # ignore everything else
+    *
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: keycloak-operator
+spec:
+  interval: 30m
+  targetNamespace: keycloak-operator
+  sourceRef:
+    kind: GitRepository
+    name: keycloack-k8s-resources
+  path: './kubernetes'
+  prune: true
+  dependsOn:
+    - name: keycloak-operator-crds
