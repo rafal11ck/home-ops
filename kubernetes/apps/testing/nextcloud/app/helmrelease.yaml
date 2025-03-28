@@ -83,8 +83,8 @@ spec:
             'default_phone_region' => 'PL',
           );
       hooks:
-        post-installation: |-
-          printf "hello"
+        before-starting: |-
+          ./occ status
       host: *hostname
       extraEnv:
         - name: REDIS_HOST
