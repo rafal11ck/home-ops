@@ -91,6 +91,22 @@ spec:
           value: nextcloud-memcache.default.svc.cluster.local
         - name: REDIS_HOST_PORT
           value: '6379'
+        - name: OIDC_clientid
+          valueFrom:
+            secretKeyRef:
+              name: nextcloud-secret
+              key: OIDC_clientid
+        - name: OIDC_clientsecret
+          valueFrom:
+            secretKeyRef:
+              name: nextcloud-secret
+              key: OIDC_clientsecret
+        - name: OIDC_discoverurl
+          valueFrom:
+            secretKeyRef:
+              name: nextcloud-secret
+              key: OIDC_discoverurl
+
       defaultConfigs:
         apps.config.php: false
 
