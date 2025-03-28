@@ -24,6 +24,7 @@ spec:
   resources:
     requests:
       cpu: 10m
+      memory: 200Mi
   ingress:
     enabled: false
 ---
