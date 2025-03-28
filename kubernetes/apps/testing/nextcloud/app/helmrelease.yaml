@@ -82,6 +82,9 @@ spec:
             'maintenance_window_start' => 1,
             'default_phone_region' => 'PL',
           );
+      hooks:
+        post-installation: |-
+          printf "hello"
       host: *hostname
       extraEnv:
         - name: REDIS_HOST
