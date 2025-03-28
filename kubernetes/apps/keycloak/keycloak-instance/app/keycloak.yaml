@@ -16,13 +16,16 @@ spec:
   http:
     httpEnabled: true
   hostname:
-    hostname: auth.${SECRET_DOMAIN}
-    admin: keycloak.${SECRET_DOMAIN}
+    # If hostname-admin is configured, hostname must be set to a URL (not just hostname). https://www.keycloak.org/server/hostname#_validations
+    hostname: https://auth.${SECRET_DOMAIN}
+    admin: https://keycloak.${SECRET_DOMAIN}
   proxy:
     headers: xforwarded
   resources:
     requests:
       cpu: 10m
+  ingress:
+    enabled: false
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
