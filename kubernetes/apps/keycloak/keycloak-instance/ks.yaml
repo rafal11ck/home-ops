@@ -35,7 +35,7 @@ spec:
       app.kubernetes.io/name: *app
   targetNamespace: *namespace
   interval: 30m
-  prune: true
+  prune: false # keep database
   sourceRef:
     kind: GitRepository
     name: flux-system
