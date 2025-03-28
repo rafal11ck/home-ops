@@ -33,10 +33,6 @@ metadata:
   name: keycloak-ingress
   annotations:
     external-dns.alpha.kubernetes.io/hostname: auth.${SECRET_DOMAIN}
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      location ~ ^/(admin|metrics|health) {
-        return 404;
-      }
 spec:
   ingressClassName: external
   rules:
@@ -44,7 +40,14 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: '/'
+            path: '/realms'
+            backend:
+              service:
+                name: keycloak-service
+                port:
+                  name: http
+          - pathType: Prefix
+            path: '/resources'
             backend:
               service:
                 name: keycloak-service
