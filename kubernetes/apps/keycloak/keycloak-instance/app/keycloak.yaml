@@ -17,7 +17,7 @@ spec:
     httpEnabled: true
   hostname:
     hostname: auth.${SECRET_DOMAIN}
-    admin: 'keycloak.${SECRET_DOMAIN}'
+    admin: keycloak.${SECRET_DOMAIN}
   proxy:
     headers: xforwarded
   resources:
@@ -29,7 +29,7 @@ kind: Ingress
 metadata:
   name: keycloak-ingress
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: 'auth.${SECRET_DOMAIN}'
+    external-dns.alpha.kubernetes.io/hostname: auth.${SECRET_DOMAIN}
 spec:
   ingressClassName: external
   rules:
@@ -56,7 +56,7 @@ kind: Ingress
 metadata:
   name: keycloak-ingress-admin
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: 'keycloak.${SECRET_DOMAIN}'
+    external-dns.alpha.kubernetes.io/hostname: keycloak.${SECRET_DOMAIN}
 spec:
   ingressClassName: internal
   rules:
