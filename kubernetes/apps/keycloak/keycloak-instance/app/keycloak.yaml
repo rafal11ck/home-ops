@@ -17,13 +17,62 @@ spec:
     httpEnabled: true
   hostname:
     hostname: auth.${SECRET_DOMAIN}
+    admin: 'keycloak.${SECRET_DOMAIN}'
   proxy:
     headers: xforwarded
   resources:
     requests:
       cpu: 10m
-  ingress:
-    # TODO https://www.keycloak.org/operator/basic-deployment#_hostname
-    className: internal
-    annotations:
-      external-dns.alpha.kubernetes.io/hostname: 'auth.${SECRET_DOMAIN}'
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: keycloak-ingress
+  labels:
+    app.kubernetes.io/instance: keycloak
+    app: keycloak
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: 'auth.${SECRET_DOMAIN}'
+spec:
+  ingressClassName: external
+  rules:
+    - host: auth.${SECRET_DOMAIN}
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/realms'
+            backend:
+              service:
+                name: keycloak-service
+                port:
+                  name: http
+          - pathType: Prefix
+            path: '/resources'
+            backend:
+              service:
+                name: keycloak-service
+                port:
+                  name: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: keycloak-ingress-admin
+  labels:
+    app.kubernetes.io/instance: keycloak
+    app: keycloak
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: 'keycloak.${SECRET_DOMAIN}'
+spec:
+  ingressClassName: internal
+  rules:
+    - host: keycloak.${SECRET_DOMAIN}
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: keycloak-service
+                port:
+                  name: http
