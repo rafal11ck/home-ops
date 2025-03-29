@@ -159,6 +159,12 @@ spec:
           );
       hooks:
         post-installation: |-
+
+
+          printf "Add missing DB indices\n"
+          php occ db:add-missing-indices
+
+        before-starting: |-
           # disable unneceserry apps
           for appname in activity circles systemtags federation privacy \
               nextcloud_announcements support survey_client user_status weather_status
@@ -171,18 +177,14 @@ spec:
           # TODO unccoment next line to use OIDC only
           # php occ config:app:set --value=0 user_oidc allow_multiple_user_backends
 
+          printf "setting up OIDC\n"
+          php occ config:app:set --value=0 user_oidc allow_multiple_user_backends
+          php occ user_oidc:provider Keycloak -c "$OIDC_clientid" -s "$OIDC_clientsecret" -d "$OIDC_discoverurl"
+
           # install apps
           for appname in spreed contacts calendar user_oidc bookmarks deck
             do php occ app:install "$appname"
           done
-
-          printf "Add missing DB indices\n"
-          php occ db:add-missing-indices
-
-        before-starting: |-
-          printf "setting up OIDC\n"
-          php occ config:app:set --value=0 user_oidc allow_multiple_user_backends
-          php occ user_oidc:provider Keycloak -c "$OIDC_clientid" -s "$OIDC_clientsecret" -d "$OIDC_discoverurl"
 
         post-upgrade: |-
           # based on https://github.com/nextcloud/all-in-one/blob/25c580bca370eaead5f1fad9d3842a9c49562dff/Containers/nextcloud/entrypoint.sh#L451-L457
