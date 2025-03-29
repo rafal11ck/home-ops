@@ -186,8 +186,8 @@ spec:
             do php occ app:install "$appname"
           done
 
-          # FIXME remove this
-          sleep 10
+          # If app is installed occ returns 1, script fails and container refuses to start
+          true
 
         post-upgrade: |-
           # based on https://github.com/nextcloud/all-in-one/blob/25c580bca370eaead5f1fad9d3842a9c49562dff/Containers/nextcloud/entrypoint.sh#L451-L457
