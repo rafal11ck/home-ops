@@ -28,11 +28,71 @@ spec:
       flavor: fpm-alpine
       # renovate: datasource=docker depName=nextcloud
       tag: 30.0.8-fpm-alpine
+
+    host: &hostname 'cloud.${SECRET_DOMAIN}'
+
+    cronjob:
+      enabled: true
+    nginx:
+      enabled: true
+    internalDatabase:
+      enabled: false
+    externalDatabase:
+      enabled: true
+      type: postgresql
+      existingSecret:
+        enabled: true
+        secretName: nextcloud-database-app
+        usernameKey: user
+        passwordKey: password
+        hostKey: host
+        databaseKey: dbname
+
+    persistence:
+      storageClass: ceph-block
+      enabled: true
+      size: 5Gi
+      nextcloudData:
+        storageClass: ceph-block
+        enabled: true
+        size: 5Gi
+
+    extraEnv:
+      - name: REDIS_HOST
+        value: nextcloud-memcache
+      - name: REDIS_HOST_PORT
+        value: '6379'
+      - name: OIDC_clientid
+        valueFrom:
+          secretKeyRef:
+            name: nextcloud-secret
+            key: OIDC_clientid
+      - name: OIDC_clientsecret
+        valueFrom:
+          secretKeyRef:
+            name: nextcloud-secret
+            key: OIDC_clientsecret
+      - name: OIDC_discoverurl
+        valueFrom:
+          secretKeyRef:
+            name: nextcloud-secret
+            key: OIDC_discoverurl
+
+    livenessProbe:
+      periodSeconds: 30
+    readinessProbe:
+      periodSeconds: 30
+    startupProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      failureThreshold: 100
+      timeoutSeconds: 5
+
     ingress:
       enabled: true
       className: external
       annotations:
-        external-dns.alpha.kubernetes.io/hostname: &hostname 'cloud.${SECRET_DOMAIN}'
+        external-dns.alpha.kubernetes.io/hostname: *hostname
         external-dns.alpha.kubernetes.io/target: '${SECRET_PUBLIC_IP}'
         external-dns.alpha.kubernetes.io/cloudflare-proxied: 'false'
         nginx.ingress.kubernetes.io/proxy-body-size: 4G
@@ -65,7 +125,15 @@ spec:
           }
       path: /
       pathType: Prefix
+
     nextcloud:
+      defaultConfigs:
+        apps.config.php: false
+
+      existingSecret:
+        enabled: true
+        secretName: nextcloud-secret
+
       configs:
         local.config.php: |-
           <?php
@@ -76,66 +144,49 @@ spec:
               2 => '10.96.0.0/16',
             ),
             'overwriteprotocol' => 'https',
+            'overwritehost' => 'cloud.${SECRET_DOMAIN}',
             'overwrite.cli.url' => 'https://cloud.${SECRET_DOMAIN}',
             'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
             'maintenance_window_start' => 1,
             'default_phone_region' => 'PL',
           );
+        user_oidc.config.php: |-
+          <?php
+          $CONFIG = array (
+            'user_oidc' => [
+              'user_search_match_emails' => false,
+              ],
+          );
+      hooks:
+        post-installation: |-
+          # disable unneceserry apps
+          for appname in activity circles systemtags federation privacy \
+              nextcloud_announcements support survey_client user_status weather_status
+            do
+            php occ app:disable "$appname"
+          done
 
-      host: *hostname
-      extraEnv:
-        - name: REDIS_HOST
-          value: nextcloud-memcache.default.svc.cluster.local
-        - name: REDIS_HOST_PORT
-          value: '6379'
+          # install openid user backend
+          php occ app:enable user_oidc && \
+          # TODO unccoment next line to use OIDC only
+          # php occ config:app:set --value=0 user_oidc allow_multiple_user_backends
 
-      existingSecret:
-        enabled: true
-        secretName: nextcloud-secret
-    cronjob:
-      enabled: true
-    nginx:
-      enabled: true
-    internalDatabase:
-      enabled: false
-    externalDatabase:
-      enabled: true
-      type: postgresql
-      existingSecret:
-        enabled: true
-        secretName: nextcloud-database-app
-        usernameKey: user
-        passwordKey: password
-        hostKey: host
-        databaseKey: dbname
-    persistence:
-      storageClass: ceph-block
-      enabled: true
-      size: 5Gi
-      nextcloudData:
-        storageClass: ceph-block
-        enabled: true
-        size: 5Gi
+          # install apps
+          for appname in spreed contacts calendar user_oidc bookmarks deck
+            do php occ app:install "$appname"
+          done
 
-    livenessProbe:
-      periodSeconds: 30
-    readinessProbe:
-      periodSeconds: 30
-    startupProbe:
-      enabled: true
-      initialDelaySeconds: 5
-      failureThreshold: 30
-      timeoutSeconds: 5
-    lifecycle:
-      postStartCommand:
-        - su
-        - www-data
-        - -s
-        - /bin/sh
-        - -c
-        - cd
-        - >-
-          cd /var/www/html;
-          ./occ maintenance:repair --include-expensive;
-          ./occ db:add-missing-indices;
-          /bin/true
+          printf "Add missing DB indices\n"
+          php occ db:add-missing-indices
+
+        before-starting: |-
+          printf "setting up OIDC\n"
+          php occ config:app:set --value=0 user_oidc allow_multiple_user_backends
+          php occ user_oidc:provider Keycloak -c "$OIDC_clientid" -s "$OIDC_clientsecret" -d "$OIDC_discoverurl"
+
+        post-upgrade: |-
+          # based on https://github.com/nextcloud/all-in-one/blob/25c580bca370eaead5f1fad9d3842a9c49562dff/Containers/nextcloud/entrypoint.sh#L451-L457
+          php occ maintenance:repair --include-expensive
+          php occ db:add-missing-indices
+          php occ db:add-missing-columns
+          php occ db:add-missing-primary-keys
