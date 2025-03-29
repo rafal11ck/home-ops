@@ -31,6 +31,7 @@ spec:
       groups_attribute_path: groups
       use_refresh_token: 'true'
       role_attribute_path: "contains(roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'"
+      use_pkce: 'true'
 
     news:
       news_feed_enabled: 'false'
