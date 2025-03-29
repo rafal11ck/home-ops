@@ -55,27 +55,6 @@ spec:
         enabled: true
         size: 5Gi
 
-    extraEnv:
-      - name: REDIS_HOST
-        value: nextcloud-memcache
-      - name: REDIS_HOST_PORT
-        value: '6379'
-      - name: OIDC_CLIENT_ID
-        valueFrom:
-          secretKeyRef:
-            name: nextcloud-secret
-            key: OIDC_CLIENT_ID
-      - name: OIDC_CLIENT_SECRET
-        valueFrom:
-          secretKeyRef:
-            name: nextcloud-secret
-            key: OIDC_CLIENT_SECRET
-      - name: OIDC_DISCOVERURL
-        valueFrom:
-          secretKeyRef:
-            name: nextcloud-secret
-            key: OIDC_DISCOVERURL
-
     livenessProbe:
       periodSeconds: 30
     readinessProbe:
@@ -133,6 +112,27 @@ spec:
       existingSecret:
         enabled: true
         secretName: nextcloud-secret
+
+      extraEnv:
+        - name: REDIS_HOST
+          value: nextcloud-memcache
+        - name: REDIS_HOST_PORT
+          value: '6379'
+        - name: OIDC_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: nextcloud-secret
+              key: OIDC_CLIENT_ID
+        - name: OIDC_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: nextcloud-secret
+              key: OIDC_CLIENT_SECRET
+        - name: OIDC_DISCOVERURL
+          valueFrom:
+            secretKeyRef:
+              name: nextcloud-secret
+              key: OIDC_DISCOVERURL
 
       configs:
         local.config.php: |-
