@@ -159,8 +159,6 @@ spec:
           );
       hooks:
         post-installation: |-
-
-
           printf "Add missing DB indices\n"
           php occ db:add-missing-indices
 
@@ -175,8 +173,8 @@ spec:
 
           # install openid user backend
           php occ app:enable user_oidc && \
-          # TODO unccoment next line to use OIDC only
-          # php occ config:app:set --value=0 user_oidc allow_multiple_user_backends
+          # TODO set --value to 0 to use OIDC only , after migrating users
+          php occ config:app:set --value=1 user_oidc allow_multiple_user_backends
 
           printf "setting up OIDC\n"
           php occ config:app:set --value=0 user_oidc allow_multiple_user_backends
