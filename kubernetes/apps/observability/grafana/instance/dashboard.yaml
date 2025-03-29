@@ -194,7 +194,7 @@ spec:
   grafanaCom:
     # renovate: depName="Ceph Cluster"
     id: 2842
-    revision: 17
+    revision: 18
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
