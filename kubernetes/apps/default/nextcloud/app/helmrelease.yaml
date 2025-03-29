@@ -62,21 +62,21 @@ spec:
         value: nextcloud-memcache
       - name: REDIS_HOST_PORT
         value: '6379'
-      - name: OIDC_clientid
+      - name: OIDC_CLIENT_ID
         valueFrom:
           secretKeyRef:
             name: nextcloud-secret
-            key: OIDC_clientid
-      - name: OIDC_clientsecret
+            key: OIDC_CLIENT_ID
+      - name: OIDC_CLIENT_SECRET
         valueFrom:
           secretKeyRef:
             name: nextcloud-secret
-            key: OIDC_clientsecret
-      - name: OIDC_discoverurl
+            key: OIDC_CLIENT_SECRET
+      - name: OIDC_DISCOVERURL
         valueFrom:
           secretKeyRef:
             name: nextcloud-secret
-            key: OIDC_discoverurl
+            key: OIDC_DISCOVERURL
 
     livenessProbe:
       periodSeconds: 30
@@ -179,7 +179,7 @@ spec:
 
           printf "setting up OIDC\n"
           php occ config:app:set --value=0 user_oidc allow_multiple_user_backends
-          php occ user_oidc:provider Keycloak -c "$OIDC_clientid" -s "$OIDC_clientsecret" -d "$OIDC_discoverurl"
+          php occ user_oidc:provider Keycloak -c "$OIDC_CLIENT_ID" -s "$OIDC_CLIENT_SECRET" -d "$OIDC_DISCOVERURL"
 
           # install apps
           for appname in spreed contacts calendar user_oidc bookmarks deck
