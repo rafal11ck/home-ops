@@ -29,8 +29,6 @@ spec:
       # renovate: datasource=docker depName=nextcloud
       tag: 30.0.8-fpm-alpine
 
-    host: &hostname 'cloud.${SECRET_DOMAIN}'
-
     cronjob:
       enabled: true
     nginx:
@@ -92,7 +90,7 @@ spec:
       enabled: true
       className: external
       annotations:
-        external-dns.alpha.kubernetes.io/hostname: *hostname
+        external-dns.alpha.kubernetes.io/hostname: &hostname cloud.${SECRET_DOMAIN}
         external-dns.alpha.kubernetes.io/target: '${SECRET_PUBLIC_IP}'
         external-dns.alpha.kubernetes.io/cloudflare-proxied: 'false'
         nginx.ingress.kubernetes.io/proxy-body-size: 4G
@@ -127,6 +125,8 @@ spec:
       pathType: Prefix
 
     nextcloud:
+      host: *hostname
+
       defaultConfigs:
         apps.config.php: false
 
