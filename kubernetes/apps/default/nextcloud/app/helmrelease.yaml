@@ -183,6 +183,7 @@ spec:
             --clientid "$OIDC_CLIENT_ID" \
             --clientsecret "$OIDC_CLIENT_SECRET" \
             --discoveryuri "$OIDC_DISCOVERURL" \
+            --mapping-display-name preferred_username \
             --unique-uid=0 \
             --group-provisioning 1
 
