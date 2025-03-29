@@ -172,13 +172,19 @@ spec:
           done
 
           # install openid user backend
-          php occ app:enable user_oidc && \
+          php occ app:enable user_oidc
+
+          printf "setting up OIDC\n"
           # TODO set --value to 0 to use OIDC only , after migrating users
           php occ config:app:set --value=1 user_oidc allow_multiple_user_backends
 
-          printf "setting up OIDC\n"
-          php occ config:app:set --value=0 user_oidc allow_multiple_user_backends
-          php occ user_oidc:provider Keycloak -c "$OIDC_CLIENT_ID" -s "$OIDC_CLIENT_SECRET" -d "$OIDC_DISCOVERURL"
+          # unique ids break groups
+          php occ user_oidc:provider Keycloak \
+            --clientid "$OIDC_CLIENT_ID" \
+            --clientsecret "$OIDC_CLIENT_SECRET" \
+            --discoveryuri "$OIDC_DISCOVERURL" \
+            --unique-uid=0 \
+            --group-provisioning 1
 
           # install apps
           for appname in spreed contacts calendar user_oidc bookmarks deck
