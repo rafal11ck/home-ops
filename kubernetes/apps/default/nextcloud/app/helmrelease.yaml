@@ -165,8 +165,8 @@ spec:
         before-starting: |-
           # disable unneceserry apps
           for appname in activity circles systemtags federation privacy \
-              nextcloud_announcements support survey_client user_status weather_status \
-              dashboard
+              nextcloud_announcements announcementcenter support survey_client \
+              user_status weather_status dashboard
             do
             php occ app:disable "$appname"
           done
