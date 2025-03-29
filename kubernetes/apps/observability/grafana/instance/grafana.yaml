@@ -9,6 +9,9 @@ spec:
     security:
       admin_user: 'placeholder' # ovveriden by envvar
       admin_password: 'placeholder' # ovveriden by envvar
+    server:
+      domain: &hostname grafana.${SECRET_DOMAIN}
+      root_url: https://grafana.${SECRET_DOMAIN}
     analytics:
       check_for_updates: 'false'
       check_for_plugin_updates: 'false'
@@ -80,11 +83,11 @@ spec:
   ingress:
     metadata:
       annotations:
-        external-dns.alpha.kubernetes.io/hostname: 'grafana.${SECRET_DOMAIN}'
+        external-dns.alpha.kubernetes.io/hostname: *hostname
     spec:
       ingressClassName: internal
       rules:
-        - host: grafana.${SECRET_DOMAIN}
+        - host: *hostname
           http:
             paths:
               - backend:
