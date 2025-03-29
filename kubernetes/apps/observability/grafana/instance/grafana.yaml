@@ -6,9 +6,6 @@ metadata:
     dashboards: 'grafana'
 spec:
   config:
-    security:
-      admin_user: 'placeholder' # ovveriden by envvar
-      admin_password: 'placeholder' # ovveriden by envvar
     server:
       domain: &hostname grafana.${SECRET_DOMAIN}
       root_url: https://grafana.${SECRET_DOMAIN}
@@ -40,6 +37,9 @@ spec:
       enabled: 'true'
       disable_total_stats: 'false'
   deployment:
+    metadata:
+      annotations:
+        reloader.stakater.com/auto: 'true'
     # Inject dashboards from cofnigmaps https://grafana.github.io/grafana-operator/docs/examples/configmaps_sidecar/readme/
     spec:
       template:
