@@ -35,6 +35,8 @@ spec:
             enabled: true
           - name: pg_autoscaler
             enabled: true
+          - name: prometheus
+            enabled: true
       dashboard:
         enabled: true
         urlPrefix: /
