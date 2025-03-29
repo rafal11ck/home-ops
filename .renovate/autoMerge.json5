@@ -13,8 +13,10 @@
       ignoreTests: true,
       matchUpdateTypes: [
         "minor",
-        "patch"
+        "patch",
+        "digest"
       ],
+      minimumReleaseAge: "3 days",
     },
     {
       description: "Auto-merge Helm Releases",
@@ -23,7 +25,7 @@
         "docker"
       ],
       automerge: true,
-      automergeType: "pr",
+      automergeType: "branch",
       matchUpdateTypes: [
         "minor",
         "patch"
@@ -32,6 +34,15 @@
         "/kube-prometheus-stack/"
       ],
       ignoreTests: false,
+    },
+    {
+      description: "Auto-merge GitHub Releases",
+      matchDatasources: ["github-releases"],
+      automerge: true,
+      automergeType: "branch",
+      matchUpdateTypes: ["minor", "patch"],
+      matchPackageNames: ["/external-dns/", "/gateway-api/", "/prometheus-operator/"],
+      ignoreTests: true,
     },
   ],
 }
