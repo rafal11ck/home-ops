@@ -3,7 +3,7 @@ kind: Grafana
 metadata:
   name: grafana
   labels:
-    dashboards: 'grafana'
+    dashboards: grafana
 spec:
   config:
     server:
@@ -17,13 +17,14 @@ spec:
       enabled: 'false'
     auth.generic_oauth:
       enabled: 'true'
-      name: 'Keycloak-OAuth'
+      name: Keycloak-OAuth
       allow_sign_up: 'true'
-      client_id: placeholder' # ovveriden by envvar
-      client_secret: placeholder' # ovveriden by envvar
-      auth_url: placeholder' # ovveriden by envvar
-      token_url: placeholder' # ovveriden by envvar
-      api_url: placeholder' # ovveriden by envvar
+      client_id: placeholder # ovveriden by envvar
+      client_secret: placeholder # ovveriden by envvar
+      auth_url: placeholder # ovveriden by envvar
+      token_url: placeholder # ovveriden by envvar
+      api_url: placeholder # ovveriden by envvar
+      signout_redirect_url: placeholder # ovveriden by envvar
       scopes: 'openid email profile offline_access roles'
       login_attribute_path: username
       name_attribute_path: prefered_username
