@@ -7,7 +7,7 @@ spec:
   description: 'nextcloud database'
   instances: 1 # replicated at storage level
   primaryUpdateStrategy: unsupervised
-  imageName: ghcr.io/cloudnative-pg/postgresql:16.8-7
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.8-8
   storage:
     size: 5Gi
     storageClass: ceph-block
