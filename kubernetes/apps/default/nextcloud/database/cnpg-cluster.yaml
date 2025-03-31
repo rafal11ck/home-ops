@@ -16,11 +16,3 @@ spec:
   bootstrap:
     initdb:
       database: nextcloud
-  affinity:
-    tolerations:
-      - key: node.kubernetes.io/not-ready
-        operator: Exists
-        effect: NoExecute
-      - key: node.kubernetes.io/unreachable
-        operator: Exists
-        effect: NoExecute
