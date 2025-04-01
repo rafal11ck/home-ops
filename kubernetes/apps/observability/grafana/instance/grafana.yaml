@@ -15,8 +15,6 @@ spec:
       reporting_enabled: 'false'
     auth.anonymous:
       enabled: 'false'
-    auth.basic:
-      enabled: 'false'
     auth.generic_oauth:
       enabled: 'true'
       name: Keycloak-OAuth
