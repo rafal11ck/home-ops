@@ -7,7 +7,7 @@ metadata:
 spec:
   # renovate: datasource=docker depName=ghcr.io/dragonflydb/dragonfly
   image: ghcr.io/dragonflydb/dragonfly:v1.28.1
-  replicas: 1
+  replicas: 2
   env:
     - name: MAX_MEMORY
       valueFrom:
@@ -17,19 +17,18 @@ spec:
   args:
     - --maxmemory=$(MAX_MEMORY)Mi
     - --proactor_threads=2
-    - --cluster_mode=emulated
     - --dbfilename=dragonflySnapshot
   resources:
     limits:
-      memory: 512Mi
+      memory: 200Mi
   snapshot:
     persistentVolumeClaimSpec:
-      storageClassName: ceph-block 
+      storageClassName: ceph-block
       accessModes:
         - ReadWriteOnce
       resources:
         requests:
-          storage: 2Gi
+          storage: 400Mi
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
