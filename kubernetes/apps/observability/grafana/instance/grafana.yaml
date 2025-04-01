@@ -5,6 +5,14 @@ metadata:
   labels:
     dashboards: grafana
 spec:
+  persistentVolumeClaim:
+    spec:
+      storageClassName: ceph-block
+      resources:
+        requests:
+          storage: 512Mi
+      accessModes:
+        - ReadWriteOnce
   config:
     server:
       domain: &hostname grafana.${SECRET_DOMAIN}
