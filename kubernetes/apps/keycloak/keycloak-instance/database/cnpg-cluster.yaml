@@ -5,7 +5,7 @@ metadata:
   name: &name keycloak-database
 spec:
   description: 'keycloak database'
-  instances: 1 # replicated at storage level
+  instances: 2
   primaryUpdateStrategy: unsupervised
   imageName: ghcr.io/cloudnative-pg/postgresql:17.4-7
   storage:
