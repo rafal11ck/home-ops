@@ -3,7 +3,7 @@ kind: Keycloak
 metadata:
   name: keycloak
 spec:
-  instances: 1
+  instances: 2
   db:
     vendor: postgres
     host: keycloak-database-rw
