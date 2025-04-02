@@ -7,7 +7,7 @@ metadata:
 spec:
   # renovate: datasource=docker depName=ghcr.io/dragonflydb/dragonfly
   image: ghcr.io/dragonflydb/dragonfly:v1.28.1
-  replicas: 2
+  replicas: 1
   env:
     - name: MAX_MEMORY
       valueFrom:
@@ -16,6 +16,7 @@ spec:
           divisor: 1Mi
   args:
     - --maxmemory=$(MAX_MEMORY)Mi
+    - --cluster_mode=emulated
     - --proactor_threads=1
     - --dbfilename=dragonflySnapshot
   resources:
