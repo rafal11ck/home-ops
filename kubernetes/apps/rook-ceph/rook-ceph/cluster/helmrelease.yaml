@@ -57,7 +57,7 @@ spec:
           - name: talos-03
             useAllDevices: false
             devices:
-              - name: '/dev/disk/by-id/ata-SSDPR-CX400-512-G2_G32058003'
+              - name: '/dev/disk/by-id/nvme-HFM256GDHTNG-8310A_ND02N449311302802'
               - name: '/dev/disk/by-id/usb-SSDPR-PX_500-01T-80-G_DD56419885CF8-0:0'
       crashCollector:
         disabled: false

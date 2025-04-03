@@ -62,7 +62,7 @@ nodes:
           ip: '192.168.0.60'
   - hostname: 'talos-03'
     ipAddress: '192.168.0.57'
-    installDisk: '/dev/nvme0n1'
+    installDisk: '/dev/disk-by-id/ata-SSDPR-CX400-512-G2_G32058003'
     machineSpec:
       secureboot: false
     talosImageURL: factory.talos.dev/installer/76a2de645c973a8619aad40d543a005c02c7ce78ea107667b4e2556f3fcf2189
