@@ -220,3 +220,19 @@ spec:
   url:
     # renovate: datasource=github-releases depName=dragonflydb/dragonfly-operator
     https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/refs/tags/v1.1.10/monitoring/grafana-dashboard.json
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: smartctl-exporeter
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  grafanaCom:
+    # renovate: depName="SMARTctl Exporter Dashboard"
+    id: 22604
+    revision: 1
+  datasources:
+    - datasourceName: Prometheus
+      inputName: DS_PROMETHEUS
