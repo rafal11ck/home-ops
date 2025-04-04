@@ -6,7 +6,7 @@ metadata:
   name: kube-prometheus-stack
   namespace: flux-system
 spec:
-  interval: 30m
+  interval: 1h
   url: oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack
   ref:
     tag: 70.4.1
@@ -20,7 +20,7 @@ kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
 spec:
-  interval: 30m
+  interval: 1h
   timeout: 15m
   chartRef:
     kind: OCIRepository

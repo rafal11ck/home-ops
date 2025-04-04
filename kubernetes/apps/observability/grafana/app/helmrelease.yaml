@@ -13,5 +13,5 @@ spec:
         name: grafana
         namespace: flux-system
       version: v5.17.0
-  interval: 30m
+  interval: 1h
   timeout: 20m

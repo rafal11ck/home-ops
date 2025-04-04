@@ -9,7 +9,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  interval: 30m
+  interval: 1h
   path: ./kubernetes/apps/rook-ceph/rook-ceph/operator
   prune: false # keep
   sourceRef:
@@ -32,7 +32,7 @@ spec:
       app.kubernetes.io/name: *app
   dependsOn:
     - name: rook-ceph-operator
-  interval: 30m
+  interval: 1h
   path: ./kubernetes/apps/rook-ceph/rook-ceph/cluster
   prune: false # keep
   sourceRef:

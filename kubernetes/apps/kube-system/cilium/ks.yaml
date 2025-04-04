@@ -9,7 +9,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  interval: 30m
+  interval: 1h
   path: ./kubernetes/apps/kube-system/cilium/app
   prune: false # never should be deleted
   sourceRef:
@@ -33,7 +33,7 @@ spec:
   dependsOn:
     - name: cilium
       namespace: kube-system
-  interval: 30m
+  interval: 1h
   path: ./kubernetes/apps/kube-system/cilium/config
   prune: false # never should be deleted
   sourceRef:

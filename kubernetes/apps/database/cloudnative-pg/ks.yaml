@@ -10,13 +10,11 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   targetNamespace: *namespace
-  interval: 30m
-  prune: true 
+  interval: 1h
+  prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
   path: ./kubernetes/apps/database/cloudnative-pg/app
   wait: true
----
-

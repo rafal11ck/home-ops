@@ -9,7 +9,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  interval: 30m
+  interval: 1h
   path: ./kubernetes/apps/default/nextcloud/app
   prune: true
   sourceRef:
@@ -33,7 +33,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   targetNamespace: *namespace
-  interval: 30m
+  interval: 1h
   prune: true
   sourceRef:
     kind: GitRepository
@@ -55,7 +55,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   targetNamespace: *namespace
-  interval: 30m
+  interval: 1h
   prune: true
   sourceRef:
     kind: GitRepository

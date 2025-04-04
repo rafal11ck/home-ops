@@ -9,7 +9,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  interval: 30m
+  interval: 1h
   path: ./kubernetes/apps/cert-manager/cert-manager/app
   prune: true
   sourceRef:
@@ -30,7 +30,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  interval: 30m
+  interval: 1h
   path: ./kubernetes/apps/cert-manager/cert-manager/issuers
   prune: true
   healthCheckExprs:
@@ -64,7 +64,7 @@ spec:
       kind: Certificate
       failed: status.conditions.filter(e, e.type == 'Ready').all(e, e.status == 'False')
       current: status.conditions.filter(e, e.type == 'Ready').all(e, e.status == 'True')
-  interval: 30m
+  interval: 1h
   path: ./kubernetes/apps/cert-manager/cert-manager/tls
   prune: true
   sourceRef:

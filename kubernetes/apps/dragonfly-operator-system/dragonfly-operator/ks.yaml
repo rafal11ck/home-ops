@@ -10,7 +10,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   targetNamespace: *namespace
-  interval: 30m
+  interval: 1h
   prune: true # FIXME change to false after testing
   sourceRef:
     kind: GitRepository
@@ -18,5 +18,3 @@ spec:
     namespace: flux-system
   path: ./kubernetes/apps/dragonfly-operator-system/dragonfly-operator/app
   wait: true
----
-

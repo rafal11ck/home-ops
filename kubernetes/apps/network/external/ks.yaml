@@ -15,7 +15,7 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  interval: 30m
+  interval: 1h
   targetNamespace: *namespace
   timeout: 5m
   wait: true
@@ -33,7 +33,7 @@ spec:
   dependsOn:
     - name: external-external-dns
       namespace: network
-  interval: 30m
+  interval: 1h
   path: ./kubernetes/apps/network/external/cloudflared
   prune: true
   sourceRef:
@@ -57,7 +57,7 @@ spec:
   dependsOn:
     - name: cert-manager-tls
       namespace: cert-manager
-  interval: 30m
+  interval: 1h
   path: ./kubernetes/apps/network/external/ingress-nginx
   prune: true
   sourceRef:
