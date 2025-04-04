@@ -232,7 +232,7 @@ spec:
   grafanaCom:
     # renovate: depName="SMARTctl Exporter Dashboard"
     id: 22604
-    revision: 1
+    revision: 2
   datasources:
     - datasourceName: Prometheus
       inputName: DS_PROMETHEUS
