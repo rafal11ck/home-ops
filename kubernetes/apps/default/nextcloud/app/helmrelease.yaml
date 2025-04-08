@@ -57,6 +57,7 @@ spec:
 
     livenessProbe:
       periodSeconds: 10
+      failureThreshold: 3
     readinessProbe:
       periodSeconds: 30
     startupProbe:
