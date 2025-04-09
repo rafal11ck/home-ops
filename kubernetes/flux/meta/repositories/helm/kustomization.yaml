@@ -16,7 +16,6 @@ resources:
   - ./k8s-gateway.yaml
   - ./metrics-server.yaml
   - ./nextcloud.yaml
-  - ./openebs.yaml
   - ./podinfo.yaml
   - ./rook-release.yaml
   - ./spegel.yaml
