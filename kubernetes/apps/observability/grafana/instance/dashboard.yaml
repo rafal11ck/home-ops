@@ -219,7 +219,7 @@ spec:
       dashboards: grafana
   url:
     # renovate: datasource=github-releases depName=dragonflydb/dragonfly-operator
-    https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/refs/tags/v1.1.10/monitoring/grafana-dashboard.json
+    https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/refs/tags/v1.1.11/monitoring/grafana-dashboard.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
