@@ -10,5 +10,10 @@
       },
       matchPackageNames: ["/flux-operator/", "/flux-instance/"],
     },
+    {
+      matchDatasources: ["docker"],
+      matchPackageNames: ["/ghcr.io\\/cloudnative-pg\\/postgresql/"],
+      separateMajorMinor: true,
+    }
   ],
 }
