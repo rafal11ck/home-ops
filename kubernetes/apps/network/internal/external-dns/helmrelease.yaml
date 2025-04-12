@@ -56,10 +56,12 @@ spec:
           httpGet:
             path: /healthz
             port: &http-wh-metrics "8080"
+          initialDelaySeconds: "10"
         readinessProbe:
           httpGet:
             path: /readyz
             port: *http-wh-metrics
+          initialDelaySeconds: "10"
         annotations:
           externaldns.alpha.kubernetes.io/type: "A"
     extraArgs:
