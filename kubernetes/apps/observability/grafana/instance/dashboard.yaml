@@ -168,7 +168,7 @@ spec:
   grafanaCom:
     # renovate: depName="CloudNativePG"
     id: 20417
-    revision: 3
+    revision: 4
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
