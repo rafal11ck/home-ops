@@ -14,6 +14,7 @@
       matchDatasources: ["docker"],
       matchPackageNames: ["/ghcr.io\\/cloudnative-pg\\/postgresql/"],
       separateMajorMinor: true,
+      additionalBranchPrefix: "{{if isMajor}}{{newMajor}}{{/if}}"
     }
   ],
 }
