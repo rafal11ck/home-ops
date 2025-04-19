@@ -15,6 +15,15 @@
       matchPackageNames: ["/ghcr.io\\/cloudnative-pg\\/postgresql/"],
       separateMajorMinor: true,
       additionalBranchPrefix: "{{#if isMajor}}{{newMajor}}{{/if}}",
-    }
+    },
+    {
+      description: "Rook-Ceph Group",
+      groupName: "Rook-Ceph",
+      matchDatasources: ["docker"],
+      matchPackageNames: ["/rook-ceph/", "/rook-ceph-cluster/"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
+    },
   ],
 }
