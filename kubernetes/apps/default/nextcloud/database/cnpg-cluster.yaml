@@ -16,3 +16,7 @@ spec:
   bootstrap:
     initdb:
       database: nextcloud
+  backup:
+    volumeSnapshot:
+      className: ceph-block
+      snapshotOwnerReference: backup
