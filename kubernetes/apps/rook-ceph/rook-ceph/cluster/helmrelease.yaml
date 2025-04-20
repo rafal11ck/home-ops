@@ -163,6 +163,7 @@ spec:
     cephFileSystems:
       - name: ceph-filesystem
         spec:
+          preserveFilesystemOnDelete: true
           metadataPool:
             failureDomain: host
             replicated:
