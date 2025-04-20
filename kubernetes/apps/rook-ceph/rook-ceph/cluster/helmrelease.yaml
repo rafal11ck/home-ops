@@ -68,14 +68,14 @@ spec:
         osd:
           limits:
             memory: 2Gi
-            cpu: 500m
+            cpu: 1000m
           requests:
             cpu: 100m
             memory: 500Mi
         mon:
           limits:
             memory: 1Gi
-            cpu: 500m
+            cpu: 1000m
           requests:
             cpu: 100m
             memory: 320Mi
