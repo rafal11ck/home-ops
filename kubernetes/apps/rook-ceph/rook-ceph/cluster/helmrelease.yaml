@@ -105,7 +105,7 @@ spec:
             memory: 200Mi
         logcollector:
           limits:
-            cpu: 75m
+            cpu: 150m
             memory: 32Mi
           requests:
             cpu: 5m
