@@ -67,9 +67,8 @@ spec:
       failureThreshold: 100
       timeoutSeconds: 5
 
-
     nextcloud:
-      host: *hostname
+      host: cloud.${SECRET_DOMAIN}
 
       defaultConfigs:
         apps.config.php: false
