@@ -29,7 +29,7 @@ spec:
             value: /robots.txt
     - matches:
         - path:
-            type: Exact
+            type: PathPrefix
             value: /.well-known/webfinger
       filters:
         - type: URLRewrite # TODO do better after https://github.com/kubernetes-sigs/gateway-api/issues/2177
@@ -40,14 +40,14 @@ spec:
       backendRefs: *backendRef
     - matches:
         - path:
-            type: Exact
+            type: PathPrefix
             value: /.well-known/nodeinfo
       filters:
         - type: URLRewrite
           urlRewrite:
             path:
               type: ReplacePrefixMatch
-              replaceFullPath: /index.php/.well-known/nodeinfo
+              replacePrefixMatch: /index.php/.well-known/nodeinfo
       backendRefs: *backendRef
     - matches:
         - path:
@@ -58,7 +58,7 @@ spec:
           urlRewrite:
             path:
               type: ReplacePrefixMatch
-              replaceFullPath: /public.php?service=host-meta
+              replacePrefixMatch: /public.php?service=host-meta
       backendRefs: *backendRef
     - matches:
         - path:
@@ -68,7 +68,7 @@ spec:
         - type: URLRewrite
           urlRewrite:
             path:
-              type: ReplacePrefixMatch
+              type: ReplaceFullPath
               replaceFullPath: /public.php?service=host-meta-json
       backendRefs: *backendRef
     # Block restricted paths
