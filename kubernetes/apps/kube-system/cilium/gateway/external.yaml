@@ -4,7 +4,7 @@ kind: Gateway
 metadata:
   name: external
   annotations:
-    external-dns.alpha.kubernetes.io/target: &hostname internal2.${SECRET_DOMAIN} #TODO remove 2
+    external-dns.alpha.kubernetes.io/target: &hostname external.${SECRET_DOMAIN} #TODO remove 2
 spec:
   gatewayClassName: cilium
   addresses:
