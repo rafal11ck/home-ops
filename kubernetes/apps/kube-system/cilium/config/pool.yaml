@@ -5,6 +5,7 @@ kind: CiliumLoadBalancerIPPool
 metadata:
   name: pool
 spec:
-  allowFirstLastIPs: "No"
+  allowFirstLastIPs: 'No'
   blocks:
-    - cidr: "192.168.0.0/24"
+    - cidr: '192.168.0.0/24'
+    - cidr: ::ffff:192.168.0.0/112 # IPv4-mapped IPv6
