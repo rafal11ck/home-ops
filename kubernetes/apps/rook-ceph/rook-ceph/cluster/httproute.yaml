@@ -1,11 +1,3 @@
-# ingress:
-#   dashboard:
-#     annotations:
-#       external-dns.alpha.kubernetes.io/hostname: rook.${SECRET_DOMAIN}
-#     host:
-#       name: rook.${SECRET_DOMAIN}
-#       path: '/'
-#     ingressClassName: internal
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/gateway.networking.k8s.io/httproute_v1.json
 apiVersion: gateway.networking.k8s.io/v1
