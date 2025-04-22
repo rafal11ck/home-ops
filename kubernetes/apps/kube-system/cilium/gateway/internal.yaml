@@ -4,12 +4,12 @@ kind: Gateway
 metadata:
   name: internal
   annotations:
-    external-dns.alpha.kubernetes.io/target: &hostname internal.${SECRET_DOMAIN} #TODO remove 2
+    external-dns.alpha.kubernetes.io/target: &ip4 192.168.0.241
 spec:
   gatewayClassName: cilium
   addresses:
     - type: IPAddress
-      value: 192.168.0.241
+      value: *ip4
     - type: IPAddress
       value: ::ffff:192.168.0.241
   infrastructure:
