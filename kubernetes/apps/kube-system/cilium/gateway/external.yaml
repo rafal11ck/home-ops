@@ -2,7 +2,7 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: internal
+  name: external
   annotations:
     external-dns.alpha.kubernetes.io/target: &hostname internal2.${SECRET_DOMAIN} #TODO remove 2
 spec:
