@@ -36,7 +36,7 @@ spec:
           urlRewrite:
             path:
               type: ReplacePrefixMatch
-              replaceFullPath: /index.php/.well-known/webfinger
+              replacePrefixMatch: /index.php/.well-known/webfinger
       backendRefs: *backendRef
     - matches:
         - path:

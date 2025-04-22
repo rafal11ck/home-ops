@@ -6,7 +6,6 @@
 
 - [talos](https://www.talos.dev/)
 - [fluxcd](https://fluxcd.io/)
-- [ingress-nginx](https://github.com/kubernetes/ingress-nginx)
 - [external-dns](https://github.com/kubernetes-sigs/external-dns)
 - [cert-manager](https://cert-manager.io/)
 - [grafana](https://grafana.com/)
