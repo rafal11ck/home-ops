@@ -117,14 +117,6 @@ spec:
           requests:
             cpu: 100m
             memory: 50Mi
-    ingress:
-      dashboard:
-        annotations:
-          external-dns.alpha.kubernetes.io/hostname: rook.${SECRET_DOMAIN}
-        host:
-          name: rook.${SECRET_DOMAIN}
-          path: '/'
-        ingressClassName: internal
     priorityClassNames:
       mon: system-node-critical
       osd: system-node-critical

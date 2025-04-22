@@ -92,24 +92,6 @@ spec:
               volumeMounts:
                 - mountPath: /var/lib/grafana/dashboards
                   name: dashboards
-
-  ingress:
-    metadata:
-      annotations:
-        external-dns.alpha.kubernetes.io/hostname: *hostname
-    spec:
-      ingressClassName: internal
-      rules:
-        - host: *hostname
-          http:
-            paths:
-              - backend:
-                  service:
-                    name: grafana-service
-                    port:
-                      number: 3000
-                path: /
-                pathType: Prefix
 ---
 # Provisioning config
 apiVersion: v1

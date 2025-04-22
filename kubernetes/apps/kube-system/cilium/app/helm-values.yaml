@@ -22,10 +22,29 @@ gatewayAPI:
 dashboards:
   enabled: true
 hubble:
-  enabled: false
+  enabled: true
+  metrics:
+    enabled:
+      - dns:query
+      - drop
+      - tcp
+      - flow
+      - port-distribution
+      - icmp
+      - http
+    serviceMonitor:
+      enabled: true
+    dashboards:
+      enabled: true
+  relay:
+    enabled: true
+    rollOutPods: true
+    prometheus:
+      serviceMonitor:
+        enabled: true
 ipam:
   mode: kubernetes
-ipv4NativeRoutingCIDR: "10.69.0.0/16"
+ipv4NativeRoutingCIDR: '10.69.0.0/16'
 k8sServiceHost: 127.0.0.1
 k8sServicePort: 7445
 kubeProxyReplacement: true
@@ -34,7 +53,7 @@ l2announcements:
   enabled: true
 loadBalancer:
   algorithm: maglev
-  mode: "dsr"
+  mode: 'dsr'
 localRedirectPolicy: true
 operator:
   replicas: 1

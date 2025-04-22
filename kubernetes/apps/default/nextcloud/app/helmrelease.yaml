@@ -28,7 +28,8 @@ spec:
       flavor: fpm-alpine
       # renovate: datasource=docker depName=nextcloud
       tag: 30.0.10-fpm-alpine
-
+    ingress:
+      enabled: false # using gateway API instead
     cronjob:
       enabled: true
     nginx:
@@ -66,43 +67,6 @@ spec:
       failureThreshold: 100
       timeoutSeconds: 5
 
-    ingress:
-      enabled: true
-      className: external
-      annotations:
-        external-dns.alpha.kubernetes.io/hostname: &hostname cloud.${SECRET_DOMAIN}
-        external-dns.alpha.kubernetes.io/target: '${SECRET_PUBLIC_IP}'
-        external-dns.alpha.kubernetes.io/cloudflare-proxied: 'false'
-        nginx.ingress.kubernetes.io/proxy-body-size: 4G
-        # CORS breaks webdav https://github.com/nextcloud/helm/issues/410#issuecomment-1654965117
-        nginx.ingress.kubernetes.io/enable-cors: 'false'
-        # Keep this in sync with the README.md:
-        nginx.ingress.kubernetes.io/server-snippet: |-
-          server_tokens off;
-          proxy_hide_header X-Powered-By;
-          rewrite ^/.well-known/webfinger /index.php/.well-known/webfinger last;
-          rewrite ^/.well-known/nodeinfo /index.php/.well-known/nodeinfo last;
-          rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
-          rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json;
-          location = /.well-known/carddav {
-            return 301 $scheme://$host/remote.php/dav;
-          }
-          location = /.well-known/caldav {
-            return 301 $scheme://$host/remote.php/dav;
-          }
-          location = /robots.txt {
-            allow all;
-            log_not_found off;
-            access_log off;
-          }
-          location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)/ {
-            deny all;
-          }
-          location ~ ^/(?:autotest|occ|issue|indie|db_|console) {
-            deny all;
-          }
-      path: /
-      pathType: Prefix
 
     nextcloud:
       host: *hostname

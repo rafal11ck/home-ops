@@ -7,5 +7,4 @@ components:
   - ../../components/common
 resources:
   - ./echo-server/ks.yaml
-  - ./podinfo/ks.yaml
   - ./nextcloud/ks.yaml
