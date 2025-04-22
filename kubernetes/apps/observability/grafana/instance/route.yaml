@@ -10,7 +10,7 @@ spec:
       namespace: kube-system
       sectionName: https
   hostnames:
-    - *hostname
+    - grafana.${SECRET_DOMAIN}
   rules:
     - matches:
         - path:

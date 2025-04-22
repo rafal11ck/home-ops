@@ -15,7 +15,7 @@ spec:
         - ReadWriteOnce
   config:
     server:
-      domain: &hostname grafana.${SECRET_DOMAIN}
+      domain: grafana.${SECRET_DOMAIN}
       root_url: https://grafana.${SECRET_DOMAIN}
     analytics:
       check_for_updates: 'false'
