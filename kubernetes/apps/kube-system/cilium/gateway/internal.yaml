@@ -12,9 +12,6 @@ spec:
       value: *ip4
     - type: IPAddress
       value: ::ffff:192.168.0.241
-  infrastructure:
-    annotations:
-      external-dns.alpha.kubernetes.io/hostname: *hostname
   listeners:
     - name: http
       protocol: HTTP
