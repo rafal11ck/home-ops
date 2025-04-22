@@ -60,7 +60,7 @@ spec:
       - --crd-source-kind=DNSEndpoint
       - --gateway-name=external
     policy: sync
-    sources: ['ingress', 'service', 'crd']
+    sources: ['gateway-httproute', 'service', 'crd']
     registry: noop
     domainFilters: ['${SECRET_DOMAIN}', '.internal']
     podAnnotations:

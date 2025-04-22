@@ -40,7 +40,7 @@ spec:
       - --crd-source-kind=DNSEndpoint
       - --gateway-name=external
     policy: sync
-    sources: ['crd', 'ingress']
+    sources: ['crd', 'gateway-httproute']
     txtPrefix: k8s.
     txtOwnerId: default
     domainFilters: ['${SECRET_DOMAIN}']
