@@ -22,27 +22,6 @@ gatewayAPI:
   enableAlpn: true
 dashboards:
   enabled: true
-hubble:
-  enabled: true
-  metrics:
-    enabled:
-      - dns:query
-      - drop
-      - tcp
-      - flow
-      - port-distribution
-      - icmp
-      - http
-    serviceMonitor:
-      enabled: true
-    dashboards:
-      enabled: true
-  relay:
-    enabled: true
-    rollOutPods: true
-    prometheus:
-      serviceMonitor:
-        enabled: true
 ipam:
   mode: kubernetes
 ipv4NativeRoutingCIDR: '10.69.0.0/16'
