@@ -83,6 +83,8 @@ spec:
             scrapeTimeout: 10s
     route:
       app:
+        hostnames:
+          - echo-server.${SECRET_DOMAIN}
         parentRefs:
           - name: external
             namespace: kube-system
