@@ -10,8 +10,6 @@ spec:
   addresses:
     - type: IPAddress
       value: *ip4
-    - type: IPAddress
-      value: ::ffff:192.168.0.241
   listeners:
     - name: http
       protocol: HTTP
