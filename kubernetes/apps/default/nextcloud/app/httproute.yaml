@@ -6,7 +6,7 @@ metadata:
   name: nextcloud
   annotations:
     external-dns.alpha.kubernetes.io/target: ${SECRET_PUBLIC_IP}
-    external-dns.alpha.kubernetes.io/hostname: &hostname ${SECRET_PUBLIC_IP}
+    external-dns.alpha.kubernetes.io/hostname: &hostname cloud.${SECRET_DOMAIN}
     external-dns.alpha.kubernetes.io/cloudflare-proxied: 'false'
 spec:
   parentRefs:
