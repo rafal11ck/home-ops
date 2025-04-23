@@ -52,6 +52,13 @@ spec:
               sectionName: https
       alertmanagerSpec:
         externalUrl: https://alertmanager.${SECRET_DOMAIN}
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: ceph-block
+              resources:
+                requests:
+                  storage: 1Gi
     kubeEtcd:
       service:
         selector:
