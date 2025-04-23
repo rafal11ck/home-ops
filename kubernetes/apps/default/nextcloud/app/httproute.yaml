@@ -5,7 +5,8 @@ kind: HTTPRoute
 metadata:
   name: nextcloud
   annotations:
-    external-dns.alpha.kubernetes.io/target: '${SECRET_PUBLIC_IP}'
+    external-dns.alpha.kubernetes.io/target: ${SECRET_PUBLIC_IP}
+    external-dns.alpha.kubernetes.io/hostname: &hostname ${SECRET_PUBLIC_IP}
     external-dns.alpha.kubernetes.io/cloudflare-proxied: 'false'
 spec:
   parentRefs:
@@ -13,7 +14,7 @@ spec:
       namespace: kube-system
       sectionName: https
   hostnames:
-    - cloud.${SECRET_DOMAIN}
+    - *hostname
   rules:
     - backendRefs: &backendRef
         - name: nextcloud
