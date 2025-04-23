@@ -20,8 +20,9 @@ spec:
             type: PathPrefix
             value: /resources
       backendRefs:
-        - name: grafana-service
+        - name: keycloak-service
           port: 8080
+
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/gateway.networking.k8s.io/httproute_v1.json
 apiVersion: gateway.networking.k8s.io/v1
