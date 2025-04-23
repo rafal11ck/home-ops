@@ -16,7 +16,11 @@ cgroup:
 endpointRoutes:
   enabled: true
 envoy:
-  enabled: false
+  rollOutPods: true
+  prometheus:
+    serviceMonitor:
+      enabled: true
+
 gatewayAPI:
   enabled: true
   enableAlpn: true
