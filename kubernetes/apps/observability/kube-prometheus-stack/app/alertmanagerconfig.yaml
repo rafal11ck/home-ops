@@ -17,6 +17,10 @@ spec:
           - name: alertname
             value: InfoInhibitor
             matchType: =
+      - reciver: 'null'
+        matchers:
+          - name: alertname
+            value: CephNodeNetworkPacketDrops # TODO disable TCP offloading and see if it helps after talos 1.10 release
       - receiver: discord
         matchers:
           - name: severity
