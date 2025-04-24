@@ -27,3 +27,7 @@ spec:
     access: proxy
     url: http://kube-prometheus-stack-alertmanager.observability.svc.cluster.local:9093
     isDefault: true
+    jsonData:
+      'implementation': prometheus
+      # Whether or not Grafana should send alert instances to this Alertmanager
+      'handleGrafanaManagedAlerts': false
