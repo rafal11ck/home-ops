@@ -8,4 +8,8 @@ metadata:
 spec:
   storageClassName: 'ceph-filesystem'
   resources:
-    storage: 150Gi
+    requests:
+      storage: 150Gi
+  volumeMode: Filesystem
+  accessModes:
+    - 'ReadWriteMany'
