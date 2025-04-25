@@ -6,5 +6,4 @@ resources:
   - ./helmrelease.yaml
   - ./client.yaml
   - ./httproute.yaml
-  - ./pvc.yaml
   - ./storageClass.yaml
