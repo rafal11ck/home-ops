@@ -1,3 +1,5 @@
+---
+#using ceph as NAS
 apiVersion: ceph.rook.io/v1
 kind: CephClient
 metadata:
