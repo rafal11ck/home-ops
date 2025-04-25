@@ -1,37 +1,9 @@
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: ceph-filesystem-ext
-spec:
-  accessModes:
-    - ReadWriteMany
-  capacity:
-    storage: 50Gi
-  csi:
-    driver: rook-ceph.cephfs.csi.ceph.com
-    nodeStageSecretRef:
-      # node stage secret name
-      name: rook-csi-cephfs-node
-      # node stage secret namespace where above secret is created
-      namespace: rook-ceph
-    volumeAttributes:
-      # optional file system to be mounted
-      'fsName': 'ceph-filesystem'
-      # Required options from storageclass parameters need to be added in volumeAttributes
-      'clusterID': 'rook-ceph'
-      'staticVolume': 'true'
-      'rootPath': /ext
-    # volumeHandle can be anything, need not to be same
-    # as PV name or volume name. keeping same for brevity
-    volumeHandle: ceph-filesystem-ext
-  persistentVolumeReclaimPolicy: Retain
-  volumeMode: Filesystem
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: ceph-filesystem-ext
-  namespace: rook-ceph
+  annotations:
+    kustomize.toolkit.fluxcd.io/prune: disabled
 spec:
   accessModes:
     - ReadWriteMany
@@ -40,4 +12,4 @@ spec:
       storage: 50Gi
   volumeMode: Filesystem
   volumeName: ceph-filesystem-ext
-  storageClassName: '' # directly binding to a PV
+  storageClassName: ceph-filesystem
