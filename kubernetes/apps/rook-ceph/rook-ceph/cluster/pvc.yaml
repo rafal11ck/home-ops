@@ -13,5 +13,4 @@ spec:
     requests:
       storage: 50Gi
   volumeMode: Filesystem
-  volumeName: ceph-filesystem-nas
   storageClassName: ceph-filesystem-retain
