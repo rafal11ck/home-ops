@@ -1,7 +1,10 @@
+---
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: PersistentVolume
 metadata:
-  name: gallery
+  name: immich
+  annotations:
+    kustomize.toolkit.fluxcd.io/prune: Disabled
 spec:
   resources:
     requests:
@@ -10,3 +13,14 @@ spec:
   volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: immich
+  annotations:
+    kustomize.toolkit.fluxcd.io/prune: Disabled
+spec:
+  storageClassName: 'ceph-filesystem'
+  volumeName: immich
