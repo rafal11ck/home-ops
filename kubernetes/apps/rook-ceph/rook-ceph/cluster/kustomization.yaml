@@ -7,3 +7,4 @@ resources:
   - ./client.yaml
   - ./httproute.yaml
   - ./pvc.yaml
+  - ./storageClass.yaml

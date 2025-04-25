@@ -1,8 +1,10 @@
+---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: ceph-filesystem-ext
-  annotations:
+  namespace: rook-ceph
+  annotation:
     kustomize.toolkit.fluxcd.io/prune: disabled
 spec:
   accessModes:
@@ -11,5 +13,5 @@ spec:
     requests:
       storage: 50Gi
   volumeMode: Filesystem
-  volumeName: ceph-filesystem-ext
-  storageClassName: ceph-filesystem
+  volumeName: ceph-filesystem-nas
+  storageClassName: ceph-filesystem-retain
