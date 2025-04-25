@@ -150,7 +150,7 @@ spec:
     cephBlockPoolsVolumeSnapshotClass:
       enabled: true
       name: ceph-block
-      isDefault: false
+      isDefault: true
       deletionPolicy: Delete
     cephFileSystems:
       - name: ceph-filesystem
@@ -197,7 +197,7 @@ spec:
     cephFileSystemVolumeSnapshotClass:
       enabled: true
       name: ceph-filesystem
-      isDefault: false
+      isDefault: true
       deletionPolicy: Delete
     cephObjectStores:
       - name: ceph-objectstore
