@@ -6,6 +6,6 @@ metadata:
 spec:
   name: pc01
   caps:
-    mds: 'allow rw fsname=ceph-filesystem path=/ext'
+    mds: 'allow rw fsname=ceph-filesystem path=/ext, allow r fsname=ceph-filesystem path=/'
     mon: 'allow r fsname=ceph-filesystem'
     osd: 'allow rw tag cephfs data=ceph-filesystem'
