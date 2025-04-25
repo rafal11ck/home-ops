@@ -26,3 +26,18 @@ spec:
     volumeHandle: ceph-filesystem-ext
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ceph-filesystem-ext
+  namespace: rook-ceph
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 50Gi
+  volumeMode: Filesystem
+  volumeName: ceph-filesystem-ext
+  storageClassName: '' # directly binding to a PV
