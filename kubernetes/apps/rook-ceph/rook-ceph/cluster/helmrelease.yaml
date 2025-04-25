@@ -133,7 +133,7 @@ spec:
           enabled: true
           name: ceph-block
           isDefault: false
-          reclaimPolicy: Delete
+          reclaimPolicy: Retain
           allowVolumeExpansion: true
           volumeBindingMode: Immediate
           parameters:
@@ -151,7 +151,7 @@ spec:
       enabled: true
       name: ceph-block
       isDefault: false
-      deletionPolicy: Delete
+      deletionPolicy: Retain
     cephFileSystems:
       - name: ceph-filesystem
         spec:
