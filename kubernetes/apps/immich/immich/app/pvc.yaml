@@ -6,7 +6,7 @@ metadata:
   annotations:
     kustomize.toolkit.fluxcd.io/prune: Disabled
 spec:
-  storageClassName: 'ceph-filesystem'
+  storageClassName: ceph-filesystem-retain
   resources:
     requests:
       storage: 150Gi
