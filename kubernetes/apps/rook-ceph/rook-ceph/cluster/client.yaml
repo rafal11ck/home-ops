@@ -8,6 +8,6 @@ metadata:
 spec:
   name: pc01
   caps:
-    mds: 'allow rw fsname=ceph-filesystem path=/ext, allow r fsname=ceph-filesystem path=/'
+    mds: 'allow rwx fsname=ceph-filesystem root_squash path=/ext, allow r fsname=ceph-filesystem path=/volumes'
     mon: 'allow r fsname=ceph-filesystem'
-    osd: 'allow rw tag cephfs data=ceph-filesystem'
+    osd: 'allow rw tag cephfs data=data0'
