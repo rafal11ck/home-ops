@@ -210,6 +210,8 @@ spec:
             failureDomain: host
             replicated:
               size: 3
+          allowUsersInNamespaces:
+            - velero
           preservePoolsOnDelete: false
           gateway:
             port: 80
