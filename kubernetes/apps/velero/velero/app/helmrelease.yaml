@@ -42,10 +42,10 @@ spec:
     resources:
       requests:
         cpu: 50m
-        memeory: 128Mi
+        memory: 128Mi
       limits:
         cpu: 500m
-        memeory: 512Mi
+        memory: 512Mi
     configuration:
       features: EnableCSI
       backupStorageLocation:
