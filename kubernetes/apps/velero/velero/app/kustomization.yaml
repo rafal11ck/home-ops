@@ -6,3 +6,4 @@ resources:
   - ./objectBucketClaim.yaml
   - ./credentials-velero.sops.yaml
   - ./helmrelease.yaml
+  - ./credentials-velero.sops.yaml
