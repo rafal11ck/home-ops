@@ -3,5 +3,5 @@ kind: ObjectBucketClaim
 metadata:
   name: velero-bucket
 spec:
-  generateBucketName: velero-bucket
+  bucketName: velero-bucket
   storageClassName: ceph-bucket
