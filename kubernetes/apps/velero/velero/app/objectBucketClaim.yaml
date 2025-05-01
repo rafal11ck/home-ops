@@ -1,7 +1,7 @@
 apiVersion: objectbucket.io/v1alpha1
 kind: ObjectBucketClaim
 metadata:
-  name: ceph-bucket-velero
+  name: velero-bucket
 spec:
-  generateBucketName: velero
+  generateBucketName: velero-bucket
   storageClassName: ceph-bucket

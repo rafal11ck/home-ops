@@ -51,9 +51,9 @@ spec:
       backupStorageLocation:
         - name: default
           provider: aws # ceph object store s3
-          bucket: velero
+          bucket: velero-bucket
           credential:
-            name: ceph-bucket-velero
+            name: velero-bucket-plugin-format
             key: s3-credentials
           config:
             region: eu-central-1
