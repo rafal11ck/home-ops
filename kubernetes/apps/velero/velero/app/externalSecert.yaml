@@ -1,0 +1,23 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: &secretName velero-bucket-plugin-format
+spec:
+  secretStoreRef:
+    name: k8s-store-velero
+  target:
+    name: *secretName
+    template:
+      engineVersion: v2
+      data:
+        s3-credentials: |-
+          [default]
+          aws_access_key_id={{.AWS_ACCESS_KEY_ID}}
+          aws_secret_access_key={{.AWS_SECRET_ACCESS_KEY}}
+  data:
+    - secretKey: AWS_ACCESS_KEY_ID
+      remoteRef:
+        key: /velero-bucket/AWS_ACCESS_KEY_ID
+    - secretKey: AWS_SECRET_ACCESS_KEY
+      remoteRef:
+        key: /velero-bucket/AWS_SECRET_ACCESS_KEY
