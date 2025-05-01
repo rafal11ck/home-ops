@@ -17,7 +17,9 @@ spec:
   data:
     - secretKey: AWS_ACCESS_KEY_ID
       remoteRef:
-        key: /velero-bucket/AWS_ACCESS_KEY_ID
+        key: velero-bucket
+        property: AWS_ACCESS_KEY_ID
     - secretKey: AWS_SECRET_ACCESS_KEY
       remoteRef:
-        key: /velero-bucket/AWS_SECRET_ACCESS_KEY
+        key: velero-bucket
+        property: AWS_SECRET_ACCESS_KEY
