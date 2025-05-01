@@ -6,11 +6,38 @@ metadata:
   name: &app velero
   namespace: &namespace velero
 spec:
+  dependsOn:
+    - name: velero-store
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
   interval: 1h
   path: ./kubernetes/apps/velero/velero/app
+  prune: false # keep
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *namespace
+  timeout: 5m
+  wait: false
+
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app velero-store
+  namespace: &namespace velero
+spec:
+  dependsOn:
+    - name: external-secrets
+      namespace: external-secrets
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  interval: 1h
+  path: ./kubernetes/apps/velero/velero/stores/
   prune: false # keep
   sourceRef:
     kind: GitRepository
