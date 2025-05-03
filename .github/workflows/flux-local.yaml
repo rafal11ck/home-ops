@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # renovate: datasource=github-releases depName=keycloak/keycloak-k8s-resources
+  # renovate: datasource=github-releases depName=keycloak/keycloak
   KEYCLOAK_K8S_RESOURCES_TAG: 26.1.3
 
 jobs:
