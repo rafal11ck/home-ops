@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run flux-local test
-        uses: docker://ghcr.io/allenporter/flux-local:pr-872
+        uses: docker://ghcr.io/allenporter/flux-local:v7.5.0
         with:
           args: test --enable-helm --all-namespaces --path /github/workspace/kubernetes/flux/cluster -v
 
@@ -54,7 +54,7 @@ jobs:
         run: git clone https://github.com/keycloak/keycloak-k8s-resources.git "$RUNNER_TEMP/keycloak-k8s-resources"
 
       - name: Run flux-local diff
-        uses: docker://ghcr.io/allenporter/flux-local:pr-872
+        uses: docker://ghcr.io/allenporter/flux-local:v7.5.0
         with:
           args: >-
             --log-level=DEBUG
