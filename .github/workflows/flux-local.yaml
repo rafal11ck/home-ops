@@ -22,10 +22,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Clone dependency repos
+        run: git clone --branch 26.1.3 https://github.com/keycloak/keycloak-k8s-resources.git "keycloak-k8s-resources" # TODO do better
+
       - name: Run flux-local test
         uses: docker://ghcr.io/allenporter/flux-local:v7.5.0
         with:
-          args: test --enable-helm --all-namespaces --path /github/workspace/kubernetes/flux/cluster -v
+          args: >-
+            test
+            --enable-helm
+            --all-namespaces
+            --path /github/workspace/kubernetes/flux/cluster -v
+            --sources "flux-system,keycloak-k8s-resources=/github/workspace/keycloak-k8s-resources"
 
   diff:
     name: Flux Local Diff
