@@ -51,7 +51,7 @@ jobs:
           path: default
 
       - name: Clone dependency repos
-        run: git clone https://github.com/keycloak/keycloak-k8s-resources.git "/tmp/external/keycloak-k8s-resources" # TODO do better
+        run: git clone --branch 26.1.3 https://github.com/keycloak/keycloak-k8s-resources.git "/tmp/external/keycloak-k8s-resources" # TODO do better
 
       - name: Run flux-local diff
         uses: docker://ghcr.io/allenporter/flux-local:v7.5.0
