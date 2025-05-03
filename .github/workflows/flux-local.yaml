@@ -57,6 +57,7 @@ jobs:
         uses: docker://ghcr.io/allenporter/flux-local:v7.4.0
         with:
           args: >-
+            --log-level=DEBUG
             diff ${{ matrix.resources }}
             --unified 6
             --path /github/workspace/pull/kubernetes/flux/cluster
@@ -66,7 +67,6 @@ jobs:
             --all-namespaces
             --sources "flux-system,keycloak-k8s-resources=$RUNNER_TEMP/keycloak-k8s-resources"
             --output-file diff.patch
-            --log-level=DEBUG
 
       - name: Generate Diff
         id: diff
