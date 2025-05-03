@@ -50,6 +50,9 @@ jobs:
           ref: "${{ github.event.repository.default_branch }}"
           path: default
 
+      - name: Clone dependency repos
+        run: git clone https://github.com/keycloak/keycloak-k8s-resources.git "$RUNNER_TEMP/keycloak-k8s-resources"
+
       - name: Run flux-local diff
         uses: docker://ghcr.io/allenporter/flux-local:v7.4.0
         with:
@@ -61,7 +64,7 @@ jobs:
             --strip-attrs "helm.sh/chart,checksum/config,app.kubernetes.io/version,chart"
             --limit-bytes 10000
             --all-namespaces
-            --sources "flux-system"
+            --sources "flux-system,keycloak-k8s-resources=$RUNNER_TEMP/keycloak-k8s-resources"
             --output-file diff.patch
 
       - name: Generate Diff
