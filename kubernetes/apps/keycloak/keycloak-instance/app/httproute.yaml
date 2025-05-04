@@ -20,7 +20,7 @@ spec:
             type: PathPrefix
             value: /resources
       backendRefs:
-        - name: keycloak-service
+        - name: keycloak-instance-service
           port: 8080
     - matches:
         - path:
@@ -53,5 +53,5 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: keycloak-service
+        - name: keycloak-instance-service
           port: 8080
