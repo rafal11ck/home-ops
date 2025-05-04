@@ -31,3 +31,6 @@ spec:
     enabled: false
   scheduling:
     priorityClassName: system-cluster-critical
+  additionalOptions:
+    - name: metrics-enabled
+      value: 'true'
