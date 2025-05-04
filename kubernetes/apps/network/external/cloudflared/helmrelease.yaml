@@ -12,7 +12,7 @@ spec:
       version: 3.7.3
       sourceRef:
         kind: HelmRepository
-        name: bjw-s
+        name: bjw-s-labs
         namespace: flux-system
   install:
     remediation:
@@ -26,7 +26,7 @@ spec:
       cloudflared:
         strategy: RollingUpdate
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
         containers:
           app:
             image:
@@ -49,7 +49,7 @@ spec:
               - --config
               - /etc/cloudflared/config/config.yaml
               - run
-              - "$(TUNNEL_ID)"
+              - '$(TUNNEL_ID)'
             probes:
               liveness: &probes
                 enabled: true
@@ -66,7 +66,7 @@ spec:
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
-              capabilities: { drop: ["ALL"] }
+              capabilities: { drop: ['ALL'] }
             resources:
               requests:
                 cpu: 10m
