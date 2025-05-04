@@ -17,8 +17,8 @@
   dependencyDashboard: true,
   dependencyDashboardTitle: "Renovate Dashboard 🤖",
   suppressNotifications: ["prEditedNotification", "prIgnoreNotification"],
-  "description": "Schedule daily before 18:00",
-  schedule: ["* 0-18 * * *"],
+  "description": "Schedule immediately",
+  schedule: ["* * * * *"],
   ignorePaths: ["**/*.sops.*"],
   flux: {
     fileMatch: ["(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$"],
