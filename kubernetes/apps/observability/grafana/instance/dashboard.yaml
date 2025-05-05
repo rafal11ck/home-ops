@@ -248,3 +248,6 @@ spec:
   url:
     # renovate: datasource=git-refs depName=keycloak/keycloak-grafana-dashboard
     https://raw.githubusercontent.com/keycloak/keycloak-grafana-dashboard/bec2a0cb36c8d297cbba6cd112cb23eca7c66f7f/dashboards/keycloak-capacity-planning-dashboard.json
+  datasources:
+    - datasourceName: prometheus
+      inputName: DS_PROMETHEUS
