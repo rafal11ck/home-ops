@@ -17,6 +17,7 @@ spec:
     initdb:
       database: keycloak
   backup:
+    retentionPolicy: 2m # 2 months
     barmanObjectStore:
       endpointURL: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc:80
       destinationPath: s3://keycloak-cnpg-bucket/

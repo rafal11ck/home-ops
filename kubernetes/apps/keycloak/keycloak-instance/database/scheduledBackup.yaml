@@ -1,0 +1,9 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: keycloak-database-backup
+spec:
+  schedule: '@weekly'
+  cluster:
+    name: keycloak-database
+  immediate: true
