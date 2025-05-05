@@ -2,13 +2,11 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: keycloak
-  labels:
-    release: prometheus
 spec:
   selector:
     matchLabels:
       app: keycloak
-      instance: keycloak-instance
+      app.kubernetes.io/instance: keycloak-instance
   endpoints:
     - port: management
       path: /metrics
