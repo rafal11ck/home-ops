@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/postgresql.cnpg.io/cluster_v1.json
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: &name immich-database
+spec:
+  description: 'immich database'
+  instances: 1
+  primaryUpdateStrategy: unsupervised
+  imageName: ghcr.io/tensorchord/cloudnative-pgvecto.rs:16.5-v0.3.0 # https://github.com/immich-app/immich/discussions/14280
+  storage:
+    size: 16Gi
+    storageClass: ceph-block
+  monitoring:
+    enablePodMonitor: true
+  bootstrap:
+    initdb:
+      database: immich
+      owner: immich
+      postInitSQL:
+        - ALTER USER immich WITH SUPERUSER;
+  backup:
+    volumeSnapshot:
+      className: ceph-block
+      snapshotOwnerReference: backup
+  postgresql:
+    shared_preload_libraries:
+      - 'vectors.so'
+    parameters:
+      search_path: '"$user", public, vectors'
