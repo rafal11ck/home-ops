@@ -34,7 +34,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   interval: 1h
-  path: ./kubernetes/apps/immich/database/
+  path: ./kubernetes/apps/immich/immich/database/
   prune: true
   sourceRef:
     kind: GitRepository
@@ -58,7 +58,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   interval: 1h
-  path: ./kubernetes/apps/immich/dragonfly/
+  path: ./kubernetes/apps/immich/immich/dragonfly/
   prune: true
   sourceRef:
     kind: GitRepository
