@@ -44,6 +44,7 @@ spec:
   wait: false
   dependsOn:
     - name: cloudnative-pg
+      namespace: database
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -67,3 +68,4 @@ spec:
   wait: false
   dependsOn:
     - name: dragonfly-operator
+      namespace: dragonfly-operator-system
