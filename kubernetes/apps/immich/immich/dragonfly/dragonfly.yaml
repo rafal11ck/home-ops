@@ -30,6 +30,10 @@ spec:
       resources:
         requests:
           storage: 400Mi
+  authentication:
+    passwordFromSecret:
+      name: immich-dragonfly-secret
+      key: password
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
