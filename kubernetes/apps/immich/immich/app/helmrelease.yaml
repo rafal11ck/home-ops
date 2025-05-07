@@ -37,8 +37,40 @@ spec:
       REDIS_USERNAME: dragonfly
       REDIS_PASSOWRD:
         valueFrom:
-          secretKetRef:
+          secretKeyRef:
             name: immich-dragonfly-secret
+            key: password
+      DB_HOSTNAME:
+        # HACK This will be ignored by immich but chart by default
+        # will break if not using builtin postgres
+        # so just overwrite ones set by it to correct ones
+        valueFrom:
+          secretKeyRef:
+            name: immich-database-app
+            key: host
+      DB_USERNAME:
+        # HACK This will be ignored by immich but chart by default
+        # will break if not using builtin postgres
+        # so just overwrite ones set by it to correct ones
+        valueFrom:
+          secretKeyRef:
+            name: immich-database-app
+            key: user
+      DB_DATABASE_NAME:
+        # HACK This will be ignored by immich but chart by default
+        # will break if not using builtin postgres
+        # so just overwrite ones set by it to correct ones
+        valueFrom:
+          secretKeyRef:
+            name: immich-database-app
+            key: dbname
+      DB_DATABASE_PASSWORD:
+        # HACK This will be ignored by immich but chart by default
+        # will break if not using builtin postgres
+        # so just overwrite ones set by it to correct ones
+        valueFrom:
+          secretKeyRef:
+            name: immich-database-app
             key: password
       DB_URL:
         valueFrom:
@@ -56,7 +88,6 @@ spec:
       persistence:
         library:
           existingClaim: immich-library
-
       configuration: # see https://immich.app/docs/install/config-file/
         passwordLogin:
           enabled: false
