@@ -6,5 +6,5 @@ resources:
   - ./immich-library.yaml
   - ./ml-cache.yaml
   - ./helmrelease.yaml
-  - ./secrets.sops.yaml
+  - ./secret.sops.yaml
   - ./httproute.yaml
