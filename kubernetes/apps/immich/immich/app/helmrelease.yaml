@@ -30,17 +30,24 @@ spec:
     remediation:
       retries: 3
   values:
-    env:
-     REDIS_HOSTNAME: immich-dragonfly.immich.svc
-     REDIS_USERNAME: dragonfly
-     REDIS_PASSOWRD:
-       valueFrom:
-        secretKetRef:
-          name: immich-dragonfly-secret
-          key: password
-    e
     image:
       tag: v1.132.3
+    env:
+      REDIS_HOSTNAME: immich-dragonfly.immich.svc
+      REDIS_USERNAME: dragonfly
+      REDIS_PASSOWRD:
+        valueFrom:
+          secretKetRef:
+            name: immich-dragonfly-secret
+            key: password
+      DB_URL:
+        valueFrom:
+          secretKeyRef:
+            name: immich-database-app
+            key: uri
     immich:
       metrics:
         enabled: true
+      persistence:
+        library:
+          existingClaim: immich-library
