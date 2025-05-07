@@ -1,4 +1,5 @@
 ---
+# TODO do better after https://github.com/immich-app/immich-charts/issues/165
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/gateway.networking.k8s.io/httproute_v1.json
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute

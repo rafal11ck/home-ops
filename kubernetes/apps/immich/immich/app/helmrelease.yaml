@@ -56,7 +56,7 @@ spec:
       persistence:
         library:
           existingClaim: immich-library
-      # TODO do better after https://github.com/immich-app/immich-charts/issues/165
+
     machine-learning:
       persistence:
         cache:
