@@ -56,7 +56,6 @@ spec:
       persistence:
         library:
           existingClaim: immich-library
-    server:
       # https://github.com/immich-app/immich-charts/issues/165
       # route:
       #   main:
