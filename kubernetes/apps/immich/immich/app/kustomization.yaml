@@ -7,3 +7,4 @@ resources:
   - ./ml-cache.yaml
   - ./helmrelease.yaml
   - ./secrets.sops.yaml
+  - ./httproute.yaml
