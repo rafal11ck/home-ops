@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/source.toolkit.fluxcd.io/ocirepository_v1beta2.json
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: immich
+spec:
+  interval: 5m
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: copy
+  ref:
+    tag: 0.9.3
+  url: oci://ghcr.io/immich-app/immich-charts/immich
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: external-secrets
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: immich
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    env:
+     REDIS_HOSTNAME: immich-dragonfly.immich.svc
+     REDIS_USERNAME: dragonfly
+     REDIS_PASSOWRD:
+       valueFrom:
+        secretKetRef:
+          name: immich-dragonfly-secret
+          key: password
+    e
+    image:
+      tag: v1.132.3
+    immich:
+      metrics:
+        enabled: true
