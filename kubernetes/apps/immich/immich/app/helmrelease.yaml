@@ -45,6 +45,11 @@ spec:
           secretKeyRef:
             name: immich-database-app
             key: uri
+      TZ:
+        valueFrom:
+          secretKeyRef:
+            name: immich-app
+            key: TZ
     immich:
       metrics:
         enabled: true
