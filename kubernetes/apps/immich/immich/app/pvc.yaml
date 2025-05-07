@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: immich
+  name: immich-library
   annotations:
     kustomize.toolkit.fluxcd.io/prune: Disabled
 spec:
