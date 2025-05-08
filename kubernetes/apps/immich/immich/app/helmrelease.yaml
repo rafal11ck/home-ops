@@ -89,7 +89,7 @@ spec:
           existingClaim: immich-library
       configuration: # see https://immich.app/docs/install/config-file/
         passwordLogin:
-          enabled: false
+          enabled: true #TODO DISABLE
     machine-learning:
       persistence:
         cache:
