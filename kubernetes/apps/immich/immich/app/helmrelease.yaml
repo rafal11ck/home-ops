@@ -34,7 +34,6 @@ spec:
       tag: v1.132.3
     env:
       REDIS_HOSTNAME: immich-dragonfly.immich.svc
-      REDIS_USERNAME: dragonfly
       REDIS_PASSOWRD:
         valueFrom:
           secretKeyRef:
