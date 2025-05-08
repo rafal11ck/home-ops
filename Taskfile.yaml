@@ -22,7 +22,6 @@ includes:
   bootstrap: .taskfiles/bootstrap
   talos: .taskfiles/talos
   kubernetes: .taskfiles/kubernetes
-  flux: .taskfiles/flux
 
 tasks:
   default: task --list
