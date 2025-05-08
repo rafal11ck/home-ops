@@ -8,7 +8,7 @@ spec:
   route:
     groupBy: ['alertname', 'job']
     groupInterval: 10m
-    groupWait: 1m
+    groupWait: 2m
     repeatInterval: 12h
     receiver: discord
     routes:
