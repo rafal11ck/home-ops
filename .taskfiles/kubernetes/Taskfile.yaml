@@ -16,3 +16,4 @@ tasks:
     preconditions:
       - test -f {{.KUBERNETES_RESOURCES_DIR}}/privileged-pod.tmpl.yaml
       - which envsubst
+  
