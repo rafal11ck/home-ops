@@ -1,29 +1,33 @@
 version: '3'
 
 tasks:
-  suspend-all:
-    desc: Suspend all Kustomization and HelmRelease resources in all namespaces
+  suspend:
+    desc: Suspend specific resource types in all namespaces
+    vars:
+      resources: '{{.CLI_ARGS | default "kustomization helmrelease"}}'
     cmds:
       - |
-        resources="kustomization helmrelease"
+        resources="{{.resources}}"
         namespaces="$(kubectl get ns -o yaml | yq '.items[].metadata.name')"
-        printf "$namespaces"
         for ns in $namespaces; do
           for rt in $resources; do
-            printf "suspend all $rt in $ns"
+            echo "Suspending $rt in namespace $ns"
             flux suspend "$rt" --all -n "$ns" || true
           done
         done
     silent: false
 
-  resume-all:
-    desc: Resume all Kustomization and HelmRelease resources in all namespaces
+  resume:
+    desc: Resume specific resource types in all namespaces
+    vars:
+      resources: '{{.CLI_ARGS | default "kustomization helmrelease"}}'
     cmds:
       - |
-        resources="kustomization helmrelease"
-        namespaces=$(kubectl get ns -o yaml | yq '.items[].metadata.name')
+        resources="{{.resources}}"
+        namespaces="$(kubectl get ns -o yaml | yq '.items[].metadata.name')"
         for ns in $namespaces; do
           for rt in $resources; do
+            echo "Resuming $rt in namespace $ns"
             flux resume "$rt" --all -n "$ns"
           done
         done
