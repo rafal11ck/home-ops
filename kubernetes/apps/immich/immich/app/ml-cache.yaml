@@ -3,9 +3,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: immich-machine-learning-cache
 spec:
-  accessModes:
-    - ReadWriteOnce
+  storageClassName: ceph-filesystem
   resources:
     requests:
       storage: 10Gi
-  storageClassName: ceph-block
+  volumeMode: Filesystem
+  accessModes:
+    - 'ReadWriteMany'
