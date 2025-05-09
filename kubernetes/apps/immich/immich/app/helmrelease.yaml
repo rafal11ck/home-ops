@@ -31,6 +31,7 @@ spec:
       retries: 3
   values:
     image:
+      # renovate: datasource=github-releases depName=immich-app/immich
       tag: v1.132.3
     env:
       REDIS_HOSTNAME: immich-dragonfly.immich.svc
