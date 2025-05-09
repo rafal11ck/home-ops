@@ -12,15 +12,15 @@ spec:
     repeatInterval: 12h
     receiver: discord
     routes:
-      - receiver: 'null'
-        matchers:
-          - name: alertname
-            value: InfoInhibitor
-            matchType: =
       - receiver: discord
         matchers:
           - name: severity
             value: critical
+            matchType: =
+      - receiver: 'null'
+        matchers:
+          - name: alertname
+            value: InfoInhibitor
             matchType: =
   inhibitRules:
     - equal: ['alertname', 'namespace']
