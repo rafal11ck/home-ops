@@ -90,8 +90,69 @@ spec:
       # configuration: # see https://immich.app/docs/install/config-file/
       # passwordLogin:
       # enabled: true #TODO DISABLE
+    server:
+      resources:
+        requests:
+          cpu: 50m
+          memory: 350Mi
     machine-learning:
       persistence:
         cache:
           type: pvc
           existingClaim: immich-machine-learning-cache
+      resources:
+        requests:
+          cpu: 50m
+          memory: 350Mi
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: immich-server
+  namespace: default
+spec:
+  minReplicas: 1
+  maxReplicas: 3
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 180
+    scaleDown:
+      stabilizationWindowSeconds: 300
+  metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 50
+          type: Utilization
+      type: Resource
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    # should really only be done for the microservices
+    # needs https://github.com/immich-app/immich-charts/issues/94
+    name: immich-server
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: immich-machine-learning
+  namespace: default
+spec:
+  minReplicas: 1
+  maxReplicas: 3
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 300
+    scaleDown:
+      stabilizationWindowSeconds: 300
+  metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 50
+          type: Utilization
+      type: Resource
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: immich-machine-learning
