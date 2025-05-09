@@ -22,13 +22,9 @@ spec:
   chartRef:
     kind: OCIRepository
     name: immich
-  install:
-    remediation:
-      retries: 3
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      retries: 3
+  valuesFrom:
+    - kind: Secret
+      name: immich-app
   values:
     image:
       # renovate: datasource=github-releases depName=immich-app/immich
@@ -88,9 +84,50 @@ spec:
       persistence:
         library:
           existingClaim: immich-library
-      # configuration: # see https://immich.app/docs/install/config-file/
-      # passwordLogin:
-      # enabled: true #TODO DISABLE
+      configuration: # see https://immich.app/docs/install/config-file/
+        backup:
+          database:
+            enabled: true
+            keepLastAmount: 14
+        ffmpeg:
+          acceptedVideoCodecs:
+            - av1
+          crf: 31
+          preset: slow
+          targetAudioCodec: libopus
+          targetResolution: '1080'
+          targetVideoCodec: av1
+          transcode: required
+        image:
+          fullsize:
+            enabled: true
+            format: webp
+          preview:
+            format: webp
+            size: 720
+          thumbnail:
+            format: webp
+            size: 250
+        newVersionCheck:
+          enabled: false
+        notifications:
+          smtp:
+            enabled: false
+        oauth:
+          enabled: true
+          autoLaunch: true
+          autoRegister: true
+          buttonText: Login with Keycloak
+          storageLabelClaim: preferred_username
+          storageQuotaClaim: immich_quota
+          # mobileOverrideEnabled: false
+          # mobileRedirectUri: ''
+        passwordLogin:
+          enabled: false
+        storageTemplate:
+          enabled: true
+          hashVerificationEnabled: true
+          template: '{{y}}/{{y}}_{{MM}}_{{dd}}__{{hh}}_{{mm}}_{{filename}}'
     server:
       resources:
         requests:
@@ -118,7 +155,7 @@ spec:
     scaleUp:
       stabilizationWindowSeconds: 180
     scaleDown:
-      stabilizationWindowSeconds: 300
+      stabilizationWindowSeconds: 180
   metrics:
     - resource:
         name: cpu
@@ -143,9 +180,9 @@ spec:
   maxReplicas: 3
   behavior:
     scaleUp:
-      stabilizationWindowSeconds: 300
+      stabilizationWindowSeconds: 180
     scaleDown:
-      stabilizationWindowSeconds: 300
+      stabilizationWindowSeconds: 180
   metrics:
     - resource:
         name: cpu
