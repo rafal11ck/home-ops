@@ -7,7 +7,7 @@ metadata:
   name: immich
 spec:
   parentRefs:
-    - name: external
+    - name: internal
       namespace: kube-system
       sectionName: https
   hostnames:
@@ -26,18 +26,18 @@ spec:
       backendRefs:
         - name: immich-server
           port: 2283
----
-# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/externaldns.k8s.io/dnsendpoint_v1alpha1.json
-apiVersion: externaldns.k8s.io/v1alpha1
-kind: DNSEndpoint
-metadata:
-  name: immich
-spec:
-  endpoints:
-    - dnsName: immich.${SECRET_DOMAIN}
-      recordType: A
-      targets:
-        - ${SECRET_PUBLIC_IP}
-      providerSpecific:
-        - name: external-dns.alpha.kubernetes.io/cloudflare-proxied
-          value: 'false'
+# ---
+# # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/externaldns.k8s.io/dnsendpoint_v1alpha1.json
+# apiVersion: externaldns.k8s.io/v1alpha1
+# kind: DNSEndpoint
+# metadata:
+#   name: immich
+# spec:
+#   endpoints:
+#     - dnsName: immich.${SECRET_DOMAIN}
+#       recordType: A
+#       targets:
+#         - ${SECRET_PUBLIC_IP}
+#       providerSpecific:
+#         - name: external-dns.alpha.kubernetes.io/cloudflare-proxied
+#           value: 'false'
