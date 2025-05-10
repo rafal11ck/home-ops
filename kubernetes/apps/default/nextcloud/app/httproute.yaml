@@ -19,25 +19,32 @@ spec:
         - path:
             type: PathPrefix
             value: /
-        - path:
-            type: Exact
-            value: /robots.txt
+      filters:
+        - &hsts
+          type: ResponseHeaderModifier
+          responseHeaderModifier:
+            add:
+              - name: strict-transport-security
+                value: max-age=31536000
     - matches:
         - path:
             type: PathPrefix
             value: /.well-known/webfinger
       filters:
+        - *hsts
         - type: URLRewrite # TODO do better after https://github.com/kubernetes-sigs/gateway-api/issues/2177
           urlRewrite:
             path:
               type: ReplacePrefixMatch
               replacePrefixMatch: /index.php/.well-known/webfinger
+
       backendRefs: *backendRef
     - matches:
         - path:
             type: PathPrefix
             value: /.well-known/nodeinfo
       filters:
+        - *hsts
         - type: URLRewrite
           urlRewrite:
             path:
@@ -49,6 +56,7 @@ spec:
             type: Exact
             value: /.well-known/host-meta
       filters:
+        - *hsts
         - type: URLRewrite
           urlRewrite:
             path:
@@ -60,6 +68,7 @@ spec:
             type: Exact
             value: /.well-known/host-meta.json
       filters:
+        - *hsts
         - type: URLRewrite
           urlRewrite:
             path:
