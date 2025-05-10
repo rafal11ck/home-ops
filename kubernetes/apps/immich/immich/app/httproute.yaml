@@ -17,12 +17,12 @@ spec:
         - path:
             type: PathPrefix
             value: /
-      filters:
-        - type: ResponseHeaderModifier
-          responseHeaderModifier:
-            add:
-              - name: strict-transport-security
-                value: max-age=31536000
+      # filters:
+      # - type: ResponseHeaderModifier
+      # responseHeaderModifier:
+      # add:
+      # - name: strict-transport-security
+      # value: max-age=31536000
       backendRefs:
         - name: immich-server
           port: 2283
@@ -34,7 +34,7 @@ metadata:
   name: immich
 spec:
   endpoints:
-    - dnsName: 'immich.${SECRET_DOMAIN}'
+    - dnsName: immich.${SECRET_DOMAIN}
       recordType: A
       targets:
         - ${SECRET_PUBLIC_IP}
