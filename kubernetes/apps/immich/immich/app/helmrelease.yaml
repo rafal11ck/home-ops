@@ -93,6 +93,7 @@ spec:
           acceptedVideoCodecs:
             - av1
           crf: 31
+          threads: 2
           preset: slow
           targetAudioCodec: libopus
           targetResolution: '1080'
