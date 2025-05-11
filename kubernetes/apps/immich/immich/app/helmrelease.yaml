@@ -105,6 +105,7 @@ spec:
           preview:
             format: webp
             size: 1080
+            quality: 85
           thumbnail:
             format: webp
             size: 480
