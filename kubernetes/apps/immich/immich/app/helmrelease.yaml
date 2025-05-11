@@ -135,6 +135,8 @@ spec:
         requests:
           cpu: 50m
           memory: 350Mi
+        limits:
+          cpu: 2000m
     machine-learning:
       persistence:
         cache:
@@ -142,7 +144,7 @@ spec:
           existingClaim: immich-machine-learning-cache
       resources:
         requests:
-          cpu: 50m
+          cpu: 500m
           memory: 350Mi
 ---
 apiVersion: autoscaling/v2
