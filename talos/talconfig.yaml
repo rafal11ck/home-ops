@@ -24,7 +24,8 @@ cniConfig:
 nodes:
   - hostname: 'talos-01'
     ipAddress: '192.168.0.55'
-    installDisk: '/dev/sdb'
+    installDiskSelector:
+      busPath: /pci0000:00/0000:00:1f.2/ata2/host1/target1:0:0/1:0:0:0
     machineSpec:
       secureboot: false
     talosImageURL: factory.talos.dev/installer/76a2de645c973a8619aad40d543a005c02c7ce78ea107667b4e2556f3fcf2189
@@ -43,7 +44,8 @@ nodes:
           ip: '192.168.0.60'
   - hostname: 'talos-02'
     ipAddress: '192.168.0.56'
-    installDisk: '/dev/sda'
+    installDiskSelector:
+      busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0
     machineSpec:
       secureboot: false
     talosImageURL: factory.talos.dev/installer/76a2de645c973a8619aad40d543a005c02c7ce78ea107667b4e2556f3fcf2189
