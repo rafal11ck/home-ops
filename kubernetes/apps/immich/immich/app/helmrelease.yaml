@@ -104,10 +104,10 @@ spec:
             format: webp
           preview:
             format: webp
-            size: 720
+            size: 1080
           thumbnail:
             format: webp
-            size: 250
+            size: 480
         newVersionCheck:
           enabled: false
         notifications:
