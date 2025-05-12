@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Get keycloak tag
-        uses: mikefarah/yq@v4.45.2
+        uses: mikefarah/yq@v4.45.3
         id: get_keycloak_version
         with:
           cmd: yq 'select(.kind == "GitRepository") | .spec.ref.semver' kubernetes/apps/keycloak/keycloak-operator/ks.yaml
@@ -65,7 +65,7 @@ jobs:
           path: default
 
       - name: Get keycloak tag
-        uses: mikefarah/yq@v4.45.2
+        uses: mikefarah/yq@v4.45.3
         id: get_keycloak_version
         with:
           cmd: yq 'select(.kind == "GitRepository") | .spec.ref.semver' pull/kubernetes/apps/keycloak/keycloak-operator/ks.yaml # it's other path to file than in test job!
