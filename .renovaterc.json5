@@ -1,47 +1,70 @@
 {
-  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   extends: [
-    "config:recommended",
-    "docker:enableMajor",
-    ":automergeBranch",
-    ":dependencyDashboard",
-    ":disableRateLimiting",
-    ":semanticCommits",
-    "github>rafal11ck/home-ops//.renovate/autoMerge.json5",
-    "github>rafal11ck/home-ops//.renovate/customManagers.json5",
-    "github>rafal11ck/home-ops//.renovate/grafanaDashboards.json5",
-    "github>rafal11ck/home-ops//.renovate/labels.json5",
-    "github>rafal11ck/home-ops//.renovate/packageRules.json5",
-    "github>rafal11ck/home-ops//.renovate/semanticCommits.json5",
+    'config:recommended',
+    'docker:enableMajor',
+    ':automergeBranch',
+    ':dependencyDashboard',
+    ':disableRateLimiting',
+    ':semanticCommits',
+    'github>rafal11ck/home-ops//.renovate/autoMerge.json5',
+    'github>rafal11ck/home-ops//.renovate/customManagers.json5',
+    'github>rafal11ck/home-ops//.renovate/grafanaDashboards.json5',
+    'github>rafal11ck/home-ops//.renovate/labels.json5',
+    'github>rafal11ck/home-ops//.renovate/packageRules.json5',
+    'github>rafal11ck/home-ops//.renovate/semanticCommits.json5',
   ],
   dependencyDashboard: true,
-  dependencyDashboardTitle: "Renovate Dashboard 🤖",
-  suppressNotifications: ["prEditedNotification", "prIgnoreNotification"],
-  "description": "Schedule immediately",
-  schedule: ["* * * * *"],
-  ignorePaths: ["**/*.sops.*"],
+  dependencyDashboardTitle: 'Renovate Dashboard 🤖',
+  suppressNotifications: [
+    'prEditedNotification',
+    'prIgnoreNotification',
+  ],
+  description: 'Schedule immediately',
+  schedule: [
+    '* * * * *',
+  ],
+  ignorePaths: [
+    '**/*.sops.*',
+  ],
   flux: {
-    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$"],
+    managerFilePatterns: [
+      '/(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$/',
+    ],
   },
-  "helm-values": {
-    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$"],
+  'helm-values': {
+    managerFilePatterns: [
+      '/(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$/',
+    ],
   },
   helmfile: {
-    fileMatch: ["(^|/)helmfile\\.ya?ml(?:\\.j2)?$"],
+    managerFilePatterns: [
+      '/(^|/)helmfile\\.ya?ml(?:\\.j2)?$/',
+    ],
   },
   kubernetes: {
-    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$"],
+    managerFilePatterns: [
+      '/(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$/',
+    ],
   },
   kustomize: {
-    fileMatch: ["(^|/)kustomization\\.ya?ml(?:\\.j2)?$"],
+    managerFilePatterns: [
+      '/(^|/)kustomization\\.ya?ml(?:\\.j2)?$/',
+    ],
   },
   pip_requirements: {
-    fileMatch: ["(^|/)[\\w-]*requirements(-\\w+)?\\.(txt|pip)(?:\\.j2)?$"],
+    managerFilePatterns: [
+      '/(^|/)[\\w-]*requirements(-\\w+)?\\.(txt|pip)(?:\\.j2)?$/',
+    ],
   },
   packageRules: [
     {
-      matchDatasources: ["docker"],
-      matchPackageNames: ["/ghcr.io\\/cloudnative-pg\\/postgresql/"],
+      matchDatasources: [
+        'docker',
+      ],
+      matchPackageNames: [
+        '/ghcr.io\\/cloudnative-pg\\/postgresql/',
+      ],
       separateMajorMinor: true,
     },
   ],
