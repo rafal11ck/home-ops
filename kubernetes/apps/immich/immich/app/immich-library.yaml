@@ -5,6 +5,8 @@ metadata:
   name: immich-library
   annotations:
     kustomize.toolkit.fluxcd.io/prune: Disabled
+  labels:
+    backup: immich-library
 spec:
   storageClassName: ceph-filesystem
   resources:
