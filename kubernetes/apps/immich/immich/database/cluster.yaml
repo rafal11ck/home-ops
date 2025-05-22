@@ -7,7 +7,7 @@ spec:
   description: 'immich database'
   instances: 1
   primaryUpdateStrategy: unsupervised
-  imageName: ghcr.io/tensorchord/cloudnative-pgvecto.rs:16.5-v0.3.0 # https://github.com/immich-app/immich/discussions/14280
+  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.3.0
   storage:
     size: 16Gi
     storageClass: ceph-block
@@ -25,6 +25,6 @@ spec:
       snapshotOwnerReference: backup
   postgresql:
     shared_preload_libraries:
-      - 'vectors.so'
+      - 'vchord.so'
     parameters:
       search_path: '"$user", public, vectors'
