@@ -146,6 +146,8 @@ spec:
         requests:
           cpu: 150m
           memory: 900Mi
+        limits:
+          cpu: 2500m
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
