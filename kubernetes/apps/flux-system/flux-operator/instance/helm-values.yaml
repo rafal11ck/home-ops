@@ -12,7 +12,19 @@ instance:
     - notification-controller
   sync:
     kind: GitRepository
-    url: "ssh://git@github.com/rafal11ck/home-ops.git"
+    url: 'ssh://git@github.com/rafal11ck/home-ops.git'
     pullSecret: github-deploy-key
-    ref: "refs/heads/main"
+    ref: 'refs/heads/main'
     path: kubernetes/flux/cluster
+  kustomize:
+    patches:
+      - # Disable chart digest tracking
+        # https://github.com/fluxcd/flux2/issues/4910
+        # https://github.com/fluxcd/helm-controller/pull/1212
+        patch: |
+          - op: add
+            path: /spec/template/spec/containers/0/args/-
+            value: --feature-gates=DisableChartDigestTracking=true
+        target:
+          kind: Deployment
+          name: helm-controller
