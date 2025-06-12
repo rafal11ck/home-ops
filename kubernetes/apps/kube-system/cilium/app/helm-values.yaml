@@ -24,6 +24,7 @@ envoy:
 gatewayAPI:
   enabled: true
   enableAlpn: true
+  enableAppProtocol: true
 dashboards:
   enabled: true
 ipam:
@@ -32,12 +33,8 @@ ipv4NativeRoutingCIDR: '10.69.0.0/16'
 k8sServiceHost: 127.0.0.1
 k8sServicePort: 7445
 kubeProxyReplacement: true
-kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
 l2announcements:
   enabled: true
-loadBalancer:
-  algorithm: maglev
-  mode: 'dsr'
 localRedirectPolicy: true
 operator:
   replicas: 1
