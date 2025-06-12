@@ -3,13 +3,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app envoy-gateway
-  namespace: &namespace network
+  name: &app envoy-gateway-app
+  namespace: &namespace envoy-gateway-system
 spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./kubernetes/apps/network/envoy-gateway/app
+  path: ./kubernetes/apps/envoy-gateway-system/envoy-gateway/app
   prune: true
   sourceRef:
     kind: GitRepository
