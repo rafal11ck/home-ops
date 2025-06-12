@@ -62,4 +62,3 @@ spec:
       volumeSnapshotLocation:
         - name: default
           provider: velero.io/csi
-          config:
