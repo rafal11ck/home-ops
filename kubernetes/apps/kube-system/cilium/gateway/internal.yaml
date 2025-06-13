@@ -4,7 +4,7 @@ kind: Gateway
 metadata:
   name: internal
   annotations:
-    external-dns.alpha.kubernetes.io/target: &ip4 192.168.0.241
+    external-dns.alpha.kubernetes.io/target: &ip4 192.168.0.240
 spec:
   gatewayClassName: envoy
   addresses:
@@ -29,3 +29,6 @@ spec:
         certificateRefs:
           - kind: Secret
             name: '${SECRET_DOMAIN/./-}-tls'
+  infrastructure:
+    annotations:
+      lbipam.cilium.io/ips: *ip4

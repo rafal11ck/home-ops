@@ -9,7 +9,7 @@ spec:
   gatewayClassName: envoy
   addresses:
     - type: IPAddress
-      value: 192.168.0.243
+      value: &ip4 192.168.0.241
   listeners:
     - name: http
       protocol: HTTP
@@ -29,3 +29,6 @@ spec:
         certificateRefs:
           - kind: Secret
             name: '${SECRET_DOMAIN/./-}-tls'
+  infrastructure:
+    annotations:
+      lbipam.cilium.io/ips: *ip4
