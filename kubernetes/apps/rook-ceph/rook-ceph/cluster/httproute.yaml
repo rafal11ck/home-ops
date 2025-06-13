@@ -9,7 +9,7 @@ spec:
     - 'rook.${SECRET_DOMAIN}'
   parentRefs:
     - name: internal
-      namespace: kube-system
+      namespace: envoy-gateway-system
       sectionName: https
   rules:
     - backendRefs:

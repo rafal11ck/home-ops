@@ -5,7 +5,7 @@ metadata:
 spec:
   parentRefs:
     - name: external
-      namespace: kube-system
+      namespace: envoy-gateway-system
       sectionName: https
   hostnames:
     - llm.${SECRET_DOMAIN}

@@ -87,7 +87,7 @@ spec:
           - echo-server.${SECRET_DOMAIN}
         parentRefs:
           - name: external
-            namespace: kube-system
+            namespace: envoy-gateway-system
             sectionName: https
         rules:
           - backendRefs:

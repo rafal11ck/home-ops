@@ -48,7 +48,7 @@ spec:
             - alertmanager.${SECRET_DOMAIN}
           parentRefs:
             - name: internal
-              namespace: kube-system
+              namespace: envoy-gateway-system
               sectionName: https
       alertmanagerSpec:
         externalUrl: https://alertmanager.${SECRET_DOMAIN}
@@ -79,7 +79,7 @@ spec:
             - prometheus.${SECRET_DOMAIN}
           parentRefs:
             - name: internal
-              namespace: kube-system
+              namespace: envoy-gateway-system
               sectionName: https
       prometheusSpec:
         # diable some stuffs that are marked for removal upstream

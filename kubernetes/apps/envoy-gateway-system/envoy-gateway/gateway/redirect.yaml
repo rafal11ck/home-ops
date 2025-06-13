@@ -9,10 +9,10 @@ metadata:
 spec:
   parentRefs:
     - name: internal
-      namespace: kube-system
+      namespace: envoy-gateway-system
       sectionName: http
     - name: external
-      namespace: kube-system
+      namespace: envoy-gateway-system
       sectionName: http
   rules:
     - filters:

@@ -8,7 +8,7 @@ metadata:
 spec:
   parentRefs:
     - name: external
-      namespace: kube-system
+      namespace: envoy-gateway-system
       sectionName: https
   hostnames:
     - immich.${SECRET_DOMAIN}
