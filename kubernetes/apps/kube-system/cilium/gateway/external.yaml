@@ -6,7 +6,7 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/target: external.${SECRET_DOMAIN}
 spec:
-  gatewayClassName: cilium
+  gatewayClassName: envoy
   addresses:
     - type: IPAddress
       value: 192.168.0.243
