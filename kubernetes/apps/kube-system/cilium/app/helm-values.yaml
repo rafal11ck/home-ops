@@ -51,6 +51,9 @@ prometheus:
     enabled: true
     trustCRDsExist: true
 rollOutCiliumPods: true
+loadBalancer:
+  algorithm: maglev
+  mode: 'dsr'
 routingMode: native
 securityContext:
   capabilities:
