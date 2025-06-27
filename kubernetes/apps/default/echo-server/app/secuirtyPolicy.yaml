@@ -6,13 +6,13 @@ metadata:
 spec:
   targetRefs:
     - group: gateway.networking.k8s.io
-      kind: Gateway
-      name: eg
+      kind: HTTPRoute
+      name: echo-server-app-sec
   oidc:
     provider:
       issuer: 'https://auth.${SECRET_DOMAIN}/realms/home-ops'
     clientID: 'echo-server-sec'
     clientSecret:
       name: 'echo-server-sec-secret'
-    redirectURL: 'https://echo-server-sec.${SECRET_DOMAIN}'
+    redirectURL: 'https://echo-server-sec.${SECRET_DOMAIN}/'
     cookieDomain: '${SECRET_DOMAIN}'
