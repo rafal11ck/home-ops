@@ -14,5 +14,4 @@ spec:
     clientID: 'echo-server-sec'
     clientSecret:
       name: 'echo-server-sec-secret'
-    redirectURL: 'https://echo-server-sec.${SECRET_DOMAIN}/'
     cookieDomain: '${SECRET_DOMAIN}'
