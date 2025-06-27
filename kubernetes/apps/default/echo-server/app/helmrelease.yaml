@@ -93,3 +93,14 @@ spec:
           - backendRefs:
               - name: *app
                 port: *port
+      app-sec:
+        hostnames:
+          - echo-server-sec.${SECRET_DOMAIN}
+        parentRefs:
+          - name: external
+            namespace: envoy-gateway-system
+            sectionName: https
+        rules:
+          - backendRefs:
+              - name: *app
+                port: *port
