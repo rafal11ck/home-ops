@@ -15,3 +15,4 @@ spec:
     clientSecret:
       name: 'echo-server-sec-secret'
     cookieDomain: '${SECRET_DOMAIN}'
+    redirectURL: 'https://echo-server-sec.${SECRET_DOMAIN}/oauth2/callback'
