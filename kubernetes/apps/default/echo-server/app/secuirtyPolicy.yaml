@@ -15,5 +15,5 @@ spec:
     clientSecret:
       name: 'echo-server-sec-secret'
     cookieDomain: '${SECRET_DOMAIN}'
-    redirectURL: echo-server-sec.${SECRET_DOMAIN}
-    logoutPath: echo-server-sec.${SECRET_DOMAIN}
+    redirectURL: echo-server-sec.${SECRET_DOMAIN}/oauth2/callback
+    logoutPath: echo-server-sec.${SECRET_DOMAIN}/logout
