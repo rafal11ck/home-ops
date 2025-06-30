@@ -10,10 +10,33 @@ spec:
       name: echo-server-app-sec
   oidc:
     provider:
-      issuer: 'https://auth.${SECRET_DOMAIN}/realms/home-ops'
+      issuer: &issuer 'https://auth.${SECRET_DOMAIN}/realms/home-ops'
     clientID: 'echo-server-sec'
     clientSecret:
       name: 'echo-server-sec-secret'
     cookieDomain: '${SECRET_DOMAIN}'
+    cookieNames:
+      idToken: &idCookie IdToken
     redirectURL: https://echo-server-sec.${SECRET_DOMAIN}/oauth2/callback
     logoutPath: /logout
+  jwt:
+    providers:
+      - name: &providerName home-ops
+        issuer: *issuer
+        remoteJWKS:
+          uri: https://auth.${SECRET_DOMAIN}/realms/home-ops/protocol/openid-connect/certs
+        extractFrom:
+          cookies:
+            - *idCookie
+  authorization:
+    defaultAction: Deny
+    rules:
+      - name: 'allow'
+        action: Allow
+        principal:
+          jwt:
+            provider: *providerName
+            scopes: [openid, roles]
+            claims:
+              - name: resource_access.echo-server-sec.roles
+                values: ['access']
