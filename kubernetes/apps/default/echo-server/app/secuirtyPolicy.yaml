@@ -16,7 +16,7 @@ spec:
       name: 'echo-server-sec-secret'
     cookieDomain: '${SECRET_DOMAIN}'
     cookieNames:
-      idToken: &idCookie IdToken
+      accessToken: &cookie AccessToken
     redirectURL: https://echo-server-sec.${SECRET_DOMAIN}/oauth2/callback
     logoutPath: /logout
   jwt:
@@ -27,7 +27,7 @@ spec:
           uri: https://auth.${SECRET_DOMAIN}/realms/home-ops/protocol/openid-connect/certs
         extractFrom:
           cookies:
-            - *idCookie
+            - *cookie
   authorization:
     defaultAction: Deny
     rules:
