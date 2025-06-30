@@ -103,7 +103,7 @@ spec:
   grafanaCom:
     # renovate: depName="Kubernetes / Views / Nodes"
     id: 15759
-    revision: 35
+    revision: 37
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
