@@ -7,7 +7,8 @@ spec:
   description: 'immich database'
   instances: 1
   primaryUpdateStrategy: unsupervised
-  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.3.0
+  # renovate: datasource=docker depName=ghcr.io/tensorchord/cloudnative-vectorchord
+  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.4.2
   storage:
     size: 16Gi
     storageClass: ceph-block
