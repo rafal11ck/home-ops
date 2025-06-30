@@ -19,7 +19,6 @@ spec:
       idToken: &idCookie IdToken
     redirectURL: https://echo-server-sec.${SECRET_DOMAIN}/oauth2/callback
     logoutPath: /logout
-    scopes: &scopes [openid, roles]
   jwt:
     providers:
       - name: &providerName home-ops
@@ -37,7 +36,6 @@ spec:
         principal:
           jwt:
             provider: *providerName
-            scopes: *scopes
             claims:
               - name: resource_access.echo-server-sec.roles
                 valueType: StringArray
