@@ -39,4 +39,5 @@ spec:
             scopes: [openid, roles]
             claims:
               - name: resource_access.echo-server-sec.roles
+                valueType: StringArray
                 values: ['access']
