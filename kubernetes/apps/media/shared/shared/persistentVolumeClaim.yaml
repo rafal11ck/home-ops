@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: media
+spec:
+  resources:
+    requests:
+      storage: 200Gi
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ceph-filesystem
