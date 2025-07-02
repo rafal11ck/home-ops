@@ -60,6 +60,7 @@ spec:
             secretRef:
               name: sops-age
           postBuild:
+            substituteFrom:
               - name: cluster-secrets
                 kind: Secret
                 optional: false
