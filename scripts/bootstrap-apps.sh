@@ -58,7 +58,7 @@ function apply_configmaps() {
     log debug "Applying ConfigMaps"
 
     local -r configmaps=(
-        "${ROOT_DIR}/kubernetes/components/common/cluster-settings.yaml"
+
     )
 
     for configmap in "${configmaps[@]}"; do
