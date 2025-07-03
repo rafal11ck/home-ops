@@ -8,3 +8,4 @@ components:
 resources:
   - ./shared/ks.yaml
   - ./jellyfin/ks.yaml
+  - ./qbittorrent/ks.yaml
