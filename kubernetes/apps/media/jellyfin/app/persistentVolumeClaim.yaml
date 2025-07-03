@@ -6,6 +6,8 @@ spec:
   resources:
     requests:
       storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
   storageClassName: ceph-block
 ---
 apiVersion: v1
@@ -16,4 +18,6 @@ spec:
   resources:
     requests:
       storage: 3Gi
+  accessModes:
+    - ReadWriteOnce
   storageClassName: ceph-block
