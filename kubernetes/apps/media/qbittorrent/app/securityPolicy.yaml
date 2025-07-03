@@ -1,0 +1,42 @@
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: qbittorrent
+spec:
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: qbittorrent
+  oidc:
+    provider:
+      issuer: &issuer 'https://auth.${SECRET_DOMAIN}/realms/home-ops'
+    clientID: 'qbittorrent'
+    clientSecret:
+      name: 'qbittorrent-secret'
+    cookieDomain: '${SECRET_DOMAIN}'
+    cookieNames:
+      accessToken: &cookie AccessToken
+    redirectURL: https://qbittorrent.${SECRET_DOMAIN}/oauth2/callback
+    logoutPath: /logout
+  jwt:
+    providers:
+      - name: &providerName home-ops
+        issuer: *issuer
+        remoteJWKS:
+          uri: https://auth.${SECRET_DOMAIN}/realms/home-ops/protocol/openid-connect/certs
+        extractFrom:
+          cookies:
+            - *cookie
+  authorization:
+    defaultAction: Deny
+    rules:
+      - name: 'allow'
+        action: Allow
+        principal:
+          jwt:
+            provider: *providerName
+            claims:
+              - name: resource_access.qbittorrent.roles
+                valueType: StringArray
+                values: [access]
