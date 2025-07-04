@@ -34,7 +34,7 @@ spec:
                 custom: true
                 spec:
                   httpGet:
-                    path: /
+                    path: /UI/Dashboard
                     port: &port 9117
                   periodSeconds: 10
                   timeoutSeconds: 10
