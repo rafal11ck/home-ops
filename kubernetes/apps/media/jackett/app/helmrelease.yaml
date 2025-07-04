@@ -28,23 +28,23 @@ spec:
               TZ: ${SECRET_TIMEZONE}
               PUID: 1000
               GUID: 1000
-            # probes:
-            #   liveness: &probes
-            #     enabled: true
-            #     custom: true
-            #     spec:
-            #       httpGet:
-            #         path: /UI/Dashboard
-            #         port: &port 9117
-            #       periodSeconds: 10
-            #       timeoutSeconds: 10
-            #       failureThreshold: 6
-            #   readiness: *probes
-            #   startup:
-            #     enabled: true
-            #     spec:
-            #       failureThreshold: 30
-            #       periodSeconds: 10
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /Health
+                    port: &port 9117
+                  periodSeconds: 10
+                  timeoutSeconds: 10
+                  failureThreshold: 6
+              readiness: *probes
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 10
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
