@@ -10,3 +10,4 @@ resources:
   - ./qbittorrent/ks.yaml
   - ./shared/ks.yaml
   - ./sonarr/ks.yaml
+  - ./jackett/ks.yaml
