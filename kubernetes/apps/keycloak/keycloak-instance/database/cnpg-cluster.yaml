@@ -14,8 +14,11 @@ spec:
   monitoring:
     enablePodMonitor: true
   bootstrap:
-    initdb:
-      database: keycloak
+    # initdb:
+    #   database: keycloak
+    recovery:
+      recoveryTarget:
+        targetTLI: '21'
   backup:
     retentionPolicy: 2m # 2 months
     barmanObjectStore:
