@@ -14,7 +14,6 @@ spec:
     clientID: 'qbittorrent'
     clientSecret:
       name: 'qbittorrent-secret'
-    cookieDomain: '${SECRET_DOMAIN}'
     cookieNames:
       accessToken: &cookie AccessToken
     redirectURL: https://qbittorrent.${SECRET_DOMAIN}/oauth2/callback

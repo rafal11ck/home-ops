@@ -14,7 +14,6 @@ spec:
     clientID: *app
     clientSecret:
       name: 'sonarr-secret'
-    cookieDomain: '${SECRET_DOMAIN}'
     cookieNames:
       accessToken: &cookie AccessToken
     redirectURL: https://sonarr.${SECRET_DOMAIN}/oauth2/callback

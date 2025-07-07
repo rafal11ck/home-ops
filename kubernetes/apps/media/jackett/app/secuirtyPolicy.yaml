@@ -14,7 +14,6 @@ spec:
     clientID: jackett
     clientSecret:
       name: 'echo-server-sec-secret'
-    cookieDomain: '${SECRET_DOMAIN}'
     cookieNames:
       accessToken: &cookie AccessToken
     redirectURL: https://jackett.${SECRET_DOMAIN}/oauth2/callback
