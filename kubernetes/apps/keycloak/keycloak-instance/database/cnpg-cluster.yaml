@@ -35,5 +35,5 @@ spec:
         secretAccessKey:
           name: keycloak-cnpg-bucket
           key: AWS_SECRET_ACCESS_KEY
-      wal:
-        compression: gzip
+      # wal:
+      # compression: gzip
