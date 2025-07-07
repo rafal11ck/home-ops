@@ -18,9 +18,11 @@ spec:
     #   database: keycloak
     recovery:
       recoveryTarget:
-        targetTLI: '21'
+        targetTLI: '22'
+        backupID: 20250706T000002
+        targetImmediate: true
   backup:
-    retentionPolicy: 2m # 2 months
+    retentionPolicy: 1m # 2 months
     barmanObjectStore:
       endpointURL: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc:80
       destinationPath: s3://keycloak-cnpg-bucket/
