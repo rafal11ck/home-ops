@@ -16,25 +16,9 @@ spec:
   monitoring:
     enablePodMonitor: true
   bootstrap:
-    # initdb:
-    #   database: keycloak
-    recovery:
-      source: clusterBackup
-      recoveryTarget:
-        targetImmediate: true
-        backupID: '20250706T000002'
-  externalClusters:
-    - name: clusterBackup
-      barmanObjectStore:
-        endpointURL: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc:80
-        destinationPath: s3://keycloak-cnpg-bucket/
-        s3Credentials:
-          accessKeyId:
-            name: keycloak-cnpg-bucket
-            key: AWS_ACCESS_KEY_ID
-          secretAccessKey:
-            name: keycloak-cnpg-bucket
-            key: AWS_SECRET_ACCESS_KEY
+    initdb:
+      database: keycloak
+
   # backup:
   #   retentionPolicy: 1m # 2 months
   #   barmanObjectStore:
