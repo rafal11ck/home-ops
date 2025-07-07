@@ -19,22 +19,33 @@ spec:
     # initdb:
     #   database: keycloak
     recovery:
+      source: clusterBackup
       recoveryTarget:
-        # targetImmediate: true
-        backupID: 20250706T000002
-        targetTime: '2025-07-06 00:00:04.00000+00'
-
-  backup:
-    retentionPolicy: 1m # 2 months
-    barmanObjectStore:
-      endpointURL: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc:80
-      destinationPath: s3://keycloak-cnpg-bucket/
-      s3Credentials:
-        accessKeyId:
-          name: keycloak-cnpg-bucket
-          key: AWS_ACCESS_KEY_ID
-        secretAccessKey:
-          name: keycloak-cnpg-bucket
-          key: AWS_SECRET_ACCESS_KEY
-      # wal:
-      # compression: gzip
+        targetImmediate: true
+        backupId: '20250706T00000'
+  externalClusters:
+    - name: clusterBackup
+      barmanObjectStore:
+        endpointURL: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc:80
+        destinationPath: s3://keycloak-cnpg-bucket/
+        s3Credentials:
+          accessKeyId:
+            name: keycloak-cnpg-bucket
+            key: AWS_ACCESS_KEY_ID
+          secretAccessKey:
+            name: keycloak-cnpg-bucket
+            key: AWS_SECRET_ACCESS_KEY
+  # backup:
+  #   retentionPolicy: 1m # 2 months
+  #   barmanObjectStore:
+  #     endpointURL: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc:80
+  #     destinationPath: s3://keycloak-cnpg-bucket/
+  #     s3Credentials:
+  #       accessKeyId:
+  #         name: keycloak-cnpg-bucket
+  #         key: AWS_ACCESS_KEY_ID
+  #       secretAccessKey:
+  #         name: keycloak-cnpg-bucket
+  #         key: AWS_SECRET_ACCESS_KEY
+  #     # wal:
+  #     # compression: gzip
