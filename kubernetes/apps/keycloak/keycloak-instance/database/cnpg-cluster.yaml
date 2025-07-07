@@ -18,7 +18,8 @@ spec:
     #   database: keycloak
     recovery:
       recoveryTarget:
-        targetImmediate: true
+        # targetImmediate: true
+        backupID: 20250706T000002
         targetLSN: 16/D7000060
 
   backup:
