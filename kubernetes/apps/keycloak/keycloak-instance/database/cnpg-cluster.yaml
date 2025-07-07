@@ -17,10 +17,8 @@ spec:
     # initdb:
     #   database: keycloak
     recovery:
-      recoveryTarget:
-        targetTLI: '22'
-        backupID: 20250706T000002
-        targetImmediate: true
+      backup:
+        name: keycloak-database-backup-20250706000000
   backup:
     retentionPolicy: 1m # 2 months
     barmanObjectStore:
