@@ -3,6 +3,8 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: &name keycloak-database
+annotations:
+  cnpg.io/skipEmptyWalArchiveCheck: enabled
 spec:
   description: 'keycloak database'
   instances: 2
@@ -20,7 +22,7 @@ spec:
       recoveryTarget:
         # targetImmediate: true
         backupID: 20250706T000002
-        targetLSN: 16/D7000060
+        targetTime: '2025-07-06 00:00:04.00000+00'
 
   backup:
     retentionPolicy: 1m # 2 months
