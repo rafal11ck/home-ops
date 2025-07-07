@@ -14,13 +14,8 @@ spec:
   monitoring:
     enablePodMonitor: true
   bootstrap:
-    # initdb:
-    #   database: keycloak
-    recovery:
-      recoveryTarget:
-        backupID: '20250706T000002'
-        targetName: keycloak-database-backup-20250706000000
-        # targetImmediate: true
+    initdb:
+      database: keycloak
   # backup:
   #   retentionPolicy: 2m # 2 months
   #   barmanObjectStore:
@@ -35,3 +30,4 @@ spec:
   #         key: AWS_SECRET_ACCESS_KEY
   #     wal:
   #       compression: gzip
+#
