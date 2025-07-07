@@ -3,8 +3,6 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: &name keycloak-database
-  annotations:
-    cnpg.io/skipEmptyWalArchiveCheck: enabled
 spec:
   description: 'keycloak database'
   instances: 1
@@ -16,11 +14,15 @@ spec:
   monitoring:
     enablePodMonitor: true
   bootstrap:
-    initdb:
-      database: keycloak
-
+    # initdb:
+    #   database: keycloak
+    recovery:
+      recoveryTarget:
+        backupID: '20250706T000002'
+        targetName: keycloak-database-backup-20250706000000
+        targetImmediate: true
   # backup:
-  #   retentionPolicy: 1m # 2 months
+  #   retentionPolicy: 2m # 2 months
   #   barmanObjectStore:
   #     endpointURL: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc:80
   #     destinationPath: s3://keycloak-cnpg-bucket/
@@ -31,5 +33,5 @@ spec:
   #       secretAccessKey:
   #         name: keycloak-cnpg-bucket
   #         key: AWS_SECRET_ACCESS_KEY
-  #     # wal:
-  #     # compression: gzip
+  #     wal:
+  #       compression: gzip
