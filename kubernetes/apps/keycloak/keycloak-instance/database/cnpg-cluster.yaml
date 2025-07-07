@@ -17,8 +17,6 @@ spec:
     # initdb:
     #   database: keycloak
     recovery:
-      backup:
-        name: keycloak-database-backup-20250706000000
       recoveryTarget:
         targetImmediate: true
         backupID: 20250706T000002
