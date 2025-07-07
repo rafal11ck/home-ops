@@ -20,7 +20,7 @@ spec:
       recoveryTarget:
         backupID: '20250706T000002'
         targetName: keycloak-database-backup-20250706000000
-        targetImmediate: true
+        # targetImmediate: true
   # backup:
   #   retentionPolicy: 2m # 2 months
   #   barmanObjectStore:
