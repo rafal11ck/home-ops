@@ -8,3 +8,4 @@ resources:
   - ./internal.yaml
   - ./redirect.yaml
   - ./backendTrafficPolicy.yaml
+  - ./servicemonitor.yaml

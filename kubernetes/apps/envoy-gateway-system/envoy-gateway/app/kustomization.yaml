@@ -6,3 +6,4 @@ resources:
   - ./helmrelease.yaml
   - ./gatewayclass.yaml
   - ./envoyproxy.yaml
+  - ./servicemonitor.yaml
