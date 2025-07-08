@@ -9,3 +9,4 @@ resources:
   - ./redirect.yaml
   - ./backendTrafficPolicy.yaml
   - ./servicemonitor.yaml
+  - ./podmonitor.yaml
