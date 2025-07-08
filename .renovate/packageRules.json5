@@ -25,5 +25,10 @@
         commitMessageTopic: "{{{groupName}}} group",
       },
     },
+    {
+      matchPackageNames: ["ghcr.io/cloudnative-pg/postgresql"],
+      matchUpdateTypes: ["major"],
+      enabled: false,
+    }
   ],
 }
