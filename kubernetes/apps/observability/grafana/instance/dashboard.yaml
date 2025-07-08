@@ -269,3 +269,47 @@ spec:
   datasources:
     - datasourceName: prometheus
       inputName: DS_PROMETHEUS
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: envoy-clusters
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  # renovate: datasource=github-releases depName=envoyproxy/gateway
+  url: https://raw.githubusercontent.com/envoyproxy/gateway/refs/tags/v1.4.2/charts/gateway-addons-helm/dashboards/envoy-clusters.json
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: envoy-gateway-global
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  # renovate: datasource=github-releases depName=envoyproxy/gateway
+  url: https://raw.githubusercontent.com/envoyproxy/gateway/refs/tags/v1.4.2/charts/gateway-addons-helm/dashboards/envoy-gateway-global.json
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: envoy-proxy-global
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  # renovate: datasource=github-releases depName=envoyproxy/gateway
+  url: https://raw.githubusercontent.com/envoyproxy/gateway/refs/tags/v1.4.2/charts/gateway-addons-helm/dashboards/envoy-proxy-global.json
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: global-ratelimit
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  # renovate: datasource=github-releases depName=envoyproxy/gateway
+  url: https://raw.githubusercontent.com/envoyproxy/gateway/refs/tags/v1.4.2/charts/gateway-addons-helm/dashboards/global-ratelimit.json
