@@ -56,7 +56,7 @@ spec:
             port: 3000
     route:
       main:
-        hostnames: ['homepage.${SECRET_DOMAIN_0}']
+        hostnames: ['homepage.${SECRET_DOMAIN}']
         parentRefs:
           - name: internal
             namespace: envoy-gateway-system
