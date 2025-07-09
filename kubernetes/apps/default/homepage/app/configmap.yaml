@@ -1,0 +1,62 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.1-standalone-strict/configmap-v1.json
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage-config
+data:
+  bookmarks.yaml: |
+    ---
+  docker.yaml: |
+    ---
+  kubernetes.yaml: |
+    ---
+    mode: cluster
+
+  services.yaml: |
+    ---
+    - Favorites:
+        - k8s-at-home-search:
+            icon: si-kubernetes
+            href: https://nanne.dev/k8s-at-home-search/
+            description: Search KAH HelmReleases
+        - onedr0p home-ops:
+            icon: si-github
+            href: https://github.com/onedr0p/home-ops
+            description: onedr0p HomeOps Repository
+        - bjw-s Chart Values:
+            icon: si-github
+            href: https://github.com/bjw-s/helm-charts/tree/main/charts/library/common#values
+            description: app-template Helm Chart Values
+        - NixOS Search:
+            icon: si-nixos
+            href: https://search.nixos.org
+            description: Search NixOS Packages and Options
+
+  settings.yaml: |
+    ---
+    title: Dashboard
+    theme: dark
+    color: slate
+    headerStyle: clean
+    target: _blank
+    layout:
+      Media:
+        style: row
+        columns: 4
+      Network:
+        style: row
+      Favorites:
+        style: row
+        columns: 3
+    quicklaunch:
+      searchDescription: true
+      hideInternetSearch: true
+      hideVisitURL: true
+
+  widgets.yaml: |
+    ---
+    - search:
+        provider:
+          - google
+          - duckduckgo
