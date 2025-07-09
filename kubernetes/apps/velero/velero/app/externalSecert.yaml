@@ -5,9 +5,9 @@ metadata:
 spec:
   secretStoreRef:
     name: cluster-store
+    kind: ClusterSecretStore
   target:
     name: *secretName
-    namespace: velero
     template:
       engineVersion: v2
       data:
@@ -20,9 +20,7 @@ spec:
       remoteRef:
         key: velero-bucket
         property: AWS_ACCESS_KEY_ID
-        namespace: velero
     - secretKey: AWS_SECRET_ACCESS_KEY
       remoteRef:
         key: velero-bucket
         property: AWS_SECRET_ACCESS_KEY
-        namespace: velero
