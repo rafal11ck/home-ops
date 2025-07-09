@@ -11,6 +11,10 @@ metadata:
     gethomepage.dev/icon: si-nextcloud
     gethomepage.dev/name: nextcloud
     gethomepage.dev/href: https://cloud.${SECRET_DOMAIN}
+    gethomepage.dev/widget.type: nextcloud
+    gethomepage.dev/widget.url: http://nextcloud.default.svc.cluster.local:8080
+    gethomepage.dev/widget.key: ${MONITORING_TOKEN}
+    gethomepage.dev/widget.fields: ['activeusers', 'freespace']
 spec:
   parentRefs:
     - name: external

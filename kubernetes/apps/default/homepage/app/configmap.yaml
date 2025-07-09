@@ -15,15 +15,6 @@ data:
     gateway: true
   services.yaml: |
     ---
-    - Media:
-      - Jellyfin:
-        icon: jellyfin
-        href: https://jellyfin.${SECRET_DOMAIN}
-        widget:
-          type: nextcloud
-          fields: ["activeusers", "freespace"]
-          url: http://nextcloud.default.svc.cluster.local:8080
-          key: ${HOMEPAGE_NEXTCLOUD_MONITORING_TOKEN}
     - Favorites:
         - k8s-at-home-search:
             icon: si-kubernetes
