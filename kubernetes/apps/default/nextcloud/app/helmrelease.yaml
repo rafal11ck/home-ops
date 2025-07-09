@@ -179,7 +179,7 @@ spec:
           done
 
           # set monitoring token
-          occ config:app:set serverinfo token --value "$MONITORING_TOKEN"
+          php occ config:app:set serverinfo token --value "$MONITORING_TOKEN"
 
           # If app is installed already occ returns 1, script fails and container refuses to start
           true
