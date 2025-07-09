@@ -1,11 +1,10 @@
 apiVersion: external-secrets.io/v1
-kind: SecretStore
+kind: ClusterSecretStore
 metadata:
-  name: k8s-store-velero
+  name: cluster-store
 spec:
   provider:
     kubernetes:
-      remoteNamespace: velero
       server:
         url: 'https://kubernetes.default.svc.cluster.local'
         caProvider:
@@ -14,4 +13,4 @@ spec:
           key: ca.crt
       auth:
         serviceAccount:
-          name: k8s-store-velero
+          name: external-secrets
