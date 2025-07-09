@@ -6,8 +6,6 @@ metadata:
   name: &app velero
   namespace: &namespace velero
 spec:
-  dependsOn:
-    - name: velero-store
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
@@ -21,4 +19,3 @@ spec:
   targetNamespace: *namespace
   timeout: 5m
   wait: false
-
