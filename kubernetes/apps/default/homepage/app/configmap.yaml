@@ -12,6 +12,7 @@ data:
   kubernetes.yaml: |
     ---
     mode: cluster
+    gateway: true
 
   services.yaml: |
     ---
@@ -40,6 +41,8 @@ data:
     color: slate
     headerStyle: clean
     target: _blank
+    disableUpdateCheck: true
+    hideVersion: true
     layout:
       Media:
         style: row
