@@ -43,6 +43,8 @@ spec:
               requests:
                 cpu: 25m
                 memory: 50Mi
+            env:
+              HOMEPAGE_ALLOWED_HOSTS: &hostname '{{ .Release.Name }}.${SECRET_DOMAIN}'
             # envFrom:
             #   - secretRef:
             #       name: homepage-secret
@@ -56,7 +58,7 @@ spec:
             port: 3000
     route:
       main:
-        hostnames: ['homepage.${SECRET_DOMAIN}']
+        hostnames: [*hostname]
         parentRefs:
           - name: internal
             namespace: envoy-gateway-system
