@@ -6,11 +6,11 @@ metadata:
   name: nextcloud
   annotations:
     gethomepage.dev/enabled: 'true'
-    gethomepage.dev/description: nextcloud
+    gethomepage.dev/description: private cloud to store files, chat, manage calendars and contacts
     gethomepage.dev/group: Services
     gethomepage.dev/icon: si-nextcloud
     gethomepage.dev/name: nextcloud
-    gethomepage.dev/widget.url: cloud.${SECRET_DOMAIN}
+    gethomepage.dev/href: cloud.${SECRET_DOMAIN}
 spec:
   parentRefs:
     - name: external
