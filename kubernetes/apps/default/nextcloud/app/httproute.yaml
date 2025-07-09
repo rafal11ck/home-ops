@@ -10,7 +10,7 @@ metadata:
     gethomepage.dev/group: Services
     gethomepage.dev/icon: si-nextcloud
     gethomepage.dev/name: nextcloud
-    gethomepage.dev/href: cloud.${SECRET_DOMAIN}
+    gethomepage.dev/href: https://cloud.${SECRET_DOMAIN}
 spec:
   parentRefs:
     - name: external
