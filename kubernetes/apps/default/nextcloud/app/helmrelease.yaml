@@ -97,6 +97,11 @@ spec:
             secretKeyRef:
               name: nextcloud-secret
               key: OIDC_DISCOVERURL
+        - name: MONITORING_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: nextcloud-secret
+              key: MONITORING_TOKEN
 
       phpConfigs:
         uploadLimit.ini: |
@@ -172,6 +177,9 @@ spec:
           for appname in spreed contacts calendar user_oidc bookmarks deck
             do php occ app:install "$appname"
           done
+
+          # set monitoring token
+          occ config:app:set serverinfo token --value "$MONITORING_TOKEN"
 
           # If app is installed already occ returns 1, script fails and container refuses to start
           true

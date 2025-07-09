@@ -1,0 +1,16 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: &secretName homepage-secrets
+spec:
+  secretStoreRef:
+    name: cluster-store
+  target:
+    name: *secretName
+
+  data:
+    - secretKey: HOMEPAGE_NEXTCLOUD_MONITORING_TOKEN
+      remoteRef:
+        key: nextcloud-secret
+        property: MONITORING_TOKEN
+        namespace: default
