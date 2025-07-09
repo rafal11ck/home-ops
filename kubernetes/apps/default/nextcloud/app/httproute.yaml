@@ -4,6 +4,13 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
   name: nextcloud
+  annotations:
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/description: nextcloud
+    gethomepage.dev/group: Services
+    gethomepage.dev/icon: si-nextcloud
+    gethomepage.dev/name: nextcloud
+    gethomepage.dev/widget.url: cloud.${SECRET_DOMAIN}
 spec:
   parentRefs:
     - name: external
