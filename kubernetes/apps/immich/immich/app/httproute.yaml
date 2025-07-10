@@ -16,6 +16,12 @@ metadata:
     gethomepage.dev/widget.version: 2
     gethomepage.dev/widget.url: http://immich-server.immich.svc.cluster.local:2283
     gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_IMMICH_KEY}}'
+    gethomepage.dev/pod-selector: >-
+      app.kubernetes.io/name in (
+        machine-learning
+        server
+      )
+
 spec:
   parentRefs:
     - name: external
