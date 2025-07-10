@@ -70,11 +70,19 @@ spec:
     route:
       app:
         hostnames:
-          - '{{ .Release.Name }}.${SECRET_DOMAIN}'
+          - &url '{{ .Release.Name }}.${SECRET_DOMAIN}'
         parentRefs:
           - name: internal
             namespace: envoy-gateway-system
             sectionName: https
+        annotations:
+          gethomepage.dev/description: indexer agragator and cache
+          gethomepage.dev/group: Services
+          gethomepage.dev/icon: jackett
+          gethomepage.dev/name: nextcloud
+          gethomepage.dev/href: *url
+          gethomepage.dev/widget.type: jackett
+          gethomepage.dev/widget.url: http://jackett.media.svc.cluster.local:9117
     persistence:
       config:
         existingClaim: jackett-config
