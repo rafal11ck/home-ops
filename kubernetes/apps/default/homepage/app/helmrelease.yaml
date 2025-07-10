@@ -45,9 +45,9 @@ spec:
                 memory: 50Mi
             env:
               HOMEPAGE_ALLOWED_HOSTS: &hostname '{{ .Release.Name }}.${SECRET_DOMAIN}'
-            # envFrom:
-            #   - secretRef:
-            #       name: homepage-secret
+            envFrom:
+              - secretRef:
+                  name: homepage-secret
         serviceAccount:
           identifier: homepage
     service:
