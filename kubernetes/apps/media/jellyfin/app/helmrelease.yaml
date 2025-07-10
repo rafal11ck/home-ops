@@ -70,6 +70,16 @@ spec:
             port: *port
     route:
       app:
+        annotations:
+          gethomepage.dev/description: Media system
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: Services
+          gethomepage.dev/icon: jellyfin
+          gethomepage.dev/name: jellyfin
+          gethomepage.dev/href: 'https://{{ .Release.Name }}.${SECRET_DOMAIN}'
+          gethomepage.dev/widget.type: jackett
+          gethomepage.dev/widget.url: http://jellyfin.media.svc.cluster.local:8096
+          gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_JELLYFIN_KEY}}' # set in homepage env
         hostnames: ['{{ .Release.Name }}.${SECRET_DOMAIN}']
         parentRefs:
           - name: external

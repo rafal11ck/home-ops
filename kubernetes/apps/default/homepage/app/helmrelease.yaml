@@ -47,6 +47,8 @@ spec:
               HOMEPAGE_ALLOWED_HOSTS: &hostname '{{ .Release.Name }}.${SECRET_DOMAIN}'
             envFrom:
               - secretRef:
+                  name: homepage-secret-external
+              - secretRef:
                   name: homepage-secret
         serviceAccount:
           identifier: homepage
