@@ -79,7 +79,7 @@ spec:
           gethomepage.dev/href: 'https://{{ .Release.Name }}.${SECRET_DOMAIN}'
           gethomepage.dev/widget.type: jellyfin
           gethomepage.dev/widget.url: http://jellyfin.media.svc.cluster.local:8096
-          gethomepage.dev/widget.key: '{{ \"{{HOMEPAGE_VAR_JELLYFIN_KEY"}}\" }}' # set in homepage env
+          gethomepage.dev/widget.key: '{{"{{"}}HOMEPAGE_VAR_JELLYFIN_KEY{{"}}"}}' # set in homepage env
         hostnames: ['{{ .Release.Name }}.${SECRET_DOMAIN}']
         parentRefs:
           - name: external
