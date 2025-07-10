@@ -11,8 +11,9 @@ metadata:
     gethomepage.dev/icon: keycloak
     gethomepage.dev/name: Keycloak
     gethomepage.dev/href: 'https://auth.${SECRET_DOMAIN}'
-    gethomepage.dev/podSelector: >-
-      app: keycloak
+    # TODO do better after https://github.com/keycloak/keycloak/issues/41079
+    gethomepage.dev/pod-selector: >-
+      app=keycloak
 spec:
   parentRefs:
     - name: external
