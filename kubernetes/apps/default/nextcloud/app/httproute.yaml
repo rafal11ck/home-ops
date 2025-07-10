@@ -8,13 +8,13 @@ metadata:
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/description: Private cloud to store files, chat, manage calendars and contacts
     gethomepage.dev/group: Services
-    gethomepage.dev/icon: si-nextcloud
+    gethomepage.dev/icon: nextcloud
     gethomepage.dev/name: nextcloud
     gethomepage.dev/href: https://cloud.${SECRET_DOMAIN}
     gethomepage.dev/widget.type: nextcloud
     gethomepage.dev/widget.url: http://nextcloud.default.svc.cluster.local:8080
     gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_NEXTCLOUD_KEY}}'
-    gethomepage.dev/widget.fields: ['activeusers', 'freespace']
+    gethomepage.dev/widget.fields: "['activeusers', 'freespace']"
 spec:
   parentRefs:
     - name: external
