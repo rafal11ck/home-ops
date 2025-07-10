@@ -5,7 +5,7 @@ kind: HTTPRoute
 metadata:
   name: keycloak-auth
   annotations:
-    gethomepage.dev/description: Keycloak
+    gethomepage.dev/description: Identity and access management
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/group: Services
     gethomepage.dev/icon: keycloak
