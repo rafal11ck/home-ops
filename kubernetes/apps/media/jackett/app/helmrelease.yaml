@@ -77,6 +77,7 @@ spec:
             sectionName: https
         annotations:
           gethomepage.dev/description: indexer agragator and cache
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: Services
           gethomepage.dev/icon: jackett
           gethomepage.dev/name: nextcloud
