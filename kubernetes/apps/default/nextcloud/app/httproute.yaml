@@ -6,7 +6,7 @@ metadata:
   name: nextcloud
   annotations:
     gethomepage.dev/enabled: 'true'
-    gethomepage.dev/description: private cloud to store files, chat, manage calendars and contacts
+    gethomepage.dev/description: Private cloud to store files, chat, manage calendars and contacts
     gethomepage.dev/group: Services
     gethomepage.dev/icon: si-nextcloud
     gethomepage.dev/name: nextcloud

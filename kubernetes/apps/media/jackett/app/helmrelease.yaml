@@ -76,7 +76,7 @@ spec:
             namespace: envoy-gateway-system
             sectionName: https
         annotations:
-          gethomepage.dev/description: indexer agragator and cache
+          gethomepage.dev/description: Indexer agragator and cache
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: Services
           gethomepage.dev/icon: jackett
