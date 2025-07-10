@@ -97,11 +97,11 @@ spec:
             secretKeyRef:
               name: nextcloud-secret
               key: OIDC_DISCOVERURL
-        - name: MONITORING_TOKEN
+        - name: HOMEPAGE_VAR_NEXTCLOUD_KEY
           valueFrom:
             secretKeyRef:
               name: nextcloud-secret
-              key: MONITORING_TOKEN
+              key: HOMEPAGE_VAR_NEXTCLOUD_KEY
 
       phpConfigs:
         uploadLimit.ini: |
