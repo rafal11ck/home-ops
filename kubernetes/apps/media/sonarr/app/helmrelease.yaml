@@ -84,6 +84,7 @@ spec:
           gethomepage.dev/href: 'https://{{ .Release.Name }}.${SECRET_DOMAIN}'
           gethomepage.dev/widget.type: sonarr
           gethomepage.dev/widget.url: http://sonarr.media.svc.cluster.local:80
+          gethomepage.dev/widget.key: '{{"{{"}}HOMEPAGE_VAR_SONARR_KEY{{"}}"}}' # set in homepage env
         hostnames: ['{{ .Release.Name }}.${SECRET_DOMAIN}']
         parentRefs:
           - name: external
