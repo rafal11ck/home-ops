@@ -7,15 +7,7 @@ metadata:
 data:
   bookmarks.yaml: |
     ---
-  docker.yaml: |
-    ---
-  kubernetes.yaml: |
-    ---
-    mode: cluster
-    gateway: true
-  services.yaml: |
-    ---
-    - Favorites:
+    - Bookmarks:
         - k8s-at-home-search:
             icon: si-kubernetes
             href: https://nanne.dev/k8s-at-home-search/
@@ -32,6 +24,13 @@ data:
             icon: si-nixos
             href: https://search.nixos.org
             description: Search NixOS Packages and Options
+  docker.yaml: |
+    ---
+  kubernetes.yaml: |
+    ---
+    mode: cluster
+    gateway: true
+  services.yaml: |
 
   settings.yaml: |
     ---
