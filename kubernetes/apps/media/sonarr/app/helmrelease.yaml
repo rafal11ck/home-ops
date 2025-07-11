@@ -75,6 +75,15 @@ spec:
             port: *port
     route:
       app:
+        annotations:
+          gethomepage.dev/description: Smart PVR
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: Services
+          gethomepage.dev/icon: sonarr
+          gethomepage.dev/name: qbittorrent
+          gethomepage.dev/href: 'https://{{ .Release.Name }}.${SECRET_DOMAIN}'
+          gethomepage.dev/widget.type: sonarr
+          gethomepage.dev/widget.url: http://sonarr.media.svc.cluster.local:80
         hostnames: ['{{ .Release.Name }}.${SECRET_DOMAIN}']
         parentRefs:
           - name: external
