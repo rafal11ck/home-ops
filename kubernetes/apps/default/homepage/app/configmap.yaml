@@ -46,6 +46,9 @@ data:
       Services:
         style: row
         columns: 4
+      Bookmarks:
+        style: row
+        columns: 4
       Network:
         style: row
     quicklaunch:
