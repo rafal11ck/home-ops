@@ -42,14 +42,11 @@ data:
     disableUpdateCheck: true
     hideVersion: true
     layout:
-      Media:
+      Services:
         style: row
         columns: 4
       Network:
         style: row
-      Favorites:
-        style: row
-        columns: 3
     quicklaunch:
       searchDescription: true
       hideInternetSearch: true
