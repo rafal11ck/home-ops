@@ -13,11 +13,11 @@ data:
           href: https://nanne.dev/k8s-at-home-search/
           description: Search KAH HelmReleases
       - onedr0p home-ops:
-        - icon: github
+        - icon: github-light
           href: https://github.com/onedr0p/home-ops
           description: onedr0p HomeOps Repository
       - bjw-s Chart Values:
-        - icon: github
+        - icon: github-light
           href: https://github.com/bjw-s/helm-charts/tree/main/charts/library/common#values
           description: app-template Helm Chart Values
       - NixOS Search:
