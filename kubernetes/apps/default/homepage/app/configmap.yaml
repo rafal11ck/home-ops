@@ -45,7 +45,7 @@ data:
     layout:
       Bookmarks:
         style: row
-        columns: 4
+        columns: 3
       Services:
         style: row
         columns: 4
