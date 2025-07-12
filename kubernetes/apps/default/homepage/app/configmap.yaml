@@ -43,10 +43,10 @@ data:
     disableUpdateCheck: true
     hideVersion: true
     layout:
-      Services:
+      Bookmarks:
         style: row
         columns: 4
-      Bookmarks:
+      Services:
         style: row
         columns: 4
       Network:
