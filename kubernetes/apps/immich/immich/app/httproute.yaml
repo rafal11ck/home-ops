@@ -10,7 +10,7 @@ metadata:
     gethomepage.dev/description: Photo and video management
     gethomepage.dev/group: Services
     gethomepage.dev/icon: immich
-    gethomepage.dev/name: immich
+    gethomepage.dev/name: Immich
     gethomepage.dev/href: https://immich.${SECRET_DOMAIN}
     gethomepage.dev/widget.type: immich
     gethomepage.dev/widget.version: 2

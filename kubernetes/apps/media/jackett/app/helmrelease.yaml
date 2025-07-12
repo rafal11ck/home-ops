@@ -80,7 +80,7 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: Services
           gethomepage.dev/icon: jackett
-          gethomepage.dev/name: jackett
+          gethomepage.dev/name: Jackett
           gethomepage.dev/href: 'https://{{ .Release.Name }}.${SECRET_DOMAIN}'
           gethomepage.dev/widget.type: jackett
           gethomepage.dev/widget.url: http://jackett.media.svc.cluster.local:9117

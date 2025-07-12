@@ -75,7 +75,7 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: Services
           gethomepage.dev/icon: jellyfin
-          gethomepage.dev/name: jellyfin
+          gethomepage.dev/name: Jellyfin
           gethomepage.dev/href: 'https://{{ .Release.Name }}.${SECRET_DOMAIN}'
         hostnames: ['{{ .Release.Name }}.${SECRET_DOMAIN}']
         parentRefs:
