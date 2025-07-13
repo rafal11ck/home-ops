@@ -11,6 +11,8 @@ metadata:
     gethomepage.dev/icon: grafana
     gethomepage.dev/name: Grafana
     gethomepage.dev/href: https://grafana.${SECRET_DOMAIN}
+    gethomepage.dev/pod-selector: |
+      app=grafana
 spec:
   parentRefs:
     - name: external
