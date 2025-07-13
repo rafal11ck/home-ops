@@ -51,6 +51,8 @@ spec:
       disable_total_stats: 'false'
   deployment:
     metadata:
+      labels:
+        app.kubernetes.io/name: grafana
       annotations:
         reloader.stakater.com/auto: 'true'
     # Inject dashboards from cofnigmaps https://grafana.github.io/grafana-operator/docs/examples/configmaps_sidecar/readme/
