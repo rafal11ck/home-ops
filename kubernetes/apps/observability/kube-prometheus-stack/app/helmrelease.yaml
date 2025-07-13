@@ -74,6 +74,15 @@ spec:
         pathType: Prefix
       route:
         main:
+          annotations:
+            gethomepage.dev/enabled: 'true'
+            gethomepage.dev/description: Metrics and monitoring
+            gethomepage.dev/group: Services
+            gethomepage.dev/icon: prometheus
+            gethomepage.dev/name: prometheus
+            gethomepage.dev/href: https://prometheus.${SECRET_DOMAIN}
+            gethomepage.dev/widget.type: prometheus
+            gethomepage.dev/widget.url: http://prometheus-operated.observability.svc.cluster.local:9090
           enabled: true
           hostnames:
             - prometheus.${SECRET_DOMAIN}
