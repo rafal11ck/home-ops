@@ -83,7 +83,7 @@ spec:
             gethomepage.dev/href: https://prometheus.${SECRET_DOMAIN}
             gethomepage.dev/widget.type: prometheus
             gethomepage.dev/widget.url: http://prometheus-operated.observability.svc.cluster.local:9090
-            gethomepage.dev/pod-seletor: |
+            gethomepage.dev/pod-seletor: >-
               app.kubernetes.io/name=prometheus
           enabled: true
           hostnames:
