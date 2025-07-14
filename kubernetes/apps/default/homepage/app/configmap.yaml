@@ -70,3 +70,4 @@ data:
           show: true
           cpu: true
           memory: true
+          showLabel: true
