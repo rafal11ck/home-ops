@@ -16,14 +16,13 @@ metadata:
     gethomepage.dev/widget.type: prometheusmetric
     gethomepage.dev/widget.url: http://prometheus-operated.observability.svc.cluster.local:9090
     gethomepage.dev/widget.metrics.0.label: Dashboards
-    gethomepage.dev/widget.metrics.0.query:
-      grafana_stat_totals_dashboard
-      # - label: Data sources
-      # query: grafana_stat_totals_datasource
-      # - label: Total alerts
-      # query: grafana_stat_totals_alert_rules
-      # - label: Alerts triggered
-      # query: grafana_alerting_alerts{state="alerting"}
+    gethomepage.dev/widget.metrics.0.query: grafana_stat_totals_dashboard
+    gethomepage.dev/widget.metrics.1.label: Data sources
+    gethomepage.dev/widget.metrics.1.query: grafana_stat_totals_datasource
+    gethomepage.dev/widget.metrics.2.label: Total alerts
+    gethomepage.dev/widget.metrics.2.query: grafana_stat_totals_alert_rules
+    gethomepage.dev/widget.metrics.3.label: Alerts triggered
+    gethomepage.dev/widget.metrics.3.label.query: grafana_alerting_alerts{state="alerting"}
 
 spec:
   parentRefs:
