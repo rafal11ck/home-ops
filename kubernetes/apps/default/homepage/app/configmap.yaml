@@ -48,9 +48,7 @@ data:
         columns: 3
       Services:
         style: row
-        columns: 3
-      Network:
-        style: row
+        columns: 2
     quicklaunch:
       searchDescription: true
       hideInternetSearch: true
