@@ -13,6 +13,18 @@ metadata:
     gethomepage.dev/href: https://grafana.${SECRET_DOMAIN}
     gethomepage.dev/pod-selector: |
       app=grafana
+    gethomepage.dev/widget.type: prometheusmetric
+    gethomepage.dev/widget.url: http://prometheus-operated.observability.svc.cluster.local:9090
+    metrics: |-
+      - label: Dashboards
+        query: grafana_stat_totals_dashboard
+      - label: Data sources
+        query: grafana_stat_totals_datasource
+      - label: Total alerts
+        query: grafana_stat_totals_alert_rules
+      - label: Alerts triggered
+        query: grafana_alerting_alerts{state="alerting"}
+
 spec:
   parentRefs:
     - name: external
