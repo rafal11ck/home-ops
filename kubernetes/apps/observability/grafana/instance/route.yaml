@@ -15,8 +15,8 @@ metadata:
       app=grafana
     gethomepage.dev/widget.type: prometheusmetric
     gethomepage.dev/widget.url: http://prometheus-operated.observability.svc.cluster.local:9090
-    gethomepage.dev/widget.metrics.1.label: Dashboards
-    gethomepage.dev/widget.metrics.1.query:
+    gethomepage.dev/widget.metrics.0.label: Dashboards
+    gethomepage.dev/widget.metrics.0.query:
       grafana_stat_totals_dashboard
       # - label: Data sources
       # query: grafana_stat_totals_datasource
