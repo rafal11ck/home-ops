@@ -8,3 +8,5 @@ resources:
   - ./helmrelease.yaml
   - ./rbac.yaml
   - ./secret.sops.yaml
+  - ./securityPolicy-secret.sops.yaml
+  - ./securityPolicy.yaml
