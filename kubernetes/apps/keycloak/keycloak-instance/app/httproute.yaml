@@ -45,6 +45,21 @@ spec:
               replaceFullPath: /realms/home-ops/account
           type: RequestRedirect
 ---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/externaldns.k8s.io/dnsendpoint_v1alpha1.json
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: nextcloud
+spec:
+  endpoints:
+    - dnsName: 'auth.${SECRET_DOMAIN}'
+      recordType: A
+      targets:
+        - ${SECRET_PUBLIC_IP}
+      providerSpecific:
+        - name: external-dns.alpha.kubernetes.io/cloudflare-proxied
+          value: 'false'
+---
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/gateway.networking.k8s.io/httproute_v1.json
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
