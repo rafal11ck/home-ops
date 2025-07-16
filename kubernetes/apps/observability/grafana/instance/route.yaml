@@ -11,7 +11,7 @@ metadata:
     gethomepage.dev/icon: grafana
     gethomepage.dev/name: Grafana
     gethomepage.dev/href: https://grafana.${SECRET_DOMAIN}
-    gethomepage.dev/pod-selector: |
+    gethomepage.dev/pod-selector: >-
       app=grafana
     gethomepage.dev/widget.type: prometheusmetric
     gethomepage.dev/widget.url: http://prometheus-operated.observability.svc.cluster.local:9090
