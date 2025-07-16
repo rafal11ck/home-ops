@@ -50,11 +50,13 @@ data:
       Services:
         style: row
         columns: 2
+      Internal:
+        style: row
+        columns: 2
     quicklaunch:
       searchDescription: true
       hideInternetSearch: true
       hideVisitURL: true
-
   widgets.yaml: |
     ---
     - search:

@@ -46,7 +46,7 @@ spec:
           annotations:
             gethomepage.dev/enabled: 'true'
             gethomepage.dev/description: Handles alerts sent by client applications such as the Prometheus server
-            gethomepage.dev/group: Services
+            gethomepage.dev/group: Internal
             gethomepage.dev/icon: alertmanager
             gethomepage.dev/name: Alertmanager
             gethomepage.dev/href: https://alertmanager.${SECRET_DOMAIN}
@@ -86,7 +86,7 @@ spec:
           annotations:
             gethomepage.dev/enabled: 'true'
             gethomepage.dev/description: Metrics and monitoring
-            gethomepage.dev/group: Services
+            gethomepage.dev/group: Internal
             gethomepage.dev/icon: prometheus
             gethomepage.dev/name: Prometheus
             gethomepage.dev/href: https://prometheus.${SECRET_DOMAIN}

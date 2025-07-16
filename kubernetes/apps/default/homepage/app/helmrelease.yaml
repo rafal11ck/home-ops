@@ -61,7 +61,7 @@ spec:
       main:
         hostnames: [*hostname]
         parentRefs:
-          - name: internal
+          - name: external
             namespace: envoy-gateway-system
             sectionName: https
         rules:
