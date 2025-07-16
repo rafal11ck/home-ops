@@ -33,6 +33,11 @@ data:
     gateway: true
 
   services.yaml: |
+    - Internal:
+      - name: OPNsense
+        href: https://192.168.0.1
+        icon: opnsense
+        
 
   settings.yaml: |
     ---
