@@ -79,7 +79,7 @@ spec:
     route:
       app:
         annotations:
-          gethomepage.dev/description: An HTTP and WebSocket server for testing proxies and HTTP clients
+          gethomepage.dev/description: An HTTP and WebSocket server for testing
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: Services
           gethomepage.dev/icon: mdi-server-network-outline
