@@ -8,7 +8,7 @@ metadata:
   annotations:
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/description: Photo and video management
-    gethomepage.dev/group: Services
+    gethomepage.dev/group: Applications
     gethomepage.dev/icon: immich
     gethomepage.dev/name: Immich
     gethomepage.dev/href: https://immich.${SECRET_DOMAIN}

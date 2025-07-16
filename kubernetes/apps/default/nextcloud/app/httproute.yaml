@@ -7,7 +7,7 @@ metadata:
   annotations:
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/description: Private cloud to store files, chat, manage calendars and contacts
-    gethomepage.dev/group: Services
+    gethomepage.dev/group: Applications
     gethomepage.dev/icon: nextcloud
     gethomepage.dev/name: Nextcloud
     gethomepage.dev/href: https://cloud.${SECRET_DOMAIN}

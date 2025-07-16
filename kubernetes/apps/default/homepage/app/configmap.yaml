@@ -47,6 +47,9 @@ data:
       Bookmarks:
         style: row
         columns: 3
+      Applications:
+        style: row
+        columns: 2
       Services:
         style: row
         columns: 2
