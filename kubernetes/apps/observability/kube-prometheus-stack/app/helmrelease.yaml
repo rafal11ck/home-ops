@@ -50,7 +50,7 @@ spec:
             gethomepage.dev/icon: alertmanager
             gethomepage.dev/name: Alertmanager
             gethomepage.dev/href: https://alertmanager.${SECRET_DOMAIN}
-            gethomepage.dev/pod-selectpr: >-
+            gethomepage.dev/pod-selector: >-
               app.kubernetes.io/name=alertmanager
           enabled: true
           hostnames:
