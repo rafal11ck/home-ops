@@ -55,8 +55,7 @@ spec:
             gethomepage.dev/widget.type: prometheusmetric
             gethomepage.dev/widget.url: http://prometheus-operated.observability.svc.cluster.local:9090
             gethomepage.dev/widget.metrics.0.label: Alerts active
-            gethomepage.dev/widget.metrics.0.query: >-
-              '(alertmanager_alerts{state="active"} - 1) >= 0 * (alertmanager_alerts{state="active"} - 1) OR vector(0/0)'
+            gethomepage.dev/widget.metrics.0.query: alertmanager_alerts{state="active"} - 1
           enabled: true
           hostnames:
             - alertmanager.${SECRET_DOMAIN}
