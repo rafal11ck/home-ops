@@ -56,16 +56,16 @@ data:
     layout:
       Bookmarks:
         style: row
-        columns: 3
+        columns: 4
       Applications:
         style: row
         columns: 3
       Services:
         style: row
-        columns: 2
+        columns: 4
       Internal:
         style: row
-        columns: 2
+        columns: 3
     quicklaunch:
       searchDescription: true
       hideInternetSearch: true
