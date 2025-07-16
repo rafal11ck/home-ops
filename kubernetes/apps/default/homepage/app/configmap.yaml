@@ -46,6 +46,7 @@ data:
 
   settings.yaml: |
     ---
+    useEqualHeights: true
     title: Dashboard
     theme: dark
     color: slate
