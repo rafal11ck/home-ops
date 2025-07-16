@@ -59,7 +59,7 @@ data:
         columns: 3
       Applications:
         style: row
-        columns: 2
+        columns: 3
       Services:
         style: row
         columns: 2
