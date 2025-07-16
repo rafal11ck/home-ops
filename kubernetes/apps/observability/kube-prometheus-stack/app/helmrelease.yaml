@@ -43,7 +43,7 @@ spec:
     alertmanager:
       route:
         main:
-          anntations:
+          annotations:
             gethomepage.dev/enabled: 'true'
             gethomepage.dev/description: Handles alerts sent by client applications such as the Prometheus server
             gethomepage.dev/group: Services
