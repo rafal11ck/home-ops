@@ -6,3 +6,4 @@ resources:
   - ./keycloak.yaml
   - ./httproute.yaml
   - ./serviceMonitor.yaml
+  - ./podmonitor.yaml
