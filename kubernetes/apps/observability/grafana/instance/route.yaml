@@ -17,9 +17,6 @@ metadata:
     gethomepage.dev/widget.url: http://prometheus-operated.observability.svc.cluster.local:9090
     gethomepage.dev/widget.metrics.0.label: Dashboards
     gethomepage.dev/widget.metrics.0.query: grafana_stat_totals_dashboard
-    gethomepage.dev/widget.metrics.1.label: Total alerts
-    gethomepage.dev/widget.metrics.1.query: grafana_stat_totals_alert_rules
-
 
 spec:
   parentRefs:
