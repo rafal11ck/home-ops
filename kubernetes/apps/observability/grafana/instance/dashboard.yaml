@@ -243,36 +243,6 @@ spec:
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
 metadata:
-  name: keycloak-capacity-planning-dashboard
-spec:
-  instanceSelector:
-    matchLabels:
-      dashboards: grafana
-  # TODO do better after https://github.com/keycloak/keycloak-grafana-dashboard/issues/4#issuecomment-2850696799
-  # renovate: datasource=git-refs depName=https://github.com/keycloak/keycloak-grafana-dashboard ref=main
-  url: https://raw.githubusercontent.com/keycloak/keycloak-grafana-dashboard/35d381666eb1d77cb4ed4f5aa9e322d133457675/dashboards/keycloak-capacity-planning-dashboard.json
-  datasources:
-    - datasourceName: prometheus
-      inputName: DS_PROMETHEUS
----
-apiVersion: grafana.integreatly.org/v1beta1
-kind: GrafanaDashboard
-metadata:
-  name: keycloak-troubleshooting-dashboard
-spec:
-  instanceSelector:
-    matchLabels:
-      dashboards: grafana
-  # TODO do better after https://github.com/keycloak/keycloak-grafana-dashboard/issues/4#issuecomment-2850696799
-  # renovate: datasource=git-refs depName=https://github.com/keycloak/keycloak-grafana-dashboard ref=main
-  url: https://raw.githubusercontent.com/keycloak/keycloak-grafana-dashboard/35d381666eb1d77cb4ed4f5aa9e322d133457675/dashboards/keycloak-troubleshooting-dashboard.json
-  datasources:
-    - datasourceName: prometheus
-      inputName: DS_PROMETHEUS
----
-apiVersion: grafana.integreatly.org/v1beta1
-kind: GrafanaDashboard
-metadata:
   name: envoy-clusters
 spec:
   instanceSelector:
