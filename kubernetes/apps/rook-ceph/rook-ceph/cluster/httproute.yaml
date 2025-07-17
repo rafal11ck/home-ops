@@ -16,9 +16,9 @@ metadata:
     gethomepage.dev/widget.type: prometheusmetric
     gethomepage.dev/widget.url: http://prometheus-operated.observability.svc.cluster.local:9090
     gethomepage.dev/widget.metrics.0.label: OSDs in
-    gethomepage.dev/widget.metrics.0.query: ceph_osd_in
+    gethomepage.dev/widget.metrics.0.query: count(ceph_osd_in)
     gethomepage.dev/widget.metrics.1.label: OSDs up
-    gethomepage.dev/widget.metrics.1.query: ceph_osd_up
+    gethomepage.dev/widget.metrics.1.query: count(ceph_osd_up)
 spec:
   hostnames:
     - 'rook.${SECRET_DOMAIN}'
