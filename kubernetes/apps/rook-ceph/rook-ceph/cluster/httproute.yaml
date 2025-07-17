@@ -10,7 +10,7 @@ metadata:
     gethomepage.dev/group: Internal
     gethomepage.dev/icon: ceph
     gethomepage.dev/name: Ceph dashboard
-    gethomepage.dev/href: https://rook.${SECRET_DOMAIN}:7000
+    gethomepage.dev/href: https://rook.${SECRET_DOMAIN}
     gethomepage.dev/pod-selector: >-
       app=rook-ceph-mgr,mgr_role=active,rook_cluster=rook-ceph
     gethomepage.dev/widget.type: prometheusmetric
