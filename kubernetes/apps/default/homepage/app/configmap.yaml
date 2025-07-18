@@ -98,7 +98,7 @@ data:
             username: {{HOMEPAGE_VAR_OPNSENSE_KEY}}
             password: {{HOMEPAGE_VAR_OPNSENSE_SECRET}}
     - Services:
-      - qbittorrent
+      - qbittorrent:
           description: BitTorrent client
           enabled: 'true'
           group: Services
