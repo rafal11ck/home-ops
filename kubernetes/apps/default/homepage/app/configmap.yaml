@@ -73,7 +73,7 @@ data:
           app: grafana
           namespace: observability
           href: https://grafana.${SECRET_DOMAIN}
-          pod-selector: app=grafana
+          podSelector: app=grafana
           widget:
             type: prometheusmetric
             url: http://prometheus-operated.observability.svc.cluster.local:9090
