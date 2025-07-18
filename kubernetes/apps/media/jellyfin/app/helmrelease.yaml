@@ -71,12 +71,7 @@ spec:
     route:
       app:
         annotations:
-          gethomepage.dev/description: Media system
-          gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: Applications
-          gethomepage.dev/icon: jellyfin
-          gethomepage.dev/name: Jellyfin
-          gethomepage.dev/href: 'https://{{ .Release.Name }}.${SECRET_DOMAIN}'
+       
         hostnames: ['{{ .Release.Name }}.${SECRET_DOMAIN}']
         parentRefs:
           - name: external

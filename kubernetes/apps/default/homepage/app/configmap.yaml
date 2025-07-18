@@ -33,6 +33,25 @@ data:
     gateway: true
 
   services.yaml: |
+    - Applications:
+      - metricless:
+        - Keycloak:
+            description: Identity and access management
+            icon: keycloak
+            name: Keycloak
+            namespace: keycloak
+            href: 'https://auth.${SECRET_DOMAIN}'
+            # TODO do better after https://github.com/keycloak/keycloak/issues/41079
+            podSelector: >-
+              app=keycloak
+        - Jellyfin:
+          description: Media system
+          enabled: 'true'
+          group: Applications
+          icon: jellyfin
+          name: Jellyfin
+          namespace: media
+          href: 'https://jellyfin.${SECRET_DOMAIN}'
     - Internal:
       - OPNsense:
           href: https://192.168.0.1
@@ -77,6 +96,7 @@ data:
       Applications:
         style: row
         columns: 3
+        metricless:
       Services:
         style: row
         columns: 2
