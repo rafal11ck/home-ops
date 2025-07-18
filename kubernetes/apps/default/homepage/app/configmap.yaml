@@ -81,6 +81,22 @@ data:
               - label: Dashboards
                 query: grafana_stat_totals_dashboard
 
+      - alertmanager:
+          description: Handles alerts sent by client applications such as the Prometheus server
+          icon: alertmanager
+          name: Alertmanager
+          app: alertmanager
+          href: https://alertmanager.${SECRET_DOMAIN}
+          pod-selector: app.kubernetes.io/name=alertmanager
+          widget:
+            type: prometheusmetric
+            url: http://prometheus-operated.observability.svc.cluster.local:9090
+            metrics:
+              - label: Alerts active
+                query: alertmanager_alerts{state="active"} - 1
+
+
+
       - metricless:
         - Keycloak:
             description: Identity and access management
