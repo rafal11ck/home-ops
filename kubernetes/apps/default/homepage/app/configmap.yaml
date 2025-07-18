@@ -86,6 +86,7 @@ data:
           icon: alertmanager
           name: Alertmanager
           app: alertmanager
+          namespace: observability
           href: https://alertmanager.${SECRET_DOMAIN}
           pod-selector: app.kubernetes.io/name=alertmanager
           widget:
@@ -95,7 +96,18 @@ data:
               - label: Alerts active
                 query: alertmanager_alerts{state="active"} - 1
 
-
+      - prometheus:
+          description: Metrics and monitoring
+          group: Internal
+          icon: prometheus
+          name: Prometheus
+          app: prometheus
+          namespace: observability
+          href: https://prometheus.${SECRET_DOMAIN}
+          pod-selector: app.kubernetes.io/name=prometheus
+          widget:
+            type: prometheus
+            url: http://prometheus-operated.observability.svc.cluster.local:9090
 
       - metricless:
         - Keycloak:

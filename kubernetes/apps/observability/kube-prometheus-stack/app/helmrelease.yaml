@@ -75,16 +75,7 @@ spec:
       route:
         main:
           annotations:
-            gethomepage.dev/enabled: 'true'
-            gethomepage.dev/description: Metrics and monitoring
-            gethomepage.dev/group: Internal
-            gethomepage.dev/icon: prometheus
-            gethomepage.dev/name: Prometheus
-            gethomepage.dev/href: https://prometheus.${SECRET_DOMAIN}
-            gethomepage.dev/widget.type: prometheus
-            gethomepage.dev/widget.url: http://prometheus-operated.observability.svc.cluster.local:9090
-            gethomepage.dev/pod-selector: >-
-              app.kubernetes.io/name=prometheus
+
           enabled: true
           hostnames:
             - prometheus.${SECRET_DOMAIN}
