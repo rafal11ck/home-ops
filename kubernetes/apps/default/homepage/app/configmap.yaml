@@ -46,6 +46,7 @@ data:
             url: http://nextcloud.default.svc.cluster.local:8080
             key: '{{HOMEPAGE_VAR_NEXTCLOUD_KEY}}'
             fields: ["activeusers", "freespace"]
+          podSelector: kubernetes.io/name=nextcloud
       - immich:
           description: Photo and video management
           icon: immich
@@ -58,7 +59,7 @@ data:
             fields: ["users", "storage"]
             url: http://immich-server.immich.svc.cluster.local:2283
             key: '{{HOMEPAGE_VAR_IMMICH_KEY}}'
-          pod-selector: >-
+          podSelector: >-
             app.kubernetes.io/name in (
               machine-learning,
               server
