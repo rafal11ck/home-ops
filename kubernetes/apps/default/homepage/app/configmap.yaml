@@ -38,6 +38,7 @@ data:
           description: Private cloud to store files, chat, manage calendars and contacts
           group: Applications
           icon: nextcloud
+          app: nextcloud
           name: Nextcloud
           namespace: default
           href: https://cloud.${SECRET_DOMAIN}
@@ -50,6 +51,7 @@ data:
       - immich:
           description: Photo and video management
           icon: immich
+          app: immich
           name: Immich
           namespace: immich
           href: https://immich.${SECRET_DOMAIN}
@@ -59,7 +61,7 @@ data:
             fields: ["users", "storage"]
             url: http://immich-server.immich.svc.cluster.local:2283
             key: '{{HOMEPAGE_VAR_IMMICH_KEY}}'
-          podSelector: >-
+          podSelector:
             app.kubernetes.io/name in (
               machine-learning,
               server
