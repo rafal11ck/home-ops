@@ -87,6 +87,38 @@ data:
             namespace: media
             href: 'https://jellyfin.${SECRET_DOMAIN}'
 
+      - Services:
+        - qbittorrent:
+            description: BitTorrent client
+            enabled: 'true'
+            group: Services
+            app: qbittorrent
+            namespace: media
+            icon: qbittorrent
+            name: Qbittorrent
+            href: 'https://qbittorrent.${SECRET_DOMAIN}'
+            widget:
+              type: qbittorrent
+              url: http://qbittorrent.media.svc.cluster.local:80
+              fields: ["download"]
+        - echo-server:
+          - echo-server:
+              name: Echo-server
+              app: echo-server
+              description: An HTTP and WebSocket server for testing
+              href: https://echo-server.${SECRET_DOMAIN}
+              namespace: default
+              podSelector: app.kubernetes.io/controller=echo-server,app.kubernetes.io/instance=echo-server,app.kubernetes.io/name=echo-server
+              icon: mdi-server-network-outline
+          - echo-server-sec:
+              name: Echo-server
+              app: echo-server
+              description: OIDC secured echo-server
+              href: https://echo-server-sec.${SECRET_DOMAIN}
+              namespace: default
+              podSelector: app.kubernetes.io/controller=echo-server,app.kubernetes.io/instance=echo-server,app.kubernetes.io/name=echo-server
+              icon: mdi-server-network-outline
+
     - Internal:
       - OPNsense:
           href: https://192.168.0.1
@@ -97,38 +129,7 @@ data:
             url: https://192.168.0.1
             username: {{HOMEPAGE_VAR_OPNSENSE_KEY}}
             password: {{HOMEPAGE_VAR_OPNSENSE_SECRET}}
-    - Services:
-      - qbittorrent:
-          description: BitTorrent client
-          enabled: 'true'
-          group: Services
-          app: qbittorrent
-          namespace: media
-          icon: qbittorrent
-          name: Qbittorrent
-          href: 'https://qbittorrent.${SECRET_DOMAIN}'
-          widget:
-            type: qbittorrent
-            url: http://qbittorrent.media.svc.cluster.local:80
-            fields: ["download"]
 
-      - echo-server:
-        - echo-server:
-            name: Echo-server
-            app: echo-server
-            description: An HTTP and WebSocket server for testing
-            href: https://echo-server.${SECRET_DOMAIN}
-            namespace: default
-            podSelector: app.kubernetes.io/controller=echo-server,app.kubernetes.io/instance=echo-server,app.kubernetes.io/name=echo-server
-            icon: mdi-server-network-outline
-        - echo-server-sec:
-            name: Echo-server
-            app: echo-server
-            description: OIDC secured echo-server
-            href: https://echo-server-sec.${SECRET_DOMAIN}
-            namespace: default
-            podSelector: app.kubernetes.io/controller=echo-server,app.kubernetes.io/instance=echo-server,app.kubernetes.io/name=echo-server
-            icon: mdi-server-network-outline
   settings.yaml: |
     ---
     title: Dashboard
