@@ -78,14 +78,6 @@ spec:
             scrapeTimeout: 10s
     route:
       app:
-        annotations:
-          gethomepage.dev/description: An HTTP and WebSocket server for testing
-          gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: echo-server
-          gethomepage.dev/icon: mdi-server-network-outline
-          gethomepage.dev/name: Echo-server
-          gethomepage.dev/href: 'https://echo-server.${SECRET_DOMAIN}'
-          gethomepage.dev/pod-selector: &selector app.kubernetes.io/controller=echo-server,app.kubernetes.io/instance=echo-server,app.kubernetes.io/name=echo-server
         hostnames:
           - echo-server.${SECRET_DOMAIN}
         parentRefs:
@@ -97,14 +89,6 @@ spec:
               - name: *app
                 port: *port
       app-sec:
-        annotations:
-          gethomepage.dev/description: OIDC secured echo-server
-          gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: echo-server
-          gethomepage.dev/icon: mdi-security-network
-          gethomepage.dev/name: Echo-server secured
-          gethomepage.dev/href: 'https://echo-server-sec.${SECRET_DOMAIN}'
-          gethomepage.dev/pod-selector: *selector
         hostnames:
           - echo-server-sec.${SECRET_DOMAIN}
         parentRefs:
