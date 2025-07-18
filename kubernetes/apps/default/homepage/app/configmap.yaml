@@ -76,6 +76,8 @@ data:
       Services:
         style: row
         columns: 4
+        echo-server:
+          header: false
       Internal:
         style: row
         columns: 3
