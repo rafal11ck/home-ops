@@ -97,6 +97,7 @@ data:
         style: row
         columns: 3
         metricless:
+          header: false
       Services:
         style: row
         columns: 2
