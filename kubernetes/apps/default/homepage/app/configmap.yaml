@@ -123,6 +123,7 @@ data:
             group: Services
             icon: sonarr
             app: sonarr
+            namespace: media
             name: Sonarr
             href: https://sonarr.${SECRET_DOMAIN}
             widget:
