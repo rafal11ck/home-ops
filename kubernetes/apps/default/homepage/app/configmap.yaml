@@ -45,13 +45,13 @@ data:
             podSelector: >-
               app=keycloak
         - Jellyfin:
-          description: Media system
-          enabled: 'true'
-          group: Applications
-          icon: jellyfin
-          name: Jellyfin
-          namespace: media
-          href: 'https://jellyfin.${SECRET_DOMAIN}'
+            description: Media system
+            enabled: 'true'
+            group: Applications
+            icon: jellyfin
+            name: Jellyfin
+            namespace: media
+            href: 'https://jellyfin.${SECRET_DOMAIN}'
     - Internal:
       - OPNsense:
           href: https://192.168.0.1
