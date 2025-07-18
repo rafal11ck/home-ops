@@ -102,7 +102,7 @@ data:
           description: BitTorrent client
           enabled: 'true'
           group: Services
-          app: qittorrent
+          app: qbittorrent
           namespace: media
           icon: qbittorrent
           name: Qbittorrent
