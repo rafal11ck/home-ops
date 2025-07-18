@@ -66,20 +66,20 @@ data:
               machine-learning,
               server
             )
-        - grafana:
-          description: Observability and data visualization platform
-          icon: grafana
-          name: Grafana
-          app: grafana
-          namespace: observability
-          href: https://grafana.${SECRET_DOMAIN}
-          pod-selector: app=grafana
-          widget:
-            type: prometheusmetric
-            url: http://prometheus-operated.observability.svc.cluster.local:9090
-            metrics:
-              - label: Dashboards
-                query: grafana_stat_totals_dashboard
+      - grafana:
+        description: Observability and data visualization platform
+        icon: grafana
+        name: Grafana
+        app: grafana
+        namespace: observability
+        href: https://grafana.${SECRET_DOMAIN}
+        pod-selector: app=grafana
+        widget:
+          type: prometheusmetric
+          url: http://prometheus-operated.observability.svc.cluster.local:9090
+          metrics:
+            - label: Dashboards
+              query: grafana_stat_totals_dashboard
 
       - metricless:
         - Keycloak:
