@@ -49,13 +49,13 @@ data:
             name: Echo-server
             description: An HTTP and WebSocket server for testing
             href: https://echo-server.${SECRET_DOMAIN}
-            pod-selector: app.kubernetes.io/controller=echo-server,app.kubernetes.io/instance=echo-server,app.kubernetes.io/name=echo-server
+            podSelector: app.kubernetes.io/controller=echo-server,app.kubernetes.io/instance=echo-server,app.kubernetes.io/name=echo-server
             icon: mdi-server-network-outline
         - echo-server-sec:
             name: Echo-server
             description: OIDC secured echo-server
             href: https://echo-server.${SECRET_DOMAIN}
-            pod-selector: app.kubernetes.io/controller=echo-server,app.kubernetes.io/instance=echo-server,app.kubernetes.io/name=echo-server
+            podSelector: app.kubernetes.io/controller=echo-server,app.kubernetes.io/instance=echo-server,app.kubernetes.io/name=echo-server
             icon: mdi-server-network-outline
   settings.yaml: |
     ---
