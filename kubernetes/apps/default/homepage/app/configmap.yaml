@@ -103,6 +103,7 @@ data:
           enabled: 'true'
           group: Services
           app: qittorrent
+          namespace: media
           icon: qbittorrent
           name: Qbittorrent
           href: 'https://qbittorrent.${SECRET_DOMAIN}'
