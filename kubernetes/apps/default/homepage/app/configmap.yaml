@@ -118,6 +118,17 @@ data:
               namespace: default
               podSelector: app.kubernetes.io/controller=echo-server,app.kubernetes.io/instance=echo-server,app.kubernetes.io/name=echo-server
               icon: mdi-server-network-outline
+        - sonarr:
+            description: Smart PVR
+            group: Services
+            icon: sonarr
+            app: sonarr
+            name: Sonarr
+            href: https://sonarr.${SECRET_DOMAIN}
+            widget:
+              type: sonarr
+              url: http://sonarr.media.svc.cluster.local:80
+              key: {{HOMEPAGE_VAR_SONARR_KEY}}
 
     - Internal:
       - OPNsense:
