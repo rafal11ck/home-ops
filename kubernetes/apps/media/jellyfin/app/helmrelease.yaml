@@ -71,7 +71,6 @@ spec:
     route:
       app:
         annotations:
-       
         hostnames: ['{{ .Release.Name }}.${SECRET_DOMAIN}']
         parentRefs:
           - name: external
