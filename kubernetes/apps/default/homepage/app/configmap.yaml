@@ -39,6 +39,7 @@ data:
           group: Applications
           icon: nextcloud
           name: Nextcloud
+          namespace: default
           href: https://cloud.${SECRET_DOMAIN}
           widget:
             type: nextcloud
@@ -49,6 +50,7 @@ data:
           description: Photo and video management
           icon: immich
           name: Immich
+          namespace: immich
           href: https://immich.${SECRET_DOMAIN}
           widget:
             type: immich
