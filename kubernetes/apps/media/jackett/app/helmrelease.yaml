@@ -75,15 +75,6 @@ spec:
           - name: internal
             namespace: envoy-gateway-system
             sectionName: https
-        annotations:
-          gethomepage.dev/description: Indexer agragator and cache
-          gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: Internal
-          gethomepage.dev/icon: jackett
-          gethomepage.dev/name: Jackett
-          gethomepage.dev/href: 'https://{{ .Release.Name }}.${SECRET_DOMAIN}'
-          gethomepage.dev/widget.type: jackett
-          gethomepage.dev/widget.url: http://jackett.media.svc.cluster.local:9117
     persistence:
       config:
         existingClaim: jackett-config

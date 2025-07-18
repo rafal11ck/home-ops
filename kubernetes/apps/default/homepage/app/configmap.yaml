@@ -141,6 +141,18 @@ data:
             url: https://192.168.0.1
             username: {{HOMEPAGE_VAR_OPNSENSE_KEY}}
             password: {{HOMEPAGE_VAR_OPNSENSE_SECRET}}
+      - jacektt:
+          description: Indexer agragator and cache
+          enabled: 'true'
+          group: Internal
+          icon: jackett
+          name: Jackett
+          app: jackett
+          namespace: media
+          href: 'https://{{ .Release.Name }}.${SECRET_DOMAIN}'
+          widget:
+            type: jackett
+            url: http://jackett.media.svc.cluster.local:9117
 
   settings.yaml: |
     ---
