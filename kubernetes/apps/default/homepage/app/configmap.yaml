@@ -55,7 +55,7 @@ data:
         - echo-server-sec:
             name: Echo-server
             description: OIDC secured echo-server
-            href: https://echo-server.${SECRET_DOMAIN}
+            href: https://echo-server-sec.${SECRET_DOMAIN}
             namespace: default
             podSelector: app.kubernetes.io/controller=echo-server,app.kubernetes.io/instance=echo-server,app.kubernetes.io/name=echo-server
             icon: mdi-server-network-outline
