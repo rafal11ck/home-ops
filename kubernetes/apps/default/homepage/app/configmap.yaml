@@ -98,6 +98,19 @@ data:
             username: {{HOMEPAGE_VAR_OPNSENSE_KEY}}
             password: {{HOMEPAGE_VAR_OPNSENSE_SECRET}}
     - Services:
+      - qbittorrent
+          description: BitTorrent client
+          enabled: 'true'
+          group: Services
+          app: qittorrent
+          icon: qbittorrent
+          name: Qbittorrent
+          href: 'https://qbittorrent.${SECRET_DOMAIN}'
+          widget:
+            type: qbittorrent
+            url: http://qbittorrent.media.svc.cluster.local:80
+            fields: ["download"]
+
       - echo-server:
         - echo-server:
             name: Echo-server

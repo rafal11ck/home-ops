@@ -71,15 +71,6 @@ spec:
             port: *port
     route:
       app:
-        annotations:
-          gethomepage.dev/description: BitTorrent client
-          gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: Services
-          gethomepage.dev/icon: qbittorrent
-          gethomepage.dev/name: Qbittorrent
-          gethomepage.dev/href: 'https://{{ .Release.Name }}.${SECRET_DOMAIN}'
-          gethomepage.dev/widget.type: qbittorrent
-          gethomepage.dev/widget.url: http://qbittorrent.media.svc.cluster.local:80
         hostnames:
           - '{{ .Release.Name }}.${SECRET_DOMAIN}'
         parentRefs:
