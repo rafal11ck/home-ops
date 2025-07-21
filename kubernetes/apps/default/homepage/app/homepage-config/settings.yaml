@@ -17,11 +17,10 @@ layout:
     style: row
     echo-server:
       header: false
-    header: false
     tab: Services
   Internal:
     columns: 3
-    icon: security-network
+    icon: mdi-security-network
     style: row
   Bookmarks:
     columns: 4
