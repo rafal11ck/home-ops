@@ -229,6 +229,7 @@ data:
       Services:
         style: row
         columns: 2
+        header: false
         echo-server:
           style: row
           columns: 2
