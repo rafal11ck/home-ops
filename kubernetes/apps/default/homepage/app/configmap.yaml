@@ -109,6 +109,25 @@ data:
             type: prometheus
             url: http://prometheus-operated.observability.svc.cluster.local:9090
 
+      - ceph:
+          description: Ceph monitoring and managment
+          group: Internal
+          icon: ceph
+          name: Ceph dashboard
+          app: ceph
+          href: https://rook.${SECRET_DOMAIN}
+          namespace: rook-ceph
+          pod-selector: app=rook-ceph-mgr,mgr_role=active,rook_cluster=rook-ceph
+          widget:
+            type: prometheusmetric
+            url: http://prometheus-operated.observability.svc.cluster.local:9090
+            metrics:
+              - label: OSDs in
+                query: count(ceph_osd_in)
+              - label: OSDs up
+                query: count(ceph_osd_up)
+
+
       - metricless:
         - Keycloak:
             description: Identity and access management

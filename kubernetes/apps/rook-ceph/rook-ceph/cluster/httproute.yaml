@@ -4,21 +4,6 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
   name: rook-ceph-dashboard
-  annotations:
-    gethomepage.dev/enabled: 'true'
-    gethomepage.dev/description: Ceph monitoring and managment
-    gethomepage.dev/group: Internal
-    gethomepage.dev/icon: ceph
-    gethomepage.dev/name: Ceph dashboard
-    gethomepage.dev/href: https://rook.${SECRET_DOMAIN}
-    gethomepage.dev/pod-selector: >-
-      app=rook-ceph-mgr,mgr_role=active,rook_cluster=rook-ceph
-    gethomepage.dev/widget.type: prometheusmetric
-    gethomepage.dev/widget.url: http://prometheus-operated.observability.svc.cluster.local:9090
-    gethomepage.dev/widget.metrics.0.label: OSDs in
-    gethomepage.dev/widget.metrics.0.query: count(ceph_osd_in)
-    gethomepage.dev/widget.metrics.1.label: OSDs up
-    gethomepage.dev/widget.metrics.1.query: count(ceph_osd_up)
 spec:
   hostnames:
     - 'rook.${SECRET_DOMAIN}'
