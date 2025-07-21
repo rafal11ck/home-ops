@@ -6,21 +6,23 @@ hideVersion: true
 layout:
   Applications:
     columns: 3
-    widgetless:
-      header: false
     style: row
     tab: Applications
-  Bookmarks:
-    columns: 4
-    style: row
-  Internal:
+    widgetless:
+      header: false
+  Services:
     columns: 3
     style: row
-  Services:
     echo-server:
       header: false
     header: false
     tab: Services
+  Internal:
+    columns: 3
+    style: row
+  Bookmarks:
+    columns: 4
+    style: row
 quicklaunch:
   hideInternetSearch: true
   hideVisitURL: true
