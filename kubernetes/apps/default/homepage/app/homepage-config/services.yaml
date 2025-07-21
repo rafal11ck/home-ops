@@ -1,34 +1,34 @@
 - Applications:
-  - nextcloud:
-      description: Private cloud to store files, chat, manage calendars and contact
-      icon: nextcloud
-      app: nextcloud
-      name: Nextcloud
-      namespace: default
-      href: https://cloud.${SECRET_DOMAIN}
-      widget:
-        type: nextcloud
-        url: http://nextcloud.default.svc.cluster.local:8080
-        key: '{{HOMEPAGE_VAR_NEXTCLOUD_KEY}}'
-        fields: ['activeusers', 'freespace']
-      podSelector: app.kubernetes.io/name=nextcloud
-  - immich:
-      description: Photo and video management
-      icon: immich
-      app: immich
-      name: Immich
-      namespace: immich
-      href: https://immich.${SECRET_DOMAIN}
-      widget:
-        type: immich
-        version: 2
-        fields: ['users', 'storage']
-        url: http://immich-server.immich.svc.cluster.local:2283
-        key: '{{HOMEPAGE_VAR_IMMICH_KEY}}'
-      podSelector: |-
-        app.kubernetes.io/name in (
-          machine-learning,
-          server
+    - nextcloud:
+        description: Private cloud to store files, chat, manage calendars and contact
+        icon: nextcloud
+        app: nextcloud
+        name: Nextcloud
+        namespace: default
+        href: https://cloud.${SECRET_DOMAIN}
+        widget:
+          type: nextcloud
+          url: http://nextcloud.default.svc.cluster.local:8080
+          key: '{{HOMEPAGE_VAR_NEXTCLOUD_KEY}}'
+          fields: ['activeusers', 'freespace']
+        podSelector: app.kubernetes.io/name=nextcloud
+    - immich:
+        description: Photo and video management
+        icon: immich
+        app: immich
+        name: Immich
+        namespace: immich
+        href: https://immich.${SECRET_DOMAIN}
+        widget:
+          type: immich
+          version: 2
+          fields: ['users', 'storage']
+          url: http://immich-server.immich.svc.cluster.local:2283
+          key: '{{HOMEPAGE_VAR_IMMICH_KEY}}'
+        podSelector: |-
+          app.kubernetes.io/name in (
+            machine-learning,
+            server
           )
 
     - grafana:
