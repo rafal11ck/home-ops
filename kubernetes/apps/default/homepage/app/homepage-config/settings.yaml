@@ -6,12 +6,14 @@ hideVersion: true
 layout:
   Applications:
     columns: 3
+    icon: application-outline
     style: row
     tab: Applications
     widgetless:
       header: false
   Services:
     columns: 3
+    icon: application-cog-outline
     style: row
     echo-server:
       header: false
@@ -19,9 +21,11 @@ layout:
     tab: Services
   Internal:
     columns: 3
+    icon: security-network
     style: row
   Bookmarks:
     columns: 4
+    icon: bookmark-box-multiple-outline
     style: row
 quicklaunch:
   hideInternetSearch: true
