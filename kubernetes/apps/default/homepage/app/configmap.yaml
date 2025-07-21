@@ -144,47 +144,48 @@ data:
             namespace: media
             href: 'https://jellyfin.${SECRET_DOMAIN}'
 
-      - Services:
-        - qbittorrent:
-            description: BitTorrent client
-            enabled: 'true'
-            app: qbittorrent
-            namespace: media
-            icon: qbittorrent
-            name: Qbittorrent
-            href: 'https://qbittorrent.${SECRET_DOMAIN}'
-            widget:
-              type: qbittorrent
-              url: http://qbittorrent.media.svc.cluster.local:80
-              fields: ["download"]
+      - qbittorrent:
+          description: BitTorrent client
+          enabled: 'true'
+          app: qbittorrent
+          namespace: media
+          icon: qbittorrent
+          name: Qbittorrent
+          href: 'https://qbittorrent.${SECRET_DOMAIN}'
+          widget:
+            type: qbittorrent
+            url: http://qbittorrent.media.svc.cluster.local:80
+            fields: ["download"]
+
+      - echo-server:
         - echo-server:
-          - echo-server:
-              name: Echo-server
-              app: echo-server
-              description: An HTTP and WebSocket server for testing
-              href: https://echo-server.${SECRET_DOMAIN}
-              namespace: default
-              podSelector: app.kubernetes.io/controller=echo-server,app.kubernetes.io/instance=echo-server,app.kubernetes.io/name=echo-server
-              icon: mdi-server-network-outline
-          - echo-server-sec:
-              name: Echo-server
-              app: echo-server
-              description: OIDC secured echo-server
-              href: https://echo-server-sec.${SECRET_DOMAIN}
-              namespace: default
-              podSelector: app.kubernetes.io/controller=echo-server,app.kubernetes.io/instance=echo-server,app.kubernetes.io/name=echo-server
-              icon: mdi-server-network-outline
-        - sonarr:
-            description: Smart PVR
-            icon: sonarr
-            app: sonarr
-            namespace: media
-            name: Sonarr
-            href: https://sonarr.${SECRET_DOMAIN}
-            widget:
-              type: sonarr
-              url: http://sonarr.media.svc.cluster.local:80
-              key: {{HOMEPAGE_VAR_SONARR_KEY}}
+            name: Echo-server
+            app: echo-server
+            description: An HTTP and WebSocket server for testing
+            href: https://echo-server.${SECRET_DOMAIN}
+            namespace: default
+            podSelector: app.kubernetes.io/controller=echo-server,app.kubernetes.io/instance=echo-server,app.kubernetes.io/name=echo-server
+            icon: mdi-server-network-outline
+        - echo-server-sec:
+            name: Echo-server
+            app: echo-server
+            description: OIDC secured echo-server
+            href: https://echo-server-sec.${SECRET_DOMAIN}
+            namespace: default
+            podSelector: app.kubernetes.io/controller=echo-server,app.kubernetes.io/instance=echo-server,app.kubernetes.io/name=echo-server
+            icon: mdi-server-network-outline
+
+      - sonarr:
+          description: Smart PVR
+          icon: sonarr
+          app: sonarr
+          namespace: media
+          name: Sonarr
+          href: https://sonarr.${SECRET_DOMAIN}
+          widget:
+            type: sonarr
+            url: http://sonarr.media.svc.cluster.local:80
+            key: {{HOMEPAGE_VAR_SONARR_KEY}}
 
     - Internal:
       - OPNsense:
@@ -230,10 +231,10 @@ data:
           style: row
           columns: 2
           header: false
-          echo-server:
-            style: row
-            columns: 2
-            header: false
+        echo-server:
+          style: row
+          columns: 2
+          header: false
       Internal:
         style: row
         columns: 3
