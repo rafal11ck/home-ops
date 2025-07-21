@@ -226,14 +226,14 @@ data:
         columns: 3
         metricless:
           header: false
-      Services:
-        style: row
-        columns: 2
-        header: false
-        echo-server:
+        Services:
           style: row
           columns: 2
           header: false
+          echo-server:
+            style: row
+            columns: 2
+            header: false
       Internal:
         style: row
         columns: 3
