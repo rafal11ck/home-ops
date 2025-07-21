@@ -1,0 +1,15 @@
+---
+- search:
+    provider:
+      - google
+      - duckduckgo
+- kubernetes:
+    cluster:
+      show: true
+      cpu: true
+      memory: true
+    nodes:
+      show: true
+      cpu: true
+      memory: true
+      showLabel: true

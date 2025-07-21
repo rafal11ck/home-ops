@@ -148,7 +148,7 @@
         widget:
           type: sonarr
           url: http://sonarr.media.svc.cluster.local:80
-          key: { { HOMEPAGE_VAR_SONARR_KEY } }
+          key: '{{HOMEPAGE_VAR_SONARR_KEY}}'
 
 - Internal:
     - OPNsense:
@@ -158,8 +158,8 @@
         widget:
           type: opnsense
           url: https://192.168.0.1
-          username: { { HOMEPAGE_VAR_OPNSENSE_KEY } }
-          password: { { HOMEPAGE_VAR_OPNSENSE_SECRET } }
+          username: '{{HOMEPAGE_VAR_OPNSENSE_KEY}}'
+          password: '{{HOMEPAGE_VAR_OPNSENSE_SECRET}}'
     - jacektt:
         description: Indexer agragator and cache
         enabled: 'true'

@@ -5,77 +5,9 @@ kind: ConfigMap
 metadata:
   name: homepage-config
 data:
-  bookmarks.yaml: |
-    ---
-    - Bookmarks:
-      - k8s-at-home-search:
-        - icon: kubernetes
-          href: https://nanne.dev/k8s-at-home-search/
-          description: Search KAH HelmReleases
-      - onedr0p home-ops:
-        - icon: github-light
-          href: https://github.com/onedr0p/home-ops
-          description: onedr0p HomeOps Repository
-      - bjw-s Chart Values:
-        - icon: github-light
-          href: https://github.com/bjw-s/helm-charts/tree/main/charts/library/common#values
-          description: app-template Helm Chart Values
-      - NixOS Search:
-        - icon: nixos
-          href: https://search.nixos.org
-          description: Search NixOS Packages and Options
-
   docker.yaml: |
     ---
   kubernetes.yaml: |
     ---
     mode: cluster
     gateway: true
-
-  settings.yaml: |
-    ---
-    title: Dashboard
-    theme: dark
-    color: slate
-    headerStyle: clean
-    target: _blank
-    disableUpdateCheck: true
-    hideVersion: true
-    layout:
-      Bookmarks:
-        style: row
-        columns: 4
-      Applications:
-        tab: Applications
-        style: row
-        columns: 3
-        metricless:
-          header: false
-      Services:
-        tab: Services
-        header: false
-        echo-server:
-          header: false
-      Internal:
-        style: row
-        columns: 3
-    quicklaunch:
-      searchDescription: true
-      hideInternetSearch: true
-      hideVisitURL: true
-  widgets.yaml: |
-    ---
-    - search:
-        provider:
-          - google
-          - duckduckgo
-    - kubernetes:
-        cluster:
-          show: true
-          cpu: true
-          memory: true
-        nodes:
-          show: true
-          cpu: true
-          memory: true
-          showLabel: true

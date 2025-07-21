@@ -6,6 +6,9 @@ configMapGenerator:
   - name: homepage-config
     behavior: merge
     files:
+      - ./bookmarks.yaml
       - ./services.yaml
+      - ./settings.yaml
+      - ./widgets.yaml
 resources:
   - ./configmap.yaml

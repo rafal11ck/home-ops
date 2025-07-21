@@ -1,0 +1,30 @@
+---
+title: Dashboard
+theme: dark
+color: slate
+headerStyle: clean
+target: _blank
+disableUpdateCheck: true
+hideVersion: true
+layout:
+  Bookmarks:
+    style: row
+    columns: 4
+  Applications:
+    tab: Applications
+    style: row
+    columns: 3
+    metricless:
+      header: false
+  Services:
+    tab: Services
+    header: false
+    echo-server:
+      header: false
+  Internal:
+    style: row
+    columns: 3
+quicklaunch:
+  searchDescription: true
+  hideInternetSearch: true
+  hideVisitURL: true

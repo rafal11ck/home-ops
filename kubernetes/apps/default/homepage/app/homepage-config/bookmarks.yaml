@@ -1,0 +1,17 @@
+- Bookmarks:
+    - k8s-at-home-search:
+        - icon: kubernetes
+          href: https://nanne.dev/k8s-at-home-search/
+          description: Search KAH HelmReleases
+    - onedr0p home-ops:
+        - icon: github-light
+          href: https://github.com/onedr0p/home-ops
+          description: onedr0p HomeOps Repository
+    - bjw-s Chart Values:
+        - icon: github-light
+          href: https://github.com/bjw-s/helm-charts/tree/main/charts/library/common#values
+          description: app-template Helm Chart Values
+    - NixOS Search:
+        - icon: nixos
+          href: https://search.nixos.org
+          description: Search NixOS Packages and Options
