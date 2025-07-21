@@ -228,11 +228,8 @@ data:
         metricless:
           header: false
         Services:
-          style: row
-          columns: 2
           header: false
         echo-server:
-          columns: 2
           header: false
       Internal:
         style: row
