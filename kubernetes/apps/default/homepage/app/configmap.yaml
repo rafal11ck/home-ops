@@ -87,7 +87,7 @@ data:
           app: alertmanager
           namespace: observability
           href: https://alertmanager.${SECRET_DOMAIN}
-          pod-selector: app.kubernetes.io/name=alertmanager
+          podSelector: app.kubernetes.io/name=alertmanager
           widget:
             type: prometheusmetric
             url: http://prometheus-operated.observability.svc.cluster.local:9090
@@ -102,7 +102,7 @@ data:
           app: prometheus
           namespace: observability
           href: https://prometheus.${SECRET_DOMAIN}
-          pod-selector: app.kubernetes.io/name=prometheus
+          podSelector: app.kubernetes.io/name=prometheus
           widget:
             type: prometheus
             url: http://prometheus-operated.observability.svc.cluster.local:9090
@@ -114,7 +114,7 @@ data:
           app: ceph
           href: https://rook.${SECRET_DOMAIN}
           namespace: rook-ceph
-          pod-selector: app=rook-ceph-mgr,mgr_role=active,rook_cluster=rook-ceph
+          podSelector: app=rook-ceph-mgr,mgr_role=active,rook_cluster=rook-ceph
           widget:
             type: prometheusmetric
             url: http://prometheus-operated.observability.svc.cluster.local:9090
