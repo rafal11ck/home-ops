@@ -6,14 +6,14 @@ hideVersion: true
 layout:
   Applications:
     columns: 3
-    icon: application-outline
+    icon: mdi-application-outline
     style: row
     tab: Applications
     widgetless:
       header: false
   Services:
     columns: 3
-    icon: application-cog-outline
+    icon: mdi-application-cog-outline
     style: row
     echo-server:
       header: false
@@ -25,7 +25,7 @@ layout:
     style: row
   Bookmarks:
     columns: 4
-    icon: bookmark-box-multiple-outline
+    icon: mdi-bookmark-box-multiple-outline
     style: row
 quicklaunch:
   hideInternetSearch: true
