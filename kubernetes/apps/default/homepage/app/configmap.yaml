@@ -36,7 +36,6 @@ data:
     - Applications:
       - nextcloud:
           description: Private cloud to store files, chat, manage calendars and contacts
-          group: Applications
           icon: nextcloud
           app: nextcloud
           name: Nextcloud
@@ -98,7 +97,6 @@ data:
 
       - prometheus:
           description: Metrics and monitoring
-          group: Internal
           icon: prometheus
           name: Prometheus
           app: prometheus
@@ -111,7 +109,6 @@ data:
 
       - ceph:
           description: Ceph monitoring and managment
-          group: Internal
           icon: ceph
           name: Ceph dashboard
           app: ceph
@@ -141,7 +138,6 @@ data:
         - Jellyfin:
             description: Media system
             enabled: 'true'
-            group: Applications
             icon: jellyfin
             app: jellyfin
             name: Jellyfin
@@ -152,7 +148,6 @@ data:
         - qbittorrent:
             description: BitTorrent client
             enabled: 'true'
-            group: Services
             app: qbittorrent
             namespace: media
             icon: qbittorrent
@@ -181,7 +176,6 @@ data:
               icon: mdi-server-network-outline
         - sonarr:
             description: Smart PVR
-            group: Services
             icon: sonarr
             app: sonarr
             namespace: media
@@ -205,7 +199,6 @@ data:
       - jacektt:
           description: Indexer agragator and cache
           enabled: 'true'
-          group: Internal
           icon: jackett
           name: Jackett
           app: jackett
