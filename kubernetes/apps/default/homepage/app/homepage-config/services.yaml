@@ -96,7 +96,7 @@
         app: jackett
         description: Indexer agragator and cache
         enabled: 'true'
-        href: https://{{ .Release.Name }}.${SECRET_DOMAIN}
+        href: https://jackett.${SECRET_DOMAIN}
         icon: jackett
         name: Jackett
         namespace: media
