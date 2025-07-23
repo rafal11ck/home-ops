@@ -78,7 +78,7 @@
         widget:
           fields: ['download']
           type: qbittorrent
-          url: http://qbittorrent.media.svc.cluster.local:80
+          url: http://qbittorrent-app.media.svc.cluster.local:80
 
     - sonarr:
         app: sonarr
