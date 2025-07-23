@@ -69,12 +69,15 @@ spec:
         ports:
           http:
             port: *port
-          torrent-udp:
-            protocol: UDP
+      bittorrent:
+        type: LoadBalancer
+        annotations:
+          lbipam.cilium.io/ips: 192.168.0.242
+        ports:
+          bittorrent-tcp:
             port: *torrentPort
-          torrent-tcp:
             protocol: TCP
-            port: *torrentPort
+
     route:
       app:
         hostnames:
