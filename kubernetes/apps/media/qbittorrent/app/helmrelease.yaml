@@ -78,6 +78,10 @@ spec:
             port: *torrentPort
             targetPort: *torrentPort
             protocol: TCP
+          bittorrent-udp:
+            port: *torrentPort
+            targetPort: *torrentPort
+            protocol: UDP
 
     route:
       app:
