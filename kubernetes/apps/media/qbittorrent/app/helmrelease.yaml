@@ -69,6 +69,12 @@ spec:
         ports:
           http:
             port: *port
+          torrent-udp:
+            protocol: UDP
+            port: *torrentPort
+          torrent-tcp:
+            protocol: TCP
+            port: *torrentPort
     route:
       app:
         hostnames:
@@ -77,6 +83,7 @@ spec:
           - name: external
             namespace: envoy-gateway-system
             sectionName: https
+
     persistence:
       config:
         existingClaim: qbittorrent-config
