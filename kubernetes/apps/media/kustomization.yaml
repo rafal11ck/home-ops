@@ -6,6 +6,7 @@ namespace: media
 components:
   - ../../components/common
 resources:
+  - ./filebrowser/ks.yaml
   - ./jellyfin/ks.yaml
   - ./qbittorrent/ks.yaml
   - ./shared/ks.yaml
