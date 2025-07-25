@@ -13,7 +13,7 @@ spec:
     controllers:
       filebrowser:
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
         containers:
           filebrowser:
             image:
@@ -55,7 +55,6 @@ spec:
           type: RuntimeDefault
     service:
       filebrowser:
-        controller: *name
         ports:
           http:
             port: 80
@@ -65,8 +64,8 @@ spec:
           - host: &host 'files.${SECRET_DOMAIN}'
         rules:
           - backendRefs:
-            - name: *app
-              port: http
+              - name: filebrowser
+                port: http
         parentRefs:
           - name: internal
             namespace: envoy-gateway-system
