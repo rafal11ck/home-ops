@@ -57,7 +57,7 @@ spec:
       filebrowser:
         ports:
           http:
-            port: 80
+            port: &port 80
     route:
       filebrowser:
         hostnames:
@@ -65,7 +65,7 @@ spec:
         rules:
           - backendRefs:
               - name: filebrowser
-                port: http
+                port: *port
         parentRefs:
           - name: internal
             namespace: envoy-gateway-system
