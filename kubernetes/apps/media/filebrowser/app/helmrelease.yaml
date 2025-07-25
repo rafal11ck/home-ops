@@ -61,7 +61,7 @@ spec:
     route:
       filebrowser:
         hostnames:
-          - host: &host 'files.${SECRET_DOMAIN}'
+          - &host 'files.${SECRET_DOMAIN}'
         rules:
           - backendRefs:
               - name: filebrowser
