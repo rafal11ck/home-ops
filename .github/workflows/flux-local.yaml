@@ -32,7 +32,7 @@ jobs:
         run: git clone --branch "${{ steps.get_keycloak_version.outputs.result }}" https://github.com/keycloak/keycloak-k8s-resources.git "keycloak-k8s-resources" # FIXME do better
 
       - name: Run flux-local test
-        uses: docker://ghcr.io/allenporter/flux-local:v7.7.1
+        uses: docker://ghcr.io/allenporter/flux-local:v7.8.0
         with:
           args: >-
             test
@@ -74,7 +74,7 @@ jobs:
         run: git clone --branch "${{ steps.get_keycloak_version.outputs.result }}" https://github.com/keycloak/keycloak-k8s-resources.git "keycloak-k8s-resources" # FIXME do better
 
       - name: Run flux-local diff
-        uses: docker://ghcr.io/allenporter/flux-local:v7.7.1
+        uses: docker://ghcr.io/allenporter/flux-local:v7.8.0
         with:
           args: >-
             diff ${{ matrix.resources }}
