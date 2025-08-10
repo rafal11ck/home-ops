@@ -16,7 +16,7 @@ spec:
           reloader.stakater.com/auto: 'true'
         containers:
           filebrowser:
-            image:
+            image: &image
               repository: filebrowser/filebrowser
               tag: v2.42.2@sha256:45931d1aca9d2e904913b46c52cc76fc1c3d9ceb6abe6e35d7ac9a4735d2707e
             securityContext:
@@ -27,7 +27,7 @@ spec:
               requests:
                 cpu: 10m
                 memory: 100Mi
-            env:
+            env: &filebrowser-env
               FB_LOG: stdout
               FB_ROOT: /media
               FB_NOAUTH: 'true' # quote
@@ -43,6 +43,15 @@ spec:
                   periodSeconds: 10
                   timeoutSeconds: 1
                   failureThreshold: 3
+        initContainers:
+          filebrowser:
+            image:
+              <<: *image
+            env:
+              <<: *filebrowser-env
+            command: >-
+              filebrowser config set --auth.method=proxy --auth.header=X-filebrowser-user
+
     defaultPodOptions:
       automountServiceAccountToken: false
       enableServiceLinks: false
@@ -61,7 +70,7 @@ spec:
     route:
       filebrowser:
         hostnames:
-          - &host 'files.${SECRET_DOMAIN}'
+          - &host 'filebrowser.${SECRET_DOMAIN}'
         rules:
           - backendRefs:
               - name: filebrowser
