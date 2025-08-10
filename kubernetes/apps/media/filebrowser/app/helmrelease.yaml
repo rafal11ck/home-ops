@@ -49,9 +49,12 @@ spec:
               <<: *image
             env:
               <<: *filebrowser-env
-            command: >-
-              filebrowser config set --auth.method=proxy --auth.header=X-filebrowser-user
-
+            command:
+              [
+                'sh',
+                '-c',
+                'filebrowser config set --auth.method=proxy --auth.header=X-filebrowser-user',
+              ]
     defaultPodOptions:
       automountServiceAccountToken: false
       enableServiceLinks: false
