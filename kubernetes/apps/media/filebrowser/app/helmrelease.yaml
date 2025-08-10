@@ -52,7 +52,7 @@ spec:
               [
                 'sh',
                 '-c',
-                'filebrowser --config /config/settings.json --database=/database/filebrowser.db  config set --auth.method=proxy --auth.header=X-filebrowser-user',
+                'filebrowser --config=/config/settings.json --database=/database/filebrowser.db config set --auth.method=proxy --auth.header=X-filebrowser-user',
               ]
     defaultPodOptions:
       automountServiceAccountToken: false
