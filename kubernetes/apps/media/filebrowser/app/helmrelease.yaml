@@ -53,7 +53,7 @@ spec:
               [
                 'sh',
                 '-c',
-                'filebrowser config init; filebrowser config set --auth.method=proxy --auth.header=X-filebrowser-user',
+                'filebrowser --config /config/settings.json config set --auth.method=proxy --auth.header=X-filebrowser-user',
               ]
     defaultPodOptions:
       automountServiceAccountToken: false
