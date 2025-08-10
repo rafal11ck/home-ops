@@ -30,7 +30,8 @@ spec:
             env: &filebrowser-env
               FB_LOG: stdout
               FB_ROOT: /media
-              FB_NOAUTH: 'true' # quote
+              FB_AUTH_METHOD: proxy
+              FB_AUTH_HEADER: filebrowser-user
             probes:
               liveness: &probes
                 enabled: true
