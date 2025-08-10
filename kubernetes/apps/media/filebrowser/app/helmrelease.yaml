@@ -30,8 +30,6 @@ spec:
             env: &filebrowser-env
               FB_LOG: stdout
               FB_ROOT: /media
-              FB_AUTH_METHOD: proxy
-              FB_AUTH_HEADER: filebrowser-user
             probes:
               liveness: &probes
                 enabled: true
@@ -44,6 +42,18 @@ spec:
                   periodSeconds: 10
                   timeoutSeconds: 1
                   failureThreshold: 3
+        initContainers:
+          filebrowser-setup:
+            image:
+              <<: *image
+            env:
+              <<: *filebrowser-env
+            command:
+              [
+                'sh',
+                '-c',
+                'filebrowser --config /config/settings.json --database=/database/filebrowser.db  config set --auth.method=proxy --auth.header=X-filebrowser-user',
+              ]
     defaultPodOptions:
       automountServiceAccountToken: false
       enableServiceLinks: false
