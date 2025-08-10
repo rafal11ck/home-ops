@@ -43,18 +43,6 @@ spec:
                   periodSeconds: 10
                   timeoutSeconds: 1
                   failureThreshold: 3
-        initContainers:
-          filebrowser-setup:
-            image:
-              <<: *image
-            env:
-              <<: *filebrowser-env
-            command:
-              [
-                'sh',
-                '-c',
-                'filebrowser --config /config/settings.json config set --auth.method=proxy --auth.header=X-filebrowser-user',
-              ]
     defaultPodOptions:
       automountServiceAccountToken: false
       enableServiceLinks: false
