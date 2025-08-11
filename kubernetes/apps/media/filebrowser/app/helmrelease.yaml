@@ -27,11 +27,12 @@ spec:
               requests:
                 cpu: 10m
                 memory: 100Mi
-            env: &filebrowser-env
+            env:
               FB_LOG: stdout
               FB_ROOT: /media
+              FB_NOAUTH: 'true' # quote
             probes:
-              liveness: &probes
+              liveness:
                 enabled: true
                 custom: true
                 spec:
@@ -42,18 +43,6 @@ spec:
                   periodSeconds: 10
                   timeoutSeconds: 1
                   failureThreshold: 3
-        initContainers:
-          filebrowser-setup:
-            image:
-              <<: *image
-            env:
-              <<: *filebrowser-env
-            command:
-              [
-                'sh',
-                '-c',
-                'filebrowser --config=/config/settings.json --database=/database/filebrowser.db config set --auth.method=proxy --auth.header=X-filebrowser-user',
-              ]
     defaultPodOptions:
       automountServiceAccountToken: false
       enableServiceLinks: false
