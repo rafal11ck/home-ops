@@ -13,7 +13,7 @@ spec:
       issuer: &issuer 'https://auth.${SECRET_DOMAIN}/realms/home-ops'
     clientID: jackett
     clientSecret:
-      name: 'echo-server-sec-secret'
+      name: 'jackett-secret'
     cookieNames:
       accessToken: &cookie AccessToken
     redirectURL: https://jackett.${SECRET_DOMAIN}/oauth2/callback
