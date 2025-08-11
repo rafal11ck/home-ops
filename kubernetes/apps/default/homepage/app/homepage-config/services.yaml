@@ -1,6 +1,6 @@
 - Applications:
     - nextcloud:
-        description: Private cloud to store files, chat, manage calendars and contact
+        description: Private cloud to store files, chat, manage calendars and contacts
         icon: nextcloud
         app: nextcloud
         name: Nextcloud
