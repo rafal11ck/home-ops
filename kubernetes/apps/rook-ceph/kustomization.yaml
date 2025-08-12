@@ -5,7 +5,6 @@ kind: Kustomization
 namespace: rook-ceph
 components:
   - ../../components/common
+  - ./rook-ceph/namespace-patch.yaml
 resources:
   - ./rook-ceph/ks.yaml
-patchesStrategicMerge:
-  - ./rook-ceph/namespace-patch.yaml
