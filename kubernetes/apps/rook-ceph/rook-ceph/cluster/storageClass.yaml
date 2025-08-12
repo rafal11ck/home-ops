@@ -16,3 +16,5 @@ parameters:
 provisioner: rook-ceph.cephfs.csi.ceph.com
 reclaimPolicy: Retain
 allowVolumeExpansion: true
+mountOptions:
+  - ms_mode=secure # https://github.com/siderolabs/talos/issues/11220#issuecomment-3007551802
