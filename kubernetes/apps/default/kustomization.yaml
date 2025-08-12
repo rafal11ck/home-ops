@@ -10,3 +10,4 @@ resources:
   - ./nextcloud/ks.yaml
   - ./open-webui/ks.yaml
   - ./homepage/ks.yaml
+  - ./filebrowser/ks.yaml
