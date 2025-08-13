@@ -64,6 +64,8 @@ spec:
         daysToRetain: 14
       network:
         provider: host
+        connections:
+          requireMsgr2: true
       resources:
         osd:
           limits:
