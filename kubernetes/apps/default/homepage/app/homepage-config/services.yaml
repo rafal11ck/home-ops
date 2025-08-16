@@ -122,6 +122,15 @@
             name: Echo-server
             namespace: default
             podSelector: app.kubernetes.io/controller=echo-server,app.kubernetes.io/instance=echo-server,app.kubernetes.io/name=echo-server
+    - Keycloak:
+        app: keycloak admin
+        description: Identity and access management administration page
+        href: https://keycloak.${SECRET_DOMAIN}/admin/home-ops/console/
+        icon: keycloak
+        name: Keycloak
+        namespace: keycloak
+        # TODO do better after https://github.com/keycloak/keycloak/issues/41079
+        podSelector: app=keycloak
 
 - Internal:
     - alertmanager:
