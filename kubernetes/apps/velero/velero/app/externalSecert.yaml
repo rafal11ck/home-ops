@@ -4,7 +4,7 @@ metadata:
   name: &secretName velero-bucket-plugin-format
 spec:
   secretStoreRef:
-    name: cluster-store
+    name: cluster-store-velero-ns
     kind: ClusterSecretStore
   target:
     name: *secretName
