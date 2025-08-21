@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: immich-machine-learning-cache
 spec:
-  storageClassName: ceph-filesystem
+  storageClassName: ceph-filesystem-kernel
   resources:
     requests:
       storage: 10Gi
