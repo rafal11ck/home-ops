@@ -8,4 +8,4 @@ spec:
       storage: 200Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: ceph-filesystem
+  storageClassName: ceph-filesystem-kernel
