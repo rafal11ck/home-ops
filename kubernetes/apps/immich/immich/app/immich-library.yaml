@@ -8,7 +8,7 @@ metadata:
   labels:
     backup: immich-library
 spec:
-  storageClassName: ceph-filesystem
+  storageClassName: ceph-filesystem-kernel
   resources:
     requests:
       storage: 160Gi
