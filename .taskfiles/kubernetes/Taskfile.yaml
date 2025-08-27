@@ -8,6 +8,8 @@ vars:
 tasks:
   privileged:
     desc: Run a privileged pod [node=required]
+    env:
+      node: '{{.node}}'
     cmd: |
       kubectl run privileged-{{.node}} -i --rm --image=null \
         --overrides="$(yq {{.KUBERNETES_RESOURCES_DIR}}/privileged-pod.tmpl.yaml -o=json | envsubst)"
@@ -16,4 +18,3 @@ tasks:
     preconditions:
       - test -f {{.KUBERNETES_RESOURCES_DIR}}/privileged-pod.tmpl.yaml
       - which envsubst
-  
