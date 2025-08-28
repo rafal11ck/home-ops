@@ -100,7 +100,7 @@ spec:
         retentionSize: '50GB'
         resources:
           limits:
-            memory: 2000Mi
+            memory: 3000Mi
         storageSpec:
           volumeClaimTemplate:
             spec:
