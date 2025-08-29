@@ -66,6 +66,9 @@ spec:
             - name: provisioning-config
               configMap:
                 name: provisioning-config
+            - name: grafana-data
+              persistentVolumeClaim:
+                claimName: grafana-data
           containers:
             - name: grafana
               envFrom:
