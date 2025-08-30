@@ -97,6 +97,12 @@ spec:
               volumeMounts:
                 - mountPath: /var/lib/grafana/dashboards
                   name: dashboards
+          securityContext: # https://github.com/grafana/grafana-operator/issues/1439
+            fsGroup: 1001
+            runAsGroup: 1001
+            runAsNonRoot: true
+            runAsUser: 1001
+
 ---
 # Provisioning config
 apiVersion: v1
