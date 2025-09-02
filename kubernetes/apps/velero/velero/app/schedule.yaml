@@ -2,7 +2,6 @@ apiVersion: velero.io/v1
 kind: Schedule
 metadata:
   name: immich-library-snapshot
-  namespace: velero
 spec:
   schedule: '0 3 * * 0' # Every sunday at 3 AM
   template:

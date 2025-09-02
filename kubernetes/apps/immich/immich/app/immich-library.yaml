@@ -6,7 +6,7 @@ metadata:
   annotations:
     kustomize.toolkit.fluxcd.io/prune: Disabled
   labels:
-    backup: immich-library
+    backup: immich-library # used by velero
 spec:
   storageClassName: ceph-filesystem-kernel
   resources:

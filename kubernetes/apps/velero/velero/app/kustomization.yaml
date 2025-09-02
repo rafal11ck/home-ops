@@ -6,3 +6,4 @@ resources:
   - ./objectBucketClaim.yaml
   - ./helmrelease.yaml
   - ./externalSecert.yaml
+  - ./schedule.yaml
