@@ -6,6 +6,7 @@ metadata:
   name: nextcloud
 spec:
   interval: 1h
+  timeout: 20m
   chart:
     spec:
       chart: nextcloud
@@ -20,7 +21,7 @@ spec:
   upgrade:
     cleanupOnFail: true
     remediation:
-      retries: 3
+      retries: -0
   values:
     deploymentAnnotations:
       reloader.stakater.com/auto: 'true'
@@ -160,6 +161,9 @@ spec:
 
           # install openid user backend
           php occ app:enable user_oidc
+
+          # update apps
+          ./occ app:update --all
 
           printf "setting up OIDC\n"
           php occ config:app:set --value=0 user_oidc allow_multiple_user_backends
