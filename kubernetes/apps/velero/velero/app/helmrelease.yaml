@@ -62,3 +62,5 @@ spec:
       volumeSnapshotLocation:
         - name: default
           provider: velero.io/csi
+    kubectl:
+      image: 1.33.4 # FIXME remove after upstream fixes https://github.com/vmware-tanzu/helm-charts/issues/698
