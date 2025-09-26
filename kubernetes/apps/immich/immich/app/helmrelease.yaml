@@ -130,6 +130,8 @@ spec:
           enabled: true
           hashVerificationEnabled: true
           template: '{{y}}/{{y}}_{{MM}}_{{dd}}__{{hh}}_{{mm}}_{{filename}}'
+        user:
+          deleteDelay: 21
     server:
       resources:
         requests:
