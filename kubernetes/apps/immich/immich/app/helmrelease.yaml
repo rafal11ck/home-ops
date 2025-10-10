@@ -9,7 +9,7 @@ spec:
     mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
     operation: copy
   ref:
-    tag: 0.9.3
+    tag: 0.10.0
   url: oci://ghcr.io/immich-app/immich-charts/immich
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
@@ -26,58 +26,62 @@ spec:
     - kind: Secret
       name: immich-app
   values:
-    image:
-      # renovate: datasource=github-releases depName=immich-app/immich
-      tag: v2.0.1
-    env:
-      REDIS_HOSTNAME: immich-dragonfly.immich.svc
-      REDIS_PASSWORD:
-        valueFrom:
-          secretKeyRef:
-            name: immich-dragonfly-secret
-            key: password
-      DB_HOSTNAME:
-        # HACK This will be ignored by immich but chart by default
-        # will break if not using builtin postgres
-        # so just overwrite ones set by it to correct ones
-        valueFrom:
-          secretKeyRef:
-            name: immich-database-app
-            key: host
-      DB_USERNAME:
-        # HACK This will be ignored by immich but chart by default
-        # will break if not using builtin postgres
-        # so just overwrite ones set by it to correct ones
-        valueFrom:
-          secretKeyRef:
-            name: immich-database-app
-            key: user
-      DB_DATABASE_NAME:
-        # HACK This will be ignored by immich but chart by default
-        # will break if not using builtin postgres
-        # so just overwrite ones set by it to correct ones
-        valueFrom:
-          secretKeyRef:
-            name: immich-database-app
-            key: dbname
-      DB_DATABASE_PASSWORD:
-        # HACK This will be ignored by immich but chart by default
-        # will break if not using builtin postgres
-        # so just overwrite ones set by it to correct ones
-        valueFrom:
-          secretKeyRef:
-            name: immich-database-app
-            key: password
-      DB_URL:
-        valueFrom:
-          secretKeyRef:
-            name: immich-database-app
-            key: uri
-      TZ:
-        valueFrom:
-          secretKeyRef:
-            name: immich-app
-            key: TZ
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              # renovate: datasource=github-releases depName=immich-app/immich
+              tag: v2.0.1
+            env:
+              REDIS_HOSTNAME: immich-dragonfly.immich.svc
+              REDIS_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-dragonfly-secret
+                    key: password
+              DB_HOSTNAME:
+                # HACK This will be ignored by immich but chart by default
+                # will break if not using builtin postgres
+                # so just overwrite ones set by it to correct ones
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database-app
+                    key: host
+              DB_USERNAME:
+                # HACK This will be ignored by immich but chart by default
+                # will break if not using builtin postgres
+                # so just overwrite ones set by it to correct ones
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database-app
+                    key: user
+              DB_DATABASE_NAME:
+                # HACK This will be ignored by immich but chart by default
+                # will break if not using builtin postgres
+                # so just overwrite ones set by it to correct ones
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database-app
+                    key: dbname
+              DB_DATABASE_PASSWORD:
+                # HACK This will be ignored by immich but chart by default
+                # will break if not using builtin postgres
+                # so just overwrite ones set by it to correct ones
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database-app
+                    key: password
+              DB_URL:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database-app
+                    key: uri
+              TZ:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-app
+                    key: TZ
     immich:
       metrics:
         enabled: true
@@ -133,23 +137,31 @@ spec:
         user:
           deleteDelay: 21
     server:
-      resources:
-        requests:
-          cpu: 50m
-          memory: 350Mi
-        limits:
-          cpu: 2500m
+      controllers:
+        main:
+          containers:
+            main:
+              resources:
+                requests:
+                  cpu: 50m
+                  memory: 350Mi
+                limits:
+                  cpu: 2500m
     machine-learning:
       persistence:
         cache:
-          type: pvc
+          type: persistentVolumeClaim
           existingClaim: immich-machine-learning-cache
-      resources:
-        requests:
-          cpu: 150m
-          memory: 900Mi
-        limits:
-          cpu: 2500m
+      controllers:
+        main:
+          containers:
+            main:
+              resources:
+                requests:
+                  cpu: 150m
+                  memory: 900Mi
+                limits:
+                  cpu: 2500m
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
