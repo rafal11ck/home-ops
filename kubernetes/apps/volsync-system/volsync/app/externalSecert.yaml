@@ -1,0 +1,12 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: &secretName volsync-restic-repo-rgw
+spec:
+  secretStoreRef:
+    name: cluster-store-volsync-ns
+    kind: ClusterSecretStore
+  target:
+    name: *secretName
+  dataFrom:
+    - key: volsync-bucket
