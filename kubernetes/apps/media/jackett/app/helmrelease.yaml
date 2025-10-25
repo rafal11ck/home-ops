@@ -23,7 +23,7 @@ spec:
           app:
             image:
               repository: ghcr.io/home-operations/jackett
-              tag: 0.24.115@sha256:f5128af1fa7c1030c6b6a6e5ac998bd487497aa5bd0daa50d38eb47619535565
+              tag: 0.24.185@sha256:244b14667d58e9668aa5414deffe3be6e31c3884e830fb8b580aa41a8f84ab13
             env:
               TZ: ${SECRET_TIMEZONE}
               PUID: 1000
