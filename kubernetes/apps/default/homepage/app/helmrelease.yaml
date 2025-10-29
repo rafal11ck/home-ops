@@ -63,7 +63,7 @@ spec:
         parentRefs:
           - name: external
             namespace: envoy-gateway-system
-            sectionName: https
+            sectionName: https-subdomains
         rules:
           - backendRefs:
               - name: homepage

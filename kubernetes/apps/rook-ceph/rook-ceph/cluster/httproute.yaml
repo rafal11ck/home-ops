@@ -10,7 +10,7 @@ spec:
   parentRefs:
     - name: internal
       namespace: envoy-gateway-system
-      sectionName: https
+      sectionName: https-subdomains
   rules:
     - backendRefs:
         - name: rook-ceph-mgr-dashboard

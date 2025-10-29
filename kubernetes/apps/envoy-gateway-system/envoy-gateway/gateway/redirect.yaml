@@ -10,10 +10,10 @@ spec:
   parentRefs:
     - name: internal
       namespace: envoy-gateway-system
-      sectionName: http
+      sectionName: http-subdomains
     - name: external
       namespace: envoy-gateway-system
-      sectionName: http
+      sectionName: http-subdomains
   rules:
     - filters:
         - requestRedirect:
@@ -29,10 +29,10 @@ spec:
   parentRefs:
     - name: internal
       namespace: envoy-gateway-system
-      sectionName: http
+      sectionName: http-subdomains
     - name: external
       namespace: envoy-gateway-system
-      sectionName: http
+      sectionName: http-subdomains
   hostnames:
     - ${SECRET_DOMAIN}
   rules:

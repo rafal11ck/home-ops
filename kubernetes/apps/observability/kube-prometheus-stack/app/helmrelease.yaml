@@ -49,7 +49,7 @@ spec:
           parentRefs:
             - name: internal
               namespace: envoy-gateway-system
-              sectionName: https
+              sectionName: https-subdomains
       alertmanagerSpec:
         externalUrl: https://alertmanager.${SECRET_DOMAIN}
         storage:
@@ -82,7 +82,7 @@ spec:
           parentRefs:
             - name: internal
               namespace: envoy-gateway-system
-              sectionName: https
+              sectionName: https-subdomains
       prometheusSpec:
         # diable some stuffs that are marked for removal upstream
         podMonitorSelectorNilUsesHelmValues: false
