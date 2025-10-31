@@ -22,6 +22,10 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+      tls:
+        certificateRefs:
+          - kind: Secret
+            name: '${SECRET_DOMAIN/./-}-tls'
     - name: http-subdomains
       protocol: HTTP
       port: 80
