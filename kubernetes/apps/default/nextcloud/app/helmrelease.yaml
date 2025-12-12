@@ -76,7 +76,7 @@ spec:
         extra_params: --o:ssl.enable=false
         existingSecret:
           enabled: true
-          secretname: nextcloud-secret
+          secretName: nextcloud-secret
           passwordKey: COLLABORA_PASSWORD
           usernameKey: COLLABORA_USERNAME
       autoscaling:
