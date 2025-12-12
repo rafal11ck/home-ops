@@ -158,6 +158,11 @@ spec:
               'user_search_match_emails' => false,
               ],
           );
+        log.php: |-
+          <?php
+            $CONFIG = array (
+              "log_type" => "file",
+            );
       hooks:
         post-installation: |-
           printf "Add missing DB indices\n"
