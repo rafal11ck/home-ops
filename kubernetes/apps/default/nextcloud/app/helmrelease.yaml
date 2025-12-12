@@ -67,7 +67,20 @@ spec:
       initialDelaySeconds: 5
       failureThreshold: 100
       timeoutSeconds: 5
-
+    collabora:
+      collabora:
+        aliasgroups:
+          - cloud.${SECRET_DOMAIN}
+      enabled: true
+      autoscaling:
+        enabled: false
+      extra_params: --o:ssl.enable=false
+      server_name: collabora.${SECRET_DOMAIN}
+      existingSecret:
+        enabled: true
+        secretname: nextcloud-secret
+        passwordKey: COLLABORA_PASSWORD
+        usernameKey: COLLABORA_USERNAME
     nextcloud:
       host: cloud.${SECRET_DOMAIN}
 
