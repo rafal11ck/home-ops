@@ -151,8 +151,6 @@ spec:
               1 => '10.69.0.0/16',
               2 => '10.96.0.0/16',
             ),
-            'overwriteprotocol' => 'https',
-            'overwritehost' => 'cloud.${SECRET_DOMAIN}',
             'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
             'maintenance_window_start' => 1,
             'default_phone_region' => 'PL',
