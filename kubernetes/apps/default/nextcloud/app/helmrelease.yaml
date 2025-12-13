@@ -71,8 +71,8 @@ spec:
       enabled: true
       collabora:
         aliasgroups:
-          - host: http://nextcloud.default.svc.cluster.local:8080
-            aliases: https://cloud.${SECRET_DOMAIN}
+          - host: https://cloud.${SECRET_DOMAIN}
+            aliases: http://nextcloud.default.svc.cluster.local:8080
         server_name: &collabora_url collabora.${SECRET_DOMAIN}
         extra_params: >-
           --o:ssl.enable=false
@@ -218,6 +218,8 @@ spec:
           php occ config:app:set richdocuments wopi_url --value "https://$COLLABORA_URL"
           # 10.69.0.0/16 is internal cluster network
           php occ config:app:set richdocuments wopi_allowlist --value "10.69.0.0/16"
+          php occ richdocuments:setup --callback-url=nextcloud.default.svc.cluster.local:8080
+
           php occ richdocuments:activate-config
 
           # If app is installed already occ returns 1, script fails and container refuses to start
