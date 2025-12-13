@@ -76,7 +76,8 @@ spec:
         extra_params: >-
           --o:ssl.enable=false
           --o:ssl.termination=true
-          --o:storage.wopi.host=cloud\.${SECRET_DOMAIN}
+          --o:storage.wopi.host=$NEXTCLOUD_SERVICE_HOST:$NEXTCLOUD_SERVICE_PORT_HTTP
+          --o:storage.wopi.allowed_hosts=collabora\.${SECRET_DOMAIN}
         existingSecret:
           enabled: true
           secretName: nextcloud-secret
@@ -214,8 +215,9 @@ spec:
 
           # setup collabora office
           php occ config:app:set richdocuments wopi_url --value "https://$COLLABORA_URL"
-          php occ config:app:set richdocuments wopi_allowlist --value "$COLLABORA_URL"
-
+          # 10.69.0.0/16 is internal cluster network
+          php occ config:app:set richdocuments wopi_allowlist --value "10.69.0.0/16"
+          php occ richdocuments:activate-config
 
           # If app is installed already occ returns 1, script fails and container refuses to start
           true
