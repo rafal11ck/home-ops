@@ -71,7 +71,7 @@ spec:
       enabled: true
       collabora:
         aliasgroups:
-          - host: cloud.${SECRET_DOMAIN}
+          - host: https://cloud.${SECRET_DOMAIN}:443
         server_name: &collabora_url collabora.${SECRET_DOMAIN}
         extra_params: >-
           --o:ssl.enable=false
