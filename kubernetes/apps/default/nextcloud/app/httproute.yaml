@@ -147,6 +147,10 @@ spec:
   hostnames:
     - collabora.${SECRET_DOMAIN}
   rules:
-    - backendRefs:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
         - name: nextcloud-collabora
           port: 9980
