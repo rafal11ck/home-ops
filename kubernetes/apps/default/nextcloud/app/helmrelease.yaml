@@ -216,7 +216,7 @@ spec:
 
           php occ richdocuments:activate-config \
           --wopi-url http://nextcloud-collabora.default.svc.cluster.local:9980 \
-          --callback-url=http://nextcloud.default.svc.cluster:8080
+          --callback-url=http://nextcloud.default.svc.cluster.local:8080
 
           php occ config:app:set richdocuments wopi_allowlist --value "10.69.0.0/16"
 
