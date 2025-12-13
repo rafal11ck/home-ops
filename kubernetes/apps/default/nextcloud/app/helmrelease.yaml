@@ -215,11 +215,10 @@ spec:
           # 10.69.0.0/16 is internal cluster network
 
           php occ richdocuments:activate-config \
-          --wopi-url http://nextcloud-collabora.default.svc.cluster.local:9980 \
+          --wopi-url https://collabora.${SECRET_DOMAIN} \
           --callback-url=http://nextcloud.default.svc.cluster.local:8080
 
           php occ config:app:set richdocuments wopi_allowlist --value "10.69.0.0/16"
-
 
           # If app is installed already occ returns 1, script fails and container refuses to start
           true
