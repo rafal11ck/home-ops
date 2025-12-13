@@ -213,7 +213,7 @@ spec:
           php occ config:app:set serverinfo token --value "$HOMEPAGE_VAR_NEXTCLOUD_KEY"
 
           # setup collabora office
-          php occ config:app:set richdocuments wopi_url --value "https://$COLLABORA_URL:443"
+          php occ config:app:set richdocuments wopi_url --value "https://$COLLABORA_URL"
           php occ config:app:set richdocuments wopi_allowlist --value "$COLLABORA_URL"
 
 
