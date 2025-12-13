@@ -5,8 +5,10 @@ metadata:
 spec:
   targetRefs:
     - group: gateway.networking.k8s.io
-      kind: HTTPRoute
-      name: nextcloud-collabora
+      kind: Gateway
+      name: internal
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: external
   path:
     escapedSlashesAction: KeepUnchanged
-    disableMergeSlashes: true
