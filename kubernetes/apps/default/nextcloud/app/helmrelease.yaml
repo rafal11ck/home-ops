@@ -155,6 +155,12 @@ spec:
             'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
             'maintenance_window_start' => 1,
             'default_phone_region' => 'PL',
+            'richdocuments' => array(
+              'wopi_url' => 'https://collabora.${SECRET_DOMAIN}:443',
+              'wopi_allowlist' => array(
+                'collabora.${SECRET_DOMAIN}',
+              ),
+            ),
           );
         user_oidc.config.php: |-
           <?php
@@ -204,8 +210,6 @@ spec:
           for appname in spreed contacts calendar user_oidc bookmarks deck richdocuments
             do php occ app:install "$appname"
           done
-
-          occ config:app:set richdocuments wopi_url --value ${COLLABORA_URL}:443
 
           # set storage quota for users
           php occ config:app:set files default_quota --value '2 GB'
