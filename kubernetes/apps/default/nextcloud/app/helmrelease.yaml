@@ -155,10 +155,7 @@ spec:
             'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
             'maintenance_window_start' => 1,
             'default_phone_region' => 'PL',
-            'richdocuments' => array(
-              'wopi_url' => 'https://collabora.${SECRET_DOMAIN}:443',
-              'wopi_allowlist' => 'collabora.${SECRET_DOMAIN}',
-            ),
+
           );
         user_oidc.config.php: |-
           <?php
@@ -214,6 +211,11 @@ spec:
 
           # set monitoring token
           php occ config:app:set serverinfo token --value "$HOMEPAGE_VAR_NEXTCLOUD_KEY"
+
+          # setup collabora office
+          php occ config:app:set richdocuments wopi_url --value "https://${COLLABORA_URL}:443"
+          php occ config:app:set richdocuments wopi_allowlist --value "${COLLABORA_URL}"
+
 
           # If app is installed already occ returns 1, script fails and container refuses to start
           true
