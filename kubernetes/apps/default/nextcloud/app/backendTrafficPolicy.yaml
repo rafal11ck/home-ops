@@ -3,12 +3,12 @@ kind: BackendTrafficPolicy
 metadata:
   name: nextcloud-collabora
 spec:
-  targetRef:
-    group: gateway.networking.k8s.io
-    kind: HTTPRoute
-    name: nextcloud-collabora
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: nextcloud-collabora
   httpUpgrade:
     - type: websocket
   timeout:
     http:
-      request: 0s
+      requestTimeout: 0s
