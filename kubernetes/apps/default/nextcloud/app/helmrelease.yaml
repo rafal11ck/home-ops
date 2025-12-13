@@ -152,7 +152,6 @@ spec:
               2 => '10.96.0.0/16',
             ),
             'overwriteprotocol' => 'https',
-            'overwritehost' => 'cloud.${SECRET_DOMAIN}',
             'overwrite.cli.url' => 'https://cloud.${SECRET_DOMAIN}',
             'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
             'maintenance_window_start' => 1,
@@ -215,11 +214,13 @@ spec:
           php occ config:app:set serverinfo token --value "$HOMEPAGE_VAR_NEXTCLOUD_KEY"
 
           # setup collabora office
-          php occ config:app:set richdocuments wopi_url --value "https://$COLLABORA_URL"
           # 10.69.0.0/16 is internal cluster network
-          php occ config:app:set richdocuments wopi_allowlist --value "10.69.0.0/16"
-          php occ richdocuments:setup --callback-url=nextcloud.default.svc.cluster.local:8080
 
+          php occ richdocuments:setup \
+          --wopi-url http://nextcloud-collabora.default.svc.cluster.local:9980 \
+          --callback-url=http://nextcloud.default.svc.cluster:8080
+
+          php occ config:app:set richdocuments wopi_allowlist --value "10.69.0.0/16"
           php occ richdocuments:activate-config
 
           # If app is installed already occ returns 1, script fails and container refuses to start
