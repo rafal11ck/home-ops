@@ -157,9 +157,7 @@ spec:
             'default_phone_region' => 'PL',
             'richdocuments' => array(
               'wopi_url' => 'https://collabora.${SECRET_DOMAIN}:443',
-              'wopi_allowlist' => array(
-                'collabora.${SECRET_DOMAIN}',
-              ),
+              'wopi_allowlist' => 'collabora.${SECRET_DOMAIN}',
             ),
           );
         user_oidc.config.php: |-
