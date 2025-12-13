@@ -73,7 +73,10 @@ spec:
         aliasgroups:
           - host: cloud.${SECRET_DOMAIN}
         server_name: &collabora_url collabora.${SECRET_DOMAIN}
-        extra_params: --o:ssl.enable=false --o:ssl.termination=true
+        extra_params: >-
+          --o:ssl.enable=false
+          --o:ssl.termination=true
+          --o:storage.wopi.host=cloud\.${SECRET_DOMAIN}
         existingSecret:
           enabled: true
           secretName: nextcloud-secret
