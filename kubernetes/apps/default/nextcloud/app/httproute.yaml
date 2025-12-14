@@ -157,7 +157,7 @@ spec:
       filters:
         - type: ResponseHeaderModifier
           responseHeaderModifier:
-            add:
+            set:
               - name: Content-Security-Policy
                 value: 'frame-ancestors https://cloud.${SECRET_DOMAIN}'
 ---
