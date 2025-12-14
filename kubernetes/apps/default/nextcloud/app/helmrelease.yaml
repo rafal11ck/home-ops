@@ -84,6 +84,9 @@ spec:
           secretName: nextcloud-secret
           passwordKey: COLLABORA_PASSWORD
           usernameKey: COLLABORA_USERNAME
+        env:
+          - name: dictionaries
+            value: en_US en_GB pl_PL
       autoscaling:
         enabled: false
     nextcloud:
