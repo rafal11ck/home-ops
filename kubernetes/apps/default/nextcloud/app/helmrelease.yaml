@@ -219,7 +219,8 @@ spec:
           php occ config:app:set richdocuments wopi_allowlist --value "10.69.0.0/16"
 
           php occ richdocuments:setup \
-          --wopi-url https://collabora.${SECRET_DOMAIN}
+          --wopi-url http://nextcloud-collabora.default.svc.cluster.local:$NEXTCLOUD_COLLABORA_SERVICE_PORT \
+          --callback-url http://nextcloud.default.svc.cluster.local:$NEXTCLOUD_SERVICE_PORT
 
           # If app is installed already occ returns 1, script fails and container refuses to start
           true
