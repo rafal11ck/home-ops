@@ -71,9 +71,9 @@ spec:
       enabled: true
       collabora:
         aliasgroups:
-          - host: https://cloud.${SECRET_DOMAIN}
+          - host: http://nextcloud.default.svc.cluster.local:8080
             aliases:
-              - http://nextcloud.default.svc.cluster.local:8080
+              - https://cloud.${SECRET_DOMAIN}
 
         server_name: &collabora_url collabora.${SECRET_DOMAIN}
         extra_params: >-
