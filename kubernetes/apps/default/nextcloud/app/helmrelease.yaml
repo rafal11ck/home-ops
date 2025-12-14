@@ -79,7 +79,6 @@ spec:
         extra_params: >-
           --o:ssl.enable=false
           --o:ssl.termination=true
-          --o:net.content_security_policy="frame-ancestors cloud.${SECRET_DOMAIN}"
         existingSecret:
           enabled: true
           secretName: nextcloud-secret

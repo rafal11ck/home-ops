@@ -154,6 +154,12 @@ spec:
       backendRefs:
         - name: nextcloud-collabora
           port: 9980
+      filters:
+        - type: ResponseHeaderModifier
+          responseHeaderModifier:
+            add:
+              - name: Content-Security-Policy
+                value: 'frame-ancestors https://cloud.${SECRET_DOMAIN};'
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/externaldns.k8s.io/dnsendpoint_v1alpha1.json
 apiVersion: externaldns.k8s.io/v1alpha1
