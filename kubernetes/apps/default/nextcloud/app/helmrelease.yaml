@@ -79,6 +79,8 @@ spec:
         extra_params: >-
           --o:ssl.enable=false
           --o:ssl.termination=true
+          --o:storage.wopi.host=$NEXTCLOUD_SERVICE_HOST:$NEXTCLOUD_SERVICE_PORT_HTTP
+          --o:storage.wopi.allowed_hosts=collabora\.${SECRET_DOMAIN}
         existingSecret:
           enabled: true
           secretName: nextcloud-secret
