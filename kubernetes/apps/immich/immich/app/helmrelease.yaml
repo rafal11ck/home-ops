@@ -32,7 +32,7 @@ spec:
           main:
             image:
               # renovate: datasource=github-releases depName=immich-app/immich
-              tag: v2.3.1
+              tag: v2.4.0
             env:
               REDIS_HOSTNAME: immich-dragonfly.immich.svc
               REDIS_PASSWORD:
