@@ -72,7 +72,7 @@ spec:
       resources:
         osd:
           limits:
-            memory: 2Gi
+            memory: 2500Mi
             cpu: 1500m
           requests:
             cpu: 100m
