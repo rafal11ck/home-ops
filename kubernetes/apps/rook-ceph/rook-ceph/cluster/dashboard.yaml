@@ -3,6 +3,7 @@ kind: GrafanaDashboard
 metadata:
   name: ceph-cluster
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
@@ -13,6 +14,7 @@ kind: GrafanaDashboard
 metadata:
   name: ceph-cluster-advanced
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
@@ -23,6 +25,7 @@ kind: GrafanaDashboard
 metadata:
   name: ceph-application-overview
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
@@ -33,6 +36,7 @@ kind: GrafanaDashboard
 metadata:
   name: cephfs-overview
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
@@ -43,6 +47,7 @@ kind: GrafanaDashboard
 metadata:
   name: hosts-overview
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
@@ -53,6 +58,7 @@ kind: GrafanaDashboard
 metadata:
   name: host-details
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
@@ -63,6 +69,7 @@ kind: GrafanaDashboard
 metadata:
   name: osds-overview
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
@@ -73,6 +80,7 @@ kind: GrafanaDashboard
 metadata:
   name: osd-device-details
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
@@ -83,6 +91,7 @@ kind: GrafanaDashboard
 metadata:
   name: pool-overview
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
@@ -93,6 +102,7 @@ kind: GrafanaDashboard
 metadata:
   name: pool-detail
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
@@ -103,6 +113,7 @@ kind: GrafanaDashboard
 metadata:
   name: radosgw-overview
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
@@ -113,6 +124,7 @@ kind: GrafanaDashboard
 metadata:
   name: radosgw-detail
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
@@ -123,6 +135,7 @@ kind: GrafanaDashboard
 metadata:
   name: radosgw-sync-overview
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
@@ -133,6 +146,7 @@ kind: GrafanaDashboard
 metadata:
   name: rgw-s3-analytics
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
@@ -143,6 +157,7 @@ kind: GrafanaDashboard
 metadata:
   name: rbd-overview
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
@@ -153,6 +168,7 @@ kind: GrafanaDashboard
 metadata:
   name: rbd-details
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
@@ -163,6 +179,7 @@ kind: GrafanaDashboard
 metadata:
   name: smb-overview
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
