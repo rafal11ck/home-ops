@@ -26,6 +26,9 @@ spec:
       enabled: true
       createPrometheusRules: true
     cephClusterSpec:
+      cephConfig:
+        mon:
+          mon_data_avail_warn: '10'
       mon:
         count: 3
       mgr:
