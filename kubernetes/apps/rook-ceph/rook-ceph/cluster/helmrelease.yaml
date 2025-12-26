@@ -27,6 +27,8 @@ spec:
       createPrometheusRules: true
     cephClusterSpec:
       cephConfig:
+        global:
+          mgr/prometheus/rbd_stats_pools: '*'
         mon:
           mon_data_avail_warn: '10'
       mon:
