@@ -181,6 +181,7 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
+  folder: Ceph
   grafanaCom:
     # renovate: depName="Ceph - OSD (Single)"
     id: 5336
@@ -194,6 +195,7 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
+  folder: Ceph
   grafanaCom:
     # renovate: depName="Ceph Cluster"
     id: 2842
@@ -207,6 +209,7 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
+  folder: Ceph
   grafanaCom:
     # renovate: depName="Ceph - Pools"
     id: 5342
