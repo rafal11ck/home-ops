@@ -25,3 +25,24 @@ spec:
   valuesFrom:
     - kind: ConfigMap
       name: flux-operator-helm-values
+    - kind: Secret
+      name: flux-operator-helm-values
+      valuesKey: oauth2
+      targetPath: web.config.authentication.oauth2
+  values:
+    web:
+      config:
+        baseURL: https://flux.${SECRET_DOMAIN}
+        authentication:
+          type: OAuth2
+          oauth2:
+            provider: OIDC
+            issuerURL: https://auth.${SECRET_DOMAIN}.xyz/realms/home-ops
+      httpRoute:
+        enabled: true
+        parentRefs:
+          - name: external
+            namespace: envoy-gateway-system
+            sectionName: https-subdomains
+        hostnames:
+          - flux.${SECRET_DOMAIN}
