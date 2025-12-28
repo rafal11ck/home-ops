@@ -46,25 +46,24 @@
           type: prometheusmetric
           url: http://prometheus-operated.observability.svc.cluster.local:9090
 
-    - widgetless:
-        - Keycloak:
-            app: keycloak
-            description: Identity and access management
-            href: https://auth.${SECRET_DOMAIN}
-            icon: keycloak
-            name: Keycloak
-            namespace: keycloak
-            # TODO do better after https://github.com/keycloak/keycloak/issues/41079
-            podSelector: app=keycloak
+    - Keycloak:
+        app: keycloak
+        description: Identity and access management
+        href: https://auth.${SECRET_DOMAIN}
+        icon: keycloak
+        name: Keycloak
+        namespace: keycloak
+        # TODO do better after https://github.com/keycloak/keycloak/issues/41079
+        podSelector: app=keycloak
 
-        - Jellyfin:
-            app: jellyfin
-            description: Media system
-            enabled: 'true'
-            href: https://jellyfin.${SECRET_DOMAIN}
-            icon: jellyfin
-            name: Jellyfin
-            namespace: media
+    - Jellyfin:
+        app: jellyfin
+        description: Media system
+        enabled: 'true'
+        href: https://jellyfin.${SECRET_DOMAIN}
+        icon: jellyfin
+        name: Jellyfin
+        namespace: media
 
 - Services:
     - qbittorrent:
