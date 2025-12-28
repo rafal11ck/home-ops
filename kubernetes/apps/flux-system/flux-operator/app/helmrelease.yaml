@@ -26,9 +26,7 @@ spec:
     - kind: ConfigMap
       name: flux-operator-helm-values
     - kind: Secret
-      name: flux-operator-helm-values
-      valuesKey: oauth2
-      targetPath: web.config.authentication.oauth2
+      name: flux-operator-helm-values-secret
   values:
     web:
       config:
@@ -37,7 +35,7 @@ spec:
           type: OAuth2
           oauth2:
             provider: OIDC
-            issuerURL: https://auth.${SECRET_DOMAIN}.xyz/realms/home-ops
+            issuerURL: https://auth.${SECRET_DOMAIN}/realms/home-ops
       httpRoute:
         enabled: true
         parentRefs:
