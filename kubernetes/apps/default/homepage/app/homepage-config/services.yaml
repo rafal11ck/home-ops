@@ -131,6 +131,13 @@
         namespace: keycloak
         # TODO do better after https://github.com/keycloak/keycloak/issues/41079
         podSelector: app=keycloak
+    - flux:
+        app: flux-operator
+        description: Web interface providing real-time visibility into GitOps pipelines
+        href: https://flux.${SECRET_DOMAIN}
+        icon: flux-cd
+        name: Flux
+        namespace: flux-system
 
 - Internal:
     - alertmanager:
@@ -186,11 +193,3 @@
               query: count(ceph_osd_up)
           type: prometheusmetric
           url: http://prometheus-operated.observability.svc.cluster.local:9090
-
-    - flux:
-        app: flux-operator
-        description: Web interface providing real-time visibility into GitOps pipelines
-        href: https://flux.${SECRET_DOMAIN}
-        icon: flux-cd
-        name: Flux
-        namespace: flux-system
