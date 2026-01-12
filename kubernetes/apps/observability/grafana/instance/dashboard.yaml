@@ -210,7 +210,7 @@ spec:
     matchLabels:
       dashboards: grafana
   # renovate: datasource=github-releases depName=envoyproxy/gateway
-  url: https://raw.githubusercontent.com/envoyproxy/gateway/refs/tags/v1.6.1/charts/gateway-addons-helm/dashboards/envoy-clusters.json
+  url: https://raw.githubusercontent.com/envoyproxy/gateway/refs/tags/v1.6.2/charts/gateway-addons-helm/dashboards/envoy-clusters.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -221,7 +221,7 @@ spec:
     matchLabels:
       dashboards: grafana
   # renovate: datasource=github-releases depName=envoyproxy/gateway
-  url: https://raw.githubusercontent.com/envoyproxy/gateway/refs/tags/v1.6.1/charts/gateway-addons-helm/dashboards/envoy-gateway-global.json
+  url: https://raw.githubusercontent.com/envoyproxy/gateway/refs/tags/v1.6.2/charts/gateway-addons-helm/dashboards/envoy-gateway-global.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -232,7 +232,7 @@ spec:
     matchLabels:
       dashboards: grafana
   # renovate: datasource=github-releases depName=envoyproxy/gateway
-  url: https://raw.githubusercontent.com/envoyproxy/gateway/refs/tags/v1.6.1/charts/gateway-addons-helm/dashboards/envoy-proxy-global.json
+  url: https://raw.githubusercontent.com/envoyproxy/gateway/refs/tags/v1.6.2/charts/gateway-addons-helm/dashboards/envoy-proxy-global.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -243,4 +243,4 @@ spec:
     matchLabels:
       dashboards: grafana
   # renovate: datasource=github-releases depName=envoyproxy/gateway
-  url: https://raw.githubusercontent.com/envoyproxy/gateway/refs/tags/v1.6.1/charts/gateway-addons-helm/dashboards/global-ratelimit.json
+  url: https://raw.githubusercontent.com/envoyproxy/gateway/refs/tags/v1.6.2/charts/gateway-addons-helm/dashboards/global-ratelimit.json
