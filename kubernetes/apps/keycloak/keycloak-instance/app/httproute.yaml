@@ -39,7 +39,7 @@ spec:
 apiVersion: externaldns.k8s.io/v1alpha1
 kind: DNSEndpoint
 metadata:
-  name: nextcloud
+  name: keycloak-auth
 spec:
   endpoints:
     - dnsName: 'auth.${SECRET_DOMAIN}'
