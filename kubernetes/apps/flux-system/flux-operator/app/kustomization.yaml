@@ -5,6 +5,7 @@ kind: Kustomization
 resources:
   - ./secret.sops.yaml
   - ./helmrelease.yaml
+  - ./clusterRoleBinding.yaml
 configMapGenerator:
   - name: flux-operator-helm-values
     files:
