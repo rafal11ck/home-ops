@@ -28,6 +28,8 @@ spec:
     - kind: Secret
       name: flux-operator-helm-values-secret
   values:
+    commonAnnotations:
+      reloader.stakater.com/auto: 'true'
     web:
       config:
         baseURL: https://flux.${SECRET_DOMAIN}
