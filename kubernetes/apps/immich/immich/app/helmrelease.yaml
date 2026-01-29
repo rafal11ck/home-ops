@@ -34,6 +34,7 @@ spec:
               # renovate: datasource=github-releases depName=immich-app/immich
               tag: v2.5.0
             env:
+              IMMICH_ALLOW_SETUP: false
               REDIS_HOSTNAME: immich-dragonfly.immich.svc
               REDIS_PASSWORD:
                 valueFrom:
