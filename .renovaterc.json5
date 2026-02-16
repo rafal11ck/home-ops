@@ -57,15 +57,4 @@
       '/(^|/)[\\w-]*requirements(-\\w+)?\\.(txt|pip)(?:\\.j2)?$/',
     ],
   },
-  packageRules: [
-    {
-      matchDatasources: [
-        'docker',
-      ],
-      matchPackageNames: [
-        '/ghcr.io\\/cloudnative-pg\\/postgresql/',
-      ],
-      separateMajorMinor: true,
-    },
-  ],
 }
