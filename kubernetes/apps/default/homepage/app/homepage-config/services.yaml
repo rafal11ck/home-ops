@@ -100,8 +100,8 @@
         namespace: media
         widget:
           key: '{{HOMEPAGE_VAR_RADARR_KEY}}'
-          type: radar
-          url: http://radar.media.svc.cluster.local:80
+          type: radarr
+          url: http://radarr.media.svc.cluster.local:80
 
     - jacektt:
         app: jackett
