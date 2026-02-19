@@ -6,8 +6,9 @@ namespace: media
 components:
   - ../../components/common
 resources:
+  - ./jackett/ks.yaml
   - ./jellyfin/ks.yaml
   - ./qbittorrent/ks.yaml
+  - ./radarr/ks.yaml
   - ./shared/ks.yaml
   - ./sonarr/ks.yaml
-  - ./jackett/ks.yaml
