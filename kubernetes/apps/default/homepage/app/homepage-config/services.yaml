@@ -91,6 +91,18 @@
           type: sonarr
           url: http://sonarr.media.svc.cluster.local:80
 
+    - radarr:
+        app: radarr
+        description: Movie organizer/manager
+        href: https://radarr.${SECRET_DOMAIN}
+        icon: radarr
+        name: radarr
+        namespace: media
+        widget:
+          key: '{{HOMEPAGE_VAR_RADARR_KEY}}'
+          type: radar
+          url: http://radar.media.svc.cluster.local:80
+
     - jacektt:
         app: jackett
         description: Indexer agragator and cache
