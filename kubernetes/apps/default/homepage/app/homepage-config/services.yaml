@@ -96,7 +96,7 @@
         description: Movie organizer/manager
         href: https://radarr.${SECRET_DOMAIN}
         icon: radarr
-        name: radarr
+        name: Radarr
         namespace: media
         widget:
           key: '{{HOMEPAGE_VAR_RADARR_KEY}}'
