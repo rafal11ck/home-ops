@@ -1,8 +1,8 @@
 - Bookmarks:
-    - k8s-at-home-search:
+    - kubesearch:
         - icon: kubernetes
-          href: https://nanne.dev/k8s-at-home-search/
-          description: Search KAH HelmReleases
+          href: https://kubesearch.dev
+          description: Kubesearch HelmReleases
     - onedr0p home-ops:
         - icon: github-light
           href: https://github.com/onedr0p/home-ops
