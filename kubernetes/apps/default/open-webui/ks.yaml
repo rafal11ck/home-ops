@@ -18,6 +18,3 @@ spec:
     namespace: flux-system
   targetNamespace: *namespace
   timeout: 5m
-  dependsOn:
-    - name: nextcloud-db
-    - name: nextcloud-memcache
