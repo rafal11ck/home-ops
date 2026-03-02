@@ -26,11 +26,6 @@
       },
     },
     {
-      matchPackageNames: ["ghcr.io/cloudnative-pg/postgresql"],
-      matchUpdateTypes: ["major"],
-      enabled: false,
-    },
-    {
       matchDatasources: [
         'docker',
       ],
