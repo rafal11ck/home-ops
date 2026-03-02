@@ -127,6 +127,7 @@ spec:
           buttonText: Login with Keycloak
           storageLabelClaim: preferred_username
           storageQuotaClaim: immich_quota
+          immich_role: resource_access.immich.role
           # mobileOverrideEnabled: false
           # mobileRedirectUri: ''
         passwordLogin:
