@@ -89,6 +89,17 @@ spec:
             value: en_US en_GB pl_PL
       autoscaling:
         enabled: false
+
+      installCOOLSeccompProfile: true
+      securityContext:
+        privileged: false
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+        seccompProfile:
+          type: 'Localhost'
+          localhostProfile: 'cool-seccomp-profile.json'
+        capabilities:
+          drop: ['ALL']
     nextcloud:
       host: cloud.${SECRET_DOMAIN}
 
