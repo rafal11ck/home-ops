@@ -158,7 +158,7 @@ spec:
   grafanaCom:
     # renovate: depName="Prometheus"
     id: 19105
-    revision: 8
+    revision: 9
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
