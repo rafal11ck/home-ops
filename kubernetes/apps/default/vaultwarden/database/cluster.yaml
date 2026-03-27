@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/postgresql.cnpg.io/cluster_v1.json
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: &name vaultwarden-database
+spec:
+  description: 'vaultwarden database'
+  instances: 1
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.3
+  storage:
+    size: 5Gi
+    storageClass: ceph-block
+  monitoring:
+    enablePodMonitor: true
+  bootstrap:
+    initdb:
+      database: vaultwarden
+  backup:
+    retentionPolicy: 1m # month
+    barmanObjectStore:
+      endpointURL: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc:80
+      destinationPath: s3://vaultwarden-cnpg-bucket/
+      s3Credentials:
+        accessKeyId:
+          name: vaultwarden-cnpg-bucket
+          key: AWS_ACCESS_KEY_ID
+        secretAccessKey:
+          name: vaultwarden-cnpg-bucket
+          key: AWS_SECRET_ACCESS_KEY
+      wal:
+        compression: gzip
