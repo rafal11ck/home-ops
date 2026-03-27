@@ -1,0 +1,7 @@
+apiVersion: objectbucket.io/v1alpha1
+kind: ObjectBucketClaim
+metadata:
+  name: vaultwarden-cnpg-bucket
+spec:
+  bucketName: vaultwarden-cnpg-bucket
+  storageClassName: ceph-bucket
