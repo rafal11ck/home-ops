@@ -15,5 +15,4 @@ resources:
   - ./nextcloud.yaml
   - ./podinfo.yaml
   - ./rook-release.yaml
-  - ./spegel.yaml
   - ./stakater.yaml
