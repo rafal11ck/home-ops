@@ -23,3 +23,33 @@ spec:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities: { drop: ['ALL'] }
+            env:
+              ROCKET_PORT: '8080'
+              DOMAIN: ${SECRET_DOMAIN}
+              TZ: ${SECRET_TIMEZONE}
+              DATABASE_URL:
+                secretKeyRef:
+                  name: vaultwarden-database-app
+                  key: uri
+            envFrom:
+              - secretRef:
+                  name: vaultwarden-secret
+            probes:
+              liveness: &probe
+                enabled: true
+                type: HTTP
+                path: /alive
+              readiness: *probe
+              startup:
+                <<: *probe
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
+        pod:
+          priorityClassName: system-cluster-critical
+    service:
+      vaultwarden:
+        controller: vaultwarden
+        ports:
+          http:
+            port: 8080
