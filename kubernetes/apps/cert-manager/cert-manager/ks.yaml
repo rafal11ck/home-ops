@@ -10,7 +10,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   interval: 1h
-  path: ./kubernetes/apps/kube-system/cert-manager/app
+  path: ./kubernetes/apps/kube-system/cert-manager/cert-manager/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -31,7 +31,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   interval: 1h
-  path: ./kubernetes/apps/kube-system/cert-manager/issuers
+  path: ./kubernetes/apps/kube-system/cert-manager/cert-manager/issuers
   prune: true
   healthCheckExprs:
     - apiVersion: cert-manager.io/v1
