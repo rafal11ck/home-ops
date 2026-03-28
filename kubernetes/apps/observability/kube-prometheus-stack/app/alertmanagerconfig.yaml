@@ -17,6 +17,9 @@ spec:
           - name: severity
             value: critical
             matchType: =
+          - name: severity
+            value: warning
+            matchType: =
       - receiver: 'null'
         matchers:
           - name: alertname
