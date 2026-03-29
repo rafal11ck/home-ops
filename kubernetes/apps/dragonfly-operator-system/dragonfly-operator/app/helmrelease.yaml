@@ -22,7 +22,5 @@ spec:
     remediation:
       retries: 3
   values:
-    grafanaDashboard:
-      enabled: true
     serviceMonitor:
       enable: true
