@@ -1,0 +1,13 @@
+# HACK workaround allow dragonfly metrics, remove after https://github.com/dragonflydb/dragonfly-operator/issues/495 is fixed
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: nextcloud-memcache-allow-metrics
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: dragonfly
+  ingress:
+    - ports:
+        - port: 9999
+          protocol: TCP
