@@ -52,7 +52,19 @@ spec:
         controller: vaultwarden
         ports:
           http:
-            port: 8080
+            port: &port 8080
+    route:
+      vaultwarden:
+        hostnames:
+          - &host 'vaultwarden.${SECRET_DOMAIN}'
+        rules:
+          - backendRefs:
+              - name: vaultwarden
+                port: *port
+        parentRefs:
+          - name: internal
+            namespace: envoy-gateway-system
+            sectionName: https-subdomains
     persistence:
       config:
         existingClaim: *app
