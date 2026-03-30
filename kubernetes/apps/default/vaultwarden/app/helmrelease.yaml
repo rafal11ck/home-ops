@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: vaultwarden
+  name: &app vaultwarden
 spec:
   interval: 1h
   chartRef:
@@ -53,3 +53,8 @@ spec:
         ports:
           http:
             port: 8080
+    persistence:
+      config:
+        existingClaim: *app
+        globalMounts:
+          - path: /data
