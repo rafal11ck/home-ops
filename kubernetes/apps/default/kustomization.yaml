@@ -11,3 +11,4 @@ resources:
   - ./open-webui/ks.yaml
   - ./homepage/ks.yaml
   - ./filebrowser/ks.yaml
+  - ./vaultwarden/ks.yaml
