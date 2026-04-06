@@ -25,7 +25,7 @@ spec:
               capabilities: { drop: [ 'ALL' ] }
             env:
               ROCKET_PORT: '8080'
-              DOMAIN: https://${SECRET_DOMAIN}
+              DOMAIN: https://vaultwarden.${SECRET_DOMAIN}
               TZ: ${SECRET_TIMEZONE}
               DATABASE_URL:
                 secretKeyRef:
