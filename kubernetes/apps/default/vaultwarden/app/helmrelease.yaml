@@ -65,6 +65,9 @@ spec:
           - name: internal
             namespace: envoy-gateway-system
             sectionName: https-subdomains
+          - name: external
+            namespace: envoy-gateway-system
+            sectionName: https-subdomains
     persistence:
       config:
         existingClaim: *app
