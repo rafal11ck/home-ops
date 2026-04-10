@@ -10,7 +10,7 @@
           type: nextcloud
           url: http://nextcloud.default.svc.cluster.local:8080
           key: '{{HOMEPAGE_VAR_NEXTCLOUD_KEY}}'
-          fields: ['activeusers', 'freespace']
+          fields: [ 'activeusers', 'freespace' ]
         podSelector: app.kubernetes.io/name=nextcloud
     - immich:
         description: Photo and video management
@@ -22,7 +22,7 @@
         widget:
           type: immich
           version: 2
-          fields: ['users', 'storage']
+          fields: [ 'users', 'storage' ]
           url: http://immich-server.immich.svc.cluster.local:2283
           key: '{{HOMEPAGE_VAR_IMMICH_KEY}}'
         podSelector: |-
@@ -65,6 +65,14 @@
         name: Jellyfin
         namespace: media
 
+    - Vaultwarden:
+        app: vaultwarden
+        description: Bitwarden compatible server
+        href: https://vaultwarden.${SECRET_DOMAIN}
+        icon: vaultwarden
+        name: Vaultwarden
+        namespace: default
+
 - Services:
     - qbittorrent:
         app: qbittorrent
@@ -75,7 +83,7 @@
         name: Qbittorrent
         namespace: media
         widget:
-          fields: ['download']
+          fields: [ 'download' ]
           type: qbittorrent
           url: http://qbittorrent-app.media.svc.cluster.local:80
 
@@ -152,7 +160,8 @@
 - Internal:
     - alertmanager:
         app: alertmanager
-        description: Handles alerts sent by client applications such as the Prometheus server
+        description: Handles alerts sent by client applications such as the Prometheus
+          server
         href: https://alertmanager.${SECRET_DOMAIN}
         icon: alertmanager
         name: Alertmanager
