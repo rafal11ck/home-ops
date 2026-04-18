@@ -15,3 +15,17 @@ spec:
   bootstrap:
     initdb:
       database: memos
+  backup:
+    retentionPolicy: 1m # month
+    barmanObjectStore:
+      endpointURL: http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc:80
+      destinationPath: s3://memos-cnpg-bucket/
+      s3Credentials:
+        accessKeyId:
+          name: memos-cnpg-bucket
+          key: AWS_ACCESS_KEY_ID
+        secretAccessKey:
+          name: memos-cnpg-bucket
+          key: AWS_SECRET_ACCESS_KEY
+      wal:
+        compression: gzip

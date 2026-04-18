@@ -1,0 +1,7 @@
+apiVersion: objectbucket.io/v1alpha1
+kind: ObjectBucketClaim
+metadata:
+  name: memos-cnpg-bucket
+spec:
+  bucketName: memos-cnpg-bucket
+  storageClassName: ceph-bucket
