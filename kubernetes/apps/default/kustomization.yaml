@@ -7,8 +7,8 @@ components:
   - ../../components/common
 resources:
   - ./echo-server/ks.yaml
+  - ./filebrowser/ks.yaml
+  - ./homepage/ks.yaml
   - ./nextcloud/ks.yaml
   - ./open-webui/ks.yaml
-  - ./homepage/ks.yaml
-  - ./filebrowser/ks.yaml
   - ./vaultwarden/ks.yaml
