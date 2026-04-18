@@ -9,6 +9,7 @@ resources:
   - ./echo-server/ks.yaml
   - ./filebrowser/ks.yaml
   - ./homepage/ks.yaml
+  - ./memos/ks.yaml
   - ./nextcloud/ks.yaml
   - ./open-webui/ks.yaml
   - ./vaultwarden/ks.yaml
