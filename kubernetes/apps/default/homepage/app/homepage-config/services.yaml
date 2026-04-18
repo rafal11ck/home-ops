@@ -73,6 +73,14 @@
         name: Vaultwarden
         namespace: default
 
+    - memos:
+        app: memos
+        description: Lightweight note-taking service
+        href: https://memos.${SECRET_DOMAIN}
+        icon: memos
+        name: Memos
+        namespace: default
+
 - Services:
     - qbittorrent:
         app: qbittorrent
