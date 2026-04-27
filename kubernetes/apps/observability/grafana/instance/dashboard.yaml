@@ -142,7 +142,7 @@ spec:
   grafanaCom:
     # renovate: depName="Node Exporter Full"
     id: 1860
-    revision: 44
+    revision: 45
   datasources:
     - datasourceName: prometheus
       inputName: DS_PROMETHEUS
