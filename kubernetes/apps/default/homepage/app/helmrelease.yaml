@@ -27,7 +27,7 @@ spec:
           main:
             image:
               repository: ghcr.io/gethomepage/homepage
-              tag: v1.12.3
+              tag: v1.13.0
             probes:
               startup:
                 enabled: true
