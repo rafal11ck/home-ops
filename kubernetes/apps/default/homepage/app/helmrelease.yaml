@@ -23,6 +23,7 @@ spec:
         pod:
           annotations:
             reloader.stakater.com/auto: 'true'
+          automountServiceAccountToken: true
         containers:
           main:
             image:
