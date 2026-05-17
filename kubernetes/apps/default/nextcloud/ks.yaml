@@ -21,6 +21,8 @@ spec:
   dependsOn:
     - name: nextcloud-db
     - name: nextcloud-memcache
+    - name: envoy-gateway-app
+      namespace: envoy-gateway-system
   postBuild:
     substituteFrom:
       - kind: Secret

@@ -29,6 +29,8 @@ metadata:
 spec:
   dependsOn:
     - name: grafana
+    - name: envoy-gateway-app
+      namespace: envoy-gateway-system
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

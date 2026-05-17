@@ -17,3 +17,5 @@ spec:
   timeout: 5m
   dependsOn:
     - name: shared
+    - name: envoy-gateway-app
+      namespace: envoy-gateway-system

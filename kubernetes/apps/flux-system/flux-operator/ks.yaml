@@ -39,3 +39,6 @@ spec:
   targetNamespace: *namespace
   timeout: 5m
   wait: false
+  dependsOn:
+    - name: envoy-gateway-app
+      namespace: envoy-gateway-system

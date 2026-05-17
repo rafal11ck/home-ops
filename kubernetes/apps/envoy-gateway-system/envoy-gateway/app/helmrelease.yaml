@@ -32,6 +32,12 @@ spec:
     remediation:
       retries: 3
   values:
+    crds:
+      envoyGateway:
+        enabled: true
+      gatewayAPI:
+        enabled: true
+        channel: experimental
     deployment:
       hpa:
         enabled: true

@@ -32,6 +32,8 @@ spec:
       app.kubernetes.io/name: *app
   dependsOn:
     - name: rook-ceph-operator
+    - name: envoy-gateway-app
+      namespace: envoy-gateway-system
   interval: 1h
   path: ./kubernetes/apps/rook-ceph/rook-ceph/cluster
   prune: false # keep
