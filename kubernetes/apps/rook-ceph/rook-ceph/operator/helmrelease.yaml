@@ -6,6 +6,7 @@ metadata:
   name: rook-ceph-operator
 spec:
   interval: 1h
+  timeout: 15m
   chart:
     spec:
       chart: rook-ceph
