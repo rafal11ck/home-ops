@@ -1,0 +1,57 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrepository-source-v1.json
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: ceph-csi-operator
+spec:
+  interval: 1h
+  url: https://ceph.github.io/ceph-csi-operator
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ceph-csi-drivers
+spec:
+  interval: 1h
+  timeout: 15m
+  chart:
+    spec:
+      chart: ceph-csi-drivers
+      version: 1.0.1
+      sourceRef:
+        kind: HelmRepository
+        name: ceph-csi-operator
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  # CSI driver config moved out of the rook-ceph chart in Rook v1.20 (breaking change).
+  # This chart owns the OperatorConfig + Driver CRs + ServiceAccounts/RBAC that the
+  # ceph-csi-operator (deployed by the rook-ceph operator chart) consumes.
+  # Driver names MUST match the StorageClass provisioners (rook-ceph.<type>.csi.ceph.com).
+  values:
+    drivers:
+      rbd:
+        name: rook-ceph.rbd.csi.ceph.com
+        enabled: true
+      cephfs:
+        name: rook-ceph.cephfs.csi.ceph.com
+        enabled: true
+      nfs:
+        enabled: false
+      nvmeof:
+        enabled: false
+    operatorConfig:
+      name: ceph-csi-operator-config
+      driverSpecDefaults:
+        clusterName: rook-ceph
+        cephFsClientType: kernel
+        imageSet:
+          name: rook-csi-operator-image-set-configmap
+        controllerPlugin:
+          hostNetwork: true
