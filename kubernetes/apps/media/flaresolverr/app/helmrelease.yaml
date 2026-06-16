@@ -26,32 +26,10 @@ spec:
               tag: v3.3.21
             env:
               TZ: ${SECRET_TIMEZONE}
-              LOG_LEVEL: info
-              HOST: 0.0.0.0
-              PORT: &port 8191
-              # Give Chrome / undetected-chromedriver a writable HOME
+              # writable HOME for Chrome / undetected-chromedriver when non-root
               HOME: /config
-            probes:
-              liveness: &probes
-                enabled: true
-                custom: true
-                spec:
-                  httpGet:
-                    path: /
-                    port: *port
-                  periodSeconds: 10
-                  timeoutSeconds: 10
-                  failureThreshold: 6
-              readiness: *probes
-              startup:
-                enabled: true
-                spec:
-                  failureThreshold: 30
-                  periodSeconds: 10
             securityContext:
               allowPrivilegeEscalation: false
-              # Chrome needs a writable filesystem, so root FS stays writable
-              readOnlyRootFilesystem: false
               capabilities: { drop: ['ALL'] }
             resources:
               requests:
@@ -70,11 +48,9 @@ spec:
       app:
         ports:
           http:
-            port: *port
+            port: 8191
     persistence:
       config:
         type: emptyDir
         globalMounts:
           - path: /config
-      tmp:
-        type: emptyDir
