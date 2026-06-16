@@ -23,11 +23,12 @@ spec:
           app:
             image:
               repository: ghcr.io/flaresolverr/flaresolverr
-              tag: v3.3.21
+              tag: v3.5.0
             env:
               TZ: ${SECRET_TIMEZONE}
               # writable HOME for Chrome / undetected-chromedriver when non-root
               HOME: /config
+              PROMETHEUS_ENABLED: "true"
             securityContext:
               allowPrivilegeEscalation: false
               capabilities: { drop: ['ALL'] }
@@ -49,6 +50,8 @@ spec:
         ports:
           http:
             port: 8191
+          metrics:
+            port: 8192
     persistence:
       config:
         type: emptyDir
