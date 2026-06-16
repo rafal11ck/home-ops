@@ -75,6 +75,20 @@ spec:
           - name: internal
             namespace: envoy-gateway-system
             sectionName: https-subdomains
+        rules:
+          # allow api-key protected routes
+          - name: api
+            matches:
+              - path:
+                  type: RegularExpression
+                  value: ^/api/v2\.0/indexers/[^/]+/results(/(torznab|potato)(/[^/]+)?)?$
+            backendRefs:
+              - identifier: app
+                port: *port
+          - name: app
+            backendRefs:
+              - identifier: app
+                port: *port
     persistence:
       config:
         existingClaim: jackett-config
