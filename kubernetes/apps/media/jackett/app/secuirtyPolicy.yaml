@@ -8,7 +8,6 @@ spec:
     - group: gateway.networking.k8s.io
       kind: HTTPRoute
       name: jackett
-      sectionName: app
   oidc:
     provider:
       issuer: &issuer 'https://auth.${SECRET_DOMAIN}/realms/home-ops'
