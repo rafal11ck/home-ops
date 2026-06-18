@@ -91,7 +91,7 @@ function apply_crds() {
 
     local -r crds=(
         # renovate: datasource=github-releases depName=prometheus-operator/prometheus-operator
-        https://github.com/prometheus-operator/prometheus-operator/releases/download/v0.91.0/stripped-down-crds.yaml
+        https://github.com/prometheus-operator/prometheus-operator/releases/download/v0.92.0/stripped-down-crds.yaml
     )
 
     for crd in "${crds[@]}"; do
