@@ -1,9 +1,5 @@
 ---
-# Torznab/RSS results feeds — separate route NOT covered by the SecurityPolicy,
-# so OIDC login is bypassed here. Still guarded by Jackett's per-indexer apikey
-# (ResultsController has a class-level RequiresApiKey filter).
-# Must be a distinct HTTPRoute because this Envoy Gateway version cannot target
-# a single route rule via SecurityPolicy sectionName.
+# secured by jackett, bypass oidc
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
@@ -20,6 +16,9 @@ spec:
         - path:
             type: RegularExpression
             value: ^/api/v2\.0/indexers/[^/]+/results(/(torznab|potato)(/[^/]+)?)?$
+        - path:
+            type: RegularExpression
+            value: ^/dl/[^/]+/?$
       backendRefs:
         - name: jackett
           port: 9117
