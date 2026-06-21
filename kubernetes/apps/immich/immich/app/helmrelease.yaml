@@ -94,6 +94,13 @@ spec:
           database:
             enabled: true
             keepLastAmount: 14
+        job:
+          faceDetection:
+            concurrency: 1
+          smartSearch:
+            concurrency: 1
+          thumbnailGeneration:
+            concurrency: 2
         ffmpeg:
           acceptedVideoCodecs:
             - av1
@@ -163,6 +170,15 @@ spec:
                   memory: 900Mi
                 limits:
                   cpu: 2500m
+              probes:
+                liveness:
+                  spec:
+                    timeoutSeconds: 10
+                    failureThreshold: 5
+                readiness:
+                  spec:
+                    timeoutSeconds: 10
+                    failureThreshold: 5
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
