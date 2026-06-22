@@ -33,6 +33,12 @@ spec:
           mgr/prometheus/rbd_stats_pools: '*'
         mon:
           mon_data_avail_warn: '10'
+        osd:
+          osd_scrub_sleep: '0.1'
+          osd_scrub_chunk_max: '5'
+          osd_scrub_load_threshold: '0.6'
+          osd_deep_scrub_interval: '1209600'
+          osd_scrub_during_recovery: 'false'
       mon:
         count: 3
       mgr:
@@ -57,15 +63,19 @@ spec:
             useAllDevices: false
             devices:
               - name: '/dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S5SVNF0R337122F'
+                deviceClass: fast
           - name: talos-02
             useAllDevices: false
             devices:
               - name: '/dev/disk/by-id/nvme-KINGSTON_SKC3000S1024G_50026B768631A1C3'
+                deviceClass: fast
           - name: talos-03
             useAllDevices: false
             devices:
               - name: '/dev/disk/by-id/nvme-HFM256GDHTNG-8310A_ND02N449311302802'
+                deviceClass: fast
               - name: '/dev/disk/by-id/usb-SSDPR-PX_500-01T-80-G_DD56419885CF8-0:0'
+                deviceClass: usb
       crashCollector:
         disabled: false
         daysToRetain: 14
@@ -167,6 +177,7 @@ spec:
           preserveFilesystemOnDelete: true
           metadataPool:
             failureDomain: host
+            deviceClass: fast
             replicated:
               size: 3
           dataPools:
