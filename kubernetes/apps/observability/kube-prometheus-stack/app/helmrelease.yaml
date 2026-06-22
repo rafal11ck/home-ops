@@ -108,6 +108,12 @@ spec:
               resources:
                 requests:
                   storage: 50Gi
+        containers:
+          - name: prometheus
+            livenessProbe:
+              periodSeconds: 15
+              timeoutSeconds: 10
+              failureThreshold: 30
     prometheus-node-exporter:
       fullnameOverride: node-exporter
       prometheus:
