@@ -42,6 +42,8 @@ spec:
             name: mimir-bucket
     minio:
       enabled: false
+    kafka:
+      enabled: false
     mimir:
       structuredConfig:
         multitenancy_enabled: false
@@ -57,6 +59,9 @@ spec:
         ingester:
           ring:
             replication_factor: 2
+          push_grpc_method_enabled: true
+        ingest_storage:
+          enabled: false
         limits:
           compactor_blocks_retention_period: 14d
     alertmanager:
