@@ -10,7 +10,7 @@ spec:
     name: prometheus
     type: prometheus
     access: proxy
-    url: http://prometheus-operated.observability.svc.cluster.local:9090
+    url: http://mimir-query-frontend.observability.svc.cluster.local:8080/prometheus
     isDefault: true
 ---
 apiVersion: grafana.integreatly.org/v1beta1
