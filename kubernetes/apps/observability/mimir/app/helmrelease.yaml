@@ -131,6 +131,12 @@ spec:
     chunks-cache:
       enabled: true
       allocatedMemory: 256
+      resources:
+        requests:
+          cpu: 50m
+          memory: 320Mi
+        limits:
+          memory: 384Mi
     index-cache:
       enabled: true
       allocatedMemory: 256
