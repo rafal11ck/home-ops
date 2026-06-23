@@ -44,6 +44,8 @@ spec:
       enabled: false
     kafka:
       enabled: false
+    rollout_operator:
+      enabled: false
     mimir:
       structuredConfig:
         multitenancy_enabled: false
