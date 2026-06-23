@@ -126,9 +126,13 @@ spec:
           memory: 1Gi
     chunks-cache:
       enabled: true
+      allocatedMemory: 256
     index-cache:
       enabled: true
+      allocatedMemory: 256
     metadata-cache:
       enabled: true
+      allocatedMemory: 128
     results-cache:
       enabled: true
+      allocatedMemory: 256
