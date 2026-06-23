@@ -6,6 +6,7 @@ metadata:
 spec:
   description: 'immich database'
   instances: 1
+  enablePDB: false
   primaryUpdateStrategy: unsupervised
   # renovate: datasource=docker depName=ghcr.io/tensorchord/cloudnative-vectorchord
   imageName: ghcr.io/tensorchord/cloudnative-vectorchord:17.5-0.4.2

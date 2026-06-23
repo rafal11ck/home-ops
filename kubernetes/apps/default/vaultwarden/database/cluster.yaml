@@ -6,6 +6,7 @@ metadata:
 spec:
   description: 'vaultwarden database'
   instances: 1
+  enablePDB: false
   imageName: ghcr.io/cloudnative-pg/postgresql:18.4
   storage:
     size: 5Gi

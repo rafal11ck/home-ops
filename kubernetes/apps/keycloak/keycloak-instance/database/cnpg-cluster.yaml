@@ -6,6 +6,7 @@ metadata:
 spec:
   description: 'keycloak database'
   instances: 1
+  enablePDB: false
   primaryUpdateStrategy: unsupervised
   imageName: ghcr.io/cloudnative-pg/postgresql:18.4
   storage:
