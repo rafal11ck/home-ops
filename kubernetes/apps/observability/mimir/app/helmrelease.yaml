@@ -68,6 +68,8 @@ spec:
           compactor_blocks_retention_period: 14d
           max_label_names_per_series: 50
           max_global_series_per_user: 500000
+          ingestion_rate: 50000
+          ingestion_burst_size: 1000000
     alertmanager:
       enabled: false
     ruler:
