@@ -30,20 +30,115 @@ spec:
     cleanupOnFail: true
     remediation:
       retries: 3
-  # CSI driver config moved out of the rook-ceph chart in Rook v1.20 (breaking change).
-  # This chart owns the OperatorConfig + Driver CRs + ServiceAccounts/RBAC that the
-  # ceph-csi-operator (deployed by the rook-ceph operator chart) consumes.
-  # Driver names MUST match the StorageClass provisioners (rook-ceph.<type>.csi.ceph.com).
   values:
     drivers:
       rbd:
         name: rook-ceph.rbd.csi.ceph.com
         enabled: true
+        nodePlugin:
+          resources:
+            plugin:
+              requests:
+                cpu: 50m
+                memory: 512Mi
+              limits:
+                memory: 1Gi
+            registrar:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+              limits:
+                memory: 256Mi
+        controllerPlugin:
+          replicas: 1
+          resources:
+            plugin:
+              requests:
+                memory: 512Mi
+              limits:
+                memory: 1Gi
+            provisioner:
+              requests:
+                cpu: 25m
+                memory: 128Mi
+              limits:
+                memory: 256Mi
+            attacher:
+              requests:
+                cpu: 25m
+                memory: 128Mi
+              limits:
+                memory: 256Mi
+            resizer:
+              requests:
+                cpu: 25m
+                memory: 128Mi
+              limits:
+                memory: 256Mi
+            snapshotter:
+              requests:
+                cpu: 25m
+                memory: 128Mi
+              limits:
+                memory: 256Mi
+            omapGenerator:
+              requests:
+                cpu: 50m
+                memory: 512Mi
+              limits:
+                memory: 1Gi
       cephfs:
         name: rook-ceph.cephfs.csi.ceph.com
         enabled: true
         kernelMountOptions:
           ms_mode: prefer-crc
+        nodePlugin:
+          resources:
+            plugin:
+              requests:
+                cpu: 50m
+                memory: 512Mi
+              limits:
+                memory: 1Gi
+            registrar:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+              limits:
+                memory: 256Mi
+        controllerPlugin:
+          replicas: 1
+          resources:
+            plugin:
+              requests:
+                cpu: 50m
+                memory: 512Mi
+              limits:
+                memory: 1Gi
+            provisioner:
+              requests:
+                cpu: 25m
+                memory: 128Mi
+              limits:
+                memory: 256Mi
+            attacher:
+              requests:
+                cpu: 25m
+                memory: 128Mi
+              limits:
+                memory: 256Mi
+            resizer:
+              requests:
+                cpu: 25m
+                memory: 128Mi
+              limits:
+                memory: 256Mi
+            snapshotter:
+              requests:
+                cpu: 25m
+                memory: 128Mi
+              limits:
+                memory: 256Mi
       nfs:
         enabled: false
       nvmeof:
@@ -57,37 +152,3 @@ spec:
           name: rook-csi-operator-image-set-configmap
         controllerPlugin:
           hostNetwork: true
-  postRenderers:
-    - kustomize:
-        patches:
-          - target:
-              kind: OperatorConfig
-              name: ceph-csi-operator-config
-            patch: |
-              - op: add
-                path: /spec/driverSpecDefaults/nodePlugin/resources
-                value:
-                  plugin:
-                    requests:
-                      cpu: 50m
-                  registrar:
-                    requests:
-                      cpu: 10m
-              - op: add
-                path: /spec/driverSpecDefaults/controllerPlugin/resources
-                value:
-                  plugin:
-                    requests:
-                      cpu: 50m
-                  provisioner:
-                    requests:
-                      cpu: 25m
-                  attacher:
-                    requests:
-                      cpu: 25m
-                  resizer:
-                    requests:
-                      cpu: 25m
-                  snapshotter:
-                    requests:
-                      cpu: 25m
