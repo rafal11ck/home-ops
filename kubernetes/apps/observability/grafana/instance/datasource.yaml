@@ -7,7 +7,7 @@ spec:
     matchLabels:
       dashboards: grafana
   datasource:
-    name: prometheus
+    name: mimir
     type: prometheus
     access: proxy
     url: http://mimir-gateway.observability.svc.cluster.local:80/prometheus

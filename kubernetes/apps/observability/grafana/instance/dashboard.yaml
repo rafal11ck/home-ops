@@ -24,7 +24,7 @@ spec:
     id: 17457
     revision: 6
   datasources:
-    - datasourceName: prometheus
+    - datasourceName: mimir
       inputName: DS_PROMETHEUS
 ---
 apiVersion: grafana.integreatly.org/v1beta1
@@ -144,7 +144,7 @@ spec:
     id: 1860
     revision: 45
   datasources:
-    - datasourceName: prometheus
+    - datasourceName: mimir
       inputName: DS_PROMETHEUS
 ---
 apiVersion: grafana.integreatly.org/v1beta1
@@ -198,7 +198,7 @@ spec:
     id: 22604
     revision: 2
   datasources:
-    - datasourceName: prometheus
+    - datasourceName: mimir
       inputName: DS_PROMETHEUS
 ---
 apiVersion: grafana.integreatly.org/v1beta1
