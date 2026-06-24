@@ -49,9 +49,15 @@ spec:
                 memory: 128Mi
               limits:
                 memory: 256Mi
+            liveness: {}
+            addons: {}
+            logRotator: {}
         controllerPlugin:
           replicas: 1
           resources:
+            liveness: {}
+            addons: {}
+            logRotator: {}
             plugin:
               requests:
                 memory: 512Mi
@@ -106,9 +112,16 @@ spec:
                 memory: 128Mi
               limits:
                 memory: 256Mi
+            liveness: {}
+            addons: {}
+            logRotator: {}
         controllerPlugin:
           replicas: 1
           resources:
+            liveness: {}
+            addons: {}
+            logRotator: {}
+            omapGenerator: {}
             plugin:
               requests:
                 cpu: 50m
