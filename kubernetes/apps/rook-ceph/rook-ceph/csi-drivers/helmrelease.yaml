@@ -57,3 +57,37 @@ spec:
           name: rook-csi-operator-image-set-configmap
         controllerPlugin:
           hostNetwork: true
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              kind: OperatorConfig
+              name: ceph-csi-operator-config
+            patch: |
+              - op: add
+                path: /spec/driverSpecDefaults/nodePlugin/resources
+                value:
+                  plugin:
+                    requests:
+                      cpu: 50m
+                  registrar:
+                    requests:
+                      cpu: 10m
+              - op: add
+                path: /spec/driverSpecDefaults/controllerPlugin/resources
+                value:
+                  plugin:
+                    requests:
+                      cpu: 50m
+                  provisioner:
+                    requests:
+                      cpu: 25m
+                  attacher:
+                    requests:
+                      cpu: 25m
+                  resizer:
+                    requests:
+                      cpu: 25m
+                  snapshotter:
+                    requests:
+                      cpu: 25m
