@@ -12,6 +12,8 @@ spec:
     access: proxy
     url: http://mimir-query-frontend.observability.svc.cluster.local:8080/prometheus
     isDefault: true
+    jsonData:
+      manageAlerts: true
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDatasource

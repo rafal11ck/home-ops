@@ -49,6 +49,10 @@ spec:
     mimir:
       structuredConfig:
         multitenancy_enabled: false
+        ruler:
+          alertmanager_url: http://kube-prometheus-stack-alertmanager.observability.svc.cluster.local:9093
+        ruler_storage:
+          storage_prefix: ruler
         common:
           storage:
             backend: s3
@@ -73,7 +77,14 @@ spec:
     alertmanager:
       enabled: false
     ruler:
-      enabled: false
+      enabled: true
+      replicas: 1
+      resources:
+        requests:
+          cpu: 50m
+          memory: 128Mi
+        limits:
+          memory: 256Mi
     distributor:
       replicas: 2
       resources:
