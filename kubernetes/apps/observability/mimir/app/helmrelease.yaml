@@ -74,6 +74,7 @@ spec:
           max_global_series_per_user: 500000
           ingestion_rate: 50000
           ingestion_burst_size: 1000000
+          ruler_max_rules_per_rule_group: 50
     alertmanager:
       enabled: false
     ruler:
