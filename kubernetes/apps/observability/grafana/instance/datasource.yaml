@@ -10,7 +10,7 @@ spec:
     name: prometheus
     type: prometheus
     access: proxy
-    url: http://mimir-query-frontend.observability.svc.cluster.local:8080/prometheus
+    url: http://mimir-gateway.observability.svc.cluster.local:80/prometheus
     isDefault: true
     jsonData:
       manageAlerts: true
