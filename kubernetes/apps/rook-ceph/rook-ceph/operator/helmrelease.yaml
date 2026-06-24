@@ -30,6 +30,36 @@ spec:
       cephFSKernelMountOptions: ms_mode=prefer-crc
       serviceMonitor:
         enabled: true
+      csiRBDPluginResource: |
+        - name: driver-registrar
+          resource:
+            requests:
+              memory: 64Mi
+              cpu: 10m
+            limits:
+              memory: 128Mi
+        - name: csi-rbdplugin
+          resource:
+            requests:
+              memory: 256Mi
+              cpu: 50m
+            limits:
+              memory: 512Mi
+      csiCephFSPluginResource: |
+        - name: driver-registrar
+          resource:
+            requests:
+              memory: 64Mi
+              cpu: 10m
+            limits:
+              memory: 128Mi
+        - name: csi-cephfsplugin
+          resource:
+            requests:
+              memory: 256Mi
+              cpu: 50m
+            limits:
+              memory: 512Mi
     resources:
       requests:
         memory: 128Mi

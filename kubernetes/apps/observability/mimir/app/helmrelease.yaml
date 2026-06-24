@@ -140,9 +140,27 @@ spec:
     index-cache:
       enabled: true
       allocatedMemory: 256
+      resources:
+        requests:
+          cpu: 50m
+          memory: 320Mi
+        limits:
+          memory: 384Mi
     metadata-cache:
       enabled: true
       allocatedMemory: 128
+      resources:
+        requests:
+          cpu: 25m
+          memory: 192Mi
+        limits:
+          memory: 256Mi
     results-cache:
       enabled: true
       allocatedMemory: 256
+      resources:
+        requests:
+          cpu: 50m
+          memory: 320Mi
+        limits:
+          memory: 384Mi
