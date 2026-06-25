@@ -31,6 +31,9 @@ spec:
       cephConfig:
         global:
           mgr/prometheus/rbd_stats_pools: '*'
+        client.rgw:
+          rgw_user_counters_cache: 'true'
+          rgw_bucket_counters_cache: 'true'
         mon:
           mon_data_avail_warn: '10'
         osd:
