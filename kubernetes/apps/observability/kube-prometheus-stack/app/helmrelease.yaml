@@ -92,8 +92,9 @@ spec:
         serviceMonitorSelectorNilUsesHelmValues: false
         enableAdminAPI: true
         walCompression: true
-        # select everything
-        ruleSelector: {}
+        ruleSelector:
+          matchLabels:
+            evaluate-on-prometheus: "true"
         enableFeatures:
           - --enable-feature=memory-snapshot-on-shutdown
         retention: 24h
