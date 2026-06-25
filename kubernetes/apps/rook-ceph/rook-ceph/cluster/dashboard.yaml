@@ -7,7 +7,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/ceph-cluster.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/ceph-cluster.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -18,7 +19,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/ceph-cluster-advanced.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/ceph-cluster-advanced.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -29,7 +31,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/ceph-application-overview.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/ceph-application-overview.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -40,7 +43,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/cephfsdashboard.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/cephfsdashboard.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -51,7 +55,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/hosts-overview.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/hosts-overview.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -62,7 +67,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/host-details.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/host-details.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -73,7 +79,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/osds-overview.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/osds-overview.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -84,7 +91,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/osd-device-details.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/osd-device-details.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -95,7 +103,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/pool-overview.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/pool-overview.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -106,7 +115,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/pool-detail.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/pool-detail.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -117,7 +127,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/radosgw-overview.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/radosgw-overview.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -128,7 +139,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/radosgw-detail.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/radosgw-detail.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -139,7 +151,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/radosgw-sync-overview.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/radosgw-sync-overview.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -150,7 +163,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/rgw-s3-analytics.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/rgw-s3-analytics.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -161,7 +175,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/rbd-overview.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/rbd-overview.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -172,7 +187,8 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/rbd-details.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/rbd-details.json
 ---
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
@@ -183,4 +199,50 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/ceph/ceph/main/monitoring/ceph-mixin/dashboards_out/smb-overview.json
+  # renovate: datasource=github-releases depName=ceph/ceph
+  url: https://raw.githubusercontent.com/ceph/ceph/v20.2.1/monitoring/ceph-mixin/dashboards_out/smb-overview.json
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: rook-ceph-cluster
+spec:
+  allowCrossNamespaceImport: true
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  # renovate: datasource=github-releases depName=rook/rook
+  url: https://raw.githubusercontent.com/rook/rook/v1.20.1/deploy/examples/monitoring/grafana/Ceph%20Cluster%20Dashboard.json
+  datasources:
+    - datasourceName: mimir
+      inputName: DS_PROMETHEUS
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: rook-ceph-osd
+spec:
+  allowCrossNamespaceImport: true
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  # renovate: datasource=github-releases depName=rook/rook
+  url: https://raw.githubusercontent.com/rook/rook/v1.20.1/deploy/examples/monitoring/grafana/Ceph%20OSD%20Single%20Dashboard.json
+  datasources:
+    - datasourceName: mimir
+      inputName: DS_PROMETHEUS
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: rook-ceph-pools
+spec:
+  allowCrossNamespaceImport: true
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  # renovate: datasource=github-releases depName=rook/rook
+  url: https://raw.githubusercontent.com/rook/rook/v1.20.1/deploy/examples/monitoring/grafana/Ceph%20Pools%20Dashboard.json
+  datasources:
+    - datasourceName: mimir
+      inputName: DS_PROMETHEUS
