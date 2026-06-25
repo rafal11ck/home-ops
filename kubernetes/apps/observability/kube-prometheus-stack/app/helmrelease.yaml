@@ -117,12 +117,16 @@ spec:
       prometheus:
         monitor:
           enabled: true
-          relabelings: &podNameRelabel
-            - action: replace
+          relabelings:
+            - &podNameRelabel
+              action: replace
               regex: (.*)
               replacement: $1
               sourceLabels: ['__meta_kubernetes_pod_node_name']
               targetLabel: kubernetes_node
+            - action: replace
+              sourceLabels: ['__meta_kubernetes_pod_node_name']
+              targetLabel: instance
       extraArgs:
         - --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|var/lib/docker/.+)($|/)
         - --collector.filesystem.fs-types-exclude=^(tmpfs|autofs|binfmt_misc|cgroup|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|mqueue|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|sysfs|tracefs)$
@@ -135,8 +139,9 @@ spec:
         - persistentvolumeclaims=[*]
       prometheus:
         monitor:
-          enabeld: true
-          relabelings: *podNameRelabel
+          enabled: true
+          relabelings:
+            - *podNameRelabel
     grafana:
       enabled: false
       forceDeployDashboards: true
