@@ -88,6 +88,10 @@ spec:
           ruler_max_rules_per_rule_group: 50
     alertmanager:
       enabled: false
+    gateway:
+      service:
+        labels:
+          prometheus.io/service-monitor: "false"
     ruler:
       enabled: true
       replicas: 1
