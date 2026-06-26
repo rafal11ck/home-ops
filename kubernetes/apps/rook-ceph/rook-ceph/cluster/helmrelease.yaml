@@ -31,6 +31,8 @@ spec:
       cephConfig:
         global:
           mgr/prometheus/rbd_stats_pools: '*'
+        mgr:
+          mgr/dashboard/ALERTMANAGER_API_HOST: 'http://kube-prometheus-stack-alertmanager.observability.svc.cluster.local:9093'
         client.rgw:
           rgw_user_counters_cache: 'true'
           rgw_bucket_counters_cache: 'true'
