@@ -240,7 +240,7 @@ spec:
           preservePoolsOnDelete: false
           gateway:
             port: 80
-            instances: 1
+            instances: 2
             priorityClassName: system-cluster-critical
             resources:
               limits:
