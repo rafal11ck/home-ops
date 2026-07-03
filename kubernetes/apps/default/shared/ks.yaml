@@ -3,14 +3,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app homepage
+  name: &app shared
   namespace: &namespace default
 spec:
-  commonMetadata:
-    labels:
-      app.kubernetes.io/name: *app
   interval: 1h
-  path: ./kubernetes/apps/default/homepage/app
+  path: ./kubernetes/apps/default/shared/shared
   prune: true
   sourceRef:
     kind: GitRepository
@@ -18,9 +15,3 @@ spec:
     namespace: flux-system
   targetNamespace: *namespace
   timeout: 5m
-  wait: false
-  dependsOn:
-    - name: shared
-    - name: envoy-gateway-app
-      namespace: envoy-gateway-system
-

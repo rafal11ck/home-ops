@@ -14,6 +14,7 @@ spec:
     clientID: homepage
     clientSecret:
       name: homepage-policy-secret
+    refreshToken: true
     cookieNames:
       accessToken: &cookie AccessToken
     redirectURL: https://homepage.${SECRET_DOMAIN}/oauth2/callback

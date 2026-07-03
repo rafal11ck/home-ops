@@ -14,7 +14,7 @@ spec:
     clientID: 'echo-server-sec'
     clientSecret:
       name: 'echo-server-sec-secret'
-    cookieDomain: '${SECRET_DOMAIN}'
+    refreshToken: true
     cookieNames:
       accessToken: &cookie AccessToken
     redirectURL: https://echo-server-sec.${SECRET_DOMAIN}/oauth2/callback

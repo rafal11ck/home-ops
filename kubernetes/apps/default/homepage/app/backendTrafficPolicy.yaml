@@ -1,0 +1,25 @@
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: BackendTrafficPolicy
+metadata:
+  name: homepage-auth-retry
+spec:
+  mergeType: StrategicMerge
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: homepage
+  responseOverride:
+    - match:
+        statusCodes:
+          - type: Value
+            value: 401
+      source: Local
+      response:
+        contentType: text/html
+        body:
+          type: ValueRef
+          valueRef:
+            group: ''
+            kind: ConfigMap
+            name: auth-retry-html

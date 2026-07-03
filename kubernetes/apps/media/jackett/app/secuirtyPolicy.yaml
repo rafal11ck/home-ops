@@ -14,6 +14,7 @@ spec:
     clientID: jackett
     clientSecret:
       name: 'jackett-secret'
+    refreshToken: true
     cookieNames:
       accessToken: &cookie AccessToken
     redirectURL: https://jackett.${SECRET_DOMAIN}/oauth2/callback

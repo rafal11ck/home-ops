@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Signing in</title>
+  </head>
+  <body>
+    <p>Restarting sign-in&hellip;</p>
+    <script>
+      var s = JSON.parse(sessionStorage.getItem("authRetry") || '{"n":0,"t":0}');
+      if (Date.now() - s.t > 30000) {
+        s.n = 0;
+      }
+      if (s.n < 3) {
+        s.n++;
+        s.t = Date.now();
+        sessionStorage.setItem("authRetry", JSON.stringify(s));
+        location.replace(location.origin + "/");
+      } else {
+        sessionStorage.removeItem("authRetry");
+        document.body.textContent = "Sign-in failed. Reload the page to try again.";
+      }
+    </script>
+  </body>
+</html>
