@@ -109,7 +109,7 @@ spec:
         limits:
           memory: 2Gi
     distributor:
-      replicas: 2
+      replicas: 1
       resources:
         requests:
           cpu: 100m
@@ -117,7 +117,7 @@ spec:
         limits:
           memory: 1Gi
     ingester:
-      replicas: 2
+      replicas: 1
       zoneAwareReplication:
         enabled: false
       persistentVolume:
@@ -129,7 +129,7 @@ spec:
         limits:
           memory: 2Gi
     querier:
-      replicas: 2
+      replicas: 1
       resources:
         requests:
           cpu: 100m
@@ -141,7 +141,7 @@ spec:
     query_scheduler:
       replicas: 1
     store_gateway:
-      replicas: 2
+      replicas: 1
       zoneAwareReplication:
         enabled: false
       persistentVolume:
