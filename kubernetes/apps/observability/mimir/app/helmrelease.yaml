@@ -83,6 +83,7 @@ spec:
           ring:
             replication_factor: 1
           push_grpc_method_enabled: true
+        ingester_client:
           client_timeout: 60s
         ingest_storage:
           enabled: false
