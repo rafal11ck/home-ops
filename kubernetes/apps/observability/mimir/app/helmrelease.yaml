@@ -81,7 +81,7 @@ spec:
               insecure: true
         ingester:
           ring:
-            replication_factor: 2
+            replication_factor: 1
           push_grpc_method_enabled: true
           client_timeout: 60s
         ingest_storage:
