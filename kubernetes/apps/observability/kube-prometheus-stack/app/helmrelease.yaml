@@ -94,12 +94,16 @@ spec:
         walCompression: true
         ruleSelector:
           matchLabels:
-            evaluate-on-prometheus: "true"
+            evaluate-on-prometheus: 'true'
         enableFeatures:
           - --enable-feature=memory-snapshot-on-shutdown
         retention: 24h
         remoteWrite:
           - url: http://mimir-distributor.observability.svc.cluster.local:8080/api/v1/push
+            queueConfig:
+              sendTimeout: 60s
+              minBackoff: 1s
+              maxBackoff: 30s
         resources:
           limits:
             memory: 3000Mi
