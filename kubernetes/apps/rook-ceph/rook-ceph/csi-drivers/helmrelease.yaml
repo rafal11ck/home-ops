@@ -40,7 +40,7 @@ spec:
             plugin:
               requests:
                 cpu: 50m
-                memory: 512Mi
+                memory: 128Mi
               limits:
                 memory: 1Gi
             registrar:
@@ -60,7 +60,7 @@ spec:
             logRotator: {}
             plugin:
               requests:
-                memory: 512Mi
+                memory: 128Mi
               limits:
                 memory: 1Gi
             provisioner:
@@ -90,7 +90,7 @@ spec:
             omapGenerator:
               requests:
                 cpu: 50m
-                memory: 512Mi
+                memory: 128Mi
               limits:
                 memory: 1Gi
       cephfs:
@@ -103,7 +103,7 @@ spec:
             plugin:
               requests:
                 cpu: 50m
-                memory: 512Mi
+                memory: 128Mi
               limits:
                 memory: 1Gi
             registrar:
@@ -125,7 +125,7 @@ spec:
             plugin:
               requests:
                 cpu: 50m
-                memory: 512Mi
+                memory: 128Mi
               limits:
                 memory: 1Gi
             provisioner:
