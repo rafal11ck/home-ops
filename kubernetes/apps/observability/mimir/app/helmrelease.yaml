@@ -60,10 +60,7 @@ spec:
     mimir:
       structuredConfig:
         memberlist:
-          join_timeout: 1m
-          abort_if_join_fails: false
           retransmit_factor: 3
-          probe_timeout: 5s
           gossip_interval: 2s
         multitenancy_enabled: false
         ruler:
@@ -83,8 +80,6 @@ spec:
           ring:
             replication_factor: 1
           push_grpc_method_enabled: true
-        ingester_client:
-          client_timeout: 60s
         ingest_storage:
           enabled: false
         limits:
