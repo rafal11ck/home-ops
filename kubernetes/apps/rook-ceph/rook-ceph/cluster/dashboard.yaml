@@ -212,7 +212,7 @@ spec:
     matchLabels:
       dashboards: grafana
   # renovate: datasource=github-releases depName=rook/rook
-  url: https://raw.githubusercontent.com/rook/rook/v1.20.1/deploy/examples/monitoring/grafana/Ceph%20Cluster%20Dashboard.json
+  url: https://raw.githubusercontent.com/rook/rook/v1.20.2/deploy/examples/monitoring/grafana/Ceph%20Cluster%20Dashboard.json
   datasources:
     - datasourceName: mimir
       inputName: DS_PROMETHEUS
@@ -227,7 +227,7 @@ spec:
     matchLabels:
       dashboards: grafana
   # renovate: datasource=github-releases depName=rook/rook
-  url: https://raw.githubusercontent.com/rook/rook/v1.20.1/deploy/examples/monitoring/grafana/Ceph%20OSD%20Single%20Dashboard.json
+  url: https://raw.githubusercontent.com/rook/rook/v1.20.2/deploy/examples/monitoring/grafana/Ceph%20OSD%20Single%20Dashboard.json
   datasources:
     - datasourceName: mimir
       inputName: DS_PROMETHEUS
@@ -242,7 +242,7 @@ spec:
     matchLabels:
       dashboards: grafana
   # renovate: datasource=github-releases depName=rook/rook
-  url: https://raw.githubusercontent.com/rook/rook/v1.20.1/deploy/examples/monitoring/grafana/Ceph%20Pools%20Dashboard.json
+  url: https://raw.githubusercontent.com/rook/rook/v1.20.2/deploy/examples/monitoring/grafana/Ceph%20Pools%20Dashboard.json
   datasources:
     - datasourceName: mimir
       inputName: DS_PROMETHEUS
