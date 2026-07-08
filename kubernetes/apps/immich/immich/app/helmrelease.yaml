@@ -107,7 +107,7 @@ spec:
           crf: 31
           threads: 2
           preset: slow
-          targetAudioCodec: libopus
+          targetAudioCodec: opus
           targetResolution: '1080'
           targetVideoCodec: av1
           transcode: required
