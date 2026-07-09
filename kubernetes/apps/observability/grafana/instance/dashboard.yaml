@@ -196,7 +196,7 @@ spec:
   grafanaCom:
     # renovate: depName="SMARTctl Exporter Dashboard"
     id: 22604
-    revision: 2
+    revision: 3
   datasources:
     - datasourceName: mimir
       inputName: DS_PROMETHEUS
