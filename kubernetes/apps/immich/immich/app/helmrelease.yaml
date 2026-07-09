@@ -32,7 +32,7 @@ spec:
           main:
             image:
               # renovate: datasource=github-releases depName=immich-app/immich
-              tag: v3.0.1
+              tag: v3.0.2
             env:
               IMMICH_ALLOW_SETUP: false
               REDIS_HOSTNAME: immich-dragonfly.immich.svc
