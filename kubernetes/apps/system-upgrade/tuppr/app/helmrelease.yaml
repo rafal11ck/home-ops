@@ -34,8 +34,6 @@ spec:
   values:
     controller:
       logLevel: info
-      metrics:
-        enabled: true
     monitoring:
       serviceMonitor:
         enabled: true
