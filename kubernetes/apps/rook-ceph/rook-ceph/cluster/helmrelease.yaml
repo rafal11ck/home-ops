@@ -31,6 +31,7 @@ spec:
       cephConfig:
         global:
           mgr/prometheus/rbd_stats_pools: '*'
+          osd_deep_scrub_interval: '1209600'
         mgr:
           mgr/dashboard/ALERTMANAGER_API_HOST: 'http://kube-prometheus-stack-alertmanager.observability.svc.cluster.local:9093'
         client.rgw:
@@ -42,7 +43,6 @@ spec:
           osd_scrub_sleep: '0.1'
           osd_scrub_chunk_max: '5'
           osd_scrub_load_threshold: '0.6'
-          osd_deep_scrub_interval: '1209600'
           osd_scrub_during_recovery: 'false'
       mon:
         count: 3
