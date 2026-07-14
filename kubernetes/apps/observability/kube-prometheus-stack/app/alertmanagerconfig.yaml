@@ -10,21 +10,18 @@ spec:
     groupInterval: 10m
     groupWait: 2m
     repeatInterval: 12h
-    receiver: discord
+    receiver: 'null'
     routes:
-      - receiver: discord
-        matchers:
-          - name: severity
-            value: critical
-            matchType: =
-          - name: severity
-            value: warning
-            matchType: =
       - receiver: 'null'
         matchers:
           - name: alertname
-            value: InfoInhibitor
-            matchType: =
+            value: InfoInhibitor|Watchdog
+            matchType: =~
+      - receiver: discord
+        matchers:
+          - name: severity
+            value: critical|warning
+            matchType: =~
   inhibitRules:
     - equal: ['alertname', 'namespace']
       sourceMatch:
