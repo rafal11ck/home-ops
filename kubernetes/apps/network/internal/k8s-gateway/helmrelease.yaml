@@ -36,6 +36,8 @@ spec:
     ttl: 1
     replicaCount: 2
     watchedResources: ['HTTPRoute', 'Service']
+    fallthrough:
+      enabled: true
     service:
       type: LoadBalancer
       port: 53
