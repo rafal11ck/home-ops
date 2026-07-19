@@ -40,7 +40,7 @@ spec:
       type: LoadBalancer
       port: 53
       annotations:
-        lbipam.cilium.io/ips: 192.168.0.242
+        lbipam.cilium.io/ips: 192.168.0.243
     extraZonePlugins:
       - name: log
       - name: errors
