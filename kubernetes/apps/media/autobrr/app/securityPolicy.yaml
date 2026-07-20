@@ -1,0 +1,42 @@
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: autobrr
+spec:
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: autobrr
+  oidc:
+    provider:
+      issuer: &issuer 'https://auth.${SECRET_DOMAIN}/realms/home-ops'
+    clientID: 'autobrr'
+    clientSecret:
+      name: 'autobrr-secret'
+    refreshToken: true
+    cookieNames:
+      accessToken: &cookie AccessToken
+    redirectURL: https://autobrr.${SECRET_DOMAIN}/oauth2/callback
+    logoutPath: /logout
+  jwt:
+    providers:
+      - name: &providerName home-ops
+        issuer: *issuer
+        remoteJWKS:
+          uri: https://auth.${SECRET_DOMAIN}/realms/home-ops/protocol/openid-connect/certs
+        extractFrom:
+          cookies:
+            - *cookie
+  authorization:
+    defaultAction: Deny
+    rules:
+      - name: 'allow'
+        action: Allow
+        principal:
+          jwt:
+            provider: *providerName
+            claims:
+              - name: resource_access.autobrr.roles
+                valueType: StringArray
+                values: [access]
