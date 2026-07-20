@@ -131,6 +131,19 @@
           type: jackett
           url: http://jackett.media.svc.cluster.local:9117
 
+    - autobrr:
+        app: autobrr
+        description: Filter-based torrent automation
+        enabled: 'true'
+        href: https://autobrr.${SECRET_DOMAIN}
+        icon: autobrr
+        name: Autobrr
+        namespace: media
+        widget:
+          type: autobrr
+          url: http://autobrr.media.svc.cluster.local:7474
+          key: '{{HOMEPAGE_VAR_AUTOBRR_KEY}}'
+
     - echo-server:
         app: echo-server
         description: An HTTP and WebSocket server for testing
