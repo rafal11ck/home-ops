@@ -1,0 +1,66 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/source.toolkit.fluxcd.io/ocirepository_v1.json
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: konflate
+spec:
+  interval: 5m
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: copy
+  ref:
+    tag: 0.3.0
+  url: oci://ghcr.io/home-operations/charts/konflate
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app konflate
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: konflate
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    fullnameOverride: *app
+    deploymentAnnotations:
+      reloader.stakater.com/auto: 'true'
+    config:
+      repo: github://rafal11ck/home-ops
+      refreshInterval: 15m
+      statusChecks: true
+      prComments: true
+      appClientId: Iv23liJq2YzxaBLDh1Vp
+      publicUrl: https://konflate.${SECRET_DOMAIN}
+    secret:
+      existingSecret: konflate-secret
+    persistence:
+      enabled: true
+      storageClass: ceph-block
+      size: 5Gi
+    httpRoute:
+      enabled: true
+      parentRefs:
+        - name: internal
+          namespace: envoy-gateway-system
+          sectionName: https-subdomains
+        - name: external
+          namespace: envoy-gateway-system
+          sectionName: https-subdomains
+      hostnames:
+        - konflate.${SECRET_DOMAIN}
+    resources:
+      requests:
+        cpu: 50m
+        memory: 256Mi
+      limits:
+        memory: 1Gi
