@@ -41,6 +41,7 @@ spec:
       prComments: true
       appClientId: Iv23liJq2YzxaBLDh1Vp
       publicUrl: https://konflate.${SECRET_DOMAIN}
+      mergeCommand: gh pr merge {{ .Number }} --repo {{ .Repo }} --rebase --delete-branch
     secret:
       existingSecret: konflate-secret
     persistence:
