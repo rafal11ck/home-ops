@@ -178,6 +178,22 @@
         name: Flux
         namespace: flux-system
 
+    - konflate:
+        app: konflate
+        description: In-cluster GitOps CI validating and merging pull requests
+        href: https://konflate.${SECRET_DOMAIN}
+        icon: mdi-source-branch-check
+        name: Konflate
+        namespace: konflate
+        widget:
+          metrics:
+            - label: Open PRs
+              query: sum(konflate_pull_requests)
+            - label: Queue
+              query: sum(konflate_diff_queue_depth)
+          type: prometheusmetric
+          url: http://prometheus-operated.observability.svc.cluster.local:9090
+
 - Internal:
     - alertmanager:
         app: alertmanager
@@ -227,6 +243,8 @@
         podSelector: app=rook-ceph-mgr,mgr_role=active,rook_cluster=rook-ceph
         widget:
           metrics:
+            - label: Health
+              query: ceph_health_status
             - label: OSDs in
               query: count(ceph_osd_in)
             - label: OSDs up

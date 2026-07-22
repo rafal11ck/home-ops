@@ -44,6 +44,9 @@ spec:
       mergeCommand: gh pr merge {{ .Number }} --repo {{ .Repo }} --rebase --delete-branch
     secret:
       existingSecret: konflate-secret
+    monitoring:
+      serviceMonitor:
+        enabled: true
     persistence:
       enabled: true
       storageClass: ceph-block
