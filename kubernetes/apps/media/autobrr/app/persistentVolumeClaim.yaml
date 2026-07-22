@@ -31,7 +31,7 @@ spec:
       clusterID: rook-ceph
       fsName: ceph-filesystem
       staticVolume: 'true'
-      rootPath: /ext
+      rootPath: /ext/.h/queue
     nodeStageSecretRef:
       name: rook-csi-cephfs-node
       namespace: rook-ceph
