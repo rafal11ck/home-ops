@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app flaresolverr
+  name: &app byparr
 spec:
   interval: 1h
   chartRef:
@@ -18,26 +18,23 @@ spec:
       retries: 3
   values:
     controllers:
-      flaresolverr:
+      byparr:
         containers:
           app:
             image:
-              repository: ghcr.io/flaresolverr/flaresolverr
-              tag: v3.5.0
+              repository: ghcr.io/thephaseless/byparr
+              tag: v2.1.0
             env:
               TZ: ${SECRET_TIMEZONE}
-              # writable HOME for Chrome / undetected-chromedriver when non-root
-              HOME: /config
-              PROMETHEUS_ENABLED: "true"
             securityContext:
               allowPrivilegeEscalation: false
               capabilities: { drop: ['ALL'] }
             resources:
               requests:
                 cpu: 100m
-                memory: 256Mi
+                memory: 512Mi
               limits:
-                memory: 1Gi
+                memory: 3Gi
     defaultPodOptions:
       securityContext:
         runAsNonRoot: true
@@ -50,10 +47,18 @@ spec:
         ports:
           http:
             port: 8191
-          metrics:
-            port: 8192
     persistence:
-      config:
+      cache:
         type: emptyDir
         globalMounts:
-          - path: /config
+          - path: /cache
+      tmp:
+        type: emptyDir
+        globalMounts:
+          - path: /tmp
+      dev-shm:
+        type: emptyDir
+        medium: Memory
+        sizeLimit: 512Mi
+        globalMounts:
+          - path: /dev/shm
