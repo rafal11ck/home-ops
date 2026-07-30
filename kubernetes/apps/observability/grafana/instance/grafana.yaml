@@ -57,6 +57,8 @@ spec:
         reloader.stakater.com/auto: 'true'
     # Inject dashboards from cofnigmaps https://grafana.github.io/grafana-operator/docs/examples/configmaps_sidecar/readme/
     spec:
+      strategy:
+        type: Recreate
       template:
         spec:
           # The volumes for dashboards and provisioning config

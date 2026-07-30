@@ -152,7 +152,7 @@ spec:
               resources:
                 requests:
                   cpu: 50m
-                  memory: 350Mi
+                  memory: 1Gi
                 limits:
                   cpu: 2500m
     machine-learning:
@@ -166,8 +166,8 @@ spec:
             main:
               resources:
                 requests:
-                  cpu: 150m
-                  memory: 900Mi
+                  cpu: 50m
+                  memory: 384Mi
                 limits:
                   cpu: 2500m
               probes:

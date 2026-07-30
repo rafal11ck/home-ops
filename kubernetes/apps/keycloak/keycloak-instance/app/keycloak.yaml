@@ -24,7 +24,7 @@ spec:
   resources:
     requests:
       cpu: 10m
-      memory: 200Mi
+      memory: 896Mi
     limits:
       memory: 2Gi
   ingress:

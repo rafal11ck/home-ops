@@ -94,15 +94,15 @@ spec:
             memory: 3000Mi
             cpu: 1500m
           requests:
-            cpu: 500m
+            cpu: 250m
             memory: 2000Mi
         mon:
           limits:
             memory: 1Gi
             cpu: 1000m
           requests:
-            cpu: 300m
-            memory: 320Mi
+            cpu: 100m
+            memory: 512Mi
         mgr:
           limits:
             cpu: 500m
