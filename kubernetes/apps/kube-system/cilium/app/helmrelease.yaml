@@ -35,6 +35,15 @@ spec:
   values:
     hubble:
       enabled: true
+      tls:
+        auto:
+          enabled: true
+          method: certmanager
+          certValidityDuration: 90
+          certManagerIssuerRef:
+            group: cert-manager.io
+            kind: Issuer
+            name: cilium-hubble-ca
       metrics:
         enabled:
           - dns:query
