@@ -1,0 +1,53 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrepository-source-v1.json
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: autoscaler
+spec:
+  interval: 1h
+  url: https://kubernetes.github.io/autoscaler
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: vertical-pod-autoscaler
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: vertical-pod-autoscaler
+      version: 0.11.0
+      sourceRef:
+        kind: HelmRepository
+        name: autoscaler
+  install:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      capabilities: { drop: ['ALL'] }
+    recommender:
+      priorityClassName: system-cluster-critical
+      extraArgs:
+        - --pod-recommendation-min-cpu-millicores=10
+        - --pod-recommendation-min-memory-mb=32
+      resources:
+        requests:
+          cpu: 25m
+          memory: 256Mi
+        limits:
+          memory: 1Gi
+    updater:
+      enabled: false
+    admissionController:
+      enabled: false
