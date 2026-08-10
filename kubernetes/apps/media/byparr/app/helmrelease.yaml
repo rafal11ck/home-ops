@@ -48,14 +48,6 @@ spec:
           http:
             port: 8191
     persistence:
-      cache:
-        type: emptyDir
-        globalMounts:
-          - path: /cache
-      tmp:
-        type: emptyDir
-        globalMounts:
-          - path: /tmp
       dev-shm:
         type: emptyDir
         medium: Memory
