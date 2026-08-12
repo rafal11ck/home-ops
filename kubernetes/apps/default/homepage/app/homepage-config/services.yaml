@@ -202,11 +202,6 @@
         description: Firewall and routing platform
         href: https://192.168.0.1
         icon: opnsense
-        widget:
-          password: '{{HOMEPAGE_VAR_OPNSENSE_SECRET}}'
-          type: opnsense
-          url: https://192.168.0.1
-          username: '{{HOMEPAGE_VAR_OPNSENSE_KEY}}'
 
     - prometheus:
         app: prometheus
