@@ -88,6 +88,11 @@ spec:
         provider: host
         connections:
           requireMsgr2: true
+      security:
+        cephx:
+          daemon:
+            keyRotationPolicy: KeyGeneration
+            keyGeneration: 2
       resources:
         osd:
           limits:
