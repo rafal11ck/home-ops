@@ -88,11 +88,24 @@ spec:
         provider: host
         connections:
           requireMsgr2: true
+      placement:
+        all:
+          tolerations:
+            - key: tuppr.home-operations.com/outdated
+              operator: Exists
       security:
         cephx:
           daemon:
             keyRotationPolicy: KeyGeneration
             keyGeneration: 2
+      healthCheck:
+        muteHealthWarning:
+          AUTH_INSECURE_CLIENT_KEY_TYPE:
+            policy: mute
+          AUTH_INSECURE_KEYS_ALLOWED:
+            policy: mute
+          AUTH_INSECURE_KEYS_CREATABLE:
+            policy: mute
       resources:
         osd:
           limits:
