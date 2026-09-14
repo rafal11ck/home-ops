@@ -4,7 +4,7 @@ kind: Gateway
 metadata:
   name: internal
   annotations:
-    external-dns.alpha.kubernetes.io/target: &ip4 192.168.0.240
+    external-dns.kubernetes.io/target: &ip4 192.168.0.240
 spec:
   gatewayClassName: envoy
   listeners:
