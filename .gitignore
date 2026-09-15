@@ -4,6 +4,8 @@ Thumbs.db
 # k8s
 kubeconfig
 talosconfig
+talos/output/
+talos/rendered/
 .decrypted~*.yaml
 *.agekey
 *.pub

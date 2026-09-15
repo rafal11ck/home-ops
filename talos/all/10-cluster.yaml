@@ -1,0 +1,12 @@
+machine:
+  certSANs:
+    - 192.168.0.60
+    - 127.0.0.1
+cluster:
+  network:
+    cni:
+      name: none
+    podSubnets:
+      - 10.69.0.0/16
+    serviceSubnets:
+      - 10.96.0.0/16

@@ -7,7 +7,7 @@ BOOTSTRAP_DIR = '{{config_root}}/bootstrap'
 TALOS_DIR = '{{config_root}}/talos'
 KUBECONFIG = "{{config_root}}/kubeconfig"
 SOPS_AGE_KEY_FILE = "{{config_root}}/age.key"
-TALOSCONFIG = "{{config_root}}/talos/clusterconfig/talosconfig"
+TALOSCONFIG = "{{config_root}}/talos/talosconfig"
 
 [tasks.deps]
 description = "Install dependencies"
@@ -18,7 +18,6 @@ run = "uv pip install -r requirements.txt"
 python = "3.14.7"
 uv = "latest"
 # Operations tools
-"aqua:budimanjojo/talhelper" = "3.1.17"
 "aqua:cloudflare/cloudflared" = "2026.8.3"
 "aqua:FiloSottile/age" = "1.3.2"
 "aqua:fluxcd/flux2" = "2.9.5"
@@ -36,3 +35,4 @@ uv = "latest"
 "github:cilium/cilium-cli" = "0.20.0"
 "github:cilium/hubble" = "1.19.4"
 "github:derailed/k9s" = "0.51.0"
+"github:postfinance/topf" = "v0.6.0"
