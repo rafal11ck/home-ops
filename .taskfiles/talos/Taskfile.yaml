@@ -16,6 +16,7 @@ tasks:
     desc: Show pending Talos config changes without applying them
     dir: '{{.TALOS_DIR}}'
     cmd: topf apply --dry-run
+    ignore_error: true
     preconditions:
       - test -f {{.TALOS_DIR}}/topf.yaml
       - which topf
