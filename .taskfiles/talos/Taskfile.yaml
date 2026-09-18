@@ -41,6 +41,16 @@ tasks:
       - test -f {{.TALOS_DIR}}/topf.yaml
       - which topf
 
+  try:
+    desc: Apply Talos config to a node temporarily, reverting after a timeout [NODE=required]
+    dir: '{{.TALOS_DIR}}'
+    cmd: topf apply --nodes-filter '^{{.NODE}}$' --mode try
+    requires:
+      vars: [NODE]
+    preconditions:
+      - test -f {{.TALOS_DIR}}/topf.yaml
+      - which topf
+
   upgrade:
     desc: Upgrade Talos on all nodes, one at a time (asks first)
     dir: '{{.TALOS_DIR}}'
