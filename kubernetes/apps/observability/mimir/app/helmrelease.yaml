@@ -86,6 +86,9 @@ spec:
           push_grpc_method_enabled: true
         ingest_storage:
           enabled: false
+        blocks_storage:
+          tsdb:
+            flush_blocks_on_shutdown: true
         limits:
           compactor_blocks_retention_period: 14d
           max_label_names_per_series: 50
