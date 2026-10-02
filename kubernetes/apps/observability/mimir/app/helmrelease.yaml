@@ -50,7 +50,11 @@ spec:
       prometheusRule:
         enabled: true
         mimirRules: true
-        mimirAlerts: false
+        mimirAlerts: true
+    runtimeConfig:
+      overrides:
+        anonymous:
+          ruler_max_rule_groups_per_tenant: 200
     minio:
       enabled: false
     kafka:
