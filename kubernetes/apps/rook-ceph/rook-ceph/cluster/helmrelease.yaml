@@ -37,6 +37,7 @@ spec:
         client.rgw:
           rgw_user_counters_cache: 'true'
           rgw_bucket_counters_cache: 'true'
+          rgw_sigv4_insecure: 'true'
         mon:
           mon_data_avail_warn: '10'
         osd:
