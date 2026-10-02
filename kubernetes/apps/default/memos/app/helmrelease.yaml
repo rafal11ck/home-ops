@@ -34,7 +34,7 @@ spec:
                 secretKeyRef:
                   name: memos-database-app
                   key: uri
-              MEMOS_INSTANCE_URL: &host 'memos.${SECRET_DOMAIN}'
+              MEMOS_INSTANCE_URL: 'https://memos.${SECRET_DOMAIN}'
 
             probes:
               liveness:
@@ -64,7 +64,7 @@ spec:
     route:
       memos:
         hostnames:
-          - *host
+          - 'memos.${SECRET_DOMAIN}'
         rules:
           - backendRefs:
               - name: *app
