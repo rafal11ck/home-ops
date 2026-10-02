@@ -37,6 +37,8 @@ spec:
         client.rgw:
           rgw_user_counters_cache: 'true'
           rgw_bucket_counters_cache: 'true'
+          # FIXME: remove once on Ceph >= 20.2.5. Ceph 20.2.4 (CVE-2026-54330 fix) rejects
+          # minio-go streaming-signed PUTs over HTTP with 403, which broke Mimir uploads to S3.
           rgw_sigv4_insecure: 'true'
         mon:
           mon_data_avail_warn: '10'
