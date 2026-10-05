@@ -90,7 +90,7 @@ spec:
           tsdb:
             flush_blocks_on_shutdown: true
         limits:
-          compactor_blocks_retention_period: 14d
+          compactor_blocks_retention_period: 90d
           max_label_names_per_series: 50
           max_global_series_per_user: 500000
           ingestion_rate: 50000
