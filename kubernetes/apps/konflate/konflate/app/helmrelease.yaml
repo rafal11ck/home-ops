@@ -42,6 +42,8 @@ spec:
       appClientId: Iv23liJq2YzxaBLDh1Vp
       publicUrl: https://konflate.${SECRET_DOMAIN}
       mergeCommand: gh pr merge {{ .Number }} --repo {{ .Repo }} --rebase --delete-branch
+      kubeVersion: '{{ .Capabilities.KubeVersion.Version }}'
+      helmApiVersions: '{{ join "," .Capabilities.APIVersions }}'
     secret:
       existingSecret: konflate-secret
     monitoring:
