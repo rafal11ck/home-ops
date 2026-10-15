@@ -6,6 +6,7 @@ resources:
   - ./grafana.yaml
   - ./secret.sops.yaml
   - ./datasource.yaml
+  - ./serviceaccount.yaml
   - ./dashboard.yaml
   - ./serviceMonitor.yaml
   - ./route.yaml
