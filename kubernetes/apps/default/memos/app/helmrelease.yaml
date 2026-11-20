@@ -48,6 +48,11 @@ spec:
                   periodSeconds: 5
         pod:
           priorityClassName: system-cluster-critical
+    persistence:
+      data:
+        type: emptyDir
+        globalMounts:
+          - path: /var/opt/memos
     service:
       memos:
         controller: memos
