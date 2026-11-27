@@ -2,6 +2,14 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   packageRules: [
     {
+      description: "Auto-merge patch updates",
+      automerge: true,
+      automergeType: "branch",
+      matchUpdateTypes: ["patch"],
+      minimumReleaseAge: "3 days",
+      ignoreTests: false,
+    },
+    {
       description: [
         "Auto-merge GitHub Actions"
       ],
@@ -44,6 +52,20 @@
       matchUpdateTypes: ["minor", "patch"],
       matchPackageNames: ["/external-dns/", "/gateway-api/", "/prometheus-operator/"],
       ignoreTests: true,
+    },
+    {
+      description: "Never auto-merge critical infrastructure",
+      matchPackageNames: [
+        "/rook/",
+        "/ceph/",
+        "/cilium/",
+        "/siderolabs/",
+        "/cloudnative-pg/",
+        "/postgresql/",
+        "/dragonfly/",
+        "/keycloak/",
+      ],
+      automerge: false,
     },
   ],
 }
