@@ -140,9 +140,10 @@ spec:
             - action: replace
               sourceLabels: ['__meta_kubernetes_pod_node_name']
               targetLabel: instance
-      extraArgs:
+      defaultArgs:
         - --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|var/lib/docker/.+)($|/)
         - --collector.filesystem.fs-types-exclude=^(tmpfs|autofs|binfmt_misc|cgroup|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|mqueue|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|sysfs|tracefs)$
+      extraArgs:
         - --collector.diskstats.device-exclude=^(ram|loop|fd|sr|(h|s|v|xv)d[a-z]+|nvme\d+n\d+p|nvme\d+c\d+n)\d+$
     kube-state-metrics:
       fullnameOverride: kube-state-metrics
